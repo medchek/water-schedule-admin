@@ -21,9 +21,9 @@ class Town extends Model
         return $this->belongsTo(Wilaya::class);
     }
 
-    public function period()
+    public function shedule()
     {
-        return $this->hasMany(Period::class);
+        return $this->hasMany(Schedule::class);
     }
 }
 // gdc wilaya_id 1

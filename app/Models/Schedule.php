@@ -11,29 +11,24 @@ class Schedule extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'sunday_from',
-        'sunday_to',
-        'monday_from',
-        'monday_to',
-        'tuesday_from',
-        'tuesday_to',
-        'wednesday_from',
-        'wednesday_to',
-        'thursday_from',
-        'thursday_to',
-        'friday_from',
-        'friday_to',
-        'saturday_from',
-        'saturday_to',
-        'period_id'
+        'year',
+        'code', // towncode.weeknumber.year combined
+        'week_number',
+        'next_week_number',
+        'schedule',
+        'created_by',
+        'modified_by',
+        'town_code'
+        // 'period_id'
     ];
 
     /**
-     * Associate the period with the waterSchedule
+     * Associate the town with the waterSchedule
      * A period can only be refernced once within the WaterSchedule table
+     * A town can be referenced many times WaterSchedule table
      */
-    public function period()
+    public function town()
     {
-        return $this->hasOne(Period::class);
+        return $this->belongsTo(Town::class);
     }
 }

@@ -15,7 +15,7 @@ class Wilaya extends Model
         'code',
     ];
 
-    public function town()
+    public function towns()
     {
         return $this->hasMany(Town::class);
     }
