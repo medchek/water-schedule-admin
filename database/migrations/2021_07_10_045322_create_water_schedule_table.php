@@ -21,28 +21,43 @@ class CreateWaterScheduleTable extends Migration
          * 1 wilaya belongs to many schedule entry
          * 1 town belongs to many schedule entry
          */
-        Schema::create('water_schedule', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
 
             $table->id();
-            $table->time('sunday_from')->nullable()->default(null);
-            $table->time('sunday_to')->nullable()->default(null);
-            $table->time('monday_from')->nullable()->default(null);
-            $table->time('monday_to')->nullable()->default(null);
-            $table->time('tuesday_from')->nullable()->default(null);
-            $table->time('tuesday_to')->nullable()->default(null);
-            $table->time('wednesday_from')->nullable()->default(null);
-            $table->time('wednesday_to')->nullable()->default(null);
-            $table->time('thursday_from')->nullable()->default(null);
-            $table->time('thursday_to')->nullable()->default(null);
-            $table->time('friday_from')->nullable()->default(null);
-            $table->time('friday_to')->nullable()->default(null);
-            $table->time('saturday_from')->nullable()->default(null);
-            $table->time('saturday_to')->nullable()->default(null);
+
+            $table->year('year');
+            // the value of towncode.weeknumber.year together
+            $table->unsignedBigInteger('code')->unique();
+            $table->unsignedTinyInteger('week_number');
+            $table->json("schedule")->nullable()->default(null);
+            $table->unsignedTinyInteger('next_week_number')->nullable()->default(null);
             $table->timestamps();
 
 
-            $table->unsignedBigInteger('period_id')->unique();
-            $table->foreign('period_id')->references('id')->on('periods');
+            // $table->unsignedBigInteger('town_id')->unique();
+            $table->unsignedInteger('town_code');
+            $table->foreign('town_code')->references('code')->on('towns');
+            // $table->foreign('period_id')->references('id')->on('periods');
+
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('modified_by')->nullable()->default(null);
+            $table->foreign('created_by')->references('id')->on("users");
+            $table->foreign('modified_by')->references('id')->on("users");
+
+            // $table->json('sunday_from');
+            // $table->time('sunday_to')->nullable()->default(null);
+            // $table->json('monday_from');
+            // $table->time('monday_to')->nullable()->default(null);
+            // $table->json('tuesday_from');
+            // $table->time('tuesday_to')->nullable()->default(null);
+            // $table->json('wednesday_from');
+            // $table->time('wednesday_to')->nullable()->default(null);
+            // $table->json('thursday_from');
+            // $table->time('thursday_to')->nullable()->default(null);
+            // $table->json('friday_from');
+            // $table->time('friday_to')->nullable()->default(null);
+            // $table->json('saturday_from');
+            // $table->time('saturday_to')->nullable()->default(null);
         });
     }
 
@@ -53,6 +68,6 @@ class CreateWaterScheduleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('water_schedule');
+        Schema::dropIfExists('schedules');
     }
 }
