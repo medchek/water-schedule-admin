@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Wilaya;
 use Illuminate\Http\Request;
+
+
 // use Illuminate\Http\Response;
 
 class WilayaController extends Controller
@@ -58,14 +60,16 @@ class WilayaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a single wilaya entry
      *
-     * @param  int  $id
+     * @param  int  $wilaya_code
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($wilaya_code)
     {
-        //
+        if (isset($wilaya_code) && is_numeric($wilaya_code) && $wilaya_code > 0) {
+            return Wilaya::where('code', $wilaya_code)->firstOrFail();
+        }
     }
 
     /**

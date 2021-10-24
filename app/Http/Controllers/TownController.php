@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TownResource;
 use Illuminate\Http\Request;
 use App\Models\Town;
+use App\Models\Wilaya;
+use Illuminate\Support\Facades\Log;
 
 class TownController extends Controller
 {
@@ -12,9 +15,30 @@ class TownController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($wilaya_id)
     {
         return response("ok", 200);
+    }
+
+    /**
+     * Display a listing of the resource by the given wilaya_id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getByWilayaId($wilaya_id)
+    {
+        if (isset($wilaya_id) && is_numeric($wilaya_id) && $wilaya_id > 0) {
+
+            $wilaya = Wilaya::find($wilaya_id);
+
+            if ($wilaya) {
+                $towns = $wilaya->towns()->get();
+                // Log::channel("stderr")->debug($towns);
+                return response(TownResource::collection($towns), 200);
+            } else {
+                return response('wilaya not found', 404);
+            }
+        }
     }
 
     /**
@@ -26,31 +50,44 @@ class TownController extends Controller
     public function store(Request $request)
     {
         $validated = validator($request->all(), [
-            'wilaya_id' => 'required|exists:App\Models\Wilaya,id',
-            'name' => 'required|max:100|unique:towns',
-            'ar_name' => 'nullable|max:100|unique:towns',
-            'code' => 'bail|numeric|unique:towns|digits_between:1,2400000',
+            'wilayaId' => 'required|exists:App\Models\Wilaya,id',
+            'name' => 'required|max:30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\'-]+$/gi',
+            'arName' => 'nullable|max:30|regex:/^[ء-ي]+$/gi/',
+            // 'code' => 'bail|numeric|unique:towns|digits_between:1,2400000',
         ], [
-            'wilaya_id.required' => 'You must specify a wilaya'
+            'wilayaId.required' => 'You must specify a wilaya'
         ]);
 
         if ($validated->fails()) {
-            return response($validated->errors(), 400);
+            return response($validated->errors(), 406);
         }
 
+
+        $wilaya_id = $request->wilayaId;
+        $wilaya = Wilaya::find($wilaya_id);
+
+        if (!$wilaya) {
+            return response("invalid wilya, not found", 406);
+        }
+
+        // prepare the town code for the next town to be added by incrementing the current count
+        $town_code = $wilaya->towns()->count() + 1;
         // otherwise the request if valid
 
-        $town = new Town;
+        $town = new Town();
 
-        $town->wilaya_id = $request->wilaya_id;
+
+
+
+        $town->wilaya_id = $wilaya_id;
         // $town->wilaya()->associate()
         $town->name = $request->name;
-        $town->ar_name = $request->ar_name ?? null;
-        $town->code = $request->code ?? null;
+        $town->ar_name = $request->arName ?? null;
+        $town->code = intval($wilaya_id . $town_code < 10 ? '0' . $town_code : $town_code);
 
         $town->save();
 
-        return response($town->fre, 201);
+        return response("ok", 201);
     }
 
     /**
