@@ -3,5 +3,12 @@
 @tailwind utilities;
 
 body {
-    font-family: "Nunito", sans-serif;
+    /* font-family: "Nunito", sans-serif; */
+    font-family: "open sans", sans-serif;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
