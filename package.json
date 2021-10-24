@@ -10,20 +10,24 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@vue/compiler-sfc": "^3.1.5",
-        "axios": "^0.21",
-        "browser-sync": "^2.27.4",
+        "@types/tailwindcss": "^2.2.1",
+        "@vue/compiler-sfc": "^3.2.20",
+        "axios": "^0.21.4",
+        "browser-sync": "^2.27.5",
         "browser-sync-webpack-plugin": "^2.3.0",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.34",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "tailwindcss": "^2.2.4",
-        "ts-loader": "^9.2.3",
-        "typescript": "^4.3.5",
-        "vue-loader": "^16.3.1"
+        "postcss": "^8.3.11",
+        "tailwindcss": "^2.2.17",
+        "ts-loader": "^9.2.6",
+        "typescript": "^4.4.4",
+        "vue-loader": "^16.8.1"
     },
     "dependencies": {
-        "vue": "^3.1.5",
-        "vue-router": "^4.0.10"
+        "@mdi/js": "^5.9.55",
+        "date-fns": "^2.25.0",
+        "vue": "^3.2.20",
+        "vue-router": "^4.0.12",
+        "vuex": "^4.0.2"
     }
 }
