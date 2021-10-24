@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TownController;
 use App\Http\Controllers\WilayaController;
+use App\Http\Resources\UserResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +21,21 @@ use App\Http\Controllers\WilayaController;
 */
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return new UserResource($request->user());
 });
 
-Route::get("/schedules", [ScheduleController::class, 'index']);
-Route::post("/schedules", [ScheduleController::class, 'store']);
+Route::middleware(['auth:sanctum'])->group(function () {
 
+    Route::get("/wilayas", [WilayaController::class, 'index']);
+    Route::get("/wilayas/{wilaya_id}", [WilayaController::class, 'show']);
+    Route::get("wilayas/{wilaya_id}/towns/", [TownController::class, 'getByWilayaId']);
 
-Route::get("/periods", [PeriodController::class, 'index']);
-Route::post("/periods", [PeriodController::class, 'store']);
+    Route::post("/towns", [TownController::class, 'store']);
 
-
-Route::get("/wilayas", [WilayaController::class, 'index']);
-// Route::post("/wilayas", [WilayaController::class, 'store']);
-
-
-
-
-
-Route::get("/towns", [TownController::class, 'index']);
-Route::post("/towns", [TownController::class, 'store']);
+    // Route::get("/schedules", [ScheduleController::class, 'index']);
+    Route::get("/schedules/{town_id}", [ScheduleController::class, 'show']);
+    Route::post("/schedules", [ScheduleController::class, 'store']);
+    Route::patch("/schedules/{schedule_id}", [ScheduleController::class, 'update']);
+});
