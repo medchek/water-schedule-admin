@@ -1,0 +1,217 @@
+<template>
+  <section class="flex-grow flex flex-col h-full">
+    <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
+      <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Communes {{ headerWilayaName }}</span>
+    </div>
+
+    <section id="towns-toolbar" class="flex flex-col lg:flex-row lg:items-center justify-between lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0">
+      <button id="add-town" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-2 h-10 rounded-md" @click="isFormOpen = true">
+        <Icon :icon="mdiPlusBoxMultiple" class="w-6 h-6 mr-1" />
+        Ajouter une commune
+      </button>
+
+      <div class="flex justify-between lg:justify-end space-x-4">
+        <select
+          name="wilaya-selector"
+          id="wilaya-select"
+          class="rounded-md w-full lg:w-40 xl:w-52 px-2 font-semibold bg-white text-bgray-700 focus:outline-none focus:ring-blue-300 focus:ring-2"
+          v-model="currentRouteWilayaId"
+          @change="handleSelectChange"
+        >
+          <option v-for="wilaya in wilayas" :key="wilaya.code" :value="wilaya.code">{{ wilaya.code }} - {{ wilaya.name }}</option>
+        </select>
+        <!-- {{ currentRouteWilayaId }} -->
+        <app-input
+          className="h-10 text-sm sm:text-base w-full lg:w-80"
+          v-model.trim.lazy="searchTerm"
+          :appendIcon="mdiMagnify"
+          placeholder="Chercher une commune"
+          clearable
+        />
+      </div>
+    </section>
+    <section id="content-main" class="relative w-full h-full flex-grow overflow-y-auto py-4">
+      <div class="w-full h-full flex items-center" v-if="isFetching">
+        <loader className="w-12 h-12 mx-auto border-t-blue-500" customColors />
+      </div>
+      <p
+        v-else-if="!isFetching && towns !== undefined && towns instanceof Array && towns.length === 0"
+        class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-800"
+      >
+        Aucune commune n'a été ajoutée pour {{ currentRouteWilaya.name }}
+      </p>
+      <p v-else-if="searchTerm && (!filteredTowns || !filteredTowns.length)" class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-600">
+        Aucune commune ne corresponds à votre recherche
+      </p>
+      <div v-else class="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-none gap-4 w-full h-auto px-5">
+        <div class="flex flex-col bg-white h-36 px-4 pb-4 rounded w-auto" v-for="town in filteredTowns" :key="town.id">
+          <div class="flex-grow flex items-center justify-center text-bgray-700 font-semibold text-xl 2xl:text-2xl">{{ town.name }}</div>
+          <router-link
+            :to="{ name: 'schedule', params: { wilayaId: town.wilayaId, townId: town.code } }"
+            class="
+              flex
+              items-center
+              justify-center
+              bg-gray-100
+              hover:bg-blue-100
+              focus:bg-bgray-200
+              transition-colors
+              h-9
+              w-full
+              font-semibold
+              text-blue-400
+              rounded-md
+            "
+          >
+            Programme d'eau
+          </router-link>
+        </div>
+      </div>
+    </section>
+
+    <teleport to="#app-modal">
+      <transition name="fade">
+        <town-form v-if="isFormOpen" :showModal="isFormOpen" @formClickedOutside="closeForm" @formSaved="closeForm" />
+      </transition>
+    </teleport>
+  </section>
+</template>
+<script lang="ts">
+import { computed, ComputedRef, defineComponent, onMounted, ref, warn, watch } from "vue";
+import { mdiPlusBoxMultiple, mdiMagnify } from "@mdi/js";
+import Icon from "../components/Icon.vue";
+import AppInput from "../components/AppInput.vue";
+
+import { useStore } from "vuex";
+import { useRoute, useRouter } from "vue-router";
+import { Town, Towns } from "../store/modules/towns";
+import { Wilaya } from "../store/modules/wilayas";
+import Loader from "../components/Loader.vue";
+import TownForm from "../components/town/TownForm.vue";
+
+export default defineComponent({
+  /*
+  beforeRouteEnter(from, to, next) {
+    console.log("from params => ", from.params.wilayaId);
+    console.log("beforeendter");
+    // resolves to the status code
+    store
+      .dispatch("fetchTowns", {
+        wilayaId: from.params.wilayaId,
+      })
+      .then((status) => {
+        if (status === 200) {
+          next();
+        } else {
+          next({ name: "not-found" });
+        }
+      })
+      .catch((err) => {
+        console.log(`[Towns]: ${err}`);
+        store.dispatch("flashSnack", {
+          // message, type, time
+          message: `Wilaya ${from.params.wilayaId} n'existe pas`,
+          type: "error",
+        });
+        return next({ name: "wilayas" });
+      });
+  },*/
+  components: { Icon, AppInput, Loader, TownForm },
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+    const router = useRouter();
+    const searchTerm = ref<string>("");
+    const towns: ComputedRef<Town[] | undefined> = computed(() => store.getters.getTownsByWilayaId(route.params.wilayaId));
+
+    const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getWilayas);
+    const currentRouteWilayaId = ref(route.params.wilayaId as string);
+
+    const filteredTowns: ComputedRef<Town[] | Towns | null> = computed(() => {
+      if (!towns.value) return null;
+      if (!searchTerm.value) return towns.value;
+      return towns.value.filter((town) => town.name.toLowerCase().includes(searchTerm.value.trim().toLowerCase()));
+    });
+    // console.warn(filteredTowns.value);
+    const currentRouteWilaya = computed(() => wilayas.value.find((wilaya) => wilaya.code === parseInt(currentRouteWilayaId.value)));
+    const headerWilayaName = computed(() => {
+      const targetWilaya = currentRouteWilaya.value;
+      if (targetWilaya) {
+        const wilayaName = targetWilaya.name;
+        if (wilayaName.charAt(0).match(/^[auoie]/i)) {
+          return `d'${wilayaName}`;
+        } else {
+          return `de ${wilayaName}`;
+        }
+      }
+    });
+
+    const isFetching = ref(false);
+    const isFetchingError = ref(false);
+    const fetchTownsData = () => {
+      console.warn("FETCH TOWNS REQUESTED in Towns.vue");
+      if (!isFetching.value && !towns.value) isFetching.value = true;
+      store
+        .dispatch("fetchTowns", {
+          wilayaId: route.params.wilayaId,
+        })
+        .then((status) => {
+          if (status === 200) {
+            isFetching.value = false;
+            isFetchingError.value = false;
+          }
+        })
+        .catch((err) => {
+          console.error(`[Towns fetching error]: ${err}`);
+          store.dispatch("flashSnack", {
+            // message, type, time
+            message: `Wilaya ${route.params.wilayaId} n'existe pas`,
+            type: "error",
+          });
+          return router.replace({ name: "wilayas" });
+        });
+    };
+
+    onMounted(() => {
+      // if the towns already exist upon entering the component, dont call the api
+      if (towns.value) return;
+      fetchTownsData();
+    });
+
+    watch(
+      () => route.params.wilayaId as string,
+      (newWilayaId) => {
+        const newId = parseInt(newWilayaId);
+        // when the user navigates to another wilaya from the select menu, fetch for the target wilaya towns
+        if (towns.value === undefined && !isNaN(newId) && newId > 0) {
+          fetchTownsData();
+        }
+      }
+    );
+
+    const handleSelectChange = () => {
+      router.push({ name: "towns", params: { wilayaId: currentRouteWilayaId.value } });
+    };
+
+    const isFormOpen = ref(false);
+    const closeForm = () => (isFormOpen.value = false);
+
+    return {
+      mdiPlusBoxMultiple,
+      mdiMagnify,
+      searchTerm,
+      towns,
+      wilayas,
+      currentRouteWilayaId,
+      currentRouteWilaya,
+      headerWilayaName,
+      handleSelectChange,
+      isFetching,
+      filteredTowns,
+
+      isFormOpen,
+      closeForm,
+    };
+  },
+});
+</script>

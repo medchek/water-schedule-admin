@@ -1,0 +1,183 @@
+<template>
+  <transition name="fade">
+    <div class="absolute md:hidden w-full h-full top-0 left-0 ring-0 blur-0 bg-bgray-700 bg-opacity-50 z-10" v-if="renderMenu"></div>
+  </transition>
+  <transition name="slide">
+    <section
+      ref="menuRef"
+      id="menu"
+      class="absolute md:relative h-full z-10 flex flex-col min-w-72 md:min-w-64 2xl:min-w-80 bg-gradient-to-bl from-blue-400 to-blue-900 text-white shadow"
+      v-if="renderMenu"
+    >
+      <div
+        id="logo"
+        class="flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full h-16 bg-gradient-to-tr from-blue-50 to-white px-4 text-bgray-700"
+      >
+        <p>SEAAL</p>
+        <button id="close-menu" class="md:hidden w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu">
+          <Icon :icon="mdiMenu" class="w-8 h-8" />
+        </button>
+      </div>
+      <div id="menu-links" class="flex flex-col flex-grow w-full py-5 px-2 md:px-4">
+        <div class="flex-grow space-y-3">
+          <menu-link :icon="mdiMapOutline" to="/wilayas">Wilayas</menu-link>
+          <menu-link :icon="mdiMapMarkerRadius" to="/wilaya/16/towns">Communes</menu-link>
+          <menu-link :icon="mdiClockOutline" to="/wilaya/16/town/1601/schedule">Programme d'eau</menu-link>
+        </div>
+        <div>
+          <menu-link :icon="mdiLogout" to="/logout" :prevent="logout" :isLoading="isLogoutLoading">Se déconnecter</menu-link>
+        </div>
+      </div>
+    </section>
+    <div v-else class="md:hidden flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full min-h-12 bg-white px-4 text-bgray-700 mb-2">
+      <p>SEAAL</p>
+      <button id="close-menu" class="w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu">
+        <Icon :icon="mdiMenu" class="w-8 h-8" />
+      </button>
+    </div>
+  </transition>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent, onMounted, onUnmounted, ref, watch } from "vue";
+import { mdiMapOutline, mdiMapMarkerRadius, mdiClockOutline, mdiLogout, mdiMenu } from "@mdi/js";
+import MenuLink from "./AppMenuLink.vue";
+import Icon from "./Icon.vue";
+import { axios } from "../lib/shared";
+
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+
+export default defineComponent({
+  components: {
+    Icon,
+    MenuLink,
+  },
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+
+    const isMenuOpen = ref<boolean>(true);
+    const toggleMenu = () => {
+      isMenuOpen.value = !isMenuOpen.value;
+    };
+
+    const isLogoutLoading = ref<boolean>(false);
+    const logout = () => {
+      // start loading
+      isLogoutLoading.value = true;
+
+      axios
+        .post("/logout")
+        .then((response) => {
+          isLogoutLoading.value = false;
+          if (response.status === 204) {
+            // delete the user state
+            store.commit("RESET_USER");
+            router.replace({ name: "login" });
+            store.dispatch("flashSnack", {
+              message: "Vous êtes maintenant déconnecté",
+              type: "info",
+              time: 5000,
+            });
+          }
+        })
+        .catch((err) => {
+          isLogoutLoading.value = false;
+          store.dispatch("flashSnack", {
+            message: "Une erreur est survenu lors de la déconnexion",
+            time: 5000,
+            type: "error",
+          });
+          throw new Error(`Error while logging out: ${err}`);
+        });
+    };
+    const windowWidth = ref<number>(window.innerWidth);
+    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
+    const onResize = (): void => {
+      // debouncing
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // console.log("window resized!");q
+        windowWidth.value = window.innerWidth;
+      }, 100);
+    };
+
+    onMounted(() => {
+      window.addEventListener("resize", onResize);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("resize", onResize);
+    });
+
+    // if the window is sm:640 md:768px
+    const shouldMenuBeAbsolute = computed(() => windowWidth.value <= 768);
+
+    const renderMenu = computed(() => {
+      // if the screen is >= md display the menu regardless if it was hidden or not
+      if (!shouldMenuBeAbsolute.value) {
+        return true;
+      } else {
+        // otherwise, follow the regular menu state
+        return isMenuOpen.value;
+      }
+    });
+
+    const menuRef = ref<HTMLElement | null>(null);
+    const onClickOutside = (e: MouseEvent) => {
+      if (menuRef.value) {
+        if (menuRef.value.contains(e.target as Node)) {
+          return;
+        } else {
+          // close the menu when clicked outside of the menu
+          isMenuOpen.value = false;
+        }
+      }
+    };
+
+    watch(
+      shouldMenuBeAbsolute,
+      (newVal) => {
+        if (newVal) {
+          document.body.addEventListener("mousedown", onClickOutside, { capture: true });
+        } else {
+          document.body.removeEventListener("mousedown", onClickOutside, { capture: true });
+        }
+      },
+      { immediate: true }
+    );
+
+    // console.log(internalInstance?.appContext.config.globalProperties);
+    return { mdiMapOutline, mdiMapMarkerRadius, mdiClockOutline, mdiLogout, mdiMenu, logout, isLogoutLoading, isMenuOpen, toggleMenu, renderMenu, menuRef };
+  },
+});
+</script>
+
+
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.slide-enter-active {
+  animation: slide 0.3s;
+}
+.slide-leave-active {
+  animation: slide 0.3s reverse;
+}
+@keyframes slide {
+  from {
+    transform: translateX(-400px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+</style>
