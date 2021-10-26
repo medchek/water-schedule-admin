@@ -20,6 +20,15 @@ class CreateTownsTable extends Migration
             $table->unsignedInteger('code')->unique();
             $table->timestamps();
 
+            // whether the user can edit/delete this 
+            $table->boolean('protected')->default(false);
+            $table->unsignedBigInteger('added_by')->nullable()->default(null);
+            $table->unsignedBigInteger('modified_by')->nullable()->default(null);
+            $table->foreign('added_by')->references('id')->on('users');
+            $table->foreign('modified_by')->references('id')->on('users');
+
+
+
             $table->unsignedBigInteger('wilaya_id');
             $table->foreign('wilaya_id')->references('id')->on('wilayas');
         });
