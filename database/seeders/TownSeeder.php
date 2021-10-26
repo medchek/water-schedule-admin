@@ -18,6125 +18,6124 @@ class TownSeeder extends Seeder
             1 => [
                 0 => [
                     'name' => 'Adrar',
-                    'code' => 101,
+                    'code' => 1001,
                 ],
                 1 => [
                     'name' => 'Tamest',
-                    'code' => 102,
+                    'code' => 1002,
                 ],
                 2 => [
                     'name' => 'Charouine',
-                    'code' => 103,
+                    'code' => 1003,
                 ],
                 3 => [
                     'name' => 'Reggane',
-                    'code' => 104,
+                    'code' => 1004,
                 ],
                 4 => [
                     'name' => 'In Zghmir',
-                    'code' => 105,
+                    'code' => 1005,
                 ],
                 5 => [
                     'name' => 'Tit',
-                    'code' => 106,
+                    'code' => 1006,
                 ],
                 6 => [
                     'name' => 'Ksar Kaddour',
-                    'code' => 107,
+                    'code' => 1007,
                 ],
                 7 => [
                     'name' => 'Tsabit',
-                    'code' => 108,
+                    'code' => 1008,
                 ],
                 8 => [
                     'name' => 'Timimoun',
-                    'code' => 109,
+                    'code' => 1009,
                 ],
                 9 => [
                     'name' => 'Ouled Saïd',
-                    'code' => 110,
+                    'code' => 1010,
                 ],
                 10 => [
                     'name' => 'Zaouiet Kounta',
-                    'code' => 111,
+                    'code' => 1011,
                 ],
                 11 => [
                     'name' => 'Aoulef',
-                    'code' => 112,
+                    'code' => 1012,
                 ],
                 12 => [
                     'name' => 'Tamekten',
-                    'code' => 113,
+                    'code' => 1013,
                 ],
                 13 => [
                     'name' => 'Tamantit',
-                    'code' => 114,
+                    'code' => 1014,
                 ],
                 14 => [
                     'name' => 'Fenoughil',
-                    'code' => 115,
+                    'code' => 1015,
                 ],
                 15 => [
                     'name' => 'Tinerkouk',
-                    'code' => 116,
+                    'code' => 1016,
                 ],
                 16 => [
                     'name' => 'Deldoul',
-                    'code' => 117,
+                    'code' => 1017,
                 ],
                 17 => [
                     'name' => 'Sali',
-                    'code' => 118,
+                    'code' => 1018,
                 ],
                 18 => [
                     'name' => 'Akabli',
-                    'code' => 119,
+                    'code' => 1019,
                 ],
                 19 => [
                     'name' => 'Metarfa',
-                    'code' => 120,
+                    'code' => 1020,
                 ],
                 20 => [
                     'name' => 'Ouled Ahmed Tammi',
-                    'code' => 121,
+                    'code' => 1021,
                 ],
                 21 => [
                     'name' => 'Bouda',
-                    'code' => 122,
+                    'code' => 1022,
                 ],
                 22 => [
                     'name' => 'Aougrout',
-                    'code' => 123,
+                    'code' => 1023,
                 ],
                 23 => [
                     'name' => 'Talmine',
-                    'code' => 124,
+                    'code' => 1024,
                 ],
                 24 => [
                     'name' => 'Bordj Badji Mokhtar',
-                    'code' => 125,
+                    'code' => 1025,
                 ],
                 25 => [
                     'name' => 'Sebaa',
-                    'code' => 126,
+                    'code' => 1026,
                 ],
                 26 => [
                     'name' => 'Ouled Aïssa',
-                    'code' => 127,
+                    'code' => 1027,
                 ],
                 27 => [
                     'name' => 'Timiaouine',
-                    'code' => 128,
+                    'code' => 1028,
                 ],
             ],
             2 => [
                 0 => [
                     'name' => 'Chlef',
-                    'code' => 201,
+                    'code' => 2001,
                 ],
                 1 => [
                     'name' => 'Ténès',
-                    'code' => 202,
+                    'code' => 2002,
                 ],
                 2 => [
                     'name' => 'Bénairia',
-                    'code' => 203,
+                    'code' => 2003,
                 ],
                 3 => [
                     'name' => 'El Karimia',
-                    'code' => 204,
+                    'code' => 2004,
                 ],
                 4 => [
                     'name' => 'Tadjena',
-                    'code' => 205,
+                    'code' => 2005,
                 ],
                 5 => [
                     'name' => 'Taougrite',
-                    'code' => 206,
+                    'code' => 2006,
                 ],
                 6 => [
                     'name' => 'Beni Haoua',
-                    'code' => 207,
+                    'code' => 2007,
                 ],
                 7 => [
                     'name' => 'Sobha',
-                    'code' => 208,
+                    'code' => 2008,
                 ],
                 8 => [
                     'name' => 'Harchoun',
-                    'code' => 209,
+                    'code' => 2009,
                 ],
                 9 => [
                     'name' => 'Ouled Fares',
-                    'code' => 210,
+                    'code' => 2010,
                 ],
                 10 => [
                     'name' => 'Sidi Akkacha',
-                    'code' => 211,
+                    'code' => 2011,
                 ],
                 11 => [
                     'name' => 'Boukadir',
-                    'code' => 212,
+                    'code' => 2012,
                 ],
                 12 => [
                     'name' => 'Beni Rached',
-                    'code' => 213,
+                    'code' => 2013,
                 ],
                 13 => [
                     'name' => 'Talassa',
-                    'code' => 214,
+                    'code' => 2014,
                 ],
                 14 => [
                     'name' => 'Harenfa',
-                    'code' => 215,
+                    'code' => 2015,
                 ],
                 15 => [
                     'name' => 'Oued Goussine',
-                    'code' => 216,
+                    'code' => 2016,
                 ],
                 16 => [
                     'name' => 'Dahra',
-                    'code' => 217,
+                    'code' => 2017,
                 ],
                 17 => [
                     'name' => 'Ouled Abbes',
-                    'code' => 218,
+                    'code' => 2018,
                 ],
                 18 => [
                     'name' => 'Sendjas',
-                    'code' => 219,
+                    'code' => 2019,
                 ],
                 19 => [
                     'name' => 'Zeboudja',
-                    'code' => 220,
+                    'code' => 2020,
                 ],
                 20 => [
                     'name' => 'Oued Sly',
-                    'code' => 221,
+                    'code' => 2021,
                 ],
                 21 => [
                     'name' => 'Abou El Hassan',
-                    'code' => 222,
+                    'code' => 2022,
                 ],
                 22 => [
                     'name' => 'El Marsa',
-                    'code' => 223,
+                    'code' => 2023,
                 ],
                 23 => [
                     'name' => 'Chettia',
-                    'code' => 224,
+                    'code' => 2024,
                 ],
                 24 => [
                     'name' => 'Sidi Abderrahmane',
-                    'code' => 225,
+                    'code' => 2025,
                 ],
                 25 => [
                     'name' => 'Moussadek',
-                    'code' => 226,
+                    'code' => 2026,
                 ],
                 26 => [
                     'name' => 'El Hadjadj',
-                    'code' => 227,
+                    'code' => 2027,
                 ],
                 27 => [
                     'name' => 'Labiod Medjadja',
-                    'code' => 228,
+                    'code' => 2028,
                 ],
                 28 => [
                     'name' => 'Oued Fodda',
-                    'code' => 229,
+                    'code' => 2029,
                 ],
                 29 => [
                     'name' => 'Ouled Ben Abdelkader',
-                    'code' => 230,
+                    'code' => 2030,
                 ],
                 30 => [
                     'name' => 'Bouzeghaia',
-                    'code' => 231,
+                    'code' => 2031,
                 ],
                 31 => [
                     'name' => 'Aïn Merane',
-                    'code' => 232,
+                    'code' => 2032,
                 ],
                 32 => [
                     'name' => 'Oum Drou',
-                    'code' => 233,
+                    'code' => 2033,
                 ],
                 33 => [
                     'name' => 'Breira',
-                    'code' => 234,
+                    'code' => 2034,
                 ],
                 34 => [
                     'name' => 'Beni Bouateb',
-                    'code' => 235,
+                    'code' => 2035,
                 ],
             ],
             3 => [
                 0 => [
                     'name' => 'Laghouat',
-                    'code' => 301,
+                    'code' => 3001,
                 ],
                 1 => [
                     'name' => 'Ksar El Hirane',
-                    'code' => 302,
+                    'code' => 3002,
                 ],
                 2 => [
                     'name' => 'Bennasser Benchohra',
-                    'code' => 303,
+                    'code' => 3003,
                 ],
                 3 => [
                     'name' => 'Sidi Makhlouf',
-                    'code' => 304,
+                    'code' => 3004,
                 ],
                 4 => [
                     'name' => 'Hassi Delaa',
-                    'code' => 305,
+                    'code' => 3005,
                 ],
                 5 => [
                     'name' => 'Hassi R\'Mel',
-                    'code' => 306,
+                    'code' => 3006,
                 ],
                 6 => [
                     'name' => 'Aïn Madhi',
-                    'code' => 307,
+                    'code' => 3007,
                 ],
                 7 => [
                     'name' => 'Tadjemout',
-                    'code' => 308,
+                    'code' => 3008,
                 ],
                 8 => [
                     'name' => 'Kheneg',
-                    'code' => 309,
+                    'code' => 3009,
                 ],
                 9 => [
                     'name' => 'Gueltat Sidi Saad',
-                    'code' => 310,
+                    'code' => 3010,
                 ],
                 10 => [
                     'name' => 'Aïn Sidi Ali',
-                    'code' => 311,
+                    'code' => 3011,
                 ],
                 11 => [
                     'name' => 'Beidha',
-                    'code' => 312,
+                    'code' => 3012,
                 ],
                 12 => [
                     'name' => 'Brida',
-                    'code' => 313,
+                    'code' => 3013,
                 ],
                 13 => [
                     'name' => 'El Ghicha',
-                    'code' => 314,
+                    'code' => 3014,
                 ],
                 14 => [
                     'name' => 'Hadj Mechri',
-                    'code' => 315,
+                    'code' => 3015,
                 ],
                 15 => [
                     'name' => 'Sebgag',
-                    'code' => 316,
+                    'code' => 3016,
                 ],
                 16 => [
                     'name' => 'Taouiala',
-                    'code' => 317,
+                    'code' => 3017,
                 ],
                 17 => [
                     'name' => 'Tadjrouna',
-                    'code' => 318,
+                    'code' => 3018,
                 ],
                 18 => [
                     'name' => 'Aflou',
-                    'code' => 319,
+                    'code' => 3019,
                 ],
                 19 => [
                     'name' => 'El Assafia',
-                    'code' => 320,
+                    'code' => 3020,
                 ],
                 20 => [
                     'name' => 'Oued Morra',
-                    'code' => 321,
+                    'code' => 3021,
                 ],
                 21 => [
                     'name' => 'Oued M\'Zi',
-                    'code' => 322,
+                    'code' => 3022,
                 ],
                 22 => [
                     'name' => 'El Houaita',
-                    'code' => 323,
+                    'code' => 3023,
                 ],
                 23 => [
                     'name' => 'Sidi Bouzid',
-                    'code' => 324,
+                    'code' => 3024,
                 ],
             ],
             4 => [
                 0 => [
                     'name' => 'Oum el Bouaghi',
-                    'code' => 401,
+                    'code' => 4001,
                 ],
                 1 => [
                     'name' => 'Aïn Beïda',
-                    'code' => 402,
+                    'code' => 4002,
                 ],
                 2 => [
                     'name' => 'Aïn M\'lila',
-                    'code' => 403,
+                    'code' => 4003,
                 ],
                 3 => [
                     'name' => 'Behir Chergui',
-                    'code' => 404,
+                    'code' => 4004,
                 ],
                 4 => [
                     'name' => 'El Amiria',
-                    'code' => 405,
+                    'code' => 4005,
                 ],
                 5 => [
                     'name' => 'Sigus',
-                    'code' => 406,
+                    'code' => 4006,
                 ],
                 6 => [
                     'name' => 'El Belala',
-                    'code' => 407,
+                    'code' => 4007,
                 ],
                 7 => [
                     'name' => 'Aïn Babouche',
-                    'code' => 408,
+                    'code' => 4008,
                 ],
                 8 => [
                     'name' => 'Berriche',
-                    'code' => 409,
+                    'code' => 4009,
                 ],
                 9 => [
                     'name' => 'Ouled Hamla',
-                    'code' => 410,
+                    'code' => 4010,
                 ],
                 10 => [
                     'name' => 'Dhalaa',
-                    'code' => 411,
+                    'code' => 4011,
                 ],
                 11 => [
                     'name' => 'Aïn Kercha',
-                    'code' => 412,
+                    'code' => 4012,
                 ],
                 12 => [
                     'name' => 'Hanchir Toumghani',
-                    'code' => 413,
+                    'code' => 4013,
                 ],
                 13 => [
                     'name' => 'El Djazia',
-                    'code' => 414,
+                    'code' => 4014,
                 ],
                 14 => [
                     'name' => 'Aïn Diss',
-                    'code' => 415,
+                    'code' => 4015,
                 ],
                 15 => [
                     'name' => 'Fkirina',
-                    'code' => 416,
+                    'code' => 4016,
                 ],
                 16 => [
                     'name' => 'Souk Naamane',
-                    'code' => 417,
+                    'code' => 4017,
                 ],
                 17 => [
                     'name' => 'Zorg',
-                    'code' => 418,
+                    'code' => 4018,
                 ],
                 18 => [
                     'name' => 'El Fedjoudj Boughrara Saoudi',
-                    'code' => 419,
+                    'code' => 4019,
                 ],
                 19 => [
                     'name' => 'Ouled Zouaï',
-                    'code' => 420,
+                    'code' => 4020,
                 ],
                 20 => [
                     'name' => 'Bir Chouhada',
-                    'code' => 421,
+                    'code' => 4021,
                 ],
                 21 => [
                     'name' => 'Ksar Sbahi',
-                    'code' => 422,
+                    'code' => 4022,
                 ],
                 22 => [
                     'name' => 'Oued Nini',
-                    'code' => 423,
+                    'code' => 4023,
                 ],
                 23 => [
                     'name' => 'Meskiana',
-                    'code' => 424,
+                    'code' => 4024,
                 ],
                 24 => [
                     'name' => 'Aïn Fakroun',
-                    'code' => 425,
+                    'code' => 4025,
                 ],
                 25 => [
                     'name' => 'Rahia',
-                    'code' => 426,
+                    'code' => 4026,
                 ],
                 26 => [
                     'name' => 'Aïn Zitoun',
-                    'code' => 427,
+                    'code' => 4027,
                 ],
                 27 => [
                     'name' => 'Ouled Gacem',
-                    'code' => 428,
+                    'code' => 4028,
                 ],
                 28 => [
                     'name' => 'El Harmilia',
-                    'code' => 429,
+                    'code' => 4029,
                 ],
             ],
             5 => [
                 0 => [
                     'name' => 'Batna',
-                    'code' => 501,
+                    'code' => 5001,
                 ],
                 1 => [
                     'name' => 'Ghassira',
-                    'code' => 502,
+                    'code' => 5002,
                 ],
                 2 => [
                     'name' => 'Maafa',
-                    'code' => 503,
+                    'code' => 5003,
                 ],
                 3 => [
                     'name' => 'Merouana',
-                    'code' => 504,
+                    'code' => 5004,
                 ],
                 4 => [
                     'name' => 'Seriana',
-                    'code' => 505,
+                    'code' => 5005,
                 ],
                 5 => [
                     'name' => 'Menaa',
-                    'code' => 506,
+                    'code' => 5006,
                 ],
                 6 => [
                     'name' => 'El Madher',
-                    'code' => 507,
+                    'code' => 5007,
                 ],
                 7 => [
                     'name' => 'Tazoult',
-                    'code' => 508,
+                    'code' => 5008,
                 ],
                 8 => [
                     'name' => 'N\'Gaous',
-                    'code' => 509,
+                    'code' => 5009,
                 ],
                 9 => [
                     'name' => 'Guigba',
-                    'code' => 510,
+                    'code' => 5010,
                 ],
                 10 => [
                     'name' => 'Inoughissen',
-                    'code' => 511,
+                    'code' => 5011,
                 ],
                 11 => [
                     'name' => 'Ouyoun El Assafir',
-                    'code' => 512,
+                    'code' => 5012,
                 ],
                 12 => [
                     'name' => 'Djerma',
-                    'code' => 513,
+                    'code' => 5013,
                 ],
                 13 => [
                     'name' => 'Bitam',
-                    'code' => 514,
+                    'code' => 5014,
                 ],
                 14 => [
                     'name' => 'Abdelkader Azil',
-                    'code' => 515,
+                    'code' => 5015,
                 ],
                 15 => [
                     'name' => 'Arris',
-                    'code' => 516,
+                    'code' => 5016,
                 ],
                 16 => [
                     'name' => 'Kimmel',
-                    'code' => 517,
+                    'code' => 5017,
                 ],
                 17 => [
                     'name' => 'Tilatou',
-                    'code' => 518,
+                    'code' => 5018,
                 ],
                 18 => [
                     'name' => 'Aïn Djasser',
-                    'code' => 519,
+                    'code' => 5019,
                 ],
                 19 => [
                     'name' => 'Ouled Sellam',
-                    'code' => 520,
+                    'code' => 5020,
                 ],
                 20 => [
                     'name' => 'Tigherghar',
-                    'code' => 521,
+                    'code' => 5021,
                 ],
                 21 => [
                     'name' => 'Aïn Yagout',
-                    'code' => 522,
+                    'code' => 5022,
                 ],
                 22 => [
                     'name' => 'Sefiane',
-                    'code' => 524,
+                    'code' => 5024,
                 ],
                 23 => [
                     'name' => 'Fesdis',
-                    'code' => 523,
+                    'code' => 5023,
                 ],
                 24 => [
                     'name' => 'Rahbat',
-                    'code' => 525,
+                    'code' => 5025,
                 ],
                 25 => [
                     'name' => 'Tighanimine',
-                    'code' => 526,
+                    'code' => 5026,
                 ],
                 26 => [
                     'name' => 'Lemsane',
-                    'code' => 527,
+                    'code' => 5027,
                 ],
                 27 => [
                     'name' => 'Ksar Bellezma',
-                    'code' => 528,
+                    'code' => 5028,
                 ],
                 28 => [
                     'name' => 'Seggana',
-                    'code' => 529,
+                    'code' => 5029,
                 ],
                 29 => [
                     'name' => 'Ichmoul',
-                    'code' => 530,
+                    'code' => 5030,
                 ],
                 30 => [
                     'name' => 'Foum Toub',
-                    'code' => 531,
+                    'code' => 5031,
                 ],
                 31 => [
                     'name' => 'Ben Foudhala El Hakania',
-                    'code' => 532,
+                    'code' => 5032,
                 ],
                 32 => [
                     'name' => 'Oued El Ma',
-                    'code' => 533,
+                    'code' => 5033,
                 ],
                 33 => [
                     'name' => 'Talkhamt',
-                    'code' => 534,
+                    'code' => 5034,
                 ],
                 34 => [
                     'name' => 'Bouzina',
-                    'code' => 535,
+                    'code' => 5035,
                 ],
                 35 => [
                     'name' => 'Chemora',
-                    'code' => 536,
+                    'code' => 5036,
                 ],
                 36 => [
                     'name' => 'Oued Chaaba',
-                    'code' => 537,
+                    'code' => 5037,
                 ],
                 37 => [
                     'name' => 'Taxlent',
-                    'code' => 538,
+                    'code' => 5038,
                 ],
                 38 => [
                     'name' => 'Gosbat',
-                    'code' => 539,
+                    'code' => 5039,
                 ],
                 39 => [
                     'name' => 'Ouled Aouf',
-                    'code' => 540,
+                    'code' => 5040,
                 ],
                 40 => [
                     'name' => 'Boumagueur',
-                    'code' => 541,
+                    'code' => 5041,
                 ],
                 41 => [
                     'name' => 'Barika',
-                    'code' => 542,
+                    'code' => 5042,
                 ],
                 42 => [
                     'name' => 'Djezar',
-                    'code' => 543,
+                    'code' => 5043,
                 ],
                 43 => [
                     'name' => 'T\'Kout',
-                    'code' => 544,
+                    'code' => 5044,
                 ],
                 44 => [
                     'name' => 'Aïn Touta',
-                    'code' => 545,
+                    'code' => 5045,
                 ],
                 45 => [
                     'name' => 'Hidoussa',
-                    'code' => 546,
+                    'code' => 5046,
                 ],
                 46 => [
                     'name' => 'Teniet El Abed',
-                    'code' => 547,
+                    'code' => 5047,
                 ],
                 47 => [
                     'name' => 'Oued Taga',
-                    'code' => 548,
+                    'code' => 5048,
                 ],
                 48 => [
                     'name' => 'Ouled Fadel',
-                    'code' => 549,
+                    'code' => 5049,
                 ],
                 49 => [
                     'name' => 'Timgad',
-                    'code' => 550,
+                    'code' => 5050,
                 ],
                 50 => [
                     'name' => 'Ras El Aioun',
-                    'code' => 551,
+                    'code' => 5051,
                 ],
                 51 => [
                     'name' => 'Chir',
-                    'code' => 552,
+                    'code' => 5052,
                 ],
                 52 => [
                     'name' => 'Ouled Si Slimane',
-                    'code' => 553,
+                    'code' => 5053,
                 ],
                 53 => [
                     'name' => 'Zanat El Beida',
-                    'code' => 554,
+                    'code' => 5054,
                 ],
                 54 => [
                     'name' => 'M\'doukel',
-                    'code' => 555,
+                    'code' => 5055,
                 ],
                 55 => [
                     'name' => 'Ouled Ammar',
-                    'code' => 556,
+                    'code' => 5056,
                 ],
                 56 => [
                     'name' => 'El Hassi',
-                    'code' => 557,
+                    'code' => 5057,
                 ],
                 57 => [
                     'name' => 'Lazrou',
-                    'code' => 558,
+                    'code' => 5058,
                 ],
                 58 => [
                     'name' => 'Boumia (Batna)',
-                    'code' => 559,
+                    'code' => 5059,
                 ],
                 59 => [
                     'name' => 'Boulhilat',
-                    'code' => 560,
+                    'code' => 5060,
                 ],
                 60 => [
                     'name' => 'Larbaâ',
-                    'code' => 561,
+                    'code' => 5061,
                 ],
             ],
             6 => [
                 0 => [
                     'name' => 'Béjaïa',
-                    'code' => 601,
+                    'code' => 6001,
                 ],
                 1 => [
                     'name' => 'Amizour',
-                    'code' => 602,
+                    'code' => 6002,
                 ],
                 2 => [
                     'name' => 'Ferraoun',
-                    'code' => 603,
+                    'code' => 6003,
                 ],
                 3 => [
                     'name' => 'Taourirt Ighil',
-                    'code' => 604,
+                    'code' => 6004,
                 ],
                 4 => [
                     'name' => 'Chellata',
-                    'code' => 605,
+                    'code' => 6005,
                 ],
                 5 => [
                     'name' => 'Tamokra',
-                    'code' => 606,
+                    'code' => 6006,
                 ],
                 6 => [
                     'name' => 'Timezrit',
-                    'code' => 607,
+                    'code' => 6007,
                 ],
                 7 => [
                     'name' => 'Souk El Ténine',
-                    'code' => 608,
+                    'code' => 6008,
                 ],
                 8 => [
                     'name' => 'M\'cisna',
-                    'code' => 609,
+                    'code' => 6009,
                 ],
                 9 => [
                     'name' => 'Tinabdher',
-                    'code' => 610,
+                    'code' => 6010,
                 ],
                 10 => [
                     'name' => 'Tichy',
-                    'code' => 611,
+                    'code' => 6011,
                 ],
                 11 => [
                     'name' => 'Semaoun',
-                    'code' => 612,
+                    'code' => 6012,
                 ],
                 12 => [
                     'name' => 'Kendira',
-                    'code' => 613,
+                    'code' => 6013,
                 ],
                 13 => [
                     'name' => 'Tifra',
-                    'code' => 614,
+                    'code' => 6014,
                 ],
                 14 => [
                     'name' => 'Ighram',
-                    'code' => 615,
+                    'code' => 6015,
                 ],
                 15 => [
                     'name' => 'Amalou',
-                    'code' => 616,
+                    'code' => 6016,
                 ],
                 16 => [
                     'name' => 'Ighil Ali',
-                    'code' => 617,
+                    'code' => 6017,
                 ],
                 17 => [
                     'name' => 'Fenaïa Ilmaten',
-                    'code' => 618,
+                    'code' => 6018,
                 ],
                 18 => [
                     'name' => 'Toudja',
-                    'code' => 619,
+                    'code' => 6019,
                 ],
                 19 => [
                     'name' => 'Darguina',
-                    'code' => 620,
+                    'code' => 6020,
                 ],
                 20 => [
                     'name' => 'Sidi-Ayad',
-                    'code' => 621,
+                    'code' => 6021,
                 ],
                 21 => [
                     'name' => 'Aokas',
-                    'code' => 622,
+                    'code' => 6022,
                 ],
                 22 => [
                     'name' => 'Ait Djellil',
-                    'code' => 623,
+                    'code' => 6023,
                 ],
                 23 => [
                     'name' => 'Adekar',
-                    'code' => 624,
+                    'code' => 6024,
                 ],
                 24 => [
                     'name' => 'Akbou',
-                    'code' => 625,
+                    'code' => 6025,
                 ],
                 25 => [
                     'name' => 'Seddouk',
-                    'code' => 626,
+                    'code' => 6026,
                 ],
                 26 => [
                     'name' => 'Tazmalt',
-                    'code' => 627,
+                    'code' => 6027,
                 ],
                 27 => [
                     'name' => 'Aït-R\'zine',
-                    'code' => 628,
+                    'code' => 6028,
                 ],
                 28 => [
                     'name' => 'Chemini',
-                    'code' => 629,
+                    'code' => 6029,
                 ],
                 29 => [
                     'name' => 'Souk-Oufella',
-                    'code' => 630,
+                    'code' => 6030,
                 ],
                 30 => [
                     'name' => 'Taskriout',
-                    'code' => 631,
+                    'code' => 6031,
                 ],
                 31 => [
                     'name' => 'Tibane',
-                    'code' => 632,
+                    'code' => 6032,
                 ],
                 32 => [
                     'name' => 'Tala Hamza',
-                    'code' => 633,
+                    'code' => 6033,
                 ],
                 33 => [
                     'name' => 'Barbacha',
-                    'code' => 634,
+                    'code' => 6034,
                 ],
                 34 => [
                     'name' => 'Aït Ksila',
-                    'code' => 635,
+                    'code' => 6035,
                 ],
                 35 => [
                     'name' => 'Ouzellaguen',
-                    'code' => 636,
+                    'code' => 6036,
                 ],
                 36 => [
                     'name' => 'Bouhamza',
-                    'code' => 637,
+                    'code' => 6037,
                 ],
                 37 => [
                     'name' => 'Beni Mellikeche',
-                    'code' => 638,
+                    'code' => 6038,
                 ],
                 38 => [
                     'name' => 'Sidi-Aïch',
-                    'code' => 639,
+                    'code' => 6039,
                 ],
                 39 => [
                     'name' => 'El Kseur',
-                    'code' => 640,
+                    'code' => 6040,
                 ],
                 40 => [
                     'name' => 'Melbou',
-                    'code' => 641,
+                    'code' => 6041,
                 ],
                 41 => [
                     'name' => 'Akfadou',
-                    'code' => 642,
+                    'code' => 6042,
                 ],
                 42 => [
                     'name' => 'Leflaye',
-                    'code' => 643,
+                    'code' => 6043,
                 ],
                 43 => [
                     'name' => 'Kherrata',
-                    'code' => 644,
+                    'code' => 6044,
                 ],
                 44 => [
                     'name' => 'Draâ El-Kaïd',
-                    'code' => 645,
+                    'code' => 6045,
                 ],
                 45 => [
                     'name' => 'Tamridjet',
-                    'code' => 646,
+                    'code' => 6046,
                 ],
                 46 => [
                     'name' => 'Aït-Smail',
-                    'code' => 647,
+                    'code' => 6047,
                 ],
                 47 => [
                     'name' => 'Boukhelifa',
-                    'code' => 648,
+                    'code' => 6048,
                 ],
                 48 => [
                     'name' => 'Tizi N\'Berber',
-                    'code' => 649,
+                    'code' => 6049,
                 ],
                 49 => [
                     'name' => 'Aït Maouche',
-                    'code' => 650,
+                    'code' => 6050,
                 ],
                 50 => [
                     'name' => 'Oued Ghir',
-                    'code' => 651,
+                    'code' => 6051,
                 ],
                 51 => [
                     'name' => 'Boudjellil',
-                    'code' => 652,
+                    'code' => 6052,
                 ],
             ],
             7 => [
                 0 => [
                     'name' => 'Aïn Naga',
-                    'code' => 701,
+                    'code' => 7001,
                 ],
                 1 => [
                     'name' => 'Aïn Zaatout',
-                    'code' => 702,
+                    'code' => 7002,
                 ],
                 2 => [
                     'name' => 'Biskra',
-                    'code' => 703,
+                    'code' => 7003,
                 ],
                 3 => [
                     'name' => 'Bordj Ben Azzouz',
-                    'code' => 704,
+                    'code' => 7004,
                 ],
                 4 => [
                     'name' => 'Bouchagroune',
-                    'code' => 705,
+                    'code' => 7005,
                 ],
                 5 => [
                     'name' => 'Branis',
-                    'code' => 706,
+                    'code' => 7006,
                 ],
                 6 => [
                     'name' => 'Chetma',
-                    'code' => 707,
+                    'code' => 7007,
                 ],
                 7 => [
                     'name' => 'Djemorah',
-                    'code' => 708,
+                    'code' => 7008,
                 ],
                 8 => [
                     'name' => 'El Feidh',
-                    'code' => 709,
+                    'code' => 7009,
                 ],
                 9 => [
                     'name' => 'El Ghrous',
-                    'code' => 7010,
+                    'code' => 70010,
                 ],
                 10 => [
                     'name' => 'El Hadjeb',
-                    'code' => 711,
+                    'code' => 7011,
                 ],
                 11 => [
                     'name' => 'El Haouch',
-                    'code' => 712,
+                    'code' => 7012,
                 ],
                 12 => [
                     'name' => 'El Kantara',
-                    'code' => 713,
+                    'code' => 7013,
                 ],
                 13 => [
                     'name' => 'El Mizaraa',
-                    'code' => 714,
+                    'code' => 7014,
                 ],
                 14 => [
                     'name' => 'El Outaya',
-                    'code' => 715,
+                    'code' => 7015,
                 ],
                 15 => [
                     'name' => 'Foughala',
-                    'code' => 716,
+                    'code' => 7016,
                 ],
                 16 => [
                     'name' => 'Khenguet Sidi Nadji',
-                    'code' => 717,
+                    'code' => 7017,
                 ],
                 17 => [
                     'name' => 'Lichana',
-                    'code' => 718,
+                    'code' => 7018,
                 ],
                 18 => [
                     'name' => 'Lioua',
-                    'code' => 719,
+                    'code' => 7019,
                 ],
                 19 => [
                     'name' => 'M\'Chouneche',
-                    'code' => 720,
+                    'code' => 7020,
                 ],
                 20 => [
                     'name' => 'Mekhadma',
-                    'code' => 721,
+                    'code' => 7021,
                 ],
                 21 => [
                     'name' => 'M\'Lili',
-                    'code' => 722,
+                    'code' => 7022,
                 ],
                 22 => [
                     'name' => 'Oumache',
-                    'code' => 723,
+                    'code' => 7023,
                 ],
                 23 => [
                     'name' => 'Ourlal',
-                    'code' => 724,
+                    'code' => 7024,
                 ],
                 24 => [
                     'name' => 'Sidi Okba',
-                    'code' => 725,
+                    'code' => 7025,
                 ],
                 25 => [
                     'name' => 'Tolga',
-                    'code' => 726,
+                    'code' => 7026,
                 ],
                 26 => [
                     'name' => 'Zeribet El Oued',
-                    'code' => 727,
+                    'code' => 7027,
                 ],
             ],
             8 => [
                 0 => [
                     'name' => 'Béchar',
-                    'code' => 801,
+                    'code' => 8001,
                 ],
                 1 => [
                     'name' => 'Erg Ferradj',
-                    'code' => 802,
+                    'code' => 8002,
                 ],
                 2 => [
                     'name' => 'Ouled Khoudir',
-                    'code' => 803,
+                    'code' => 8003,
                 ],
                 3 => [
                     'name' => 'Meridja',
-                    'code' => 804,
+                    'code' => 8004,
                 ],
                 4 => [
                     'name' => 'Timoudi',
-                    'code' => 805,
+                    'code' => 8005,
                 ],
                 5 => [
                     'name' => 'Lahmar',
-                    'code' => 806,
+                    'code' => 8006,
                 ],
                 6 => [
                     'name' => 'Béni Abbès',
-                    'code' => 807,
+                    'code' => 8007,
                 ],
                 7 => [
                     'name' => 'Beni Ikhlef',
-                    'code' => 808,
+                    'code' => 8008,
                 ],
                 8 => [
                     'name' => 'Mechraa Houari Boumedienne',
-                    'code' => 809,
+                    'code' => 8009,
                 ],
                 9 => [
                     'name' => 'Kenadsa',
-                    'code' => 810,
+                    'code' => 8010,
                 ],
                 10 => [
                     'name' => 'Igli',
-                    'code' => 811,
+                    'code' => 8011,
                 ],
                 11 => [
                     'name' => 'Tabelbala',
-                    'code' => 812,
+                    'code' => 8012,
                 ],
                 12 => [
                     'name' => 'Taghit',
-                    'code' => 813,
+                    'code' => 8013,
                 ],
                 13 => [
                     'name' => 'El Ouata',
-                    'code' => 814,
+                    'code' => 8014,
                 ],
                 14 => [
                     'name' => 'Boukais',
-                    'code' => 815,
+                    'code' => 8015,
                 ],
                 15 => [
                     'name' => 'Mougheul',
-                    'code' => 8016,
+                    'code' => 80016,
                 ],
                 16 => [
                     'name' => 'Abadla',
-                    'code' => 817,
+                    'code' => 8017,
                 ],
                 17 => [
                     'name' => 'Kerzaz',
-                    'code' => 818,
+                    'code' => 8018,
                 ],
                 18 => [
                     'name' => 'Ksabi',
-                    'code' => 819,
+                    'code' => 8019,
                 ],
                 19 => [
                     'name' => 'Tamtert',
-                    'code' => 820,
+                    'code' => 8020,
                 ],
                 20 => [
                     'name' => 'Beni Ounif',
-                    'code' => 821,
+                    'code' => 8021,
                 ],
             ],
             9 => [
                 0 => [
                     'name' => 'Blida',
-                    'code' => 901,
+                    'code' => 9001,
                 ],
                 1 => [
                     'name' => 'Chebli',
-                    'code' => 902,
+                    'code' => 9002,
                 ],
                 2 => [
                     'name' => 'Bouinan',
-                    'code' => 903,
+                    'code' => 9003,
                 ],
                 3 => [
                     'name' => 'Oued Alleug',
-                    'code' => 904,
+                    'code' => 9004,
                 ],
                 4 => [
                     'name' => 'Ouled Yaïch',
-                    'code' => 907,
+                    'code' => 9007,
                 ],
                 5 => [
                     'name' => 'Chréa',
-                    'code' => 908,
+                    'code' => 9008,
                 ],
                 6 => [
                     'name' => 'El Affroun',
-                    'code' => 910,
+                    'code' => 9010,
                 ],
                 7 => [
                     'name' => 'Chiffa',
-                    'code' => 911,
+                    'code' => 9011,
                 ],
                 8 => [
                     'name' => 'Hammam Melouane',
-                    'code' => 912,
+                    'code' => 9012,
                 ],
                 9 => [
                     'name' => 'Benkhelil',
-                    'code' => 913,
+                    'code' => 9013,
                 ],
                 10 => [
                     'name' => 'Soumaa',
-                    'code' => 914,
+                    'code' => 9014,
                 ],
                 11 => [
                     'name' => 'Mouzaia',
-                    'code' => 916,
+                    'code' => 9016,
                 ],
                 12 => [
                     'name' => 'Souhane',
-                    'code' => 917,
+                    'code' => 9017,
                 ],
                 13 => [
                     'name' => 'Meftah',
-                    'code' => 918,
+                    'code' => 9018,
                 ],
                 14 => [
                     'name' => 'Ouled Slama',
-                    'code' => 919,
+                    'code' => 9019,
                 ],
                 15 => [
                     'name' => 'Boufarik',
-                    'code' => 920,
+                    'code' => 9020,
                 ],
                 16 => [
                     'name' => 'Larbaa',
-                    'code' => 921,
+                    'code' => 9021,
                 ],
                 17 => [
                     'name' => 'Oued Djer',
-                    'code' => 922,
+                    'code' => 9022,
                 ],
                 18 => [
                     'name' => 'Beni Tamou',
-                    'code' => 923,
+                    'code' => 9023,
                 ],
                 19 => [
                     'name' => 'Bouarfa',
-                    'code' => 924,
+                    'code' => 9024,
                 ],
                 20 => [
                     'name' => 'Beni Mered',
-                    'code' => 925,
+                    'code' => 9025,
                 ],
                 21 => [
                     'name' => 'Bougara',
-                    'code' => 926,
+                    'code' => 9026,
                 ],
                 22 => [
                     'name' => 'Guerouaou',
-                    'code' => 927,
+                    'code' => 9027,
                 ],
                 23 => [
                     'name' => 'Aïn Romana',
-                    'code' => 928,
+                    'code' => 9028,
                 ],
                 24 => [
                     'name' => 'Djebabra',
-                    'code' => 929,
+                    'code' => 9029,
                 ],
             ],
             10 => [
                 0 => [
                     'name' => 'Aïn Bessem',
-                    'code' => 1001,
+                    'code' => 10001,
                 ],
                 1 => [
                     'name' => 'Hanif',
-                    'code' => 1002,
+                    'code' => 10002,
                 ],
                 2 => [
                     'name' => 'Aghbalou',
-                    'code' => 1003,
+                    'code' => 10003,
                 ],
                 3 => [
                     'name' => 'Aïn El Hadjar',
-                    'code' => 1004,
+                    'code' => 10004,
                 ],
                 4 => [
                     'name' => 'Ahl El Ksar',
-                    'code' => 1005,
+                    'code' => 10005,
                 ],
                 5 => [
                     'name' => 'Aïn Laloui',
-                    'code' => 1006,
+                    'code' => 10006,
                 ],
                 6 => [
                     'name' => 'Ath Mansour',
-                    'code' => 1007,
+                    'code' => 10007,
                 ],
                 7 => [
                     'name' => 'Aomar',
-                    'code' => 1008,
+                    'code' => 10008,
                 ],
                 8 => [
                     'name' => 'Aïn El Turc',
-                    'code' => 1009,
+                    'code' => 10009,
                 ],
                 9 => [
                     'name' => 'Aït Laziz',
-                    'code' => 10010,
+                    'code' => 100010,
                 ],
                 10 => [
                     'name' => 'Bouderbala',
-                    'code' => 1011,
+                    'code' => 10011,
                 ],
                 11 => [
                     'name' => 'Bechloul',
-                    'code' => 1012,
+                    'code' => 10012,
                 ],
                 12 => [
                     'name' => 'Bir Ghbalou',
-                    'code' => 1013,
+                    'code' => 10013,
                 ],
                 13 => [
                     'name' => 'Boukram',
-                    'code' => 1014,
+                    'code' => 10014,
                 ],
                 14 => [
                     'name' => 'Bordj Okhriss',
-                    'code' => 1015,
+                    'code' => 10015,
                 ],
                 15 => [
                     'name' => 'Bouira',
-                    'code' => 1016,
+                    'code' => 10016,
                 ],
                 16 => [
                     'name' => 'Chorfa',
-                    'code' => 1017,
+                    'code' => 10017,
                 ],
                 17 => [
                     'name' => 'Dechmia',
-                    'code' => 1018,
+                    'code' => 10018,
                 ],
                 18 => [
                     'name' => 'Dirrah',
-                    'code' => 1019,
+                    'code' => 10019,
                 ],
                 19 => [
                     'name' => 'Djebahia',
-                    'code' => 1020,
+                    'code' => 10020,
                 ],
                 20 => [
                     'name' => 'El Hakimia',
-                    'code' => 1021,
+                    'code' => 10021,
                 ],
                 21 => [
                     'name' => 'El Hachimia',
-                    'code' => 1022,
+                    'code' => 10022,
                 ],
                 22 => [
                     'name' => 'El Adjiba',
-                    'code' => 1023,
+                    'code' => 10023,
                 ],
                 23 => [
                     'name' => 'El Khabouzia',
-                    'code' => 1024,
+                    'code' => 10024,
                 ],
                 24 => [
                     'name' => 'El Mokrani',
-                    'code' => 1025,
+                    'code' => 10025,
                 ],
                 25 => [
                     'name' => 'El Asnam',
-                    'code' => 1026,
+                    'code' => 10026,
                 ],
                 26 => [
                     'name' => 'Guerrouma',
-                    'code' => 1027,
+                    'code' => 10027,
                 ],
                 27 => [
                     'name' => 'Haizer',
-                    'code' => 1028,
+                    'code' => 10028,
                 ],
                 28 => [
                     'name' => 'Hadjera Zerga',
-                    'code' => 1029,
+                    'code' => 10029,
                 ],
                 29 => [
                     'name' => 'Kadiria',
-                    'code' => 1030,
+                    'code' => 10030,
                 ],
                 30 => [
                     'name' => 'Lakhdaria',
-                    'code' => 1031,
+                    'code' => 10031,
                 ],
                 31 => [
                     'name' => 'M\'Chedallah',
-                    'code' => 1032,
+                    'code' => 10032,
                 ],
                 32 => [
                     'name' => 'Mezdour',
-                    'code' => 1033,
+                    'code' => 10033,
                 ],
                 33 => [
                     'name' => 'Maala',
-                    'code' => 1034,
+                    'code' => 10034,
                 ],
                 34 => [
                     'name' => 'Maamora',
-                    'code' => 1035,
+                    'code' => 10035,
                 ],
                 35 => [
                     'name' => 'Oued El Berdi',
-                    'code' => 1036,
+                    'code' => 10036,
                 ],
                 36 => [
                     'name' => 'Ouled Rached',
-                    'code' => 1037,
+                    'code' => 10037,
                 ],
                 37 => [
                     'name' => 'Raouraoua',
-                    'code' => 1038,
+                    'code' => 10038,
                 ],
                 38 => [
                     'name' => 'Ridane',
-                    'code' => 1039,
+                    'code' => 10039,
                 ],
                 39 => [
                     'name' => 'Saharidj',
-                    'code' => 1040,
+                    'code' => 10040,
                 ],
                 40 => [
                     'name' => 'Sour El Ghouzlane',
-                    'code' => 1041,
+                    'code' => 10041,
                 ],
                 41 => [
                     'name' => 'Souk El Khemis',
-                    'code' => 1042,
+                    'code' => 10042,
                 ],
                 42 => [
                     'name' => 'Taguedit',
-                    'code' => 1043,
+                    'code' => 10043,
                 ],
                 43 => [
                     'name' => 'Taghzout',
-                    'code' => 1044,
+                    'code' => 10044,
                 ],
                 44 => [
                     'name' => 'Zbarbar',
-                    'code' => 1045,
+                    'code' => 10045,
                 ],
             ],
             11 => [
                 0 => [
                     'name' => 'Tamanrasset',
-                    'code' => 1101,
+                    'code' => 11001,
                 ],
                 1 => [
                     'name' => 'Abalessa',
-                    'code' => 1102,
+                    'code' => 11002,
                 ],
                 2 => [
                     'name' => 'Idles',
-                    'code' => 1105,
+                    'code' => 11005,
                 ],
                 3 => [
                     'name' => 'Tazrouk',
-                    'code' => 1106,
+                    'code' => 11006,
                 ],
                 4 => [
                     'name' => 'In Amguel',
-                    'code' => 1109,
+                    'code' => 11009,
                 ],
             ],
             12 => [
                 0 => [
                     'name' => 'Tébessa',
-                    'code' => 1201,
+                    'code' => 12001,
                 ],
                 1 => [
                     'name' => 'Bir el-Ater',
-                    'code' => 1202,
+                    'code' => 12002,
                 ],
                 2 => [
                     'name' => 'Cheria',
-                    'code' => 1203,
+                    'code' => 12003,
                 ],
                 3 => [
                     'name' => 'Stah Guentis',
-                    'code' => 1204,
+                    'code' => 12004,
                 ],
                 4 => [
                     'name' => 'El Aouinet',
-                    'code' => 1205,
+                    'code' => 12005,
                 ],
                 5 => [
                     'name' => 'El Houidjbet',
-                    'code' => 1206,
+                    'code' => 12006,
                 ],
                 6 => [
                     'name' => 'Safsaf El Ouesra',
-                    'code' => 1207,
+                    'code' => 12007,
                 ],
                 7 => [
                     'name' => 'Hammamet',
-                    'code' => 1208,
+                    'code' => 12008,
                 ],
                 8 => [
                     'name' => 'Negrine',
-                    'code' => 1209,
+                    'code' => 12009,
                 ],
                 9 => [
                     'name' => 'Bir Mokkadem',
-                    'code' => 1210,
+                    'code' => 12010,
                 ],
                 10 => [
                     'name' => 'El Kouif',
-                    'code' => 1211,
+                    'code' => 12011,
                 ],
                 11 => [
                     'name' => 'Morsott',
-                    'code' => 1212,
+                    'code' => 12012,
                 ],
                 12 => [
                     'name' => 'El Ogla',
-                    'code' => 1213,
+                    'code' => 12013,
                 ],
                 13 => [
                     'name' => 'Bir Dheb',
-                    'code' => 1214,
+                    'code' => 12014,
                 ],
                 14 => [
                     'name' => 'Ogla Melha',
-                    'code' => 1215,
+                    'code' => 12015,
                 ],
                 15 => [
                     'name' => 'Guorriguer',
-                    'code' => 1216,
+                    'code' => 12016,
                 ],
                 16 => [
                     'name' => 'Bekkaria',
-                    'code' => 1217,
+                    'code' => 12017,
                 ],
                 17 => [
                     'name' => 'Boukhadra',
-                    'code' => 1218,
+                    'code' => 12018,
                 ],
                 18 => [
                     'name' => 'Ouenza',
-                    'code' => 1219,
+                    'code' => 12019,
                 ],
                 19 => [
                     'name' => 'El Ma Labiodh',
-                    'code' => 1220,
+                    'code' => 12020,
                 ],
                 20 => [
                     'name' => 'Oum Ali',
-                    'code' => 1221,
+                    'code' => 12021,
                 ],
                 21 => [
                     'name' => 'Tlidjene',
-                    'code' => 1222,
+                    'code' => 12022,
                 ],
                 22 => [
                     'name' => 'Aïn Zerga',
-                    'code' => 1223,
+                    'code' => 12023,
                 ],
                 23 => [
                     'name' => 'El Meridj',
-                    'code' => 1224,
+                    'code' => 12024,
                 ],
                 24 => [
                     'name' => 'Boulhaf Dir',
-                    'code' => 1225,
+                    'code' => 12025,
                 ],
                 25 => [
                     'name' => 'Bedjene',
-                    'code' => 1226,
+                    'code' => 12026,
                 ],
                 26 => [
                     'name' => 'El Mezeraa',
-                    'code' => 1227,
+                    'code' => 12027,
                 ],
                 27 => [
                     'name' => 'Ferkane',
-                    'code' => 1228,
+                    'code' => 12028,
                 ],
             ],
             13 => [
                 0 => [
                     'name' => 'Tlemcen',
-                    'code' => 1301,
+                    'code' => 13001,
                 ],
                 1 => [
                     'name' => 'Beni Mester',
-                    'code' => 1302,
+                    'code' => 13002,
                 ],
                 2 => [
                     'name' => 'Aïn Tallout',
-                    'code' => 1303,
+                    'code' => 13003,
                 ],
                 3 => [
                     'name' => 'Remchi',
-                    'code' => 1304,
+                    'code' => 13004,
                 ],
                 4 => [
                     'name' => 'El Fehoul',
-                    'code' => 1305,
+                    'code' => 13005,
                 ],
                 5 => [
                     'name' => 'Sabra',
-                    'code' => 1306,
+                    'code' => 13006,
                 ],
                 6 => [
                     'name' => 'Ghazaouet',
-                    'code' => 1307,
+                    'code' => 13007,
                 ],
                 7 => [
                     'name' => 'Souani',
-                    'code' => 1308,
+                    'code' => 13008,
                 ],
                 8 => [
                     'name' => 'Djebala',
-                    'code' => 1309,
+                    'code' => 13009,
                 ],
                 9 => [
                     'name' => 'El Gor',
-                    'code' => 1310,
+                    'code' => 13010,
                 ],
                 10 => [
                     'name' => 'Oued Lakhdar',
-                    'code' => 1311,
+                    'code' => 13011,
                 ],
                 11 => [
                     'name' => 'Aïn Fezza',
-                    'code' => 1312,
+                    'code' => 13012,
                 ],
                 12 => [
                     'name' => 'Ouled Mimoun',
-                    'code' => 1313,
+                    'code' => 13013,
                 ],
                 13 => [
                     'name' => 'Amieur',
-                    'code' => 1314,
+                    'code' => 13014,
                 ],
                 14 => [
                     'name' => 'Aïn Youcef',
-                    'code' => 1315,
+                    'code' => 13015,
                 ],
                 15 => [
                     'name' => 'Zenata',
-                    'code' => 1316,
+                    'code' => 13016,
                 ],
                 16 => [
                     'name' => 'Beni Snous',
-                    'code' => 1317,
+                    'code' => 13017,
                 ],
                 17 => [
                     'name' => 'Bab El Assa',
-                    'code' => 1318,
+                    'code' => 13018,
                 ],
                 18 => [
                     'name' => 'Dar Yaghmouracene',
-                    'code' => 1319,
+                    'code' => 13019,
                 ],
                 19 => [
                     'name' => 'Fellaoucene',
-                    'code' => 1320,
+                    'code' => 13020,
                 ],
                 20 => [
                     'name' => 'Azails',
-                    'code' => 1321,
+                    'code' => 13021,
                 ],
                 21 => [
                     'name' => 'Sebaa Chioukh',
-                    'code' => 1322,
+                    'code' => 13022,
                 ],
                 22 => [
                     'name' => 'Terny Beni Hdiel',
-                    'code' => 1323,
+                    'code' => 13023,
                 ],
                 23 => [
                     'name' => 'Bensekrane',
-                    'code' => 1324,
+                    'code' => 13024,
                 ],
                 24 => [
                     'name' => 'Aïn Nehala',
-                    'code' => 1325,
+                    'code' => 13025,
                 ],
                 25 => [
                     'name' => 'Hennaya',
-                    'code' => 1326,
+                    'code' => 13026,
                 ],
                 26 => [
                     'name' => 'Maghnia',
-                    'code' => 1327,
+                    'code' => 13027,
                 ],
                 27 => [
                     'name' => 'Hammam Boughrara',
-                    'code' => 1328,
+                    'code' => 13028,
                 ],
                 28 => [
                     'name' => 'Souahlia',
-                    'code' => 1329,
+                    'code' => 13029,
                 ],
                 29 => [
                     'name' => 'MSirda Fouaga',
-                    'code' => 1330,
+                    'code' => 13030,
                 ],
                 30 => [
                     'name' => 'Aïn Fetah',
-                    'code' => 1331,
+                    'code' => 13031,
                 ],
                 31 => [
                     'name' => 'El Aricha',
-                    'code' => 1332,
+                    'code' => 13032,
                 ],
                 32 => [
                     'name' => 'Souk Tlata',
-                    'code' => 1333,
+                    'code' => 13033,
                 ],
                 33 => [
                     'name' => 'Sidi Abdelli',
-                    'code' => 1334,
+                    'code' => 13034,
                 ],
                 34 => [
                     'name' => 'Sebdou',
-                    'code' => 1335,
+                    'code' => 13035,
                 ],
                 35 => [
                     'name' => 'Beni Ouarsous',
-                    'code' => 1336,
+                    'code' => 13036,
                 ],
                 36 => [
                     'name' => 'Sidi Medjahed',
-                    'code' => 1337,
+                    'code' => 13037,
                 ],
                 37 => [
                     'name' => 'Beni Boussaid',
-                    'code' => 1338,
+                    'code' => 13038,
                 ],
                 38 => [
                     'name' => 'Marsa Ben M\'Hidi',
-                    'code' => 1339,
+                    'code' => 13039,
                 ],
                 39 => [
                     'name' => 'Nedroma',
-                    'code' => 1340,
+                    'code' => 13040,
                 ],
                 40 => [
                     'name' => 'Sidi Djillali',
-                    'code' => 1341,
+                    'code' => 13041,
                 ],
                 41 => [
                     'name' => 'Beni Bahdel',
-                    'code' => 1342,
+                    'code' => 13042,
                 ],
                 42 => [
                     'name' => 'El Bouihi',
-                    'code' => 1343,
+                    'code' => 13043,
                 ],
                 43 => [
                     'name' => 'Honaïne',
-                    'code' => 1344,
+                    'code' => 13044,
                 ],
                 44 => [
                     'name' => 'Tienet',
-                    'code' => 1345,
+                    'code' => 13045,
                 ],
                 45 => [
                     'name' => 'Ouled Riyah',
-                    'code' => 1346,
+                    'code' => 13046,
                 ],
                 46 => [
                     'name' => 'Bouhlou',
-                    'code' => 1347,
+                    'code' => 13047,
                 ],
                 47 => [
                     'name' => 'Beni Khellad',
-                    'code' => 1348,
+                    'code' => 13048,
                 ],
                 48 => [
                     'name' => 'Aïn Ghoraba',
-                    'code' => 1349,
+                    'code' => 13049,
                 ],
                 49 => [
                     'name' => 'Chetouane',
-                    'code' => 1350,
+                    'code' => 13050,
                 ],
                 50 => [
                     'name' => 'Mansourah',
-                    'code' => 1351,
+                    'code' => 13051,
                 ],
                 51 => [
                     'name' => 'Beni Semiel',
-                    'code' => 1352,
+                    'code' => 13052,
                 ],
                 52 => [
                     'name' => 'Aïn Kebira',
-                    'code' => 1353,
+                    'code' => 13053,
                 ],
             ],
             14 => [
                 0 => [
                     'name' => 'Aïn Bouchekif',
-                    'code' => 1401,
+                    'code' => 14001,
                 ],
                 1 => [
                     'name' => 'Aïn Deheb',
-                    'code' => 1402,
+                    'code' => 14002,
                 ],
                 2 => [
                     'name' => 'Aïn El Hadid',
-                    'code' => 1403,
+                    'code' => 14003,
                 ],
                 3 => [
                     'name' => 'Aïn Kermes',
-                    'code' => 1404,
+                    'code' => 14004,
                 ],
                 4 => [
                     'name' => 'Aïn Dzarit',
-                    'code' => 1405,
+                    'code' => 14005,
                 ],
                 5 => [
                     'name' => 'Bougara',
-                    'code' => 1406,
+                    'code' => 14006,
                 ],
                 6 => [
                     'name' => 'Chehaima',
-                    'code' => 1407,
+                    'code' => 14007,
                 ],
                 7 => [
                     'name' => 'Dahmouni',
-                    'code' => 1408,
+                    'code' => 14008,
                 ],
                 8 => [
                     'name' => 'Djebilet Rosfa',
-                    'code' => 1409,
+                    'code' => 14009,
                 ],
                 9 => [
                     'name' => 'Djillali Ben Amar',
-                    'code' => 14010,
+                    'code' => 140010,
                 ],
                 10 => [
                     'name' => 'Faidja',
-                    'code' => 1411,
+                    'code' => 14011,
                 ],
                 11 => [
                     'name' => 'Frenda',
-                    'code' => 1412,
+                    'code' => 14012,
                 ],
                 12 => [
                     'name' => 'Guertoufa',
-                    'code' => 1413,
+                    'code' => 14013,
                 ],
                 13 => [
                     'name' => 'Hamadia',
-                    'code' => 1414,
+                    'code' => 14014,
                 ],
                 14 => [
                     'name' => 'Ksar Chellala',
-                    'code' => 1415,
+                    'code' => 14015,
                 ],
                 15 => [
                     'name' => 'Madna',
-                    'code' => 1416,
+                    'code' => 14016,
                 ],
                 16 => [
                     'name' => 'Mahdia',
-                    'code' => 1417,
+                    'code' => 14017,
                 ],
                 17 => [
                     'name' => 'Mechraa Safa',
-                    'code' => 1418,
+                    'code' => 14018,
                 ],
                 18 => [
                     'name' => 'Medrissa',
-                    'code' => 1419,
+                    'code' => 14019,
                 ],
                 19 => [
                     'name' => 'Medroussa',
-                    'code' => 1420,
+                    'code' => 14020,
                 ],
                 20 => [
                     'name' => 'Meghila',
-                    'code' => 1421,
+                    'code' => 14021,
                 ],
                 21 => [
                     'name' => 'Mellakou',
-                    'code' => 1422,
+                    'code' => 14022,
                 ],
                 22 => [
                     'name' => 'Nadorah',
-                    'code' => 1423,
+                    'code' => 14023,
                 ],
                 23 => [
                     'name' => 'Naima',
-                    'code' => 1424,
+                    'code' => 14024,
                 ],
                 24 => [
                     'name' => 'Oued Lilli',
-                    'code' => 1425,
+                    'code' => 14025,
                 ],
                 25 => [
                     'name' => 'Rahouia',
-                    'code' => 1426,
+                    'code' => 14026,
                 ],
                 26 => [
                     'name' => 'Rechaïga',
-                    'code' => 1427,
+                    'code' => 14027,
                 ],
                 27 => [
                     'name' => 'Sebaïne',
-                    'code' => 1428,
+                    'code' => 14028,
                 ],
                 28 => [
                     'name' => 'Sebt',
-                    'code' => 1429,
+                    'code' => 14029,
                 ],
                 29 => [
                     'name' => 'Serghine',
-                    'code' => 1430,
+                    'code' => 14030,
                 ],
                 30 => [
                     'name' => 'Si Abdelghani',
-                    'code' => 1431,
+                    'code' => 14031,
                 ],
                 31 => [
                     'name' => 'Sidi Abderahmane',
-                    'code' => 1432,
+                    'code' => 14032,
                 ],
                 32 => [
                     'name' => 'Sidi Ali Mellal',
-                    'code' => 1433,
+                    'code' => 14033,
                 ],
                 33 => [
                     'name' => 'Sidi Bakhti',
-                    'code' => 1434,
+                    'code' => 14034,
                 ],
                 34 => [
                     'name' => 'Sidi Hosni',
-                    'code' => 1435,
+                    'code' => 14035,
                 ],
                 35 => [
                     'name' => 'Sougueur',
-                    'code' => 1436,
+                    'code' => 14036,
                 ],
                 36 => [
                     'name' => 'Tagdemt',
-                    'code' => 1437,
+                    'code' => 14037,
                 ],
                 37 => [
                     'name' => 'Takhemaret',
-                    'code' => 1438,
+                    'code' => 14038,
                 ],
                 38 => [
                     'name' => 'Tiaret',
-                    'code' => 1439,
+                    'code' => 14039,
                 ],
                 39 => [
                     'name' => 'Tidda',
-                    'code' => 1440,
+                    'code' => 14040,
                 ],
                 40 => [
                     'name' => 'Tousnina',
-                    'code' => 1441,
+                    'code' => 14041,
                 ],
                 41 => [
                     'name' => 'Zmalet El Emir Abdelkader',
-                    'code' => 1442,
+                    'code' => 14042,
                 ],
             ],
             15 => [
                 0 => [
                     'name' => 'Tizi Ouzou',
-                    'code' => 1501,
+                    'code' => 15001,
                 ],
                 1 => [
                     'name' => 'Ain El Hammam',
-                    'code' => 1502,
+                    'code' => 15002,
                 ],
                 2 => [
                     'name' => 'Akbil',
-                    'code' => 1503,
+                    'code' => 15003,
                 ],
                 3 => [
                     'name' => 'Freha',
-                    'code' => 1504,
+                    'code' => 15004,
                 ],
                 4 => [
                     'name' => 'Souamaâ',
-                    'code' => 1505,
+                    'code' => 15005,
                 ],
                 5 => [
                     'name' => 'Mechtras',
-                    'code' => 1506,
+                    'code' => 15006,
                 ],
                 6 => [
                     'name' => 'Irdjen',
-                    'code' => 1507,
+                    'code' => 15007,
                 ],
                 7 => [
                     'name' => 'Timizart',
-                    'code' => 1508,
+                    'code' => 15008,
                 ],
                 8 => [
                     'name' => 'Makouda',
-                    'code' => 1509,
+                    'code' => 15009,
                 ],
                 9 => [
                     'name' => 'Draâ El Mizan',
-                    'code' => 1510,
+                    'code' => 15010,
                 ],
                 10 => [
                     'name' => 'Tizi Gheniff',
-                    'code' => 1511,
+                    'code' => 15011,
                 ],
                 11 => [
                     'name' => 'Bounouh',
-                    'code' => 1512,
+                    'code' => 15012,
                 ],
                 12 => [
                     'name' => 'Aït Chafâa',
-                    'code' => 1513,
+                    'code' => 15013,
                 ],
                 13 => [
                     'name' => 'Frikat',
-                    'code' => 1514,
+                    'code' => 15014,
                 ],
                 14 => [
                     'name' => 'Beni Aïssi',
-                    'code' => 1515,
+                    'code' => 15015,
                 ],
                 15 => [
                     'name' => 'Aït Zmenzer',
-                    'code' => 1516,
+                    'code' => 15016,
                 ],
                 16 => [
                     'name' => 'Iferhounène',
-                    'code' => 1517,
+                    'code' => 15017,
                 ],
                 17 => [
                     'name' => 'Azazga',
-                    'code' => 1518,
+                    'code' => 15018,
                 ],
                 18 => [
                     'name' => 'Illoula Oumalou',
-                    'code' => 1519,
+                    'code' => 15019,
                 ],
                 19 => [
                     'name' => 'Yakouren',
-                    'code' => 1520,
+                    'code' => 15020,
                 ],
                 20 => [
                     'name' => 'Larbaâ Nath Irathen',
-                    'code' => 1521,
+                    'code' => 15021,
                 ],
                 21 => [
                     'name' => 'Tizi Rached',
-                    'code' => 1522,
+                    'code' => 15022,
                 ],
                 22 => [
                     'name' => 'Zekri',
-                    'code' => 1523,
+                    'code' => 15023,
                 ],
                 23 => [
                     'name' => 'Ouaguenoun',
-                    'code' => 1524,
+                    'code' => 15024,
                 ],
                 24 => [
                     'name' => 'Aïn Zaouia',
-                    'code' => 1525,
+                    'code' => 15025,
                 ],
                 25 => [
                     'name' => 'Imkiren',
-                    'code' => 1526,
+                    'code' => 15026,
                 ],
                 26 => [
                     'name' => 'Aït Yahia',
-                    'code' => 1527,
+                    'code' => 15027,
                 ],
                 27 => [
                     'name' => 'Aït Mahmoud',
-                    'code' => 1528,
+                    'code' => 15028,
                 ],
                 28 => [
                     'name' => 'Mâatkas',
-                    'code' => 1529,
+                    'code' => 15029,
                 ],
                 29 => [
                     'name' => 'Aït Boumahdi',
-                    'code' => 1530,
+                    'code' => 15030,
                 ],
                 30 => [
                     'name' => 'Abi Youcef',
-                    'code' => 1531,
+                    'code' => 15031,
                 ],
                 31 => [
                     'name' => 'Beni Douala',
-                    'code' => 1532,
+                    'code' => 15032,
                 ],
                 32 => [
                     'name' => 'Illilten',
-                    'code' => 1533,
+                    'code' => 15033,
                 ],
                 33 => [
                     'name' => 'Bouzeguène',
-                    'code' => 1534,
+                    'code' => 15034,
                 ],
                 34 => [
                     'name' => 'Aït Aggouacha',
-                    'code' => 1535,
+                    'code' => 15035,
                 ],
                 35 => [
                     'name' => 'Ouadhia',
-                    'code' => 1536,
+                    'code' => 15036,
                 ],
                 36 => [
                     'name' => 'Azeffoun',
-                    'code' => 1537,
+                    'code' => 15037,
                 ],
                 37 => [
                     'name' => 'Tigzirt',
-                    'code' => 1538,
+                    'code' => 15038,
                 ],
                 38 => [
                     'name' => 'Aït Aïssa Mimoun',
-                    'code' => 1539,
+                    'code' => 15039,
                 ],
                 39 => [
                     'name' => 'Boghni',
-                    'code' => 1540,
+                    'code' => 15040,
                 ],
                 40 => [
                     'name' => 'Ifigha',
-                    'code' => 1541,
+                    'code' => 15041,
                 ],
                 41 => [
                     'name' => 'Aït Oumalou',
-                    'code' => 1542,
+                    'code' => 15042,
                 ],
                 42 => [
                     'name' => 'Tirmitine',
-                    'code' => 1543,
+                    'code' => 15043,
                 ],
                 43 => [
                     'name' => 'Akerrou',
-                    'code' => 1544,
+                    'code' => 15044,
                 ],
                 44 => [
                     'name' => 'Yatafen',
-                    'code' => 1545,
+                    'code' => 15045,
                 ],
                 45 => [
                     'name' => 'Ath Zikki',
-                    'code' => 1546,
+                    'code' => 15046,
                 ],
                 46 => [
                     'name' => 'Draâ Ben Khedda',
-                    'code' => 1547,
+                    'code' => 15047,
                 ],
                 47 => [
                     'name' => 'Aït Ouacif',
-                    'code' => 1548,
+                    'code' => 15048,
                 ],
                 48 => [
                     'name' => 'Idjeur',
-                    'code' => 1549,
+                    'code' => 15049,
                 ],
                 49 => [
                     'name' => 'Mekla',
-                    'code' => 1550,
+                    'code' => 15050,
                 ],
                 50 => [
                     'name' => 'Tizi N\'Tleta',
-                    'code' => 1551,
+                    'code' => 15051,
                 ],
                 51 => [
                     'name' => 'Aït Yenni',
-                    'code' => 1552,
+                    'code' => 15052,
                 ],
                 52 => [
                     'name' => 'Aghribs',
-                    'code' => 1553,
+                    'code' => 15053,
                 ],
                 53 => [
                     'name' => 'Iflissen',
-                    'code' => 1554,
+                    'code' => 15054,
                 ],
                 54 => [
                     'name' => 'Boudjima',
-                    'code' => 1555,
+                    'code' => 15055,
                 ],
                 55 => [
                     'name' => 'Aït Yahia Moussa',
-                    'code' => 1556,
+                    'code' => 15056,
                 ],
                 56 => [
                     'name' => 'Souk El Thenine',
-                    'code' => 1557,
+                    'code' => 15057,
                 ],
                 57 => [
                     'name' => 'Aït Khellili',
-                    'code' => 1558,
+                    'code' => 15058,
                 ],
                 58 => [
                     'name' => 'Sidi Namane',
-                    'code' => 1559,
+                    'code' => 15059,
                 ],
                 59 => [
                     'name' => 'Iboudraren',
-                    'code' => 1560,
+                    'code' => 15060,
                 ],
                 60 => [
                     'name' => 'Agouni Gueghrane',
-                    'code' => 1561,
+                    'code' => 15061,
                 ],
                 61 => [
                     'name' => 'Mizrana',
-                    'code' => 1562,
+                    'code' => 15062,
                 ],
                 62 => [
                     'name' => 'Imsouhel',
-                    'code' => 1563,
+                    'code' => 15063,
                 ],
                 63 => [
                     'name' => 'Tadmaït',
-                    'code' => 1564,
+                    'code' => 15064,
                 ],
                 64 => [
                     'name' => 'Aït Bouaddou',
-                    'code' => 1565,
+                    'code' => 15065,
                 ],
                 65 => [
                     'name' => 'Assi Youcef',
-                    'code' => 1566,
+                    'code' => 15066,
                 ],
                 66 => [
                     'name' => 'Aït Toudert',
-                    'code' => 1567,
+                    'code' => 15067,
                 ],
             ],
             16 => [
-                [
+                0 => [
                     'name' => 'Alger-Centre',
-                    'code' => 1601,
+                    'code' => 16001,
                 ],
-                [
+                1 => [
                     'name' => 'Sidi M\'Hamed',
-                    'code' => 1602,
+                    'code' => 16002,
                 ],
-                [
+                2 => [
                     'name' => 'El Madania',
-                    'code' => 1603,
+                    'code' => 16003,
                 ],
-                [
+                3 => [
                     'name' => 'Belouizdad',
-                    'code' => 1604,
+                    'code' => 16004,
                 ],
-                [
+                4 => [
                     'name' => 'Bab El Oued',
-                    'code' => 1605,
+                    'code' => 16005,
                 ],
-                [
+                5 => [
                     'name' => 'Bologhine',
-                    'code' => 1606,
+                    'code' => 16006,
                 ],
-                [
+                6 => [
                     'name' => 'Casbah',
-                    'code' => 1607,
+                    'code' => 16007,
                 ],
-                [
+                7 => [
                     'name' => 'Oued Koriche',
-                    'code' => 1608,
+                    'code' => 16008,
                 ],
-                [
+                8 => [
                     'name' => 'Bir Mourad Raïs',
-                    'code' => 1609,
+                    'code' => 16009,
                 ],
-                [
+                9 => [
                     'name' => 'El Biar',
-                    'code' => 1610,
+                    'code' => 16010,
                 ],
-                [
+                10 => [
                     'name' => 'Bouzareah',
-                    'code' => 1611,
+                    'code' => 16011,
                 ],
-                [
+                11 => [
                     'name' => 'Birkhadem',
-                    'code' => 1612,
+                    'code' => 16012,
                 ],
-                [
+                12 => [
                     'name' => 'El Harrach',
-                    'code' => 1613,
+                    'code' => 16013,
                 ],
-                [
+                13 => [
                     'name' => 'Baraki',
-                    'code' => 1614,
+                    'code' => 16014,
                 ],
-                [
+                14 => [
                     'name' => 'Oued Smar',
-                    'code' => 1615,
+                    'code' => 16015,
                 ],
-                [
+                15 => [
                     'name' => 'Bachdjerrah',
-                    'code' => 1616,
+                    'code' => 16016,
                 ],
-                [
+                16 => [
                     'name' => 'Hussein Dey',
-                    'code' => 1617,
+                    'code' => 16017,
                 ],
-                [
+                17 => [
                     'name' => 'Kouba',
-                    'code' => 1618,
+                    'code' => 16018,
                 ],
-                [
+                18 => [
                     'name' => 'Bourouba',
-                    'code' => 1619,
+                    'code' => 16019,
                 ],
-                [
+                19 => [
                     'name' => 'Dar El Beïda',
-                    'code' => 1620,
+                    'code' => 16020,
                 ],
-                [
+                20 => [
                     'name' => 'Bab Ezzouar',
-                    'code' => 1621,
+                    'code' => 16021,
                 ],
-                [
+                21 => [
                     'name' => 'Ben Aknoun',
-                    'code' => 1622,
+                    'code' => 16022,
                 ],
-                [
+                22 => [
                     'name' => 'Dely Ibrahim',
-                    'code' => 1623,
+                    'code' => 16023,
                 ],
-                [
+                23 => [
                     'name' => 'El Hammamet',
-                    'code' => 1624,
+                    'code' => 16024,
                 ],
-                [
+                24 => [
                     'name' => 'Raïs Hamidou',
-                    'code' => 1625,
+                    'code' => 16025,
                 ],
-                [
+                25 => [
                     'name' => 'Djasr Kasentina',
-                    'code' => 1626,
+                    'code' => 16026,
                 ],
-                [
+                26 => [
                     'name' => 'El Mouradia',
-                    'code' => 1627,
+                    'code' => 16027,
                 ],
-                [
+                27 => [
                     'name' => 'Hydra',
-                    'code' => 1628,
+                    'code' => 16028,
                 ],
-                [
+                28 => [
                     'name' => 'Mohammadia',
-                    'code' => 1629,
+                    'code' => 16029,
                 ],
-                [
+                29 => [
                     'name' => 'Bordj El Kiffan',
-                    'code' => 1630,
+                    'code' => 16030,
                 ],
-                [
+                30 => [
                     'name' => 'El Magharia',
-                    'code' => 1631,
+                    'code' => 16031,
                 ],
-                [
+                31 => [
                     'name' => 'Beni Messous',
-                    'code' => 1632,
+                    'code' => 16032,
                 ],
-                [
+                32 => [
                     'name' => 'Les Eucalyptus',
-                    'code' => 1633,
+                    'code' => 16033,
                 ],
-                [
+                33 => [
                     'name' => 'Birtouta',
-                    'code' => 1634,
+                    'code' => 16034,
                 ],
-                [
+                34 => [
                     'name' => 'Tessala El Merdja',
-                    'code' => 1635,
+                    'code' => 16035,
                 ],
-                [
+                35 => [
                     'name' => 'Ouled Chebel',
-                    'code' => 1636,
+                    'code' => 16036,
                 ],
-                [
+                36 => [
                     'name' => 'Sidi Moussa',
-                    'code' => 1637,
+                    'code' => 16037,
                 ],
-                [
+                37 => [
                     'name' => 'Aïn Taya',
-                    'code' => 1638,
+                    'code' => 16038,
                 ],
-                [
+                38 => [
                     'name' => 'Bordj El Bahri',
-                    'code' => 1639,
+                    'code' => 16039,
                 ],
-                [
+                39 => [
                     'name' => 'El Marsa',
-                    'code' => 1640,
+                    'code' => 16040,
                 ],
-                [
+                40 => [
                     'name' => 'H\'raoua',
-                    'code' => 1641,
+                    'code' => 16041,
                 ],
-                [
+                41 => [
                     'name' => 'Rouïba',
-                    'code' => 1642,
+                    'code' => 16042,
                 ],
-                [
+                42 => [
                     'name' => 'Reghaïa',
-                    'code' => 1643,
+                    'code' => 16043,
                 ],
-                [
+                43 => [
                     'name' => 'Aïn Benian',
-                    'code' => 1644,
+                    'code' => 16044,
                 ],
-                [
+                44 => [
                     'name' => 'Staoueli',
-                    'code' => 1645,
+                    'code' => 16045,
                 ],
-                [
+                45 => [
                     'name' => 'Zeralda',
-                    'code' => 1646,
+                    'code' => 16046,
                 ],
-                [
+                46 => [
                     'name' => 'Mahelma',
-                    'code' => 1647,
+                    'code' => 16047,
                 ],
-                [
+                47 => [
                     'name' => 'Rahmania',
-                    'code' => 1648,
+                    'code' => 16048,
                 ],
-                [
+                48 => [
                     'name' => 'Souidania',
-                    'code' => 1649,
+                    'code' => 16049,
                 ],
-                [
+                49 => [
                     'name' => 'Cheraga',
-                    'code' => 1650,
+                    'code' => 16050,
                 ],
-                [
+                50 => [
                     'name' => 'Ouled Fayet',
-                    'code' => 1651,
+                    'code' => 16051,
                 ],
-                [
+                51 => [
                     'name' => 'El Achour',
-                    'code' => 1652,
+                    'code' => 16052,
                 ],
-                [
+                52 => [
                     'name' => 'Draria',
-                    'code' => 1653,
+                    'code' => 16053,
                 ],
-                [
+                53 => [
                     'name' => 'Douera',
-                    'code' => 1654,
+                    'code' => 16054,
                 ],
-                [
+                54 => [
                     'name' => 'Baba Hassen',
-                    'code' => 1655,
+                    'code' => 16055,
                 ],
-                [
+                55 => [
                     'name' => 'Khraicia',
-                    'code' => 1656,
+                    'code' => 16056,
                 ],
-                [
+                56 => [
                     'name' => 'Saoula',
-                    'code' => 1657,
+                    'code' => 16057,
                 ],
-
             ],
             17 => [
                 0 => [
                     'name' => 'Aïn Chouhada',
-                    'code' => 1701,
+                    'code' => 17001,
                 ],
                 1 => [
                     'name' => 'Aïn El Ibel',
-                    'code' => 1702,
+                    'code' => 17002,
                 ],
                 2 => [
                     'name' => 'Aïn Feka',
-                    'code' => 1703,
+                    'code' => 17003,
                 ],
                 3 => [
                     'name' => 'Aïn Maabed',
-                    'code' => 1704,
+                    'code' => 17004,
                 ],
                 4 => [
                     'name' => 'Aïn Oussara',
-                    'code' => 1705,
+                    'code' => 17005,
                 ],
                 5 => [
                     'name' => 'Amourah',
-                    'code' => 1706,
+                    'code' => 17006,
                 ],
                 6 => [
                     'name' => 'Benhar',
-                    'code' => 1707,
+                    'code' => 17007,
                 ],
                 7 => [
                     'name' => 'Beni Yagoub',
-                    'code' => 1708,
+                    'code' => 17008,
                 ],
                 8 => [
                     'name' => 'Birine',
-                    'code' => 1709,
+                    'code' => 17009,
                 ],
                 9 => [
                     'name' => 'Bouira Lahdab',
-                    'code' => 17010,
+                    'code' => 170010,
                 ],
                 10 => [
                     'name' => 'Charef',
-                    'code' => 1711,
+                    'code' => 17011,
                 ],
                 11 => [
                     'name' => 'Dar Chioukh',
-                    'code' => 1712,
+                    'code' => 17012,
                 ],
                 12 => [
                     'name' => 'Deldoul',
-                    'code' => 1713,
+                    'code' => 17013,
                 ],
                 13 => [
                     'name' => 'Djelfa',
-                    'code' => 1714,
+                    'code' => 17014,
                 ],
                 14 => [
                     'name' => 'Douis',
-                    'code' => 1715,
+                    'code' => 17015,
                 ],
                 15 => [
                     'name' => 'El Guedid',
-                    'code' => 1716,
+                    'code' => 17016,
                 ],
                 16 => [
                     'name' => 'El Idrissia',
-                    'code' => 1717,
+                    'code' => 17017,
                 ],
                 17 => [
                     'name' => 'El Khemis',
-                    'code' => 1718,
+                    'code' => 17018,
                 ],
                 18 => [
                     'name' => 'Faidh El Botma',
-                    'code' => 1719,
+                    'code' => 17019,
                 ],
                 19 => [
                     'name' => 'Guernini',
-                    'code' => 1720,
+                    'code' => 17020,
                 ],
                 20 => [
                     'name' => 'Guettara',
-                    'code' => 1721,
+                    'code' => 17021,
                 ],
                 21 => [
                     'name' => 'Had-Sahary',
-                    'code' => 1722,
+                    'code' => 17022,
                 ],
                 22 => [
                     'name' => 'Hassi Bahbah',
-                    'code' => 1723,
+                    'code' => 17023,
                 ],
                 23 => [
                     'name' => 'Hassi El Euch',
-                    'code' => 1724,
+                    'code' => 17024,
                 ],
                 24 => [
                     'name' => 'Hassi Fedoul',
-                    'code' => 1725,
+                    'code' => 17025,
                 ],
                 25 => [
                     'name' => 'Messaad',
-                    'code' => 1726,
+                    'code' => 17026,
                 ],
                 26 => [
                     'name' => 'M\'Liliha',
-                    'code' => 1727,
+                    'code' => 17027,
                 ],
                 27 => [
                     'name' => 'Moudjebara',
-                    'code' => 1728,
+                    'code' => 17028,
                 ],
                 28 => [
                     'name' => 'Oum Laadham',
-                    'code' => 1729,
+                    'code' => 17029,
                 ],
                 29 => [
                     'name' => 'Sed Rahal',
-                    'code' => 1730,
+                    'code' => 17030,
                 ],
                 30 => [
                     'name' => 'Selmana',
-                    'code' => 1731,
+                    'code' => 17031,
                 ],
                 31 => [
                     'name' => 'Sidi Baizid',
-                    'code' => 1732,
+                    'code' => 17032,
                 ],
                 32 => [
                     'name' => 'Sidi Ladjel',
-                    'code' => 1733,
+                    'code' => 17033,
                 ],
                 33 => [
                     'name' => 'Tadmit',
-                    'code' => 1734,
+                    'code' => 17034,
                 ],
                 34 => [
                     'name' => 'Zaafrane',
-                    'code' => 1735,
+                    'code' => 17035,
                 ],
                 35 => [
                     'name' => 'Zaccar',
-                    'code' => 1736,
+                    'code' => 17036,
                 ],
             ],
             18 => [
                 0 => [
                     'name' => 'Jijel',
-                    'code' => 1801,
+                    'code' => 18001,
                 ],
                 1 => [
                     'name' => 'Eraguene',
-                    'code' => 1802,
+                    'code' => 18002,
                 ],
                 2 => [
                     'name' => 'El Aouana',
-                    'code' => 1803,
+                    'code' => 18003,
                 ],
                 3 => [
                     'name' => 'Ziama Mansouriah',
-                    'code' => 1804,
+                    'code' => 18004,
                 ],
                 4 => [
                     'name' => 'Taher',
-                    'code' => 1805,
+                    'code' => 18005,
                 ],
                 5 => [
                     'name' => 'Emir Abdelkader',
-                    'code' => 1806,
+                    'code' => 18006,
                 ],
                 6 => [
                     'name' => 'Chekfa',
-                    'code' => 1807,
+                    'code' => 18007,
                 ],
                 7 => [
                     'name' => 'Chahna',
-                    'code' => 1808,
+                    'code' => 18008,
                 ],
                 8 => [
                     'name' => 'El Milia',
-                    'code' => 1809,
+                    'code' => 18009,
                 ],
                 9 => [
                     'name' => 'Sidi Maarouf',
-                    'code' => 1810,
+                    'code' => 18010,
                 ],
                 10 => [
                     'name' => 'Settara',
-                    'code' => 1811,
+                    'code' => 18011,
                 ],
                 11 => [
                     'name' => 'El Ancer',
-                    'code' => 1812,
+                    'code' => 18012,
                 ],
                 12 => [
                     'name' => 'Sidi Abdelaziz',
-                    'code' => 1813,
+                    'code' => 18013,
                 ],
                 13 => [
                     'name' => 'Kaous',
-                    'code' => 1814,
+                    'code' => 18014,
                 ],
                 14 => [
                     'name' => 'Ghebala',
-                    'code' => 1815,
+                    'code' => 18015,
                 ],
                 15 => [
                     'name' => 'Bouraoui Belhadef',
-                    'code' => 1816,
+                    'code' => 18016,
                 ],
                 16 => [
                     'name' => 'Djimla',
-                    'code' => 1817,
+                    'code' => 18017,
                 ],
                 17 => [
                     'name' => 'Selma Benziada',
-                    'code' => 1818,
+                    'code' => 18018,
                 ],
                 18 => [
                     'name' => 'Boucif Ouled Askeur',
-                    'code' => 1819,
+                    'code' => 18019,
                 ],
                 19 => [
                     'name' => 'El Kennar Nouchfi',
-                    'code' => 1820,
+                    'code' => 18020,
                 ],
                 20 => [
                     'name' => 'Ouled Yahia Khedrouche',
-                    'code' => 1821,
+                    'code' => 18021,
                 ],
                 21 => [
                     'name' => 'Boudriaa Ben Yadjis',
-                    'code' => 1822,
+                    'code' => 18022,
                 ],
                 22 => [
                     'name' => 'Kheïri Oued Adjoul',
-                    'code' => 1823,
+                    'code' => 18023,
                 ],
                 23 => [
                     'name' => 'Texenna',
-                    'code' => 1824,
+                    'code' => 18024,
                 ],
                 24 => [
                     'name' => 'Djemaa Beni Habibi',
-                    'code' => 1825,
+                    'code' => 18025,
                 ],
                 25 => [
                     'name' => 'Bordj Tahar',
-                    'code' => 1826,
+                    'code' => 18026,
                 ],
                 26 => [
                     'name' => 'Ouled Rabah',
-                    'code' => 1827,
+                    'code' => 18027,
                 ],
                 27 => [
                     'name' => 'Ouadjana',
-                    'code' => 1828,
+                    'code' => 18028,
                 ],
             ],
             19 => [
                 0 => [
                     'name' => 'Aïn Abessa',
-                    'code' => 1901,
+                    'code' => 19001,
                 ],
                 1 => [
                     'name' => 'Aïn Arnat',
-                    'code' => 1902,
+                    'code' => 19002,
                 ],
                 2 => [
                     'name' => 'Aïn Azel',
-                    'code' => 1903,
+                    'code' => 19003,
                 ],
                 3 => [
                     'name' => 'Aïn El Kebira',
-                    'code' => 1904,
+                    'code' => 19004,
                 ],
                 4 => [
                     'name' => 'Aïn Lahdjar',
-                    'code' => 1905,
+                    'code' => 19005,
                 ],
                 5 => [
                     'name' => 'Aïn Legradj',
-                    'code' => 1906,
+                    'code' => 19006,
                 ],
                 6 => [
                     'name' => 'Aïn Oulmene',
-                    'code' => 1907,
+                    'code' => 19007,
                 ],
                 7 => [
                     'name' => 'Aïn Roua',
-                    'code' => 1908,
+                    'code' => 19008,
                 ],
                 8 => [
                     'name' => 'Aïn Sebt',
-                    'code' => 1909,
+                    'code' => 19009,
                 ],
                 9 => [
                     'name' => 'Aït Naoual Mezada',
-                    'code' => 19010,
+                    'code' => 190010,
                 ],
                 10 => [
                     'name' => 'Aït Tizi',
-                    'code' => 1911,
+                    'code' => 19011,
                 ],
                 11 => [
                     'name' => 'Beni Ouartilene',
-                    'code' => 1912,
+                    'code' => 19012,
                 ],
                 12 => [
                     'name' => 'Amoucha',
-                    'code' => 1913,
+                    'code' => 19013,
                 ],
                 13 => [
                     'name' => 'Babor',
-                    'code' => 1914,
+                    'code' => 19014,
                 ],
                 14 => [
                     'name' => 'Bazer Sakhra',
-                    'code' => 1915,
+                    'code' => 19015,
                 ],
                 15 => [
                     'name' => 'Beidha Bordj',
-                    'code' => 1916,
+                    'code' => 19016,
                 ],
                 16 => [
                     'name' => 'Belaa',
-                    'code' => 1917,
+                    'code' => 19017,
                 ],
                 17 => [
                     'name' => 'Beni Aziz',
-                    'code' => 1918,
+                    'code' => 19018,
                 ],
                 18 => [
                     'name' => 'Beni Chebana',
-                    'code' => 1919,
+                    'code' => 19019,
                 ],
                 19 => [
                     'name' => 'Beni Fouda',
-                    'code' => 1920,
+                    'code' => 19020,
                 ],
                 20 => [
                     'name' => 'Beni Hocine',
-                    'code' => 1921,
+                    'code' => 19021,
                 ],
                 21 => [
                     'name' => 'Beni Mouhli',
-                    'code' => 1922,
+                    'code' => 19022,
                 ],
                 22 => [
                     'name' => 'Bir El Arch',
-                    'code' => 1923,
+                    'code' => 19023,
                 ],
                 23 => [
                     'name' => 'Bir Haddada',
-                    'code' => 1924,
+                    'code' => 19024,
                 ],
                 24 => [
                     'name' => 'Bouandas',
-                    'code' => 1925,
+                    'code' => 19025,
                 ],
                 25 => [
                     'name' => 'Bougaa',
-                    'code' => 1926,
+                    'code' => 19026,
                 ],
                 26 => [
                     'name' => 'Bousselam',
-                    'code' => 1927,
+                    'code' => 19027,
                 ],
                 27 => [
                     'name' => 'Boutaleb',
-                    'code' => 1928,
+                    'code' => 19028,
                 ],
                 28 => [
                     'name' => 'Dehamcha',
-                    'code' => 1929,
+                    'code' => 19029,
                 ],
                 29 => [
                     'name' => 'Djemila',
-                    'code' => 1930,
+                    'code' => 19030,
                 ],
                 30 => [
                     'name' => 'Draa Kebila',
-                    'code' => 1931,
+                    'code' => 19031,
                 ],
                 31 => [
                     'name' => 'El Eulma',
-                    'code' => 1932,
+                    'code' => 19032,
                 ],
                 32 => [
                     'name' => 'El Ouldja',
-                    'code' => 1933,
+                    'code' => 19033,
                 ],
                 33 => [
                     'name' => 'El Ouricia',
-                    'code' => 1934,
+                    'code' => 19034,
                 ],
                 34 => [
                     'name' => 'Guellal',
-                    'code' => 1935,
+                    'code' => 19035,
                 ],
                 35 => [
                     'name' => 'Guelta Zerka',
-                    'code' => 1936,
+                    'code' => 19036,
                 ],
                 36 => [
                     'name' => 'Guenzet',
-                    'code' => 1937,
+                    'code' => 19037,
                 ],
                 37 => [
                     'name' => 'Guidjel',
-                    'code' => 1938,
+                    'code' => 19038,
                 ],
                 38 => [
                     'name' => 'Hamma',
-                    'code' => 1939,
+                    'code' => 19039,
                 ],
                 39 => [
                     'name' => 'Hammam Guergour',
-                    'code' => 1940,
+                    'code' => 19040,
                 ],
                 40 => [
                     'name' => 'Hammam Soukhna',
-                    'code' => 1941,
+                    'code' => 19041,
                 ],
                 41 => [
                     'name' => 'Harbil',
-                    'code' => 1942,
+                    'code' => 19042,
                 ],
                 42 => [
                     'name' => 'Ksar El Abtal',
-                    'code' => 1943,
+                    'code' => 19043,
                 ],
                 43 => [
                     'name' => 'Maaouia',
-                    'code' => 1944,
+                    'code' => 19044,
                 ],
                 44 => [
                     'name' => 'Maoklane',
-                    'code' => 1945,
+                    'code' => 19045,
                 ],
                 45 => [
                     'name' => 'Mezloug',
-                    'code' => 1946,
+                    'code' => 19046,
                 ],
                 46 => [
                     'name' => 'Oued El Barad',
-                    'code' => 1947,
+                    'code' => 19047,
                 ],
                 47 => [
                     'name' => 'Ouled Addouane',
-                    'code' => 1948,
+                    'code' => 19048,
                 ],
                 48 => [
                     'name' => 'Ouled Sabor',
-                    'code' => 1949,
+                    'code' => 19049,
                 ],
                 49 => [
                     'name' => 'Ouled Si Ahmed',
-                    'code' => 1950,
+                    'code' => 19050,
                 ],
                 50 => [
                     'name' => 'Ouled Tebben',
-                    'code' => 1951,
+                    'code' => 19051,
                 ],
                 51 => [
                     'name' => 'Rasfa',
-                    'code' => 1952,
+                    'code' => 19052,
                 ],
                 52 => [
                     'name' => 'Salah Bey',
-                    'code' => 1953,
+                    'code' => 19053,
                 ],
                 53 => [
                     'name' => 'Serdj El Ghoul',
-                    'code' => 1954,
+                    'code' => 19054,
                 ],
                 54 => [
                     'name' => 'Sétif',
-                    'code' => 1955,
+                    'code' => 19055,
                 ],
                 55 => [
                     'name' => 'Tachouda',
-                    'code' => 1956,
+                    'code' => 19056,
                 ],
                 56 => [
                     'name' => 'Talaifacene',
-                    'code' => 1957,
+                    'code' => 19057,
                 ],
                 57 => [
                     'name' => 'Taya',
-                    'code' => 1958,
+                    'code' => 19058,
                 ],
                 58 => [
                     'name' => 'Tella',
-                    'code' => 1959,
+                    'code' => 19059,
                 ],
                 59 => [
                     'name' => 'Tizi N\'Bechar',
-                    'code' => 1960,
+                    'code' => 19060,
                 ],
             ],
             20 => [
                 0 => [
                     'name' => 'Aïn El Hadjar',
-                    'code' => 2001,
+                    'code' => 20001,
                 ],
                 1 => [
                     'name' => 'Aïn Sekhouna',
-                    'code' => 2002,
+                    'code' => 20002,
                 ],
                 2 => [
                     'name' => 'Aïn Soltane',
-                    'code' => 2003,
+                    'code' => 20003,
                 ],
                 3 => [
                     'name' => 'Doui Thabet',
-                    'code' => 2004,
+                    'code' => 20004,
                 ],
                 4 => [
                     'name' => 'El Hassasna',
-                    'code' => 2005,
+                    'code' => 20005,
                 ],
                 5 => [
                     'name' => 'Hounet',
-                    'code' => 2006,
+                    'code' => 20006,
                 ],
                 6 => [
                     'name' => 'Maamora',
-                    'code' => 2007,
+                    'code' => 20007,
                 ],
                 7 => [
                     'name' => 'Moulay Larbi',
-                    'code' => 2008,
+                    'code' => 20008,
                 ],
                 8 => [
                     'name' => 'Ouled Brahim',
-                    'code' => 2009,
+                    'code' => 20009,
                 ],
                 9 => [
                     'name' => 'Ouled Khaled',
-                    'code' => 20010,
+                    'code' => 200010,
                 ],
                 10 => [
                     'name' => 'Saïda',
-                    'code' => 2011,
+                    'code' => 20011,
                 ],
                 11 => [
                     'name' => 'Sidi Ahmed',
-                    'code' => 2012,
+                    'code' => 20012,
                 ],
                 12 => [
                     'name' => 'Sidi Amar',
-                    'code' => 2013,
+                    'code' => 20013,
                 ],
                 13 => [
                     'name' => 'Sidi Boubekeur',
-                    'code' => 2014,
+                    'code' => 20014,
                 ],
                 14 => [
                     'name' => 'Tircine',
-                    'code' => 2015,
+                    'code' => 20015,
                 ],
                 15 => [
                     'name' => 'Youb',
-                    'code' => 2016,
+                    'code' => 20016,
                 ],
             ],
             21 => [
                 0 => [
                     'name' => 'Aïn Bouziane',
-                    'code' => 2101,
+                    'code' => 21001,
                 ],
                 1 => [
                     'name' => 'Aïn Charchar',
-                    'code' => 2102,
+                    'code' => 21002,
                 ],
                 2 => [
                     'name' => 'Aïn Kechra',
-                    'code' => 2103,
+                    'code' => 21003,
                 ],
                 3 => [
                     'name' => 'Aïn Zouit',
-                    'code' => 2104,
+                    'code' => 21004,
                 ],
                 4 => [
                     'name' => 'Azzaba',
-                    'code' => 2105,
+                    'code' => 21005,
                 ],
                 5 => [
                     'name' => 'Bekkouche Lakhdar',
-                    'code' => 2106,
+                    'code' => 21006,
                 ],
                 6 => [
                     'name' => 'Bin El Ouiden',
-                    'code' => 2107,
+                    'code' => 21007,
                 ],
                 7 => [
                     'name' => 'Ben Azzouz',
-                    'code' => 2108,
+                    'code' => 21008,
                 ],
                 8 => [
                     'name' => 'Beni Bechir',
-                    'code' => 2109,
+                    'code' => 21009,
                 ],
                 9 => [
                     'name' => 'Beni Oulbane',
-                    'code' => 21010,
+                    'code' => 210010,
                 ],
                 10 => [
                     'name' => 'Beni Zid',
-                    'code' => 2111,
+                    'code' => 21011,
                 ],
                 11 => [
                     'name' => 'Bouchtata',
-                    'code' => 2112,
+                    'code' => 21012,
                 ],
                 12 => [
                     'name' => 'Cheraia',
-                    'code' => 2113,
+                    'code' => 21013,
                 ],
                 13 => [
                     'name' => 'Collo',
-                    'code' => 2114,
+                    'code' => 21014,
                 ],
                 14 => [
                     'name' => 'Djendel Saadi Mohamed',
-                    'code' => 2115,
+                    'code' => 21015,
                 ],
                 15 => [
                     'name' => 'El Ghedir',
-                    'code' => 2116,
+                    'code' => 21016,
                 ],
                 16 => [
                     'name' => 'El Hadaiek',
-                    'code' => 2117,
+                    'code' => 21017,
                 ],
                 17 => [
                     'name' => 'El Harrouch',
-                    'code' => 2118,
+                    'code' => 21018,
                 ],
                 18 => [
                     'name' => 'El Marsa',
-                    'code' => 2119,
+                    'code' => 21019,
                 ],
                 19 => [
                     'name' => 'Emdjez Edchich',
-                    'code' => 2120,
+                    'code' => 21020,
                 ],
                 20 => [
                     'name' => 'Es Sebt',
-                    'code' => 2121,
+                    'code' => 21021,
                 ],
                 21 => [
                     'name' => 'Filfila',
-                    'code' => 2122,
+                    'code' => 21022,
                 ],
                 22 => [
                     'name' => 'Hamadi Krouma',
-                    'code' => 2123,
+                    'code' => 21023,
                 ],
                 23 => [
                     'name' => 'Kanoua',
-                    'code' => 2124,
+                    'code' => 21024,
                 ],
                 24 => [
                     'name' => 'Kerkera',
-                    'code' => 2125,
+                    'code' => 21025,
                 ],
                 25 => [
                     'name' => 'Kheneg Mayoum',
-                    'code' => 2126,
+                    'code' => 21026,
                 ],
                 26 => [
                     'name' => 'Oued Zehour',
-                    'code' => 2127,
+                    'code' => 21027,
                 ],
                 27 => [
                     'name' => 'Ouldja Boulballout',
-                    'code' => 2128,
+                    'code' => 21028,
                 ],
                 28 => [
                     'name' => 'Ouled Attia',
-                    'code' => 2129,
+                    'code' => 21029,
                 ],
                 29 => [
                     'name' => 'Ouled Hbaba',
-                    'code' => 2130,
+                    'code' => 21030,
                 ],
                 30 => [
                     'name' => 'Oum Toub',
-                    'code' => 2131,
+                    'code' => 21031,
                 ],
                 31 => [
                     'name' => 'Ramdane Djamel',
-                    'code' => 2132,
+                    'code' => 21032,
                 ],
                 32 => [
                     'name' => 'Salah Bouchaour',
-                    'code' => 2133,
+                    'code' => 21033,
                 ],
                 33 => [
                     'name' => 'Sidi Mezghiche',
-                    'code' => 2134,
+                    'code' => 21034,
                 ],
                 34 => [
                     'name' => 'Skikda',
-                    'code' => 2135,
+                    'code' => 21035,
                 ],
                 35 => [
                     'name' => 'Tamalous',
-                    'code' => 2136,
+                    'code' => 21036,
                 ],
                 36 => [
                     'name' => 'Zerdaza',
-                    'code' => 2137,
+                    'code' => 21037,
                 ],
                 37 => [
                     'name' => 'Zitouna',
-                    'code' => 2138,
+                    'code' => 21038,
                 ],
             ],
             22 => [
                 0 => [
                     'name' => 'Aïn Adden',
-                    'code' => 2201,
+                    'code' => 22001,
                 ],
                 1 => [
                     'name' => 'Aïn El Berd',
-                    'code' => 2202,
+                    'code' => 22002,
                 ],
                 2 => [
                     'name' => 'Aïn Kada',
-                    'code' => 2203,
+                    'code' => 22003,
                 ],
                 3 => [
                     'name' => 'Aïn Thrid',
-                    'code' => 2204,
+                    'code' => 22004,
                 ],
                 4 => [
                     'name' => 'Aïn Tindamine',
-                    'code' => 2205,
+                    'code' => 22005,
                 ],
                 5 => [
                     'name' => 'Amarnas',
-                    'code' => 2206,
+                    'code' => 22006,
                 ],
                 6 => [
                     'name' => 'Badredine El Mokrani',
-                    'code' => 2207,
+                    'code' => 22007,
                 ],
                 7 => [
                     'name' => 'Belarbi',
-                    'code' => 2208,
+                    'code' => 22008,
                 ],
                 8 => [
                     'name' => 'Ben Badis',
-                    'code' => 2209,
+                    'code' => 22009,
                 ],
                 9 => [
                     'name' => 'Benachiba Chelia',
-                    'code' => 22010,
+                    'code' => 220010,
                 ],
                 10 => [
                     'name' => 'Bir El Hammam',
-                    'code' => 2211,
+                    'code' => 22011,
                 ],
                 11 => [
                     'name' => 'Boudjebaa El Bordj',
-                    'code' => 2212,
+                    'code' => 22012,
                 ],
                 12 => [
                     'name' => 'Boukhanafis',
-                    'code' => 2213,
+                    'code' => 22013,
                 ],
                 13 => [
                     'name' => 'Chettouane Belaila',
-                    'code' => 2214,
+                    'code' => 22014,
                 ],
                 14 => [
                     'name' => 'Dhaya',
-                    'code' => 2215,
+                    'code' => 22015,
                 ],
                 15 => [
                     'name' => 'El Haçaiba',
-                    'code' => 2216,
+                    'code' => 22016,
                 ],
                 16 => [
                     'name' => 'Hassi Dahou',
-                    'code' => 2217,
+                    'code' => 22017,
                 ],
                 17 => [
                     'name' => 'Hassi Zehana',
-                    'code' => 2218,
+                    'code' => 22018,
                 ],
                 18 => [
                     'name' => 'Lamtar',
-                    'code' => 2219,
+                    'code' => 22019,
                 ],
                 19 => [
                     'name' => 'Makedra',
-                    'code' => 2220,
+                    'code' => 22020,
                 ],
                 20 => [
                     'name' => 'Marhoum',
-                    'code' => 2221,
+                    'code' => 22021,
                 ],
                 21 => [
                     'name' => 'M\'Cid',
-                    'code' => 2222,
+                    'code' => 22022,
                 ],
                 22 => [
                     'name' => 'Merine',
-                    'code' => 2223,
+                    'code' => 22023,
                 ],
                 23 => [
                     'name' => 'Mezaourou',
-                    'code' => 2224,
+                    'code' => 22024,
                 ],
                 24 => [
                     'name' => 'Mostefa Ben Brahim',
-                    'code' => 2225,
+                    'code' => 22025,
                 ],
                 25 => [
                     'name' => 'Moulay Slissen',
-                    'code' => 2226,
+                    'code' => 22026,
                 ],
                 26 => [
                     'name' => 'Oued Sebaa',
-                    'code' => 2227,
+                    'code' => 22027,
                 ],
                 27 => [
                     'name' => 'Oued Sefioun',
-                    'code' => 2228,
+                    'code' => 22028,
                 ],
                 28 => [
                     'name' => 'Oued Taourira',
-                    'code' => 2229,
+                    'code' => 22029,
                 ],
                 29 => [
                     'name' => 'Ras El Ma',
-                    'code' => 2230,
+                    'code' => 22030,
                 ],
                 30 => [
                     'name' => 'Redjem Demouche',
-                    'code' => 2231,
+                    'code' => 22031,
                 ],
                 31 => [
                     'name' => 'Sehala Thaoura',
-                    'code' => 2232,
+                    'code' => 22032,
                 ],
                 32 => [
                     'name' => 'Sfisef',
-                    'code' => 2233,
+                    'code' => 22033,
                 ],
                 33 => [
                     'name' => 'Sidi Ali Benyoub',
-                    'code' => 2234,
+                    'code' => 22034,
                 ],
                 34 => [
                     'name' => 'Sidi Ali Boussidi',
-                    'code' => 2235,
+                    'code' => 22035,
                 ],
                 35 => [
                     'name' => 'Sidi Bel Abbes',
-                    'code' => 2236,
+                    'code' => 22036,
                 ],
                 36 => [
                     'name' => 'Sidi Brahim',
-                    'code' => 2237,
+                    'code' => 22037,
                 ],
                 37 => [
                     'name' => 'Sidi Chaib',
-                    'code' => 2238,
+                    'code' => 22038,
                 ],
                 38 => [
                     'name' => 'Sidi Daho des Zairs',
-                    'code' => 2239,
+                    'code' => 22039,
                 ],
                 39 => [
                     'name' => 'Sidi Hamadouche',
-                    'code' => 2240,
+                    'code' => 22040,
                 ],
                 40 => [
                     'name' => 'Sidi Khaled',
-                    'code' => 2241,
+                    'code' => 22041,
                 ],
                 41 => [
                     'name' => 'Sidi Lahcene',
-                    'code' => 2242,
+                    'code' => 22042,
                 ],
                 42 => [
                     'name' => 'Sidi Yacoub',
-                    'code' => 2243,
+                    'code' => 22043,
                 ],
                 43 => [
                     'name' => 'Tabia',
-                    'code' => 2244,
+                    'code' => 22044,
                 ],
                 44 => [
                     'name' => 'Tafissour',
-                    'code' => 2245,
+                    'code' => 22045,
                 ],
                 45 => [
                     'name' => 'Taoudmout',
-                    'code' => 2246,
+                    'code' => 22046,
                 ],
                 46 => [
                     'name' => 'Teghalimet',
-                    'code' => 2247,
+                    'code' => 22047,
                 ],
                 47 => [
                     'name' => 'Telagh',
-                    'code' => 2248,
+                    'code' => 22048,
                 ],
                 48 => [
                     'name' => 'Tenira',
-                    'code' => 2249,
+                    'code' => 22049,
                 ],
                 49 => [
                     'name' => 'Tessala',
-                    'code' => 2250,
+                    'code' => 22050,
                 ],
                 50 => [
                     'name' => 'Tilmouni',
-                    'code' => 2251,
+                    'code' => 22051,
                 ],
                 51 => [
                     'name' => 'Zerouala',
-                    'code' => 2252,
+                    'code' => 22052,
                 ],
             ],
             23 => [
                 0 => [
                     'name' => 'Annaba',
-                    'code' => 2301,
+                    'code' => 23001,
                 ],
                 1 => [
                     'name' => 'Berrahal',
-                    'code' => 2302,
+                    'code' => 23002,
                 ],
                 2 => [
                     'name' => 'El Hadjar',
-                    'code' => 2303,
+                    'code' => 23003,
                 ],
                 3 => [
                     'name' => 'Eulma',
-                    'code' => 2304,
+                    'code' => 23004,
                 ],
                 4 => [
                     'name' => 'El Bouni',
-                    'code' => 2305,
+                    'code' => 23005,
                 ],
                 5 => [
                     'name' => 'Oued El Aneb',
-                    'code' => 2306,
+                    'code' => 23006,
                 ],
                 6 => [
                     'name' => 'Cheurfa',
-                    'code' => 2307,
+                    'code' => 23007,
                 ],
                 7 => [
                     'name' => 'Seraïdi',
-                    'code' => 2308,
+                    'code' => 23008,
                 ],
                 8 => [
                     'name' => 'Aïn Berda',
-                    'code' => 2309,
+                    'code' => 23009,
                 ],
                 9 => [
                     'name' => 'Chetaïbi',
-                    'code' => 2310,
+                    'code' => 23010,
                 ],
                 10 => [
                     'name' => 'Sidi Amar',
-                    'code' => 2311,
+                    'code' => 23011,
                 ],
                 11 => [
                     'name' => 'Treat',
-                    'code' => 2312,
+                    'code' => 23012,
                 ],
             ],
             24 => [
                 0 => [
                     'name' => 'Aïn Ben Beida',
-                    'code' => 2401,
+                    'code' => 24001,
                 ],
                 1 => [
                     'name' => 'Aïn Larbi',
-                    'code' => 2402,
+                    'code' => 24002,
                 ],
                 2 => [
                     'name' => 'Aïn Makhlouf',
-                    'code' => 2403,
+                    'code' => 24003,
                 ],
                 3 => [
                     'name' => 'Aïn Reggada',
-                    'code' => 2404,
+                    'code' => 24004,
                 ],
                 4 => [
                     'name' => 'Aïn Sandel',
-                    'code' => 2405,
+                    'code' => 24005,
                 ],
                 5 => [
                     'name' => 'Belkheir',
-                    'code' => 2406,
+                    'code' => 24006,
                 ],
                 6 => [
                     'name' => 'Ben Djerrah',
-                    'code' => 2407,
+                    'code' => 24007,
                 ],
                 7 => [
                     'name' => 'Beni Mezline',
-                    'code' => 2408,
+                    'code' => 24008,
                 ],
                 8 => [
                     'name' => 'Bordj Sabath',
-                    'code' => 2409,
+                    'code' => 24009,
                 ],
                 9 => [
                     'name' => 'Bouhachana',
-                    'code' => 24010,
+                    'code' => 240010,
                 ],
                 10 => [
                     'name' => 'Bouhamdane',
-                    'code' => 2411,
+                    'code' => 24011,
                 ],
                 11 => [
                     'name' => 'Bouati Mahmoud',
-                    'code' => 2412,
+                    'code' => 24012,
                 ],
                 12 => [
                     'name' => 'Bouchegouf',
-                    'code' => 2413,
+                    'code' => 24013,
                 ],
                 13 => [
                     'name' => 'Boumahra Ahmed',
-                    'code' => 2414,
+                    'code' => 24014,
                 ],
                 14 => [
                     'name' => 'Dahouara',
-                    'code' => 2415,
+                    'code' => 24015,
                 ],
                 15 => [
                     'name' => 'Djeballah Khemissi',
-                    'code' => 2416,
+                    'code' => 24016,
                 ],
                 16 => [
                     'name' => 'El Fedjoudj',
-                    'code' => 2417,
+                    'code' => 24017,
                 ],
                 17 => [
                     'name' => 'Guellat Bou Sbaa',
-                    'code' => 2418,
+                    'code' => 24018,
                 ],
                 18 => [
                     'name' => 'Guelma',
-                    'code' => 2419,
+                    'code' => 24019,
                 ],
                 19 => [
                     'name' => 'Hammam Debagh',
-                    'code' => 2420,
+                    'code' => 24020,
                 ],
                 20 => [
                     'name' => 'Hammam N\'Bail',
-                    'code' => 2421,
+                    'code' => 24021,
                 ],
                 21 => [
                     'name' => 'Héliopolis',
-                    'code' => 2422,
+                    'code' => 24022,
                 ],
                 22 => [
                     'name' => 'Houari Boumédiène',
-                    'code' => 2423,
+                    'code' => 24023,
                 ],
                 23 => [
                     'name' => 'Khezarra',
-                    'code' => 2424,
+                    'code' => 24024,
                 ],
                 24 => [
                     'name' => 'Medjez Amar',
-                    'code' => 2425,
+                    'code' => 24025,
                 ],
                 25 => [
                     'name' => 'Medjez Sfa',
-                    'code' => 2426,
+                    'code' => 24026,
                 ],
                 26 => [
                     'name' => 'Nechmaya',
-                    'code' => 2427,
+                    'code' => 24027,
                 ],
                 27 => [
                     'name' => 'Oued Cheham',
-                    'code' => 2428,
+                    'code' => 24028,
                 ],
                 28 => [
                     'name' => 'Oued Fragha',
-                    'code' => 2429,
+                    'code' => 24029,
                 ],
                 29 => [
                     'name' => 'Oued Zenati',
-                    'code' => 2430,
+                    'code' => 24030,
                 ],
                 30 => [
                     'name' => 'Ras El Agba',
-                    'code' => 2431,
+                    'code' => 24031,
                 ],
                 31 => [
                     'name' => 'Roknia',
-                    'code' => 2432,
+                    'code' => 24032,
                 ],
                 32 => [
                     'name' => 'Sellaoua Announa',
-                    'code' => 2433,
+                    'code' => 24033,
                 ],
                 33 => [
                     'name' => 'Tamlouka',
-                    'code' => 2434,
+                    'code' => 24034,
                 ],
             ],
             25 => [
                 0 => [
                     'name' => 'Aïn Abid',
-                    'code' => 2501,
+                    'code' => 25001,
                 ],
                 1 => [
                     'name' => 'Aïn Smara',
-                    'code' => 2502,
+                    'code' => 25002,
                 ],
                 2 => [
                     'name' => 'Beni Hamiden',
-                    'code' => 2503,
+                    'code' => 25003,
                 ],
                 3 => [
                     'name' => 'Constantine',
-                    'code' => 2504,
+                    'code' => 25004,
                 ],
                 4 => [
                     'name' => 'Didouche Mourad',
-                    'code' => 2505,
+                    'code' => 25005,
                 ],
                 5 => [
                     'name' => 'El Khroub',
-                    'code' => 2506,
+                    'code' => 25006,
                 ],
                 6 => [
                     'name' => 'Hamma Bouziane',
-                    'code' => 2507,
+                    'code' => 25007,
                 ],
                 7 => [
                     'name' => 'Ibn Badis',
-                    'code' => 2508,
+                    'code' => 25008,
                 ],
                 8 => [
                     'name' => 'Ibn Ziad',
-                    'code' => 2509,
+                    'code' => 25009,
                 ],
                 9 => [
                     'name' => 'Messaoud Boudjriou',
-                    'code' => 25010,
+                    'code' => 250010,
                 ],
                 10 => [
                     'name' => 'Ouled Rahmoune',
-                    'code' => 2511,
+                    'code' => 25011,
                 ],
                 11 => [
                     'name' => 'Zighoud Youcef',
-                    'code' => 2512,
+                    'code' => 25012,
                 ],
             ],
             26 => [
                 0 => [
                     'name' => 'Aïn Boucif',
-                    'code' => 2601,
+                    'code' => 26001,
                 ],
                 1 => [
                     'name' => 'Aïn Ouksir',
-                    'code' => 2602,
+                    'code' => 26002,
                 ],
                 2 => [
                     'name' => 'Aissaouia',
-                    'code' => 2603,
+                    'code' => 26003,
                 ],
                 3 => [
                     'name' => 'Aziz',
-                    'code' => 2604,
+                    'code' => 26004,
                 ],
                 4 => [
                     'name' => 'Baata',
-                    'code' => 2605,
+                    'code' => 26005,
                 ],
                 5 => [
                     'name' => 'Benchicao',
-                    'code' => 2606,
+                    'code' => 26006,
                 ],
                 6 => [
                     'name' => 'Beni Slimane',
-                    'code' => 2607,
+                    'code' => 26007,
                 ],
                 7 => [
                     'name' => 'Berrouaghia',
-                    'code' => 2608,
+                    'code' => 26008,
                 ],
                 8 => [
                     'name' => 'Bir Ben Laabed',
-                    'code' => 2609,
+                    'code' => 26009,
                 ],
                 9 => [
                     'name' => 'Boghar',
-                    'code' => 26010,
+                    'code' => 260010,
                 ],
                 10 => [
                     'name' => 'Bou Aiche',
-                    'code' => 2611,
+                    'code' => 26011,
                 ],
                 11 => [
                     'name' => 'Bouaichoune',
-                    'code' => 2612,
+                    'code' => 26012,
                 ],
                 12 => [
                     'name' => 'Bouchrahil',
-                    'code' => 2613,
+                    'code' => 26013,
                 ],
                 13 => [
                     'name' => 'Boughezoul',
-                    'code' => 2614,
+                    'code' => 26014,
                 ],
                 14 => [
                     'name' => 'Bouskene',
-                    'code' => 2615,
+                    'code' => 26015,
                 ],
                 15 => [
                     'name' => 'Chahbounia',
-                    'code' => 2616,
+                    'code' => 26016,
                 ],
                 16 => [
                     'name' => 'Chellalet El Adhaoura',
-                    'code' => 2617,
+                    'code' => 26017,
                 ],
                 17 => [
                     'name' => 'Cheniguel',
-                    'code' => 2618,
+                    'code' => 26018,
                 ],
                 18 => [
                     'name' => 'Derrag',
-                    'code' => 2619,
+                    'code' => 26019,
                 ],
                 19 => [
                     'name' => 'Deux Bassins',
-                    'code' => 2620,
+                    'code' => 26020,
                 ],
                 20 => [
                     'name' => 'Djouab',
-                    'code' => 2621,
+                    'code' => 26021,
                 ],
                 21 => [
                     'name' => 'Draa Essamar',
-                    'code' => 2622,
+                    'code' => 26022,
                 ],
                 22 => [
                     'name' => 'El Azizia',
-                    'code' => 2623,
+                    'code' => 26023,
                 ],
                 23 => [
                     'name' => 'El Guelb El Kebir',
-                    'code' => 2624,
+                    'code' => 26024,
                 ],
                 24 => [
                     'name' => 'El Hamdania',
-                    'code' => 2625,
+                    'code' => 26025,
                 ],
                 25 => [
                     'name' => 'El Omaria',
-                    'code' => 2626,
+                    'code' => 26026,
                 ],
                 26 => [
                     'name' => 'El Ouinet',
-                    'code' => 2627,
+                    'code' => 26027,
                 ],
                 27 => [
                     'name' => 'Hannacha',
-                    'code' => 2628,
+                    'code' => 26028,
                 ],
                 28 => [
                     'name' => 'Kef Lakhdar',
-                    'code' => 2629,
+                    'code' => 26029,
                 ],
                 29 => [
                     'name' => 'Khams Djouamaa',
-                    'code' => 2630,
+                    'code' => 26030,
                 ],
                 30 => [
                     'name' => 'Ksar Boukhari',
-                    'code' => 2631,
+                    'code' => 26031,
                 ],
                 31 => [
                     'name' => 'Meghraoua',
-                    'code' => 2632,
+                    'code' => 26032,
                 ],
                 32 => [
                     'name' => 'Médéa',
-                    'code' => 2633,
+                    'code' => 26033,
                 ],
                 33 => [
                     'name' => 'Moudjbar',
-                    'code' => 2634,
+                    'code' => 26034,
                 ],
                 34 => [
                     'name' => 'Meftaha',
-                    'code' => 2635,
+                    'code' => 26035,
                 ],
                 35 => [
                     'name' => 'Mezerana',
-                    'code' => 2636,
+                    'code' => 26036,
                 ],
                 36 => [
                     'name' => 'Mihoub',
-                    'code' => 2637,
+                    'code' => 26037,
                 ],
                 37 => [
                     'name' => 'Ouamri',
-                    'code' => 2638,
+                    'code' => 26038,
                 ],
                 38 => [
                     'name' => 'Oued Harbil',
-                    'code' => 2639,
+                    'code' => 26039,
                 ],
                 39 => [
                     'name' => 'Ouled Antar',
-                    'code' => 2640,
+                    'code' => 26040,
                 ],
                 40 => [
                     'name' => 'Ouled Bouachra',
-                    'code' => 2641,
+                    'code' => 26041,
                 ],
                 41 => [
                     'name' => 'Ouled Brahim',
-                    'code' => 2642,
+                    'code' => 26042,
                 ],
                 42 => [
                     'name' => 'Ouled Deide',
-                    'code' => 2643,
+                    'code' => 26043,
                 ],
                 43 => [
                     'name' => 'Ouled Hellal',
-                    'code' => 2644,
+                    'code' => 26044,
                 ],
                 44 => [
                     'name' => 'Ouled Maaref',
-                    'code' => 2645,
+                    'code' => 26045,
                 ],
                 45 => [
                     'name' => 'Oum El Djalil',
-                    'code' => 2646,
+                    'code' => 26046,
                 ],
                 46 => [
                     'name' => 'Ouzera',
-                    'code' => 2647,
+                    'code' => 26047,
                 ],
                 47 => [
                     'name' => 'Rebaia',
-                    'code' => 2648,
+                    'code' => 26048,
                 ],
                 48 => [
                     'name' => 'Saneg',
-                    'code' => 2649,
+                    'code' => 26049,
                 ],
                 49 => [
                     'name' => 'Sedraia',
-                    'code' => 2650,
+                    'code' => 26050,
                 ],
                 50 => [
                     'name' => 'Seghouane',
-                    'code' => 2651,
+                    'code' => 26051,
                 ],
                 51 => [
                     'name' => 'Si Mahdjoub',
-                    'code' => 2652,
+                    'code' => 26052,
                 ],
                 52 => [
                     'name' => 'Sidi Damed',
-                    'code' => 2653,
+                    'code' => 26053,
                 ],
                 53 => [
                     'name' => 'Sidi Errabia',
-                    'code' => 2654,
+                    'code' => 26054,
                 ],
                 54 => [
                     'name' => 'Sidi Naamane',
-                    'code' => 2655,
+                    'code' => 26055,
                 ],
                 55 => [
                     'name' => 'Sidi Zahar',
-                    'code' => 2656,
+                    'code' => 26056,
                 ],
                 56 => [
                     'name' => 'Sidi Ziane',
-                    'code' => 2657,
+                    'code' => 26057,
                 ],
                 57 => [
                     'name' => 'Souagui',
-                    'code' => 2658,
+                    'code' => 26058,
                 ],
                 58 => [
                     'name' => 'Tablat',
-                    'code' => 2659,
+                    'code' => 26059,
                 ],
                 59 => [
                     'name' => 'Tafraout',
-                    'code' => 2660,
+                    'code' => 26060,
                 ],
                 60 => [
                     'name' => 'Tamesguida',
-                    'code' => 2661,
+                    'code' => 26061,
                 ],
                 61 => [
                     'name' => 'Tizi Mahdi',
-                    'code' => 2662,
+                    'code' => 26062,
                 ],
                 62 => [
                     'name' => 'Tlatet Eddouar',
-                    'code' => 2663,
+                    'code' => 26063,
                 ],
                 63 => [
                     'name' => 'Zoubiria',
-                    'code' => 2664,
+                    'code' => 26064,
                 ],
             ],
             27 => [
                 0 => [
                     'name' => 'Abdelmalek Ramdane',
-                    'code' => 2701,
+                    'code' => 27001,
                 ],
                 1 => [
                     'name' => 'Achaacha',
-                    'code' => 2702,
+                    'code' => 27002,
                 ],
                 2 => [
                     'name' => 'Aïn Boudinar',
-                    'code' => 2703,
+                    'code' => 27003,
                 ],
                 3 => [
                     'name' => 'Aïn Nouissy',
-                    'code' => 2704,
+                    'code' => 27004,
                 ],
                 4 => [
                     'name' => 'Aïn Sidi Cherif',
-                    'code' => 2705,
+                    'code' => 27005,
                 ],
                 5 => [
                     'name' => 'Aïn Tedles',
-                    'code' => 2706,
+                    'code' => 27006,
                 ],
                 6 => [
                     'name' => 'Blad Touahria',
-                    'code' => 2707,
+                    'code' => 27007,
                 ],
                 7 => [
                     'name' => 'Bouguirat',
-                    'code' => 2708,
+                    'code' => 27008,
                 ],
                 8 => [
                     'name' => 'El Hassiane',
-                    'code' => 2709,
+                    'code' => 27009,
                 ],
                 9 => [
                     'name' => 'Fornaka',
-                    'code' => 27010,
+                    'code' => 270010,
                 ],
                 10 => [
                     'name' => 'Hadjadj',
-                    'code' => 2711,
+                    'code' => 27011,
                 ],
                 11 => [
                     'name' => 'Hassi Mameche',
-                    'code' => 2712,
+                    'code' => 27012,
                 ],
                 12 => [
                     'name' => 'Khadra',
-                    'code' => 2713,
+                    'code' => 27013,
                 ],
                 13 => [
                     'name' => 'Kheireddine',
-                    'code' => 2714,
+                    'code' => 27014,
                 ],
                 14 => [
                     'name' => 'Mansourah',
-                    'code' => 2715,
+                    'code' => 27015,
                 ],
                 15 => [
                     'name' => 'Mesra',
-                    'code' => 2716,
+                    'code' => 27016,
                 ],
                 16 => [
                     'name' => 'Mazagran',
-                    'code' => 2717,
+                    'code' => 27017,
                 ],
                 17 => [
                     'name' => 'Mostaganem',
-                    'code' => 2718,
+                    'code' => 27018,
                 ],
                 18 => [
                     'name' => 'Nekmaria',
-                    'code' => 2719,
+                    'code' => 27019,
                 ],
                 19 => [
                     'name' => 'Oued El Kheir',
-                    'code' => 2720,
+                    'code' => 27020,
                 ],
                 20 => [
                     'name' => 'Ouled Boughalem',
-                    'code' => 2721,
+                    'code' => 27021,
                 ],
                 21 => [
                     'name' => 'Ouled Maallah',
-                    'code' => 2722,
+                    'code' => 27022,
                 ],
                 22 => [
                     'name' => 'Safsaf',
-                    'code' => 2723,
+                    'code' => 27023,
                 ],
                 23 => [
                     'name' => 'Sayada',
-                    'code' => 2724,
+                    'code' => 27024,
                 ],
                 24 => [
                     'name' => 'Sidi Ali',
-                    'code' => 2725,
+                    'code' => 27025,
                 ],
                 25 => [
                     'name' => 'Sidi Belattar',
-                    'code' => 2726,
+                    'code' => 27026,
                 ],
                 26 => [
                     'name' => 'Sidi Lakhdar',
-                    'code' => 2727,
+                    'code' => 27027,
                 ],
                 27 => [
                     'name' => 'Sirat',
-                    'code' => 2728,
+                    'code' => 27028,
                 ],
                 28 => [
                     'name' => 'Souaflia',
-                    'code' => 2729,
+                    'code' => 27029,
                 ],
                 29 => [
                     'name' => 'Sour',
-                    'code' => 2730,
+                    'code' => 27030,
                 ],
                 30 => [
                     'name' => 'Stidia',
-                    'code' => 2731,
+                    'code' => 27031,
                 ],
                 31 => [
                     'name' => 'Tazgait',
-                    'code' => 2732,
+                    'code' => 27032,
                 ],
             ],
             28 => [
                 0 => [
                     'name' => 'Aïn El Hadjel',
-                    'code' => 2801,
+                    'code' => 28001,
                 ],
                 1 => [
                     'name' => 'Aïn El Melh',
-                    'code' => 2802,
+                    'code' => 28002,
                 ],
                 2 => [
                     'name' => 'Aïn Errich',
-                    'code' => 2803,
+                    'code' => 28003,
                 ],
                 3 => [
                     'name' => 'Aïn Fares',
-                    'code' => 2804,
+                    'code' => 28004,
                 ],
                 4 => [
                     'name' => 'Aïn Khadra',
-                    'code' => 2805,
+                    'code' => 28005,
                 ],
                 5 => [
                     'name' => 'Belaiba',
-                    'code' => 2806,
+                    'code' => 28006,
                 ],
                 6 => [
                     'name' => 'Ben Srour',
-                    'code' => 2807,
+                    'code' => 28007,
                 ],
                 7 => [
                     'name' => 'Beni Ilmane',
-                    'code' => 2808,
+                    'code' => 28008,
                 ],
                 8 => [
                     'name' => 'Benzouh',
-                    'code' => 2809,
+                    'code' => 28009,
                 ],
                 9 => [
                     'name' => 'Berhoum',
-                    'code' => 28010,
+                    'code' => 280010,
                 ],
                 10 => [
                     'name' => 'Bir Foda',
-                    'code' => 2811,
+                    'code' => 28011,
                 ],
                 11 => [
                     'name' => 'Bou Saâda',
-                    'code' => 2812,
+                    'code' => 28012,
                 ],
                 12 => [
                     'name' => 'Bouti Sayah',
-                    'code' => 2813,
+                    'code' => 28013,
                 ],
                 13 => [
                     'name' => 'Chellal',
-                    'code' => 2814,
+                    'code' => 28014,
                 ],
                 14 => [
                     'name' => 'Dehahna',
-                    'code' => 2815,
+                    'code' => 28015,
                 ],
                 15 => [
                     'name' => 'Djebel Messaad',
-                    'code' => 2816,
+                    'code' => 28016,
                 ],
                 16 => [
                     'name' => 'El Hamel',
-                    'code' => 2817,
+                    'code' => 28017,
                 ],
                 17 => [
                     'name' => 'El Houamed',
-                    'code' => 2818,
+                    'code' => 28018,
                 ],
                 18 => [
                     'name' => 'Hammam Dhalaa',
-                    'code' => 2819,
+                    'code' => 28019,
                 ],
                 19 => [
                     'name' => 'Khettouti Sed El Djir',
-                    'code' => 2820,
+                    'code' => 28020,
                 ],
                 20 => [
                     'name' => 'Khoubana',
-                    'code' => 2821,
+                    'code' => 28021,
                 ],
                 21 => [
                     'name' => 'Maadid',
-                    'code' => 2822,
+                    'code' => 28022,
                 ],
                 22 => [
                     'name' => 'Maarif',
-                    'code' => 2823,
+                    'code' => 28023,
                 ],
                 23 => [
                     'name' => 'Magra',
-                    'code' => 2824,
+                    'code' => 28024,
                 ],
                 24 => [
                     'name' => 'M\'Cif',
-                    'code' => 2825,
+                    'code' => 28025,
                 ],
                 25 => [
                     'name' => 'Medjedel',
-                    'code' => 2826,
+                    'code' => 28026,
                 ],
                 26 => [
                     'name' => 'M\'Sila',
-                    'code' => 2827,
+                    'code' => 28027,
                 ],
                 27 => [
                     'name' => 'M\'Tarfa',
-                    'code' => 2828,
+                    'code' => 28028,
                 ],
                 28 => [
                     'name' => 'Ouanougha',
-                    'code' => 2829,
+                    'code' => 28029,
                 ],
                 29 => [
                     'name' => 'Ouled Addi Guebala',
-                    'code' => 2830,
+                    'code' => 28030,
                 ],
                 30 => [
                     'name' => 'Ouled Atia',
-                    'code' => 2831,
+                    'code' => 28031,
                 ],
                 31 => [
                     'name' => 'Mohammed Boudiaf',
-                    'code' => 2832,
+                    'code' => 28032,
                 ],
                 32 => [
                     'name' => 'Ouled Derradj',
-                    'code' => 2833,
+                    'code' => 28033,
                 ],
                 33 => [
                     'name' => 'Ouled Madhi',
-                    'code' => 2834,
+                    'code' => 28034,
                 ],
                 34 => [
                     'name' => 'Ouled Mansour',
-                    'code' => 2835,
+                    'code' => 28035,
                 ],
                 35 => [
                     'name' => 'Ouled Sidi Brahim',
-                    'code' => 2836,
+                    'code' => 28036,
                 ],
                 36 => [
                     'name' => 'Ouled Slimane',
-                    'code' => 2837,
+                    'code' => 28037,
                 ],
                 37 => [
                     'name' => 'Oultem',
-                    'code' => 2838,
+                    'code' => 28038,
                 ],
                 38 => [
                     'name' => 'Sidi Aïssa',
-                    'code' => 2839,
+                    'code' => 28039,
                 ],
                 39 => [
                     'name' => 'Sidi Ameur',
-                    'code' => 2840,
+                    'code' => 28040,
                 ],
                 40 => [
                     'name' => 'Sidi Hadjeres',
-                    'code' => 2841,
+                    'code' => 28041,
                 ],
                 41 => [
                     'name' => 'Sidi M\'Hamed',
-                    'code' => 2842,
+                    'code' => 28042,
                 ],
                 42 => [
                     'name' => 'Slim',
-                    'code' => 2843,
+                    'code' => 28043,
                 ],
                 43 => [
                     'name' => 'Souamaa',
-                    'code' => 2844,
+                    'code' => 28044,
                 ],
                 44 => [
                     'name' => 'Tamsa',
-                    'code' => 2845,
+                    'code' => 28045,
                 ],
                 45 => [
                     'name' => 'Tarmount',
-                    'code' => 2846,
+                    'code' => 28046,
                 ],
                 46 => [
                     'name' => 'Zarzour',
-                    'code' => 2847,
+                    'code' => 28047,
                 ],
             ],
             29 => [
                 0 => [
                     'name' => 'Aïn Fares',
-                    'code' => 2901,
+                    'code' => 29001,
                 ],
                 1 => [
                     'name' => 'Aïn Fekan',
-                    'code' => 2902,
+                    'code' => 29002,
                 ],
                 2 => [
                     'name' => 'Aïn Ferah',
-                    'code' => 2903,
+                    'code' => 29003,
                 ],
                 3 => [
                     'name' => 'Aïn Fras',
-                    'code' => 2904,
+                    'code' => 29004,
                 ],
                 4 => [
                     'name' => 'Alaïmia',
-                    'code' => 2905,
+                    'code' => 29005,
                 ],
                 5 => [
                     'name' => 'Aouf',
-                    'code' => 2906,
+                    'code' => 29006,
                 ],
                 6 => [
                     'name' => 'Beniane',
-                    'code' => 2907,
+                    'code' => 29007,
                 ],
                 7 => [
                     'name' => 'Bou Hanifia',
-                    'code' => 2908,
+                    'code' => 29008,
                 ],
                 8 => [
                     'name' => 'Bou Henni',
-                    'code' => 2909,
+                    'code' => 29009,
                 ],
                 9 => [
                     'name' => 'Chorfa',
-                    'code' => 29010,
+                    'code' => 290010,
                 ],
                 10 => [
                     'name' => 'El Bordj',
-                    'code' => 2911,
+                    'code' => 29011,
                 ],
                 11 => [
                     'name' => 'El Gaada',
-                    'code' => 2912,
+                    'code' => 29012,
                 ],
                 12 => [
                     'name' => 'El Ghomri',
-                    'code' => 2913,
+                    'code' => 29013,
                 ],
                 13 => [
                     'name' => 'El Guettana',
-                    'code' => 2914,
+                    'code' => 29014,
                 ],
                 14 => [
                     'name' => 'El Keurt',
-                    'code' => 2915,
+                    'code' => 29015,
                 ],
                 15 => [
                     'name' => 'El Menaouer',
-                    'code' => 2916,
+                    'code' => 29016,
                 ],
                 16 => [
                     'name' => 'Ferraguig',
-                    'code' => 2917,
+                    'code' => 29017,
                 ],
                 17 => [
                     'name' => 'Froha',
-                    'code' => 2918,
+                    'code' => 29018,
                 ],
                 18 => [
                     'name' => 'Gharrous',
-                    'code' => 2919,
+                    'code' => 29019,
                 ],
                 19 => [
                     'name' => 'Guerdjoum',
-                    'code' => 2920,
+                    'code' => 29020,
                 ],
                 20 => [
                     'name' => 'Ghriss',
-                    'code' => 2921,
+                    'code' => 29021,
                 ],
                 21 => [
                     'name' => 'Hachem',
-                    'code' => 2922,
+                    'code' => 29022,
                 ],
                 22 => [
                     'name' => 'Hacine',
-                    'code' => 2923,
+                    'code' => 29023,
                 ],
                 23 => [
                     'name' => 'Khalouia',
-                    'code' => 2924,
+                    'code' => 29024,
                 ],
                 24 => [
                     'name' => 'Makdha',
-                    'code' => 2925,
+                    'code' => 29025,
                 ],
                 25 => [
                     'name' => 'Mamounia',
-                    'code' => 2926,
+                    'code' => 29026,
                 ],
                 26 => [
                     'name' => 'Maoussa',
-                    'code' => 2927,
+                    'code' => 29027,
                 ],
                 27 => [
                     'name' => 'Mascara',
-                    'code' => 2928,
+                    'code' => 29028,
                 ],
                 28 => [
                     'name' => 'Matemore',
-                    'code' => 2929,
+                    'code' => 29029,
                 ],
                 29 => [
                     'name' => 'Mocta Douz',
-                    'code' => 2930,
+                    'code' => 29030,
                 ],
                 30 => [
                     'name' => 'Mohammadia',
-                    'code' => 2931,
+                    'code' => 29031,
                 ],
                 31 => [
                     'name' => 'Nesmoth',
-                    'code' => 2932,
+                    'code' => 29032,
                 ],
                 32 => [
                     'name' => 'Oggaz',
-                    'code' => 2933,
+                    'code' => 29033,
                 ],
                 33 => [
                     'name' => 'Oued El Abtal',
-                    'code' => 2934,
+                    'code' => 29034,
                 ],
                 34 => [
                     'name' => 'Oued Taria',
-                    'code' => 2935,
+                    'code' => 29035,
                 ],
                 35 => [
                     'name' => 'Ras El Aïn Amirouche',
-                    'code' => 2936,
+                    'code' => 29036,
                 ],
                 36 => [
                     'name' => 'Sedjerara',
-                    'code' => 2937,
+                    'code' => 29037,
                 ],
                 37 => [
                     'name' => 'Sehailia',
-                    'code' => 2938,
+                    'code' => 29038,
                 ],
                 38 => [
                     'name' => 'Sidi Abdeldjebar',
-                    'code' => 2939,
+                    'code' => 29039,
                 ],
                 39 => [
                     'name' => 'Sidi Abdelmoumen',
-                    'code' => 2940,
+                    'code' => 29040,
                 ],
                 40 => [
                     'name' => 'Sidi Kada',
-                    'code' => 2941,
+                    'code' => 29041,
                 ],
                 41 => [
                     'name' => 'Sidi Boussaid',
-                    'code' => 2942,
+                    'code' => 29042,
                 ],
                 42 => [
                     'name' => 'Sig',
-                    'code' => 2943,
+                    'code' => 29043,
                 ],
                 43 => [
                     'name' => 'Tighennif',
-                    'code' => 2944,
+                    'code' => 29044,
                 ],
                 44 => [
                     'name' => 'Tizi',
-                    'code' => 2945,
+                    'code' => 29045,
                 ],
                 45 => [
                     'name' => 'Zahana',
-                    'code' => 2946,
+                    'code' => 29046,
                 ],
                 46 => [
                     'name' => 'Zelmata',
-                    'code' => 2947,
+                    'code' => 29047,
                 ],
             ],
             30 => [
                 0 => [
                     'name' => 'Aïn Beida',
-                    'code' => 3001,
+                    'code' => 30001,
                 ],
                 1 => [
                     'name' => 'El Borma',
-                    'code' => 3002,
+                    'code' => 30002,
                 ],
                 2 => [
                     'name' => 'Hassi Ben Abdellah',
-                    'code' => 3003,
+                    'code' => 30003,
                 ],
                 3 => [
                     'name' => 'Hassi Messaoud',
-                    'code' => 3004,
+                    'code' => 30004,
                 ],
                 4 => [
                     'name' => 'N\'Goussa',
-                    'code' => 3005,
+                    'code' => 30005,
                 ],
                 5 => [
                     'name' => 'Ouargla',
-                    'code' => 3006,
+                    'code' => 30006,
                 ],
                 6 => [
                     'name' => 'Rouissat',
-                    'code' => 3007,
+                    'code' => 30007,
                 ],
                 7 => [
                     'name' => 'Sidi Khouiled',
-                    'code' => 3008,
+                    'code' => 30008,
                 ],
             ],
             31 => [
                 0 => [
                     'name' => 'Oran',
-                    'code' => 3101,
+                    'code' => 31001,
                 ],
                 1 => [
                     'name' => 'Gdyel',
-                    'code' => 3102,
+                    'code' => 31002,
                 ],
                 2 => [
                     'name' => 'Bir El Djir',
-                    'code' => 3103,
+                    'code' => 31003,
                 ],
                 3 => [
                     'name' => 'Hassi Bounif',
-                    'code' => 3104,
+                    'code' => 31004,
                 ],
                 4 => [
                     'name' => 'Es Senia',
-                    'code' => 3105,
+                    'code' => 31005,
                 ],
                 5 => [
                     'name' => 'Arzew',
-                    'code' => 3106,
+                    'code' => 31006,
                 ],
                 6 => [
                     'name' => 'Bethioua',
-                    'code' => 3107,
+                    'code' => 31007,
                 ],
                 7 => [
                     'name' => 'Marsat El Hadjadj',
-                    'code' => 3108,
+                    'code' => 31008,
                 ],
                 8 => [
                     'name' => 'Aïn El Turk',
-                    'code' => 3109,
+                    'code' => 31009,
                 ],
                 9 => [
                     'name' => 'El Ançor',
-                    'code' => 3110,
+                    'code' => 31010,
                 ],
                 10 => [
                     'name' => 'Oued Tlelat',
-                    'code' => 3111,
+                    'code' => 31011,
                 ],
                 11 => [
                     'name' => 'Tafraoui',
-                    'code' => 3112,
+                    'code' => 31012,
                 ],
                 12 => [
                     'name' => 'Sidi Chami',
-                    'code' => 3113,
+                    'code' => 31013,
                 ],
                 13 => [
                     'name' => 'Boufatis',
-                    'code' => 3114,
+                    'code' => 31014,
                 ],
                 14 => [
                     'name' => 'Mers El Kébir',
-                    'code' => 3115,
+                    'code' => 31015,
                 ],
                 15 => [
                     'name' => 'Bousfer',
-                    'code' => 3116,
+                    'code' => 31016,
                 ],
                 16 => [
                     'name' => 'El Kerma',
-                    'code' => 3117,
+                    'code' => 31017,
                 ],
                 17 => [
                     'name' => 'El Braya',
-                    'code' => 3118,
+                    'code' => 31018,
                 ],
                 18 => [
                     'name' => 'Hassi Ben Okba',
-                    'code' => 3119,
+                    'code' => 31019,
                 ],
                 19 => [
                     'name' => 'Ben Freha',
-                    'code' => 3120,
+                    'code' => 31020,
                 ],
                 20 => [
                     'name' => 'Hassi Mefsoukh',
-                    'code' => 3121,
+                    'code' => 31021,
                 ],
                 21 => [
                     'name' => 'Sidi Benyebka',
-                    'code' => 3122,
+                    'code' => 31022,
                 ],
                 22 => [
                     'name' => 'Misserghin',
-                    'code' => 3123,
+                    'code' => 31023,
                 ],
                 23 => [
                     'name' => 'Boutlelis',
-                    'code' => 3124,
+                    'code' => 31024,
                 ],
                 24 => [
                     'name' => 'Aïn El Kerma',
-                    'code' => 3125,
+                    'code' => 31025,
                 ],
                 25 => [
                     'name' => 'Aïn El Bia',
-                    'code' => 3126,
+                    'code' => 31026,
                 ],
             ],
             32 => [
                 0 => [
                     'name' => 'El Bayadh',
-                    'code' => 3201,
+                    'code' => 32001,
                 ],
                 1 => [
                     'name' => 'Rogassa',
-                    'code' => 3202,
+                    'code' => 32002,
                 ],
                 2 => [
                     'name' => 'Stitten',
-                    'code' => 3203,
+                    'code' => 32003,
                 ],
                 3 => [
                     'name' => 'Brezina',
-                    'code' => 3204,
+                    'code' => 32004,
                 ],
                 4 => [
                     'name' => 'Ghassoul',
-                    'code' => 3205,
+                    'code' => 32005,
                 ],
                 5 => [
                     'name' => 'Boualem',
-                    'code' => 3206,
+                    'code' => 32006,
                 ],
                 6 => [
                     'name' => 'El Abiodh Sidi Cheikh',
-                    'code' => 3207,
+                    'code' => 32007,
                 ],
                 7 => [
                     'name' => 'Aïn El Orak',
-                    'code' => 3208,
+                    'code' => 32008,
                 ],
                 8 => [
                     'name' => 'Arbaouat',
-                    'code' => 3209,
+                    'code' => 32009,
                 ],
                 9 => [
                     'name' => 'Bougtoub',
-                    'code' => 3210,
+                    'code' => 32010,
                 ],
                 10 => [
                     'name' => 'El Kheiter',
-                    'code' => 3211,
+                    'code' => 32011,
                 ],
                 11 => [
                     'name' => 'Kef El Ahmar',
-                    'code' => 3212,
+                    'code' => 32012,
                 ],
                 12 => [
                     'name' => 'Boussemghoun',
-                    'code' => 3213,
+                    'code' => 32013,
                 ],
                 13 => [
                     'name' => 'Chellala',
-                    'code' => 3214,
+                    'code' => 32014,
                 ],
                 14 => [
                     'name' => 'Kraakda',
-                    'code' => 3215,
+                    'code' => 32015,
                 ],
                 15 => [
                     'name' => 'El Bnoud',
-                    'code' => 3216,
+                    'code' => 32016,
                 ],
                 16 => [
                     'name' => 'Cheguig',
-                    'code' => 3217,
+                    'code' => 32017,
                 ],
                 17 => [
                     'name' => 'Sidi Ameur',
-                    'code' => 3218,
+                    'code' => 32018,
                 ],
                 18 => [
                     'name' => 'El Mehara',
-                    'code' => 3219,
+                    'code' => 32019,
                 ],
                 19 => [
                     'name' => 'Tousmouline',
-                    'code' => 3220,
+                    'code' => 32020,
                 ],
                 20 => [
                     'name' => 'Sidi Slimane',
-                    'code' => 3221,
+                    'code' => 32021,
                 ],
                 21 => [
                     'name' => 'Sidi Tifour',
-                    'code' => 3222,
+                    'code' => 32022,
                 ],
             ],
             33 => [
                 0 => [
                     'name' => 'Illizi',
-                    'code' => 3301,
+                    'code' => 33001,
                 ],
                 1 => [
                     'name' => 'Debdeb',
-                    'code' => 3303,
+                    'code' => 33003,
                 ],
                 2 => [
                     'name' => 'Bordj Omar Driss',
-                    'code' => 3304,
+                    'code' => 33004,
                 ],
                 3 => [
                     'name' => 'In Amenas',
-                    'code' => 3306,
+                    'code' => 33006,
                 ],
             ],
             34 => [
                 0 => [
                     'name' => 'Aïn Taghrout',
-                    'code' => 3401,
+                    'code' => 34001,
                 ],
                 1 => [
                     'name' => 'Aïn Tesra',
-                    'code' => 3402,
+                    'code' => 34002,
                 ],
                 2 => [
                     'name' => 'Belimour',
-                    'code' => 3403,
+                    'code' => 34003,
                 ],
                 3 => [
                     'name' => 'Ben Daoud',
-                    'code' => 3404,
+                    'code' => 34004,
                 ],
                 4 => [
                     'name' => 'Bir Kasdali',
-                    'code' => 3405,
+                    'code' => 34005,
                 ],
                 5 => [
                     'name' => 'Bordj Bou Arreridj',
-                    'code' => 3406,
+                    'code' => 34006,
                 ],
                 6 => [
                     'name' => 'Bordj Ghédir',
-                    'code' => 3407,
+                    'code' => 34007,
                 ],
                 7 => [
                     'name' => 'Bordj Zemoura',
-                    'code' => 3408,
+                    'code' => 34008,
                 ],
                 8 => [
                     'name' => 'Colla',
-                    'code' => 3409,
+                    'code' => 34009,
                 ],
                 9 => [
                     'name' => 'Djaafra',
-                    'code' => 34010,
+                    'code' => 340010,
                 ],
                 10 => [
                     'name' => 'El Ach',
-                    'code' => 3411,
+                    'code' => 34011,
                 ],
                 11 => [
                     'name' => 'El Achir',
-                    'code' => 3412,
+                    'code' => 34012,
                 ],
                 12 => [
                     'name' => 'El Anseur',
-                    'code' => 3413,
+                    'code' => 34013,
                 ],
                 13 => [
                     'name' => 'El Hamadia',
-                    'code' => 3414,
+                    'code' => 34014,
                 ],
                 14 => [
                     'name' => 'El Main',
-                    'code' => 3415,
+                    'code' => 34015,
                 ],
                 15 => [
                     'name' => 'El M\'hir',
-                    'code' => 3416,
+                    'code' => 34016,
                 ],
                 16 => [
                     'name' => 'Ghilassa',
-                    'code' => 3417,
+                    'code' => 34017,
                 ],
                 17 => [
                     'name' => 'Haraza',
-                    'code' => 3418,
+                    'code' => 34018,
                 ],
                 18 => [
                     'name' => 'Hasnaoua',
-                    'code' => 3419,
+                    'code' => 34019,
                 ],
                 19 => [
                     'name' => 'Khelil',
-                    'code' => 3420,
+                    'code' => 34020,
                 ],
                 20 => [
                     'name' => 'Ksour',
-                    'code' => 3421,
+                    'code' => 34021,
                 ],
                 21 => [
                     'name' => 'Mansoura',
-                    'code' => 3422,
+                    'code' => 34022,
                 ],
                 22 => [
                     'name' => 'Medjana',
-                    'code' => 3423,
+                    'code' => 34023,
                 ],
                 23 => [
                     'name' => 'Ouled Brahem',
-                    'code' => 3424,
+                    'code' => 34024,
                 ],
                 24 => [
                     'name' => 'Ouled Dahmane',
-                    'code' => 3425,
+                    'code' => 34025,
                 ],
                 25 => [
                     'name' => 'Ouled Sidi Brahim',
-                    'code' => 3426,
+                    'code' => 34026,
                 ],
                 26 => [
                     'name' => 'Rabta',
-                    'code' => 3427,
+                    'code' => 34027,
                 ],
                 27 => [
                     'name' => 'Ras El Oued',
-                    'code' => 3428,
+                    'code' => 34028,
                 ],
                 28 => [
                     'name' => 'Sidi Embarek',
-                    'code' => 3429,
+                    'code' => 34029,
                 ],
                 29 => [
                     'name' => 'Tefreg',
-                    'code' => 3430,
+                    'code' => 34030,
                 ],
                 30 => [
                     'name' => 'Taglait',
-                    'code' => 3431,
+                    'code' => 34031,
                 ],
                 31 => [
                     'name' => 'Teniet En Nasr',
-                    'code' => 3432,
+                    'code' => 34032,
                 ],
                 32 => [
                     'name' => 'Tassameurt',
-                    'code' => 3433,
+                    'code' => 34033,
                 ],
                 33 => [
                     'name' => 'Tixter',
-                    'code' => 3434,
+                    'code' => 34034,
                 ],
             ],
             35 => [
                 0 => [
                     'name' => 'Afir',
-                    'code' => 3504,
+                    'code' => 35004,
                 ],
                 1 => [
                     'name' => 'Ammal',
-                    'code' => 3529,
+                    'code' => 35029,
                 ],
                 2 => [
                     'name' => 'Baghlia',
-                    'code' => 3506,
+                    'code' => 35006,
                 ],
                 3 => [
                     'name' => 'Ben Choud',
-                    'code' => 3527,
+                    'code' => 35027,
                 ],
                 4 => [
                     'name' => 'Beni Amrane',
-                    'code' => 3530,
+                    'code' => 35030,
                 ],
                 5 => [
                     'name' => 'Bordj Menaïel',
-                    'code' => 3505,
+                    'code' => 35005,
                 ],
                 6 => [
                     'name' => 'Boudouaou',
-                    'code' => 3502,
+                    'code' => 35002,
                 ],
                 7 => [
                     'name' => 'Boudouaou-El-Bahri',
-                    'code' => 3532,
+                    'code' => 35032,
                 ],
                 8 => [
                     'name' => 'Boumerdes',
-                    'code' => 3501,
+                    'code' => 35001,
                 ],
                 9 => [
                     'name' => 'Bouzegza Keddara',
-                    'code' => 3522,
+                    'code' => 35022,
                 ],
                 10 => [
                     'name' => 'Chabet el Ameur',
-                    'code' => 3514,
+                    'code' => 35014,
                 ],
                 11 => [
                     'name' => 'Corso',
-                    'code' => 3519,
+                    'code' => 35019,
                 ],
                 12 => [
                     'name' => 'Dellys',
-                    'code' => 3528,
+                    'code' => 35028,
                 ],
                 13 => [
                     'name' => 'Djinet',
-                    'code' => 3509,
+                    'code' => 35009,
                 ],
                 14 => [
                     'name' => 'El Kharrouba',
-                    'code' => 3538,
+                    'code' => 35038,
                 ],
                 15 => [
                     'name' => 'Hammedi',
-                    'code' => 3536,
+                    'code' => 35036,
                 ],
                 16 => [
                     'name' => 'Issers',
-                    'code' => 3510,
+                    'code' => 35010,
                 ],
                 17 => [
                     'name' => 'Khemis El-Khechna',
-                    'code' => 3537,
+                    'code' => 35037,
                 ],
                 18 => [
                     'name' => 'Larbatache',
-                    'code' => 3521,
+                    'code' => 35021,
                 ],
                 19 => [
                     'name' => 'Leghata',
-                    'code' => 3535,
+                    'code' => 35035,
                 ],
                 20 => [
                     'name' => 'Naciria',
-                    'code' => 3508,
+                    'code' => 35008,
                 ],
                 21 => [
                     'name' => 'Ouled Aïssa',
-                    'code' => 3526,
+                    'code' => 35026,
                 ],
                 22 => [
                     'name' => 'Ouled Hedadj',
-                    'code' => 3533,
+                    'code' => 35033,
                 ],
                 23 => [
                     'name' => 'Ouled Moussa',
-                    'code' => 3520,
+                    'code' => 35020,
                 ],
                 24 => [
                     'name' => 'Si Mustapha',
-                    'code' => 3512,
+                    'code' => 35012,
                 ],
                 25 => [
                     'name' => 'Sidi Daoud',
-                    'code' => 3507,
+                    'code' => 35007,
                 ],
                 26 => [
                     'name' => 'Souk El Had',
-                    'code' => 3531,
+                    'code' => 35031,
                 ],
                 27 => [
                     'name' => 'Taourga',
-                    'code' => 3525,
+                    'code' => 35025,
                 ],
                 28 => [
                     'name' => 'Thenia',
-                    'code' => 3515,
+                    'code' => 35015,
                 ],
                 29 => [
                     'name' => 'Tidjelabine',
-                    'code' => 3513,
+                    'code' => 35013,
                 ],
                 30 => [
                     'name' => 'Timezrit',
-                    'code' => 3518,
+                    'code' => 35018,
                 ],
                 31 => [
                     'name' => 'Zemmouri',
-                    'code' => 3511,
+                    'code' => 35011,
                 ],
             ],
             36 => [
                 0 => [
                     'name' => 'Aïn El Assel',
-                    'code' => 3601,
+                    'code' => 36001,
                 ],
                 1 => [
                     'name' => 'Aïn Kerma',
-                    'code' => 3602,
+                    'code' => 36002,
                 ],
                 2 => [
                     'name' => 'Asfour',
-                    'code' => 3603,
+                    'code' => 36003,
                 ],
                 3 => [
                     'name' => 'Ben Mehidi',
-                    'code' => 3604,
+                    'code' => 36004,
                 ],
                 4 => [
                     'name' => 'Berrihane',
-                    'code' => 3605,
+                    'code' => 36005,
                 ],
                 5 => [
                     'name' => 'Besbes',
-                    'code' => 3606,
+                    'code' => 36006,
                 ],
                 6 => [
                     'name' => 'Bougous',
-                    'code' => 3607,
+                    'code' => 36007,
                 ],
                 7 => [
                     'name' => 'Bouhadjar',
-                    'code' => 3608,
+                    'code' => 36008,
                 ],
                 8 => [
                     'name' => 'Bouteldja',
-                    'code' => 3609,
+                    'code' => 36009,
                 ],
                 9 => [
                     'name' => 'Chebaita Mokhtar',
-                    'code' => 36010,
+                    'code' => 360010,
                 ],
                 10 => [
                     'name' => 'Chefia',
-                    'code' => 3611,
+                    'code' => 36011,
                 ],
                 11 => [
                     'name' => 'Chihani',
-                    'code' => 3612,
+                    'code' => 36012,
                 ],
                 12 => [
                     'name' => 'Dréan',
-                    'code' => 3613,
+                    'code' => 36013,
                 ],
                 13 => [
                     'name' => 'Echatt',
-                    'code' => 3614,
+                    'code' => 36014,
                 ],
                 14 => [
                     'name' => 'El Aioun',
-                    'code' => 3615,
+                    'code' => 36015,
                 ],
                 15 => [
                     'name' => 'El Kala',
-                    'code' => 3616,
+                    'code' => 36016,
                 ],
                 16 => [
                     'name' => 'El Tarf',
-                    'code' => 3617,
+                    'code' => 36017,
                 ],
                 17 => [
                     'name' => 'Hammam Beni Salah',
-                    'code' => 3618,
+                    'code' => 36018,
                 ],
                 18 => [
                     'name' => 'Lac des Oiseaux',
-                    'code' => 3619,
+                    'code' => 36019,
                 ],
                 19 => [
                     'name' => 'Oued Zitoun',
-                    'code' => 3620,
+                    'code' => 36020,
                 ],
                 20 => [
                     'name' => 'Raml Souk',
-                    'code' => 3621,
+                    'code' => 36021,
                 ],
                 21 => [
                     'name' => 'Souarekh',
-                    'code' => 3622,
+                    'code' => 36022,
                 ],
                 22 => [
                     'name' => 'Zerizer',
-                    'code' => 3623,
+                    'code' => 36023,
                 ],
                 23 => [
                     'name' => 'Zitouna',
-                    'code' => 3624,
+                    'code' => 36024,
                 ],
             ],
             37 => [
                 0 => [
                     'name' => 'Oum el Assel',
-                    'code' => 3701,
+                    'code' => 37001,
                 ],
                 1 => [
                     'name' => 'Tindouf',
-                    'code' => 3702,
+                    'code' => 37002,
                 ],
             ],
             38 => [
                 0 => [
                     'name' => 'Ammari',
-                    'code' => 3801,
+                    'code' => 38001,
                 ],
                 1 => [
                     'name' => 'Beni Chaib',
-                    'code' => 3802,
+                    'code' => 38002,
                 ],
                 2 => [
                     'name' => 'Beni Lahcene',
-                    'code' => 3803,
+                    'code' => 38003,
                 ],
                 3 => [
                     'name' => 'Boucaid',
-                    'code' => 3804,
+                    'code' => 38004,
                 ],
                 4 => [
                     'name' => 'Bordj Bou Naama',
-                    'code' => 3805,
+                    'code' => 38005,
                 ],
                 5 => [
                     'name' => 'Bordj El Emir Abdelkader',
-                    'code' => 3806,
+                    'code' => 38006,
                 ],
                 6 => [
                     'name' => 'Khemisti',
-                    'code' => 3807,
+                    'code' => 38007,
                 ],
                 7 => [
                     'name' => 'Larbaâ',
-                    'code' => 3808,
+                    'code' => 38008,
                 ],
                 8 => [
                     'name' => 'Lardjem',
-                    'code' => 3809,
+                    'code' => 38009,
                 ],
                 9 => [
                     'name' => 'Layoune',
-                    'code' => 38010,
+                    'code' => 380010,
                 ],
                 10 => [
                     'name' => 'Lazharia',
-                    'code' => 3811,
+                    'code' => 38011,
                 ],
                 11 => [
                     'name' => 'Maacem',
-                    'code' => 3812,
+                    'code' => 38012,
                 ],
                 12 => [
                     'name' => 'Melaab',
-                    'code' => 3813,
+                    'code' => 38013,
                 ],
                 13 => [
                     'name' => 'Ouled Bessem',
-                    'code' => 3814,
+                    'code' => 38014,
                 ],
                 14 => [
                     'name' => 'Sidi Abed',
-                    'code' => 3815,
+                    'code' => 38015,
                 ],
                 15 => [
                     'name' => 'Sidi Boutouchent',
-                    'code' => 3816,
+                    'code' => 38016,
                 ],
                 16 => [
                     'name' => 'Sidi Lantri',
-                    'code' => 3817,
+                    'code' => 38017,
                 ],
                 17 => [
                     'name' => 'Sidi Slimane',
-                    'code' => 3818,
+                    'code' => 38018,
                 ],
                 18 => [
                     'name' => 'Tamalaht',
-                    'code' => 3819,
+                    'code' => 38019,
                 ],
                 19 => [
                     'name' => 'Theniet El Had',
-                    'code' => 3820,
+                    'code' => 38020,
                 ],
                 20 => [
                     'name' => 'Tissemsilt',
-                    'code' => 3821,
+                    'code' => 38021,
                 ],
                 21 => [
                     'name' => 'Youssoufia',
-                    'code' => 3822,
+                    'code' => 38022,
                 ],
             ],
             39 => [
                 0 => [
                     'name' => 'El Oued',
-                    'code' => 3901,
+                    'code' => 39001,
                 ],
                 1 => [
                     'name' => 'Robbah',
-                    'code' => 3902,
+                    'code' => 39002,
                 ],
                 2 => [
                     'name' => 'Oued El Alenda',
-                    'code' => 3903,
+                    'code' => 39003,
                 ],
                 3 => [
                     'name' => 'Bayadha',
-                    'code' => 3904,
+                    'code' => 39004,
                 ],
                 4 => [
                     'name' => 'Nakhla',
-                    'code' => 3905,
+                    'code' => 39005,
                 ],
                 5 => [
                     'name' => 'Guemar',
-                    'code' => 3906,
+                    'code' => 39006,
                 ],
                 6 => [
                     'name' => 'Kouinine',
-                    'code' => 3907,
+                    'code' => 39007,
                 ],
                 7 => [
                     'name' => 'Reguiba',
-                    'code' => 3908,
+                    'code' => 39008,
                 ],
                 8 => [
                     'name' => 'Hamraia',
-                    'code' => 3909,
+                    'code' => 39009,
                 ],
                 9 => [
                     'name' => 'Taghzout',
-                    'code' => 3910,
+                    'code' => 39010,
                 ],
                 10 => [
                     'name' => 'Debila',
-                    'code' => 3911,
+                    'code' => 39011,
                 ],
                 11 => [
                     'name' => 'Hassani Abdelkrim',
-                    'code' => 3912,
+                    'code' => 39012,
                 ],
                 12 => [
                     'name' => 'Hassi Khalifa',
-                    'code' => 3913,
+                    'code' => 39013,
                 ],
                 13 => [
                     'name' => 'Taleb Larbi',
-                    'code' => 3914,
+                    'code' => 39014,
                 ],
                 14 => [
                     'name' => 'Douar El Ma',
-                    'code' => 3915,
+                    'code' => 39015,
                 ],
                 15 => [
                     'name' => 'Sidi Aoun',
-                    'code' => 3916,
+                    'code' => 39016,
                 ],
                 16 => [
                     'name' => 'Trifaoui',
-                    'code' => 3917,
+                    'code' => 39017,
                 ],
                 17 => [
                     'name' => 'Magrane',
-                    'code' => 3918,
+                    'code' => 39018,
                 ],
                 18 => [
                     'name' => 'Beni Guecha',
-                    'code' => 3919,
+                    'code' => 39019,
                 ],
                 19 => [
                     'name' => 'Ourmas',
-                    'code' => 3920,
+                    'code' => 39020,
                 ],
                 20 => [
                     'name' => 'El Ogla',
-                    'code' => 3925,
+                    'code' => 39025,
                 ],
                 21 => [
                     'name' => 'Mih Ouansa',
-                    'code' => 3926,
+                    'code' => 39026,
                 ],
             ],
             40 => [
                 0 => [
                     'name' => 'Aïn Touila',
-                    'code' => 4001,
+                    'code' => 40001,
                 ],
                 1 => [
                     'name' => 'Babar',
-                    'code' => 4002,
+                    'code' => 40002,
                 ],
                 2 => [
                     'name' => 'Baghai',
-                    'code' => 4003,
+                    'code' => 40003,
                 ],
                 3 => [
                     'name' => 'Bouhmama',
-                    'code' => 4004,
+                    'code' => 40004,
                 ],
                 4 => [
                     'name' => 'Chechar',
-                    'code' => 4005,
+                    'code' => 40005,
                 ],
                 5 => [
                     'name' => 'Chelia',
-                    'code' => 4006,
+                    'code' => 40006,
                 ],
                 6 => [
                     'name' => 'Djellal',
-                    'code' => 4007,
+                    'code' => 40007,
                 ],
                 7 => [
                     'name' => 'El Hamma',
-                    'code' => 4008,
+                    'code' => 40008,
                 ],
                 8 => [
                     'name' => 'El Mahmal',
-                    'code' => 4009,
+                    'code' => 40009,
                 ],
                 9 => [
                     'name' => 'El Oueldja',
-                    'code' => 40010,
+                    'code' => 400010,
                 ],
                 10 => [
                     'name' => 'Ensigha',
-                    'code' => 4011,
+                    'code' => 40011,
                 ],
                 11 => [
                     'name' => 'Kais',
-                    'code' => 4012,
+                    'code' => 40012,
                 ],
                 12 => [
                     'name' => 'Khenchela',
-                    'code' => 4013,
+                    'code' => 40013,
                 ],
                 13 => [
                     'name' => 'Khirane',
-                    'code' => 4014,
+                    'code' => 40014,
                 ],
                 14 => [
                     'name' => 'M\'Sara',
-                    'code' => 4015,
+                    'code' => 40015,
                 ],
                 15 => [
                     'name' => 'M\'Toussa',
-                    'code' => 4016,
+                    'code' => 40016,
                 ],
                 16 => [
                     'name' => 'Ouled Rechache',
-                    'code' => 4017,
+                    'code' => 40017,
                 ],
                 17 => [
                     'name' => 'Remila',
-                    'code' => 4018,
+                    'code' => 40018,
                 ],
                 18 => [
                     'name' => 'Tamza',
-                    'code' => 4019,
+                    'code' => 40019,
                 ],
                 19 => [
                     'name' => 'Taouzient',
-                    'code' => 4020,
+                    'code' => 40020,
                 ],
                 20 => [
                     'name' => 'Yabous',
-                    'code' => 4021,
+                    'code' => 40021,
                 ],
             ],
             41 => [
                 0 => [
                     'name' => 'Souk Ahras',
-                    'code' => 4101,
+                    'code' => 41001,
                 ],
                 1 => [
                     'name' => 'Sedrata',
-                    'code' => 4102,
+                    'code' => 41002,
                 ],
                 2 => [
                     'name' => 'Hanancha',
-                    'code' => 4103,
+                    'code' => 41003,
                 ],
                 3 => [
                     'name' => 'Mechroha',
-                    'code' => 4104,
+                    'code' => 41004,
                 ],
                 4 => [
                     'name' => 'Ouled Driss',
-                    'code' => 4105,
+                    'code' => 41005,
                 ],
                 5 => [
                     'name' => 'Tiffech',
-                    'code' => 4106,
+                    'code' => 41006,
                 ],
                 6 => [
                     'name' => 'Zaarouria',
-                    'code' => 4107,
+                    'code' => 41007,
                 ],
                 7 => [
                     'name' => 'Taoura',
-                    'code' => 4108,
+                    'code' => 41008,
                 ],
                 8 => [
                     'name' => 'Dréa',
-                    'code' => 4109,
+                    'code' => 41009,
                 ],
                 9 => [
                     'name' => 'Heddada',
-                    'code' => 4110,
+                    'code' => 41010,
                 ],
                 10 => [
                     'name' => 'Khedara',
-                    'code' => 4111,
+                    'code' => 41011,
                 ],
                 11 => [
                     'name' => 'Merahna',
-                    'code' => 4112,
+                    'code' => 41012,
                 ],
                 12 => [
                     'name' => 'Ouled Moumene',
-                    'code' => 4113,
+                    'code' => 41013,
                 ],
                 13 => [
                     'name' => 'Bir Bou Haouch',
-                    'code' => 4114,
+                    'code' => 41014,
                 ],
                 14 => [
                     'name' => 'M\'daourouch',
-                    'code' => 4115,
+                    'code' => 41015,
                 ],
                 15 => [
                     'name' => 'Oum El Adhaim',
-                    'code' => 4116,
+                    'code' => 41016,
                 ],
                 16 => [
                     'name' => 'Aïn Zana',
-                    'code' => 4117,
+                    'code' => 41017,
                 ],
                 17 => [
                     'name' => 'Aïn Soltane',
-                    'code' => 4118,
+                    'code' => 41018,
                 ],
                 18 => [
                     'name' => 'Ouillen',
-                    'code' => 4119,
+                    'code' => 41019,
                 ],
                 19 => [
                     'name' => 'Sidi Fredj',
-                    'code' => 4120,
+                    'code' => 41020,
                 ],
                 20 => [
                     'name' => 'Safel El Ouiden',
-                    'code' => 4121,
+                    'code' => 41021,
                 ],
                 21 => [
                     'name' => 'Ragouba',
-                    'code' => 4122,
+                    'code' => 41022,
                 ],
                 22 => [
                     'name' => 'Khemissa',
-                    'code' => 4123,
+                    'code' => 41023,
                 ],
                 23 => [
                     'name' => 'Oued Keberit',
-                    'code' => 4124,
+                    'code' => 41024,
                 ],
                 24 => [
                     'name' => 'Terraguelt',
-                    'code' => 4125,
+                    'code' => 41025,
                 ],
                 25 => [
                     'name' => 'Zouabi',
-                    'code' => 4126,
+                    'code' => 41026,
                 ],
             ],
             42 => [
                 0 => [
                     'name' => 'Tipaza',
-                    'code' => 4201,
+                    'code' => 42001,
                 ],
                 1 => [
                     'name' => 'Menaceur',
-                    'code' => 4202,
+                    'code' => 42002,
                 ],
                 2 => [
                     'name' => 'Larhat',
-                    'code' => 4203,
+                    'code' => 42003,
                 ],
                 3 => [
                     'name' => 'Douaouda',
-                    'code' => 4204,
+                    'code' => 42004,
                 ],
                 4 => [
                     'name' => 'Bourkika',
-                    'code' => 4205,
+                    'code' => 42005,
                 ],
                 5 => [
                     'name' => 'Khemisti',
-                    'code' => 4206,
+                    'code' => 42006,
                 ],
                 6 => [
                     'name' => 'Aghbal',
-                    'code' => 4210,
+                    'code' => 42010,
                 ],
                 7 => [
                     'name' => 'Hadjout',
-                    'code' => 4212,
+                    'code' => 42012,
                 ],
                 8 => [
                     'name' => 'Sidi Amar',
-                    'code' => 4213,
+                    'code' => 42013,
                 ],
                 9 => [
                     'name' => 'Gouraya',
-                    'code' => 4214,
+                    'code' => 42014,
                 ],
                 10 => [
                     'name' => 'Nador',
-                    'code' => 4215,
+                    'code' => 42015,
                 ],
                 11 => [
                     'name' => 'Chaiba',
-                    'code' => 4216,
+                    'code' => 42016,
                 ],
                 12 => [
                     'name' => 'Aïn Tagourait',
-                    'code' => 4217,
+                    'code' => 42017,
                 ],
                 13 => [
                     'name' => 'Cherchell',
-                    'code' => 4222,
+                    'code' => 42022,
                 ],
                 14 => [
                     'name' => 'Damous',
-                    'code' => 4223,
+                    'code' => 42023,
                 ],
                 15 => [
                     'name' => 'Merad',
-                    'code' => 4224,
+                    'code' => 42024,
                 ],
                 16 => [
                     'name' => 'Fouka',
-                    'code' => 4225,
+                    'code' => 42025,
                 ],
                 17 => [
                     'name' => 'Bou Ismaïl',
-                    'code' => 4226,
+                    'code' => 42026,
                 ],
                 18 => [
                     'name' => 'Ahmar El Aïn',
-                    'code' => 4227,
+                    'code' => 42027,
                 ],
                 19 => [
                     'name' => 'Bouharoun',
-                    'code' => 4230,
+                    'code' => 42030,
                 ],
                 20 => [
                     'name' => 'Sidi Ghiles',
-                    'code' => 4232,
+                    'code' => 42032,
                 ],
                 21 => [
                     'name' => 'Messelmoun',
-                    'code' => 4233,
+                    'code' => 42033,
                 ],
                 22 => [
                     'name' => 'Sidi Rached',
-                    'code' => 4234,
+                    'code' => 42034,
                 ],
                 23 => [
                     'name' => 'Koléa',
-                    'code' => 4235,
+                    'code' => 42035,
                 ],
                 24 => [
                     'name' => 'Attatba',
-                    'code' => 4236,
+                    'code' => 42036,
                 ],
                 25 => [
                     'name' => 'Sidi Semiane',
-                    'code' => 4240,
+                    'code' => 42040,
                 ],
                 26 => [
                     'name' => 'Beni Milleuk',
-                    'code' => 4241,
+                    'code' => 42041,
                 ],
                 27 => [
                     'name' => 'Hadjeret Ennous',
-                    'code' => 4242,
+                    'code' => 42042,
                 ],
             ],
             43 => [
                 0 => [
                     'name' => 'Ahmed Rachedi',
-                    'code' => 4301,
+                    'code' => 43001,
                 ],
                 1 => [
                     'name' => 'Aïn Beida Harriche',
-                    'code' => 4302,
+                    'code' => 43002,
                 ],
                 2 => [
                     'name' => 'Aïn Mellouk',
-                    'code' => 4303,
+                    'code' => 43003,
                 ],
                 3 => [
                     'name' => 'Aïn Tine',
-                    'code' => 4304,
+                    'code' => 43004,
                 ],
                 4 => [
                     'name' => 'Amira Arrès',
-                    'code' => 4305,
+                    'code' => 43005,
                 ],
                 5 => [
                     'name' => 'Benyahia Abderrahmane',
-                    'code' => 4306,
+                    'code' => 43006,
                 ],
                 6 => [
                     'name' => 'Bouhatem',
-                    'code' => 4307,
+                    'code' => 43007,
                 ],
                 7 => [
                     'name' => 'Chelghoum Laid',
-                    'code' => 4308,
+                    'code' => 43008,
                 ],
                 8 => [
                     'name' => 'Chigara',
-                    'code' => 4309,
+                    'code' => 43009,
                 ],
                 9 => [
                     'name' => 'Derradji Bousselah',
-                    'code' => 43010,
+                    'code' => 430010,
                 ],
                 10 => [
                     'name' => 'El Mechira',
-                    'code' => 4311,
+                    'code' => 43011,
                 ],
                 11 => [
                     'name' => 'Elayadi Barbes',
-                    'code' => 4312,
+                    'code' => 43012,
                 ],
                 12 => [
                     'name' => 'Ferdjioua',
-                    'code' => 4313,
+                    'code' => 43013,
                 ],
                 13 => [
                     'name' => 'Grarem Gouga',
-                    'code' => 4314,
+                    'code' => 43014,
                 ],
                 14 => [
                     'name' => 'Hamala',
-                    'code' => 4315,
+                    'code' => 43015,
                 ],
                 15 => [
                     'name' => 'Mila',
-                    'code' => 4316,
+                    'code' => 43016,
                 ],
                 16 => [
                     'name' => 'Minar Zarza',
-                    'code' => 4317,
+                    'code' => 43017,
                 ],
                 17 => [
                     'name' => 'Oued Athmania',
-                    'code' => 4318,
+                    'code' => 43018,
                 ],
                 18 => [
                     'name' => 'Oued Endja',
-                    'code' => 4319,
+                    'code' => 43019,
                 ],
                 19 => [
                     'name' => 'Oued Seguen',
-                    'code' => 4320,
+                    'code' => 43020,
                 ],
                 20 => [
                     'name' => 'Ouled Khalouf',
-                    'code' => 4321,
+                    'code' => 43021,
                 ],
                 21 => [
                     'name' => 'Rouached',
-                    'code' => 4322,
+                    'code' => 43022,
                 ],
                 22 => [
                     'name' => 'Sidi Khelifa',
-                    'code' => 4323,
+                    'code' => 43023,
                 ],
                 23 => [
                     'name' => 'Sidi Merouane',
-                    'code' => 4324,
+                    'code' => 43024,
                 ],
                 24 => [
                     'name' => 'Tadjenanet',
-                    'code' => 4325,
+                    'code' => 43025,
                 ],
                 25 => [
                     'name' => 'Tassadane Haddada',
-                    'code' => 4326,
+                    'code' => 43026,
                 ],
                 26 => [
                     'name' => 'Teleghma',
-                    'code' => 4327,
+                    'code' => 43027,
                 ],
                 27 => [
                     'name' => 'Terrai Bainen',
-                    'code' => 4328,
+                    'code' => 43028,
                 ],
                 28 => [
                     'name' => 'Tessala Lemtaï',
-                    'code' => 4329,
+                    'code' => 43029,
                 ],
                 29 => [
                     'name' => 'Tiberguent',
-                    'code' => 4330,
+                    'code' => 43030,
                 ],
                 30 => [
                     'name' => 'Yahia Beni Guecha',
-                    'code' => 4331,
+                    'code' => 43031,
                 ],
                 31 => [
                     'name' => 'Zeghaia',
-                    'code' => 4332,
+                    'code' => 43032,
                 ],
             ],
             44 => [
                 0 => [
                     'name' => 'Aïn Beniane',
-                    'code' => 4401,
+                    'code' => 44001,
                 ],
                 1 => [
                     'name' => 'Aïn Bouyahia',
-                    'code' => 4402,
+                    'code' => 44002,
                 ],
                 2 => [
                     'name' => 'Aïn Defla',
-                    'code' => 4403,
+                    'code' => 44003,
                 ],
                 3 => [
                     'name' => 'Aïn Lechiekh',
-                    'code' => 4404,
+                    'code' => 44004,
                 ],
                 4 => [
                     'name' => 'Aïn Soltane',
-                    'code' => 4405,
+                    'code' => 44005,
                 ],
                 5 => [
                     'name' => 'Aïn Torki',
-                    'code' => 4406,
+                    'code' => 44006,
                 ],
                 6 => [
                     'name' => 'Arib',
-                    'code' => 4407,
+                    'code' => 44007,
                 ],
                 7 => [
                     'name' => 'Bathia',
-                    'code' => 4408,
+                    'code' => 44008,
                 ],
                 8 => [
                     'name' => 'Belaas',
-                    'code' => 4409,
+                    'code' => 44009,
                 ],
                 9 => [
                     'name' => 'Ben Allal',
-                    'code' => 44010,
+                    'code' => 440010,
                 ],
                 10 => [
                     'name' => 'Birbouche',
-                    'code' => 4411,
+                    'code' => 44011,
                 ],
                 11 => [
                     'name' => 'Bir Ould Khelifa',
-                    'code' => 4412,
+                    'code' => 44012,
                 ],
                 12 => [
                     'name' => 'Bordj Emir Khaled',
-                    'code' => 4413,
+                    'code' => 44013,
                 ],
                 13 => [
                     'name' => 'Boumedfaa',
-                    'code' => 4414,
+                    'code' => 44014,
                 ],
                 14 => [
                     'name' => 'Bourached',
-                    'code' => 4415,
+                    'code' => 44015,
                 ],
                 15 => [
                     'name' => 'Djelida',
-                    'code' => 4416,
+                    'code' => 44016,
                 ],
                 16 => [
                     'name' => 'Djemaa Ouled Cheikh',
-                    'code' => 4417,
+                    'code' => 44017,
                 ],
                 17 => [
                     'name' => 'Djendel',
-                    'code' => 4418,
+                    'code' => 44018,
                 ],
                 18 => [
                     'name' => 'El Abadia',
-                    'code' => 4419,
+                    'code' => 44019,
                 ],
                 19 => [
                     'name' => 'El Amra',
-                    'code' => 4420,
+                    'code' => 44020,
                 ],
                 20 => [
                     'name' => 'El Attaf',
-                    'code' => 4421,
+                    'code' => 44021,
                 ],
                 21 => [
                     'name' => 'El Hassania',
-                    'code' => 4422,
+                    'code' => 44022,
                 ],
                 22 => [
                     'name' => 'El Maine',
-                    'code' => 4423,
+                    'code' => 44023,
                 ],
                 23 => [
                     'name' => 'Hammam Righa',
-                    'code' => 4424,
+                    'code' => 44024,
                 ],
                 24 => [
                     'name' => 'Hoceinia',
-                    'code' => 4425,
+                    'code' => 44025,
                 ],
                 25 => [
                     'name' => 'Khemis Miliana',
-                    'code' => 4426,
+                    'code' => 44026,
                 ],
                 26 => [
                     'name' => 'Mekhatria',
-                    'code' => 4427,
+                    'code' => 44027,
                 ],
                 27 => [
                     'name' => 'Miliana',
-                    'code' => 4428,
+                    'code' => 44028,
                 ],
                 28 => [
                     'name' => 'Oued Chorfa',
-                    'code' => 4429,
+                    'code' => 44029,
                 ],
                 29 => [
                     'name' => 'Oued Djemaa',
-                    'code' => 4430,
+                    'code' => 44030,
                 ],
                 30 => [
                     'name' => 'Rouina',
-                    'code' => 4431,
+                    'code' => 44031,
                 ],
                 31 => [
                     'name' => 'Sidi Lakhdar',
-                    'code' => 4432,
+                    'code' => 44032,
                 ],
                 32 => [
                     'name' => 'Tacheta Zougagha',
-                    'code' => 4433,
+                    'code' => 44033,
                 ],
                 33 => [
                     'name' => 'Tarik Ibn Ziad',
-                    'code' => 4434,
+                    'code' => 44034,
                 ],
                 34 => [
                     'name' => 'Tiberkanine',
-                    'code' => 4435,
+                    'code' => 44035,
                 ],
                 35 => [
                     'name' => 'Zeddine',
-                    'code' => 4436,
+                    'code' => 44036,
                 ],
             ],
             45 => [
                 0 => [
                     'name' => 'Naâma',
-                    'code' => 4501,
+                    'code' => 45001,
                 ],
                 1 => [
                     'name' => 'Mecheria',
-                    'code' => 4502,
+                    'code' => 45002,
                 ],
                 2 => [
                     'name' => 'Aïn Sefra',
-                    'code' => 4503,
+                    'code' => 45003,
                 ],
                 3 => [
                     'name' => 'Tiout',
-                    'code' => 4504,
+                    'code' => 45004,
                 ],
                 4 => [
                     'name' => 'Sfissifa',
-                    'code' => 4505,
+                    'code' => 45005,
                 ],
                 5 => [
                     'name' => 'Moghrar',
-                    'code' => 4506,
+                    'code' => 45006,
                 ],
                 6 => [
                     'name' => 'Assela',
-                    'code' => 4507,
+                    'code' => 45007,
                 ],
                 7 => [
                     'name' => 'Djeniene Bourezg',
-                    'code' => 4508,
+                    'code' => 45008,
                 ],
                 8 => [
                     'name' => 'Aïn Ben Khelil',
-                    'code' => 4509,
+                    'code' => 45009,
                 ],
                 9 => [
                     'name' => 'Makman Ben Amer',
-                    'code' => 45010,
+                    'code' => 450010,
                 ],
                 10 => [
                     'name' => 'Kasdir',
-                    'code' => 4511,
+                    'code' => 45011,
                 ],
                 11 => [
                     'name' => 'El Biod',
-                    'code' => 4512,
+                    'code' => 45012,
                 ],
             ],
             46 => [
                 0 => [
                     'name' => 'Aghlal',
-                    'code' => 4601,
+                    'code' => 46001,
                 ],
                 1 => [
                     'name' => 'Aïn El Arbaa',
-                    'code' => 4602,
+                    'code' => 46002,
                 ],
                 2 => [
                     'name' => 'Aïn Kihal',
-                    'code' => 4603,
+                    'code' => 46003,
                 ],
                 3 => [
                     'name' => 'Aïn Témouchent',
-                    'code' => 4604,
+                    'code' => 46004,
                 ],
                 4 => [
                     'name' => 'Aïn Tolba',
-                    'code' => 4605,
+                    'code' => 46005,
                 ],
                 5 => [
                     'name' => 'Aoubellil',
-                    'code' => 4606,
+                    'code' => 46006,
                 ],
                 6 => [
                     'name' => 'Beni Saf',
-                    'code' => 4607,
+                    'code' => 46007,
                 ],
                 7 => [
                     'name' => 'Bouzedjar',
-                    'code' => 4608,
+                    'code' => 46008,
                 ],
                 8 => [
                     'name' => 'Chaabat El Leham',
-                    'code' => 4609,
+                    'code' => 46009,
                 ],
                 9 => [
                     'name' => 'Chentouf',
-                    'code' => 46010,
+                    'code' => 460010,
                 ],
                 10 => [
                     'name' => 'El Amria',
-                    'code' => 4611,
+                    'code' => 46011,
                 ],
                 11 => [
                     'name' => 'El Emir Abdelkader',
-                    'code' => 4612,
+                    'code' => 46012,
                 ],
                 12 => [
                     'name' => 'El Malah',
-                    'code' => 4613,
+                    'code' => 46013,
                 ],
                 13 => [
                     'name' => 'El Messaid',
-                    'code' => 4614,
+                    'code' => 46014,
                 ],
                 14 => [
                     'name' => 'Hammam Bouhadjar',
-                    'code' => 4615,
+                    'code' => 46015,
                 ],
                 15 => [
                     'name' => 'Hassasna',
-                    'code' => 4616,
+                    'code' => 46016,
                 ],
                 16 => [
                     'name' => 'Hassi El Ghella',
-                    'code' => 4617,
+                    'code' => 46017,
                 ],
                 17 => [
                     'name' => 'Oued Berkeche',
-                    'code' => 4618,
+                    'code' => 46018,
                 ],
                 18 => [
                     'name' => 'Oued Sabah',
-                    'code' => 4619,
+                    'code' => 46019,
                 ],
                 19 => [
                     'name' => 'Ouled Boudjemaa',
-                    'code' => 4620,
+                    'code' => 46020,
                 ],
                 20 => [
                     'name' => 'Ouled Kihal',
-                    'code' => 4621,
+                    'code' => 46021,
                 ],
                 21 => [
                     'name' => 'Oulhaça El Gheraba',
-                    'code' => 4622,
+                    'code' => 46022,
                 ],
                 22 => [
                     'name' => 'Sidi Ben Adda',
-                    'code' => 4623,
+                    'code' => 46023,
                 ],
                 23 => [
                     'name' => 'Sidi Boumedienne',
-                    'code' => 4624,
+                    'code' => 46024,
                 ],
                 24 => [
                     'name' => 'Sidi Ouriache',
-                    'code' => 4625,
+                    'code' => 46025,
                 ],
                 25 => [
                     'name' => 'Sidi Safi',
-                    'code' => 4626,
+                    'code' => 46026,
                 ],
                 26 => [
                     'name' => 'Tamzoura',
-                    'code' => 4627,
+                    'code' => 46027,
                 ],
                 27 => [
                     'name' => 'Terga',
-                    'code' => 4628,
+                    'code' => 46028,
                 ],
             ],
             47 => [
                 0 => [
                     'name' => 'Berriane',
-                    'code' => 4701,
+                    'code' => 47001,
                 ],
                 1 => [
                     'name' => 'Bounoura',
-                    'code' => 4702,
+                    'code' => 47002,
                 ],
                 2 => [
                     'name' => 'Dhayet Bendhahoua',
-                    'code' => 4703,
+                    'code' => 47003,
                 ],
                 3 => [
                     'name' => 'El Atteuf',
-                    'code' => 4704,
+                    'code' => 47004,
                 ],
                 4 => [
                     'name' => 'El Guerrara',
-                    'code' => 4705,
+                    'code' => 47005,
                 ],
                 5 => [
                     'name' => 'Ghardaïa',
-                    'code' => 4706,
+                    'code' => 47006,
                 ],
                 6 => [
                     'name' => 'Mansoura',
-                    'code' => 4707,
+                    'code' => 47007,
                 ],
                 7 => [
                     'name' => 'Metlili',
-                    'code' => 4708,
+                    'code' => 47008,
                 ],
                 8 => [
                     'name' => 'Sebseb',
-                    'code' => 4709,
+                    'code' => 47009,
                 ],
                 9 => [
                     'name' => 'Zelfana',
-                    'code' => 47010,
+                    'code' => 470010,
                 ],
             ],
             48 => [
                 0 => [
                     'name' => 'Aïn Rahma',
-                    'code' => 4801,
+                    'code' => 48001,
                 ],
                 1 => [
                     'name' => 'Aïn Tarek',
-                    'code' => 4802,
+                    'code' => 48002,
                 ],
                 2 => [
                     'name' => '‘Aarch Meknassa',
-                    'code' => 4803,
+                    'code' => 48003,
                 ],
                 3 => [
                     'name' => 'Ammi Moussa',
-                    'code' => 4804,
+                    'code' => 48004,
                 ],
                 4 => [
                     'name' => 'Belassel Bouzegza',
-                    'code' => 4805,
+                    'code' => 48005,
                 ],
                 5 => [
                     'name' => 'Bendaoud',
-                    'code' => 4806,
+                    'code' => 48006,
                 ],
                 6 => [
                     'name' => 'Beni Dergoun',
-                    'code' => 4807,
+                    'code' => 48007,
                 ],
                 7 => [
                     'name' => 'Beni Zentis',
-                    'code' => 4808,
+                    'code' => 48008,
                 ],
                 8 => [
                     'name' => 'Dar Ben Abdellah',
-                    'code' => 4809,
+                    'code' => 48009,
                 ],
                 9 => [
                     'name' => 'Djidioua',
-                    'code' => 48010,
+                    'code' => 480010,
                 ],
                 10 => [
                     'name' => 'El Guettar',
-                    'code' => 4811,
+                    'code' => 48011,
                 ],
                 11 => [
                     'name' => 'El Hamadna',
-                    'code' => 4812,
+                    'code' => 48012,
                 ],
                 12 => [
                     'name' => 'El Hassi',
-                    'code' => 4813,
+                    'code' => 48013,
                 ],
                 13 => [
                     'name' => 'El Matmar',
-                    'code' => 4814,
+                    'code' => 48014,
                 ],
                 14 => [
                     'name' => 'El Ouldja',
-                    'code' => 4815,
+                    'code' => 48015,
                 ],
                 15 => [
                     'name' => 'Had Echkalla',
-                    'code' => 4816,
+                    'code' => 48016,
                 ],
                 16 => [
                     'name' => 'Hamri',
-                    'code' => 4817,
+                    'code' => 48017,
                 ],
                 17 => [
                     'name' => 'Kalaa',
-                    'code' => 4818,
+                    'code' => 48018,
                 ],
                 18 => [
                     'name' => 'Lahlef',
-                    'code' => 4819,
+                    'code' => 48019,
                 ],
                 19 => [
                     'name' => 'Mazouna',
-                    'code' => 4820,
+                    'code' => 48020,
                 ],
                 20 => [
                     'name' => 'Mediouna',
-                    'code' => 4821,
+                    'code' => 48021,
                 ],
                 21 => [
                     'name' => 'Mendes',
-                    'code' => 4822,
+                    'code' => 48022,
                 ],
                 22 => [
                     'name' => 'Merdja Sidi Abed',
-                    'code' => 4823,
+                    'code' => 48023,
                 ],
                 23 => [
                     'name' => 'Ouarizane',
-                    'code' => 4824,
+                    'code' => 48024,
                 ],
                 24 => [
                     'name' => 'Oued Essalem',
-                    'code' => 4825,
+                    'code' => 48025,
                 ],
                 25 => [
                     'name' => 'Oued Rhiou',
-                    'code' => 4826,
+                    'code' => 48026,
                 ],
                 26 => [
                     'name' => 'Ouled Aiche',
-                    'code' => 4827,
+                    'code' => 48027,
                 ],
                 27 => [
                     'name' => 'Oued El Djemaa',
-                    'code' => 4828,
+                    'code' => 48028,
                 ],
                 28 => [
                     'name' => 'Ouled Sidi Mihoub',
-                    'code' => 4829,
+                    'code' => 48029,
                 ],
                 29 => [
                     'name' => 'Ramka',
-                    'code' => 4830,
+                    'code' => 48030,
                 ],
                 30 => [
                     'name' => 'Relizane',
-                    'code' => 4831,
+                    'code' => 48031,
                 ],
                 31 => [
                     'name' => 'Sidi Khettab',
-                    'code' => 4832,
+                    'code' => 48032,
                 ],
                 32 => [
                     'name' => 'Sidi Lazreg',
-                    'code' => 4833,
+                    'code' => 48033,
                 ],
                 33 => [
                     'name' => 'Sidi M\'Hamed Ben Ali',
-                    'code' => 4834,
+                    'code' => 48034,
                 ],
                 34 => [
                     'name' => 'Sidi M\'Hamed Benaouda',
-                    'code' => 4835,
+                    'code' => 48035,
                 ],
                 35 => [
                     'name' => 'Sidi Saada',
-                    'code' => 4836,
+                    'code' => 48036,
                 ],
                 36 => [
                     'name' => 'Souk El Had',
-                    'code' => 4837,
+                    'code' => 48037,
                 ],
                 37 => [
                     'name' => 'Yellel',
-                    'code' => 4838,
+                    'code' => 48038,
                 ],
                 38 => [
                     'name' => 'Zemmora',
-                    'code' => 4839,
+                    'code' => 48039,
                 ],
-            ]
+            ],
         ];
 
         foreach ($townsByWilaya as $wilaya_id => $towns) {
             foreach ($towns as $town) {
-                $townEntry = array_merge(['wilaya_id' => (int)$wilaya_id], $town);
+                $townEntry = array_merge(['wilaya_id' => (int)$wilaya_id, 'protected' => true], $town);
                 Town::create($townEntry);
             }
         }
