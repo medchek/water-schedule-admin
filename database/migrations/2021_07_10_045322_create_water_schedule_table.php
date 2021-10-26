@@ -36,7 +36,7 @@ class CreateWaterScheduleTable extends Migration
 
             // $table->unsignedBigInteger('town_id')->unique();
             $table->unsignedInteger('town_code');
-            $table->foreign('town_code')->references('code')->on('towns');
+            $table->foreign('town_code')->references('code')->on('towns')->onDelete("cascade");
             // $table->foreign('period_id')->references('id')->on('periods');
 
             $table->unsignedBigInteger('created_by');
