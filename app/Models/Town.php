@@ -14,6 +14,8 @@ class Town extends Model
         'name',
         'ar_name',
         'code',
+        'added_by',
+        'modied_by'
     ];
 
     public function wilaya()
