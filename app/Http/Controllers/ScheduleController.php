@@ -125,7 +125,7 @@ class ScheduleController extends Controller
 
 
             if ($town === 0) {
-                return response()->json(['code' => 1, 'message' => 'invalid town'], 406);
+                return response('invalid town', 404);
             };
             $currentWeekSchedule = Schedule::where('town_code', $town_code)->where('week_number', $this->getCurrentWeekNumber())->where('year', $this->getCurrentYear())->first();
             $nextWeekSchedule = Schedule::where('town_code', $town_code)->where('week_number', $this->getNextWeekNumber())->where('year', $this->getNextWeekYear())->first();
