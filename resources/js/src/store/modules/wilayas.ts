@@ -22,7 +22,7 @@ const userModule: Module<WilayasModuleState, any> = {
         getWilayas: (state) => state.wilayas,
         getFilteredWilayas: (state) => (wilayaName: string) => {
             // if the wilayaName is not present, return the whole list
-            if (!wilayaName.length) return state.wilayas;
+            if (!wilayaName.length || parseInt(wilayaName) == 0) return state.wilayas;
             // if user searches for wilaya code, return by code instead of by name
             if (/^[1-9]{1,2}$/gi.test(wilayaName)) {
                 const wilayaCode = parseInt(wilayaName);
