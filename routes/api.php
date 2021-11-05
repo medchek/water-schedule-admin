@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return new UserResource($request->user());
 });
 
+
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get("/wilayas", [WilayaController::class, 'index']);
@@ -33,9 +34,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get("wilayas/{wilaya_id}/towns/", [TownController::class, 'getByWilayaId']);
 
     Route::post("/towns", [TownController::class, 'store']);
+    Route::patch("/towns/{town_id}", [TownController::class, 'update']);
+    Route::delete("/towns/{town_id}", [TownController::class, 'destroy']);
 
     // Route::get("/schedules", [ScheduleController::class, 'index']);
     Route::get("/schedules/{town_id}", [ScheduleController::class, 'show']);
     Route::post("/schedules", [ScheduleController::class, 'store']);
-    Route::patch("/schedules/{schedule_id}", [ScheduleController::class, 'update']);
+    // Route::patch("/schedules/{schedule_id}", [ScheduleController::class, 'update']);
 });
