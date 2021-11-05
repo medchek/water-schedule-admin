@@ -1,11 +1,12 @@
 <template>
-  <section class="flex-grow flex flex-col h-full">
+  <main id="towns-main" class="flex-grow flex flex-col h-full overflow-hidden">
+    <!-- <section class="flex flex-col h-full"> -->
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
       <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Communes {{ headerWilayaName }}</span>
     </div>
 
     <section id="towns-toolbar" class="flex flex-col lg:flex-row lg:items-center justify-between lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0">
-      <button id="add-town" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-2 h-10 rounded-md" @click="isFormOpen = true">
+      <button id="add-town" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-2 h-10 rounded-md" @click="openForm">
         <Icon :icon="mdiPlusBoxMultiple" class="w-6 h-6 mr-1" />
         Ajouter une commune
       </button>
@@ -43,41 +44,23 @@
       <p v-else-if="searchTerm && (!filteredTowns || !filteredTowns.length)" class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-600">
         Aucune commune ne corresponds à votre recherche
       </p>
-      <div v-else class="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-none gap-4 w-full h-auto px-5">
-        <div class="flex flex-col bg-white h-36 px-4 pb-4 rounded w-auto" v-for="town in filteredTowns" :key="town.id">
-          <div class="flex-grow flex items-center justify-center text-bgray-700 font-semibold text-xl 2xl:text-2xl">{{ town.name }}</div>
-          <router-link
-            :to="{ name: 'schedule', params: { wilayaId: town.wilayaId, townId: town.code } }"
-            class="
-              flex
-              items-center
-              justify-center
-              bg-gray-100
-              hover:bg-blue-100
-              focus:bg-bgray-200
-              transition-colors
-              h-9
-              w-full
-              font-semibold
-              text-blue-400
-              rounded-md
-            "
-          >
-            Programme d'eau
-          </router-link>
-        </div>
+
+      <div v-else class="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-none gap-4 w-full h-auto px-5">
+        <!-- @edit & @delete send the same object with the difference in the action type (edit or delete), hence using it in both emits -->
+        <town-card v-for="town in filteredTowns" :key="town.id" :town="town" @edit="onAction" @delete="onAction" />
       </div>
     </section>
 
     <teleport to="#app-modal">
       <transition name="fade">
-        <town-form v-if="isFormOpen" :showModal="isFormOpen" @formClickedOutside="closeForm" @formSaved="closeForm" />
+        <town-form v-if="isFormOpen" :showModal="isFormOpen" @formClickedOutside="closeForm" @formSaved="closeForm" :actionData="actionValues" />
       </transition>
     </teleport>
-  </section>
+    <!-- </section> -->
+  </main>
 </template>
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, onMounted, ref, warn, watch } from "vue";
+import { computed, ComputedRef, defineComponent, onMounted, reactive, ref, warn, watch } from "vue";
 import { mdiPlusBoxMultiple, mdiMagnify } from "@mdi/js";
 import Icon from "../components/Icon.vue";
 import AppInput from "../components/AppInput.vue";
@@ -88,6 +71,9 @@ import { Town, Towns } from "../store/modules/towns";
 import { Wilaya } from "../store/modules/wilayas";
 import Loader from "../components/Loader.vue";
 import TownForm from "../components/town/TownForm.vue";
+import TownCard from "../components/town/TownCard.vue";
+import { TownActionData } from "../types/components";
+import { addPreposition } from "../lib/shared";
 
 export default defineComponent({
   /*
@@ -116,7 +102,7 @@ export default defineComponent({
         return next({ name: "wilayas" });
       });
   },*/
-  components: { Icon, AppInput, Loader, TownForm },
+  components: { Icon, AppInput, Loader, TownForm, TownCard },
   setup() {
     const store = useStore();
     const route = useRoute();
@@ -138,11 +124,7 @@ export default defineComponent({
       const targetWilaya = currentRouteWilaya.value;
       if (targetWilaya) {
         const wilayaName = targetWilaya.name;
-        if (wilayaName.charAt(0).match(/^[auoie]/i)) {
-          return `d'${wilayaName}`;
-        } else {
-          return `de ${wilayaName}`;
-        }
+        return addPreposition(wilayaName);
       }
     });
 
@@ -178,6 +160,21 @@ export default defineComponent({
       fetchTownsData();
     });
 
+    // sent as a prop to the from to inform it whether it's a deletion, edition or addition request (addition when it's null)
+    const actionValues = ref<TownActionData | null>(null);
+    // action data with be tailored to either edit or delete action when coming from the child component
+    // it is therefore meant to be used in both @edit and @delete events
+    const onAction = (actionData: TownActionData) => {
+      actionValues.value = actionData;
+      isFormOpen.value = true;
+    };
+
+    const openForm = () => {
+      // nullify any previous edit data to tell the form component that it's a new town addition request
+      if (actionValues.value !== null) actionValues.value = null;
+      // open the form
+      isFormOpen.value = true;
+    };
     watch(
       () => route.params.wilayaId as string,
       (newWilayaId) => {
@@ -210,7 +207,10 @@ export default defineComponent({
       filteredTowns,
 
       isFormOpen,
+      openForm,
       closeForm,
+      onAction,
+      actionValues,
     };
   },
 });
