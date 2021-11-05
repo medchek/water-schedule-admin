@@ -36,3 +36,14 @@ export interface ScheduleRequest {
         data: ScheduleDays | null;
     };
 }
+
+// Towns.vue
+
+// edit/delete action data
+export interface TownActionData {
+    action: "edit" | "delete";
+    wilayaId: number;
+    townId: number;
+    townName: string;
+    arTownName: string | null;
+}
