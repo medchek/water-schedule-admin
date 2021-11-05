@@ -17,7 +17,7 @@ class TownResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'ar_name' => $this->ar_name,
+            'arName' => $this->ar_name,
             'code' => $this->code,
             'protected' => $this->protected ? true : false,
             'wilayaId' => $this->wilaya_id

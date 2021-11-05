@@ -14,8 +14,13 @@ class Town extends Model
         'name',
         'ar_name',
         'code',
+        'protected',
         'added_by',
         'modied_by'
+    ];
+
+    protected $casts = [
+        'protected' => 'boolean'
     ];
 
     public function wilaya()
