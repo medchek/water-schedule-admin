@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="absolute md:hidden w-full h-full top-0 left-0 ring-0 blur-0 bg-bgray-700 bg-opacity-50 z-10" v-if="renderMenu"></div>
+    <div id="menu-overlay" class="absolute md:hidden w-full h-full top-0 left-0 ring-0 blur-0 bg-bgray-700 bg-opacity-50 z-10" v-if="renderMenu"></div>
   </transition>
   <transition name="slide">
     <section
@@ -11,7 +11,7 @@
     >
       <div
         id="logo"
-        class="flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full h-16 bg-gradient-to-tr from-blue-50 to-white px-4 text-bgray-700"
+        class="flex items-center justify-between text-3xl font-bold italic w-full h-12 xl:h-14 bg-gradient-to-tr from-blue-50 to-white px-4 text-bgray-700"
       >
         <p>SEAAL</p>
         <button id="close-menu" class="md:hidden w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu">
@@ -21,21 +21,24 @@
       <div id="menu-links" class="flex flex-col flex-grow w-full py-5 px-2 md:px-4">
         <div class="flex-grow space-y-3">
           <menu-link :icon="mdiMapOutline" to="/wilayas">Wilayas</menu-link>
-          <menu-link :icon="mdiMapMarkerRadius" to="/wilaya/16/towns">Communes</menu-link>
-          <menu-link :icon="mdiClockOutline" to="/wilaya/16/town/1601/schedule">Programme d'eau</menu-link>
+          <menu-link :icon="mdiMapMarkerRadius" :to="townLink">Communes</menu-link>
+          <menu-link :icon="mdiClockOutline" :to="scheduleLink">Programme d'eau</menu-link>
         </div>
         <div>
           <menu-link :icon="mdiLogout" to="/logout" :prevent="logout" :isLoading="isLogoutLoading">Se déconnecter</menu-link>
         </div>
       </div>
     </section>
-    <div v-else class="md:hidden flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full min-h-12 bg-white px-4 text-bgray-700 mb-2">
-      <p>SEAAL</p>
-      <button id="close-menu" class="w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu">
-        <Icon :icon="mdiMenu" class="w-8 h-8" />
-      </button>
-    </div>
   </transition>
+  <div
+    id="app-header"
+    class="md:hidden flex-grow-0 flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full min-h-12 bg-white px-4 text-bgray-700 mb-2"
+  >
+    <p>SEAAL</p>
+    <button id="close-menu" class="w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu" v-if="!renderMenu">
+      <Icon :icon="mdiMenu" class="w-8 h-8" />
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -47,6 +50,7 @@ import { axios } from "../lib/shared";
 
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import { Town } from "../store/modules/towns";
 
 export default defineComponent({
   components: {
@@ -56,6 +60,40 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const store = useStore();
+
+    const scheduleLink = computed(() => {
+      const routeName = router.currentRoute.value.name;
+      const { wilayaId, townId } = router.currentRoute.value.params;
+
+      switch (routeName) {
+        case "towns":
+          const towns: Town[] | undefined = store.getters.getTownsByWilayaId(wilayaId);
+          if (!towns || !towns.length) return "/wilaya/16/town/16001/schedule";
+          else return `/wilaya/${wilayaId}/town/${towns[0].code}/schedule`;
+
+        case "schedule":
+          return `/wilaya/${wilayaId}/town/${townId}/schedule`;
+
+        default:
+          return "/wilaya/16/town/16001/schedule";
+      }
+    });
+
+    const townLink = computed(() => {
+      const routeName = router.currentRoute.value.name;
+      const { wilayaId } = router.currentRoute.value.params;
+
+      switch (routeName) {
+        case "towns":
+          return `/wilaya/${wilayaId}/towns`;
+
+        case "schedule":
+          return `/wilaya/${wilayaId}/towns`;
+
+        default:
+          return "/wilaya/16/towns/";
+      }
+    });
 
     const isMenuOpen = ref<boolean>(true);
     const toggleMenu = () => {
@@ -149,7 +187,21 @@ export default defineComponent({
     );
 
     // console.log(internalInstance?.appContext.config.globalProperties);
-    return { mdiMapOutline, mdiMapMarkerRadius, mdiClockOutline, mdiLogout, mdiMenu, logout, isLogoutLoading, isMenuOpen, toggleMenu, renderMenu, menuRef };
+    return {
+      mdiMapOutline,
+      mdiMapMarkerRadius,
+      mdiClockOutline,
+      mdiLogout,
+      mdiMenu,
+      logout,
+      isLogoutLoading,
+      isMenuOpen,
+      toggleMenu,
+      renderMenu,
+      menuRef,
+      scheduleLink,
+      townLink,
+    };
   },
 });
 </script>
