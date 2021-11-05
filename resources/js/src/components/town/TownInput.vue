@@ -12,13 +12,12 @@
         :id="randId"
         @blur="$emit('blur')"
         autocomplete="off"
-        required
         spellcheck="false"
       />
       <!-- button previous v-if="hours !== null || minutes !== null" -->
       <button
         v-if="modelValue.trim().length"
-        @click="$emit('resetInput')"
+        @mousedown="$emit('resetInput')"
         title="réinitialiser"
         class="absolute top-0 h-full w-10 text-blue-700 hover:text-gray-700 focus:bg-gray-100 rounded-r"
         :class="rtl ? 'left-0' : 'right-0'"
