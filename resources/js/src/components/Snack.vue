@@ -12,6 +12,8 @@
         h-14
         flex
         py-2
+        pr-2
+        pl-3
         items-center
         justify-between
         absolute
@@ -28,7 +30,7 @@
       "
       :class="snack.type === 'error' ? 'bg-red-100 text-red-500 ' : 'text-bgray-700 bg-gradient-to-bl to-blue-50 from-bgray-100'"
     >
-      <p class="flex-grow pl-3 font-semibold py-2">{{ snack.message }}</p>
+      <p class="flex-grow font-semibold py-2 my-2">{{ snack.message }}</p>
       <button
         v-if="closable"
         class="min-w-8 w-8 lg:w-14 h-full"
