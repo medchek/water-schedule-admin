@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class TownResource extends JsonResource
 {
@@ -19,7 +20,8 @@ class TownResource extends JsonResource
             'name' => $this->name,
             'arName' => $this->ar_name,
             'code' => $this->code,
-            'protected' => $this->protected ? true : false,
+            'protected' => $this->when(Auth::check(), $this->protected),
+
             'wilayaId' => $this->wilaya_id
         ];
     }
