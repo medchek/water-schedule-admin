@@ -45,6 +45,26 @@ class TownController extends Controller
     }
 
     /**
+     * Display a listing of the resource by the given wilaya_id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function publicGetByWilayaId($wilaya_id)
+    {
+        if (isset($wilaya_id) && is_numeric($wilaya_id) && $wilaya_id > 0) {
+            try {
+
+                $towns = Town::where('wilaya_id', $wilaya_id)->get();
+                return response(TownResource::collection($towns), 200);
+            } catch (Exception $err) {
+                return response('could not find towns', 404);
+            }
+        } else {
+            return response('invalid arguments', 406);
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

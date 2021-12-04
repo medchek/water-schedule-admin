@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\WilayaResource;
 use App\Models\Wilaya;
+use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 // use Illuminate\Http\Response;
 
@@ -21,6 +23,26 @@ class WilayaController extends Controller
         // $wilayas = Wilaya::all()->skip(0)->take(5);
         $wilayas = Wilaya::all();
         return response($wilayas, 200);
+    }
+
+    /**
+     * Returns only the wilayas that have towns
+     */
+    public function getPublicWilayas()
+    {
+        try {
+
+            $wilayas = DB::table('wilayas')
+                ->whereExists(function ($query) {
+                    $query->select(DB::raw(1))
+                        ->from('towns')
+                        ->whereColumn('towns.wilaya_id', 'wilayas.id');
+                })
+                ->get();
+            return response(WilayaResource::collection($wilayas), 200);
+        } catch (Exception $_) {
+            return response("error getting wilay data", 503);
+        }
     }
 
     /**
