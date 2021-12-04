@@ -37,8 +37,18 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch("/towns/{town_id}", [TownController::class, 'update']);
     Route::delete("/towns/{town_id}", [TownController::class, 'destroy']);
 
-    // Route::get("/schedules", [ScheduleController::class, 'index']);
+
     Route::get("/schedules/{town_id}", [ScheduleController::class, 'show']);
     Route::post("/schedules", [ScheduleController::class, 'store']);
-    // Route::patch("/schedules/{schedule_id}", [ScheduleController::class, 'update']);
 });
+
+// public routes
+
+Route::middleware((['throttle:app-requests']))->group((function () {
+
+    Route::get("/wilayas", [WilayaController::class, 'getPublicWilayas']);
+    Route::get("/towns/{wilaya_code}", [TownController::class, 'publicGetByWilayaId']);
+    Route::get("/schedules/{town_id}/current", [ScheduleController::class, 'getCurrentWeekSchedule']);
+    Route::get("/schedules/{town_id}/next", [ScheduleController::class, 'getNextWeekSchedule']);
+    Route::get("/test", [ScheduleController::class, 'getWeekBeginningAndEndDate']);
+}));
