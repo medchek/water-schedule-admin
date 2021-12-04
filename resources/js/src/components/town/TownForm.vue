@@ -231,9 +231,9 @@ export default defineComponent({
 
         return true;
       } else {
-        console.log("checking regular insert");
         // regular inserts
-
+        // reset the town errors
+        townNameError.value = arTownNameError.value = "";
         // CHECK THE OBLIGATORY FIELD FIRST
         if (name.length > 0) {
           if (name.length < 3 || name.length > 30) {
