@@ -45,6 +45,7 @@ import { useStore } from "vuex";
 import { enDaysByOrder, frDaysByOrder } from "../../lib/shared";
 import { addZeroToSingleDigit, enDaysMapper } from "../../lib/utils";
 import { ScheduleDataState, ScheduleDays, TownScheduleState } from "../../store/modules/schedules";
+import { ScheduleDisplay } from "../../types/components";
 
 export default defineComponent({
   props: {
@@ -90,7 +91,7 @@ export default defineComponent({
       return true;
     });
 
-    const getUnavailableSchedule = () => {
+    const getUnavailableSchedule = (): ScheduleDisplay[] => {
       return Object.keys(enDaysMapper).map((day) => ({
         day: enDaysMapper[day as keyof ScheduleDays],
         waterUnavailable: true,
@@ -99,8 +100,6 @@ export default defineComponent({
     };
 
     const displaySchedule = computed(() => {
-      // if (schedule === null) return;
-      // if the schedule is
       if (targetSchedule.value === undefined) return null;
       if (targetSchedule.value === null) return getUnavailableSchedule();
       const weekSchedule = targetSchedule.value.schedule;
@@ -113,7 +112,7 @@ export default defineComponent({
         const daySchedule = weekSchedule[day as keyof ScheduleDays];
         const frDay = frDaysByOrder[index];
 
-        const data = {
+        const data: ScheduleDisplay = {
           day: frDay,
           waterUnavailable: false,
           message: [] as string[],
