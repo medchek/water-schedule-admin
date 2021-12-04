@@ -1,11 +1,12 @@
 <template>
-  <section class="flex-grow flex flex-col h-full">
+  <section class="flex-grow flex flex-col h-full overflow-hidden">
     <div id="content-header" class="flex flex-col md:flex-row md:items-center md:justify-between px-5 md:h-16 md:min-h-16 space-y-2 md:space-y-0">
       <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Wilayas</span>
       <input
         type="search"
         class="w-full md:w-60 xl:w-80 2xl:w-96 h-10 px-2 border border-gray-200 focus:ring-2 placeholder-gray-300 focus:ring-blue-200 rounded-md"
-        placeholder="Rechercher une wilaya"
+        placeholder="Chercher une wilaya"
+        maxlength="30"
         @input="searchTerm = $event.target.value"
       />
     </div>
@@ -24,7 +25,7 @@
 
       <div
         class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-none gap-4 w-full h-auto px-5"
-        v-if="!isFetching && !errorFetching && wilayas.length"
+        v-if="!isFetching && !errorFetching && wilayas"
       >
         <div class="flex flex-col bg-white h-36 px-4 pb-4 rounded" v-for="wilaya in wilayas" :key="wilaya.code">
           <div class="flex-grow flex items-center justify-center text-bgray-700 font-semibold text-lg 2xl:text-xl text-center">
@@ -55,7 +56,7 @@
       </div>
       <!-- SUCCESS BUT NO SEARCH RESULT -->
 
-      <div v-if="!isFetching && !errorFetching && searchTerm.length && wilayas.length === 0" class="w-full text-center text-lg text-bgray-700">
+      <div v-if="!isFetching && !errorFetching && searchTerm.length && !wilayas.length" class="w-full text-center text-lg text-bgray-700">
         <p>Aucune wilaya n'a été trouvée dans votre recherche.</p>
       </div>
     </section>
@@ -78,7 +79,7 @@ export default defineComponent({
     const isAuth = computed(() => store.getters.getUser);
 
     const allWilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getWilayas);
-    const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getFilteredWilayas(searchTerm.value));
+    const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getFilteredWilayas(searchTerm.value.trim()));
 
     const fetchWilayas = () => {
       isFetching.value = true;
