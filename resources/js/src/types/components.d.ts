@@ -1,7 +1,12 @@
+import { Time } from "./../lib/shared";
 // schedule related types
 import { Period } from "../lib/shared";
 import { ScheduleDays } from "../store/modules/schedules";
 
+// export const enum TargetSchedule {
+//     Current,
+//     Next,
+// }
 export interface ScheduleProps {
     dayIndex: number;
     scheduleIndex: number;
@@ -20,21 +25,19 @@ export interface ScheduleRequestStructure {
     next: ScheduleDays | null;
 }
 
+/** Used in  ScheduleRequest */
+interface TargetScheduleRequestStructure {
+    scheduleCode?: number;
+    skip: boolean;
+    update: boolean;
+    data: ScheduleDays | null;
+}
+/** Request data structure for schedules post requests */
 export interface ScheduleRequest {
     townCode: number;
     wilayaCode: number;
-    current: {
-        scheduleCode?: number;
-        skip: boolean;
-        update: boolean;
-        data: ScheduleDays | null;
-    };
-    next: {
-        scheduleCode?: number;
-        skip: boolean;
-        update: boolean;
-        data: ScheduleDays | null;
-    };
+    current: TargetScheduleRequestStructure;
+    next: TargetScheduleRequestStructure;
 }
 
 // Towns.vue
@@ -46,4 +49,73 @@ export interface TownActionData {
     townId: number;
     townName: string;
     arTownName: string | null;
+}
+
+export interface ScheduleDisplay {
+    day: string;
+    waterUnavailable: boolean;
+    message: string[];
+}
+
+export type TargetSchedule = "current" | "next";
+export type TargetTime = "from" | "to";
+
+// used in ShceuleDaySubform.vue
+export interface AddSegmentArgs {
+    targetSchedule: TargetSchedule;
+    dayIndex: number;
+}
+
+export interface RemoveSegmentArgs {
+    targetSchedule: TargetSchedule;
+    dayIndex: number;
+    periodIndex: number;
+}
+
+export interface SetTimeArgs {
+    newValue: Time;
+    targetTime: TargetTime;
+    targetSchedule: TargetSchedule;
+    periodIndex: number;
+    dayIndex: number;
+}
+
+export interface ResetTimeArgs {
+    targetTime: TargetTime;
+    targetSchedule: TargetSchedule;
+    periodIndex: number;
+    dayIndex: number;
+}
+
+export interface SetErrorArgs {
+    message: string;
+    targetTime: TargetTime;
+    targetSchedule: TargetSchedule;
+    periodIndex: number;
+    dayIndex: number;
+}
+export interface ResetErrorArgs {
+    targetTime: TargetTime;
+    targetSchedule: TargetSchedule;
+    periodIndex: number;
+    dayIndex: number;
+}
+
+export interface ResetAllErrorsArgs {
+    targetSchedule: TargetSchedule;
+    dayIndex: number;
+}
+
+export interface ScheduleFormRequest {
+    townCode: number;
+    current: {
+        method: "patch" | "post";
+        data: ScheduleDays | null;
+        wasChanged: boolean;
+    };
+    next: {
+        method: "patch" | "post";
+        data: ScheduleDays | null;
+        wasChanged: boolean;
+    };
 }
