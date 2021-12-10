@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- lower than md stack the menu on top of the content as a header for when the user hides the side menu, another should appear on the top of the screen -->
-    <div class="flex h-full w-full flex-col md:flex-row overflow-hidden">
+    <!-- lower than lg stack the menu on top of the content as a header for when the user hides the side menu, another should appear on the top of the screen -->
+    <div class="flex h-full w-full flex-col lg:flex-row overflow-hidden">
       <Menu />
       <router-view name="content"></router-view>
     </div>
