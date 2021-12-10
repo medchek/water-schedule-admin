@@ -36,3 +36,15 @@ export const enDaysMapper = {
 export const randNumber = (min: number, max: number): number => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+/**
+ * sorts an array of objects based on the given property (does not mutate the original array)
+ * @param arr the array to stort
+ * @param property the target property
+ * @returns the sorted array (does not mutate the original)
+ */
+export const sortArrayOfObjects = (arr: any[], property: string) => {
+    if (!arr) throw new Error("array cannot be empty");
+    const cloned = [...arr];
+    return cloned.sort((a, b) => a[property].localeCompare(b[property]));
+};
