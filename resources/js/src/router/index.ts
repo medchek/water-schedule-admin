@@ -10,6 +10,7 @@ import Wilayas from "../views/Wilayas.vue";
 const NotFound = () => import("../views/NotFound.vue");
 const Towns = () => import("../views/Towns.vue");
 const Schedule = () => import("../views/Schedule.vue");
+const Settings = () => import("../views/Settings.vue");
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -37,6 +38,13 @@ const routes: Array<RouteRecordRaw> = [
                 name: "schedule",
                 components: {
                     content: Schedule,
+                },
+            },
+            {
+                path: "/settings",
+                name: "settings",
+                components: {
+                    content: Settings,
                 },
             },
             // {

@@ -1,0 +1,49 @@
+<template>
+  <button
+    type="submit"
+    class="
+      w-full
+      md:w-32
+      px-5
+      h-10
+      bg-blue-500
+      hover:bg-blue-400
+      focus:bg-blue-600
+      font-semibold
+      text-white
+      rounded
+      transition-colors
+      disabled:bg-gray-200 disabled:text-bgray-500 disabled:cursor-not-allowed
+    "
+    :title="title"
+    :disabled="disabled || isLoading"
+  >
+    <loader className="w-7 h-7" v-if="isLoading" />
+    <span v-else><slot></slot></span>
+  </button>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import Loader from "../Loader.vue";
+
+export default defineComponent({
+  components: { Loader },
+  props: {
+    // all optional props
+    title: {
+      type: String,
+      required: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup() {},
+});
+</script>

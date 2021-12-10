@@ -119,3 +119,9 @@ export interface ScheduleFormRequest {
         wasChanged: boolean;
     };
 }
+
+// Settings.vue
+
+export type SettingType = "password" | "app";
+
+export type SettingsList = { label: string; component: string; icon: string }[];

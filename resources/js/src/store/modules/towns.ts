@@ -1,3 +1,4 @@
+import { sortArrayOfObjects } from "./../../lib/utils";
 import { AxiosResponse } from "axios";
 import { Wilaya } from "./wilayas";
 import { Module } from "vuex";
@@ -52,6 +53,12 @@ const userModule: Module<WilayasModuleState, any> = {
             (state) =>
             (wilayaId: number): Town[] | undefined => {
                 return state.towns[wilayaId];
+            },
+        getSortedTownsByWilayaId:
+            (state) =>
+            (wilayaId: number): Town[] | undefined => {
+                if (!state.towns[wilayaId]) return undefined;
+                return sortArrayOfObjects(state.towns[wilayaId], "name");
             },
         getTownById:
             (state) =>
