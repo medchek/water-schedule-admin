@@ -29,20 +29,20 @@ class CreateWaterScheduleTable extends Migration
             // the value of towncode.weeknumber.year together
             $table->unsignedBigInteger('code')->unique();
             $table->unsignedTinyInteger('week_number');
-            $table->json("schedule")->nullable()->default(null);
+            $table->json('schedule')->nullable()->default(null);
             $table->unsignedTinyInteger('next_week_number')->nullable()->default(null);
             $table->timestamps();
 
 
             // $table->unsignedBigInteger('town_id')->unique();
             $table->unsignedInteger('town_code');
-            $table->foreign('town_code')->references('code')->on('towns')->onDelete("cascade");
+            $table->foreign('town_code')->references('code')->on('towns')->onDelete('cascade');
             // $table->foreign('period_id')->references('id')->on('periods');
 
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('modified_by')->nullable()->default(null);
-            $table->foreign('created_by')->references('id')->on("users");
-            $table->foreign('modified_by')->references('id')->on("users");
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('modified_by')->references('id')->on('users');
 
             // $table->json('sunday_from');
             // $table->time('sunday_to')->nullable()->default(null);
