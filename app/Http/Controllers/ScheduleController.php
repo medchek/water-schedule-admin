@@ -44,7 +44,7 @@ class ScheduleController extends Controller
 
             return response()->json($responseData, 200);
         } catch (Exception $e) {
-            return response($e->getMessage(), 406);
+            return response($e->getMessage(), 400);
         }
     }
     /**

@@ -60,7 +60,7 @@ class TownController extends Controller
                 return response('could not find towns', 404);
             }
         } else {
-            return response('invalid arguments', 406);
+            return response('invalid arguments', 400);
         }
     }
 
@@ -86,14 +86,14 @@ class TownController extends Controller
             // ]
 
             if ($validated->fails()) {
-                return response($validated->errors(), 406);
+                return response($validated->errors(), 400);
             }
 
             $wilaya_id = $request->wilayaId;
             $wilaya = Wilaya::find($wilaya_id);
 
             if (!$wilaya) {
-                return response("invalid wilya, not found", 406);
+                return response("invalid wilya, not found", 400);
             }
 
             // check if the wilaya already has a town with the same name
@@ -168,11 +168,11 @@ class TownController extends Controller
             "arName.regex" => "invalid regex"
         ]);
         if ($validated->fails()) {
-            return response($validated->errors(), 406);
+            return response($validated->errors(), 400);
         }
 
         if (!isset($id) || !is_numeric($id) || $id <= 0) {
-            return response('requested id is invalid', 406);
+            return response('requested id is invalid', 400);
         }
 
         try {
@@ -189,7 +189,7 @@ class TownController extends Controller
             $town = Town::find($id);
 
             if (!$town) {
-                return response('town not found', 406);
+                return response('town not found', 404);
             }
             if ($town->protected === true) {
                 return response('cannot change protected entry', 403);
@@ -235,14 +235,14 @@ class TownController extends Controller
     {
 
         if (!isset($id) || !is_numeric($id) || $id <= 0) {
-            return response('requested id is invalid', 406);
+            return response('requested id is invalid', 400);
         }
 
         try {
             $town = Town::find($id);
 
             if (!$town) {
-                return response('town not found', 406);
+                return response('town not found', 404);
             }
 
             if ($town->protected === true) {
