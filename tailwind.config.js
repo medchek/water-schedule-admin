@@ -9,11 +9,15 @@ module.exports = {
             colors: {
                 sky: colors.sky,
                 bgray: colors.blueGray,
+                blue: {
+                    light: "#6282D9",
+                },
             },
             borderRadius: {
                 half: "50%",
             },
             minHeight: {
+                5: "1.25rem",
                 8: "2rem",
                 10: "2.5rem",
                 12: "3rem",
@@ -31,6 +35,8 @@ module.exports = {
                 64: "16rem",
                 72: "18rem",
                 80: "20rem",
+                124: "31rem",
+                130: "34rem",
             },
             width: {
                 18: "4.5rem",
