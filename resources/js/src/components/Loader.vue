@@ -3,7 +3,7 @@
     :class="[
       className ? className : 'w-8 h-8',
       dark && 'border-white border-t-transparent',
-      dark === false && customColors === false && 'border-bgray-600 border-t-white',
+      dark === false && customColors === false && 'border-bgray-600 border-t-transparent',
       thin ? 'border-2' : 'border-4',
     ]"
     class="border-4 rounded-half animate-spin"
