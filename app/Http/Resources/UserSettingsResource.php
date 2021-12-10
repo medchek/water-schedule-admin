@@ -4,21 +4,19 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class UserSettingsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return [
-            "id" => $this->id,
-            "name" => $this->name,
-            "email" => $this->email,
-            "settings" => new UserSettingsResource($this->settings),
+            "wilayaCode" =>  $this->wilaya_code,
+            "townCode" => $this->town_code
         ];
     }
 }

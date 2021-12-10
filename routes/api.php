@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TownController;
 use App\Http\Controllers\WilayaController;
+use App\Http\Controllers\UserSettingController;
 use App\Http\Resources\UserResource;
 
 /*
@@ -40,6 +41,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get("/schedules/{town_id}", [ScheduleController::class, 'show']);
     Route::post("/schedules", [ScheduleController::class, 'store']);
+
+    // user settings
+    // TODO: rate limit the amount of reset per hours to 5
+    Route::patch("/settings/reset-password", [UserSettingController::class, 'resetPassword']);
+    // user settings
+    Route::post("/settings/user-settings", [UserSettingController::class, 'storeUserAppSettings']);
+    Route::patch("/settings/user-settings", [UserSettingController::class, 'updateUserAppSettings']);
 });
 
 // public routes
@@ -50,5 +58,4 @@ Route::middleware((['throttle:app-requests']))->group((function () {
     Route::get("/towns/{wilaya_code}", [TownController::class, 'publicGetByWilayaId']);
     Route::get("/schedules/{town_id}/current", [ScheduleController::class, 'getCurrentWeekSchedule']);
     Route::get("/schedules/{town_id}/next", [ScheduleController::class, 'getNextWeekSchedule']);
-    Route::get("/test", [ScheduleController::class, 'getWeekBeginningAndEndDate']);
 }));
