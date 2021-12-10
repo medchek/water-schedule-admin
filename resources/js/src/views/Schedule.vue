@@ -2,9 +2,11 @@
   <section class="flex-grow flex flex-col h-full justify-center" v-if="isFetching" id="complete-data-fetching">
     <loader className="w-14 h-14 mx-auto border-t-blue-500" customColors />
   </section>
-  <section class="flex-grow flex flex-col h-full" v-else>
+  <section class="flex-grow flex flex-col h-full overflow-hidden" v-else>
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
-      <span class="text-bgray-700 text-lg md:text-xl 2xl:text-2xl font-semibold">Programme d'eau - {{ currentTown.name }} - {{ wilaya.name }}</span>
+      <span class="text-bgray-700 text-lg md:text-xl 2xl:text-2xl font-semibold"
+        >Programme d'eau - <span class="capitalize">{{ currentTown.name }}</span> - {{ wilaya.name }}</span
+      >
     </div>
 
     <section id="schedule-toolbar" class="flex flex-col md:flex-row items-center justify-between md:h-14 w-full px-5 space-y-2 md:space-y-0">
@@ -89,10 +91,10 @@ import Modal from "../components/Modal.vue";
 import AppTimePicker from "../components/AppTimePicker.vue";
 import AppTownSelector from "../components/AppTownSelector.vue";
 import ScheduleWeekSelector from "../components/schedule/ScheduleWeekSelector.vue";
-import ScheduleForm from "../components/schedule/ScheduleForm.vue";
+import ScheduleForm from "../components/schedule/schedule-form/ScheduleForm.vue";
 import { mdiPlusBoxMultiple } from "@mdi/js";
 //
-import { computed, ComputedRef, defineAsyncComponent, defineComponent, onMounted, reactive, ref } from "vue";
+import { computed, ComputedRef, defineAsyncComponent, defineComponent, onMounted, reactive, ref, watch } from "vue";
 import { startOfWeek, endOfWeek, addDays, getWeek } from "date-fns";
 
 import { formatDate } from "../lib/utils";
@@ -114,7 +116,7 @@ export default defineComponent({
     AppTownSelector,
     ScheduleWeekSelector,
     Loader,
-    ScheduleEmptyWarning: defineAsyncComponent(() => import("../components/schedule/ScheduleEmptyWarning.vue")),
+    // ScheduleEmptyWarning: defineAsyncComponent({ loader: () => import("../components/schedule/ScheduleEmptyWarning.vue"), loadingComponent: Loader }),
     ScheduleForm,
   },
   setup() {
@@ -125,12 +127,13 @@ export default defineComponent({
     const route = useRoute();
     const store = useStore();
     const router = useRouter();
-    const wilayaCode = ref(parseInt(route.params.wilayaId as string));
-    const townCode = computed(() => parseInt(route.params.townId as string));
+    const wilayaCode = computed(() => parseInt(route.params.wilayaId as string, 10));
+    const townCode = computed(() => parseInt(route.params.townId as string, 10));
 
     const wilaya: ComputedRef<Wilaya> = computed(() => store.getters.getWilayaByCode(wilayaCode.value));
     const wilayaTowns: ComputedRef<Town[]> = computed(() => store.getters.getTownsByWilayaId(wilayaCode.value));
     const currentTown: ComputedRef<Town | undefined> = computed(() => {
+      if (!wilayaTowns.value) return undefined;
       return wilayaTowns.value.find((town) => town.code === townCode.value);
     });
 
@@ -169,15 +172,18 @@ export default defineComponent({
         setIsFetching(false);
         return;
       }
-
-      await fetchWilayas();
-      // only remove the loader if the towns are available, otherwise keep it loading until the towns are fetched
-      if (wilayaTowns.value !== undefined && storeSchedule.value !== undefined) setIsFetching(false);
-      // search for towns data
-      await fetchTowns();
-      // search for schedule
-      await fetchSchedule();
-      setIsFetching(false);
+      try {
+        await fetchWilayas();
+        // only remove the loader if the towns are available, otherwise keep it loading until the towns are fetched
+        if (wilayaTowns.value !== undefined && storeSchedule.value !== undefined) setIsFetching(false);
+        // search for towns data
+        await fetchTowns();
+        // search for schedule
+        await fetchSchedule();
+        setIsFetching(false);
+      } catch (err) {
+        console.error("[Schedule.vue@onMounted] error while fetching data", err);
+      }
       // TODO: DONE
       // the form needs to be populated with the schedule vuex data if there they are retrived from the server
       // therefore, both
