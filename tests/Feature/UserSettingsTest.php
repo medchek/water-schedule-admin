@@ -189,4 +189,22 @@ class UserSettingsTest extends TestCase
 
         $response->assertStatus(400); // 422
     }
+    /** Test if the user recives a 403 fobidden when a patch request is called on a entity that does not exists, which should have been a post request */
+    public function testUserSettingsPatchRequestShoudReturnNotFoundStatusWhenPatchedEntityDoesNotExistInDatabase()
+    {
+
+        $patchData = [
+            "wilaya_code" => 16, // valid
+            "town_code" => 16002 // valid
+        ];
+
+        $user = User::factory()->create([
+            'name' => 'admin_test',
+        ]);
+
+        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+        $response = $this->withHeader("Accept", "application/json")->actingAs($user)->patch("/api/settings/user-settings", $patchData);
+
+        $response->assertNotFound(); // 404
+    }
 }
