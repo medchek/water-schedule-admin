@@ -40,12 +40,18 @@ export default defineComponent({
           townId: selectedTownCode.value,
         },
       });
+
+      emit("townSelected", selectedTownCode.value);
     };
 
-    watch(selectedTownCode, () => {
-      emit("townSelected", selectedTownCode.value);
-    });
+    // watch(selectedTownCode, () => {
+    //   emit("townSelected", selectedTownCode.value);
+    // });
 
+    watch(routeTownCode, (newVal) => {
+      // if the routeTownCode changed from the outside, update the selectedTownCode
+      selectedTownCode.value = newVal;
+    });
     return {
       selectedTownCode,
       handleSelectChange,

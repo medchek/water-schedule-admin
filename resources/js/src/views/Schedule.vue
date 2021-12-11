@@ -21,7 +21,7 @@
       <!-- TEST -->
       <!-- <button class="bg-red-500 text-white font-semibold px-2 rounded" @click="runTest">Run test</button> -->
       <!-- TEST -->
-      <app-town-selector :towns="wilayaTowns" @townSelected="handleTownSelected" />
+      <app-town-selector :towns="wilayaTowns" />
     </section>
     <!-- <section id="content-main" class="flex flex-col relative w-full h-full flex-grow overflow-y-auto py-4"> -->
     <section id="content-main" class="flex flex-col w-full h-full flex-grow overflow-y-auto py-4">
@@ -94,7 +94,7 @@ import ScheduleWeekSelector from "../components/schedule/ScheduleWeekSelector.vu
 import ScheduleForm from "../components/schedule/schedule-form/ScheduleForm.vue";
 import { mdiPlusBoxMultiple } from "@mdi/js";
 //
-import { computed, ComputedRef, defineAsyncComponent, defineComponent, onMounted, reactive, ref, watch } from "vue";
+import { computed, ComputedRef, defineAsyncComponent, defineComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from "vue";
 import { startOfWeek, endOfWeek, addDays, getWeek } from "date-fns";
 
 import { formatDate } from "../lib/utils";
@@ -131,7 +131,7 @@ export default defineComponent({
     const townCode = computed(() => parseInt(route.params.townId as string, 10));
 
     const wilaya: ComputedRef<Wilaya> = computed(() => store.getters.getWilayaByCode(wilayaCode.value));
-    const wilayaTowns: ComputedRef<Town[]> = computed(() => store.getters.getTownsByWilayaId(wilayaCode.value));
+    const wilayaTowns: ComputedRef<Town[]> = computed(() => store.getters.getSortedTownsByWilayaId(wilayaCode.value));
     const currentTown: ComputedRef<Town | undefined> = computed(() => {
       if (!wilayaTowns.value) return undefined;
       return wilayaTowns.value.find((town) => town.code === townCode.value);
@@ -228,14 +228,24 @@ export default defineComponent({
     };
 
     const isFetchingNewSchedule = ref(false);
-    const handleTownSelected = async (townCode: number) => {
+    // const handleTownSelected = async (townCode: number) => {
+    //   const targetSchedule = store.getters.getScheduleByTownCode(townCode);
+    //   if (targetSchedule === undefined) {
+    //     isFetchingNewSchedule.value = true;
+    //     await fetchTargetSchedule(townCode);
+    //     isFetchingNewSchedule.value = false;
+    //   }
+    // };
+
+    watch(townCode, async (newTownCode) => {
+      if (Number.isNaN(newTownCode)) return;
       const targetSchedule = store.getters.getScheduleByTownCode(townCode);
       if (targetSchedule === undefined) {
         isFetchingNewSchedule.value = true;
-        await fetchTargetSchedule(townCode);
+        await fetchTargetSchedule(newTownCode);
         isFetchingNewSchedule.value = false;
       }
-    };
+    });
 
     return {
       isFetching,
@@ -254,7 +264,7 @@ export default defineComponent({
       //
       isCurrentScheduleDisplayed,
       setIsCurrentScheduleDisplay,
-      handleTownSelected,
+      // handleTownSelected,
 
       isFetchingNewSchedule,
       // icons
