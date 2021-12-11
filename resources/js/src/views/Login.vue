@@ -48,8 +48,7 @@
 import { computed, defineComponent, ref } from "vue";
 import { useStore } from "vuex";
 import Loader from "../components/Loader.vue";
-import { AxiosLogin, isAuth } from "../lib/shared";
-import { SnackType } from "../store/modules/ui";
+import { AxiosLogin, flashSnack, isAuth } from "../lib/shared";
 import store from "../store";
 import { useRouter } from "vue-router";
 
@@ -90,9 +89,9 @@ export default defineComponent({
     });
     const isLoading = ref<boolean>(false);
 
-    const flashSnack = ({ message, time, type }: { message: string; time?: number | false; type?: SnackType }) => {
-      store.dispatch("flashSnack", { message, type, time });
-    };
+    // const flashSnack = ({ message, time, type }: { message: string; time?: number; type?: SnackType }) => {
+    //   store.dispatch("flashSnack", { message, type: type || "info", time: time || 5000 });
+    // };
 
     const login = () => {
       isLoading.value = true;
