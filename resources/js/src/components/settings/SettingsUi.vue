@@ -157,6 +157,7 @@ export default defineComponent({
               if (status === 422) errorMessage = "Rien n'a changé, sauvegarde annulée (code: 422)";
               if (status === 400) errorMessage = "Erreur, Requêt érronée (code: 400)";
               if (status === 403) errorMessage = "Erreur, Method http de la requêt érronée (code: 403)";
+              if (status === 404) errorMessage = "Erreur, Le serveur n'a pas pu trouver les données demandées (code: 404)";
 
               flashSnack({
                 message: errorMessage,
