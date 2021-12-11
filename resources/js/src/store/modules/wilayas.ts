@@ -46,7 +46,7 @@ const userModule: Module<WilayasModuleState, any> = {
     },
 
     actions: {
-        async fetchWilayas({ commit, state }) {
+        async fetchWilayas({ commit }) {
             try {
                 const response = await axios("/api/wilayas");
                 if (response.status === 200) {
