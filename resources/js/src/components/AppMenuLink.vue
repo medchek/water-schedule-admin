@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="to" custom v-slot="{ href, navigate, isActive }">
+  <router-link :to="to" custom active-class="bg-blue-50/10" v-slot="{ route, href, navigate }">
     <a
       class="
         flex
@@ -20,7 +20,7 @@
         px-2
         text-white
       "
-      :class="isActive && 'bg-blue-50/10'"
+      :class="route.name == $route.name && 'bg-blue-50/10 is-active-link'"
       :href="href"
       @click.prevent="navigateTo(navigate)"
     >
