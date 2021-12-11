@@ -165,7 +165,7 @@ class UserService
 
     // if the settings doe not exist, a patch request is forbidden
     if (!isset($userSettings)) {
-      return response("settings don't exist, cannot patch", 403);
+      return response("settings don't exist, cannot patch", 404);
     }
 
     // quickly check if the values are the same and prevent any further checks that would require database access
