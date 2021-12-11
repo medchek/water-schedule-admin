@@ -1,14 +1,6 @@
 <template>
-  <!-- 
-
-  
-  NOTE : HEAVY REFACTOR NEEDED
-  NOTE : HANDLE ALL THE LOGIC AT VUEX LEVEL SINCE DATA WILL BE SERVED FROM THERE
-  A FORM GLOBAL STATE WILL BE NEEDED AT VUEX LEVEL AS WELL TO PERFROM FORM ERROR CHECKING
-
- -->
-  <div class="flex flex-col w-full flex-grow py-4">
-    <section class="grid auto-rows-auto gap-2 flex-grow" data-id="form-input-rows">
+  <div class="flex flex-col w-full grow py-4">
+    <section class="grid auto-rows-auto gap-2 grow" data-id="form-input-rows">
       <div class="space-y-3 hover:bg-bgray-50" v-for="(targetSchedule, dayIndex) in currentSchedule" :key="targetSchedule.day">
         <section class="flex justify-between items-center">
           <label class="font-semibold text-bgray-800 text-base sm:text-lg capitalize">{{ targetSchedule.day }}</label>
@@ -24,7 +16,7 @@
         </section>
         <!-- DISPLAY THE INPUTS FOR MULTIPLE PERIODS -->
         <section v-for="(scheduleSegment, index) in targetSchedule.schedule" :key="index" class="flex items-center justify-between">
-          <div class="flex flex-grow justify-between space-x-4 px-1">
+          <div class="flex grow justify-between space-x-4 px-1">
             <!-- FROM INPUT -->
             <app-time-picker
               class="w-full h-auto"

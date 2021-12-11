@@ -34,16 +34,16 @@
         v-if="isOpen"
         ref="pickerRef"
       >
-        <p class="picker__HEADER flex items-center justify-center flex-grow-0 bg-blue-500 min-h-10 md:min-h-12 text-3xl sm:text-4xl text-white w-full">
+        <p class="picker__HEADER flex items-center justify-center grow-0 bg-blue-500 min-h-10 md:min-h-12 text-3xl sm:text-4xl text-white w-full">
           {{ timePickerDisplay }}
         </p>
         <div class="flex min-h-8 font-semibold bg-bgray-100 text-bgray-600 text-sm md:text-base">
           <p class="flex justify-center items-center h-full w-full">Heurs</p>
           <p class="flex justify-center items-center h-full w-full">Minutes</p>
         </div>
-        <div class="relative flex flex-grow h-auto overflow-y-hidden border border-gray-100">
+        <div class="relative flex grow h-auto overflow-y-hidden border border-gray-100">
           <section class="flex flex-col w-full">
-            <div class="flex-grow h-full max-h-full overflow-y-scroll">
+            <div class="grow h-full max-h-full overflow-y-scroll">
               <button
                 v-for="n in 24"
                 class="w-full h-6 md:h-8 transition-colors hover:bg-bgray-200 focus:bg-bgray-300 font-semibold text-sm md:text-base text-gray-800"
@@ -57,7 +57,7 @@
             </div>
           </section>
           <section class="w-full h-full">
-            <div class="flex-grow h-full max-h-full overflow-y-scroll">
+            <div class="grow h-full max-h-full overflow-y-scroll">
               <button
                 v-for="n in 60"
                 class="w-full h-6 md:h-8 transition-colors hover:bg-bgray-200 focus:bg-bgray-300 font-semibold text-sm md:text-base text-gray-800"

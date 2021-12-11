@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-grow pt-1">
+  <div class="grow pt-1">
     <label :for="labelId" class="font-semibold text-bgray-500">{{ label }}</label>
     <!-- if data is an empty array, show the placeholder instead -->
     <div class="text-sm flex justify-start items-center bg-white h-12 w-full rounded-md mt-2 px-4 text-gray-400 cursor-default" v-if="data.length === 0">

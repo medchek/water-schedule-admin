@@ -1,6 +1,6 @@
 <template>
   <view-container label="Paramètres">
-    <div id="settings-base" class="overflow-hidden flex flex-col lg:flex-row flex-grow h-full w-full">
+    <div id="settings-base" class="overflow-hidden flex flex-col lg:flex-row grow h-full w-full">
       <section
         id="settings-selectors"
         class="
@@ -32,7 +32,7 @@
           >Interface</setting-selector-button
         > -->
       </section>
-      <section class="overflow-auto flex-grow h-full lg:px-4 px-5 pb-3 lg:pt-4">
+      <section class="overflow-auto grow h-full lg:px-4 px-5 pb-3 lg:pt-4">
         <component :is="selectedComponentName"></component>
       </section>
     </div>

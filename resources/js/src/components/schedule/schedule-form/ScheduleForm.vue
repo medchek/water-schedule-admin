@@ -14,8 +14,8 @@
       :isLoading="isSendingData"
     />
     <!-- FORM -->
-    <section id="schedule-content-wrapper" class="flex flex-col w-full flex-grow overflow-hidden" v-else>
-      <!-- <section id="schedule-content-wrapper" class="flex flex-col w-full flex-grow overflow-hidden"> -->
+    <section id="schedule-content-wrapper" class="flex flex-col w-full grow overflow-hidden" v-else>
+      <!-- <section id="schedule-content-wrapper" class="flex flex-col w-full grow overflow-hidden"> -->
       <!-- WEEK TABS  -->
       <div id="tabs-container" class="flex px-5">
         <button
@@ -38,11 +38,11 @@
         </button>
       </div>
       <!-- FROM RENDER -->
-      <div class="flex flex-col flex-grow h-full overflow-y-auto overflow-x-hidden px-5" id="modal-form-container">
+      <div class="flex flex-col grow h-full overflow-y-auto overflow-x-hidden px-5" id="modal-form-container">
         <transition name="slide-right" type="animation" mode="out-in">
           <!-- THIS WEEK -->
-          <week-display id="current-week" class="flex flex-col w-full flex-grow py-4" v-if="!isNextWeekSchedule">
-            <section class="grid auto-rows-auto gap-2 flex-grow" data-id="form-input-rows">
+          <week-display id="current-week" class="flex flex-col w-full grow py-4" v-if="!isNextWeekSchedule">
+            <section class="grid auto-rows-auto gap-2 grow" data-id="form-input-rows">
               <schedule-day-subform
                 v-for="(schedule, dayIndex) in currentSchedule"
                 :periods="schedule.schedule"
@@ -62,8 +62,8 @@
             </section>
           </week-display>
           <!-- NEXT WEEK -->
-          <week-display id="next-week" class="week_NEXT flex flex-col w-full flex-grow py-4" v-else>
-            <section class="grid auto-rows-auto gap-2 flex-grow" data-id="form-input-rows">
+          <week-display id="next-week" class="week_NEXT flex flex-col w-full grow py-4" v-else>
+            <section class="grid auto-rows-auto gap-2 grow" data-id="form-input-rows">
               <schedule-day-subform
                 v-for="(schedule, dayIndex) in nextSchedule"
                 :periods="schedule.schedule"

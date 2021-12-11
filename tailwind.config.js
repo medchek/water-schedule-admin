@@ -1,16 +1,20 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-    purge: ["./storage/framework/views/*.php", "./resources/**/*.blade.php", "./resources/**/*.js", "./resources/**/*.vue"],
-    mode: "jit",
-    darkMode: false, // or 'media' or 'class'
+    content: ["./storage/framework/views/*.php", "./resources/**/*.blade.php", "./resources/**/*.js", "./resources/**/*.vue"],
+    darkMode: "class", // or 'media' or 'class'
     theme: {
         extend: {
             colors: {
-                sky: colors.sky,
-                bgray: colors.blueGray,
+                bgray: colors.slate,
                 blue: {
                     light: "#6282D9",
+                },
+                dark: {
+                    bg: "#01051C",
+                    menu: "#0C1027",
+                    header: "#030B1E",
+                    card: "#0D1437",
                 },
             },
             borderRadius: {

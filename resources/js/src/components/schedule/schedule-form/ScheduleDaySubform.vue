@@ -14,7 +14,7 @@
     </section>
     <!-- DISPLAY THE INPUTS FOR MULTIPLE PERIODS -->
     <section v-for="(period, index) in periods" :key="index" class="flex items-center justify-between">
-      <div class="flex flex-grow justify-between space-x-4 px-1">
+      <div class="flex grow justify-between space-x-4 px-1">
         <!-- FROM INPUT -->
         <app-time-picker-input
           class="w-full h-auto"

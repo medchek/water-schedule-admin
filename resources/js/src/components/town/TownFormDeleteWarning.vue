@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-grow h-full w-full px-5 py-5 space-y-4 text-center font-medium text-gray-700">
+  <section class="grow h-full w-full px-5 py-5 space-y-4 text-center font-medium text-gray-700">
     <p>
       Vous êtes sur le point de supprimer la commune <span class="font-bold">{{ townName }}</span> de la wilaya
       <span class="font-semibold">{{ prefixedWilayaName }}</span

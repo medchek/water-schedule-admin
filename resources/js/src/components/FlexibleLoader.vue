@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-grow w-full h-full flex items-center justify-center">
+  <div class="grow w-full h-full flex items-center justify-center">
     <loader :dark="dark" :customColors="customColors" :thin="thin" :className="className" />
   </div>
 </template>

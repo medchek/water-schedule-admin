@@ -1,8 +1,8 @@
 <template>
-  <section class="flex-grow flex flex-col h-full justify-center" v-if="isFetching" id="complete-data-fetching">
+  <section class="grow flex flex-col h-full justify-center" v-if="isFetching" id="complete-data-fetching">
     <loader className="w-14 h-14 mx-auto border-t-blue-500" customColors />
   </section>
-  <section class="flex-grow flex flex-col h-full overflow-hidden" v-else>
+  <section class="grow flex flex-col h-full overflow-hidden" v-else>
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
       <span class="text-bgray-700 text-lg md:text-xl 2xl:text-2xl font-semibold"
         >Programme d'eau - <span class="capitalize">{{ currentTown.name }}</span> - {{ wilaya.name }}</span
@@ -23,12 +23,12 @@
       <!-- TEST -->
       <app-town-selector :towns="wilayaTowns" />
     </section>
-    <!-- <section id="content-main" class="flex flex-col relative w-full h-full flex-grow overflow-y-auto py-4"> -->
-    <section id="content-main" class="flex flex-col w-full h-full flex-grow overflow-y-auto py-4">
-      <section class="flex flex-grow w-full overflow-x-hidden">
+    <!-- <section id="content-main" class="flex flex-col relative w-full h-full grow overflow-y-auto py-4"> -->
+    <section id="content-main" class="flex flex-col w-full h-full grow overflow-y-auto py-4">
+      <section class="flex grow w-full overflow-x-hidden">
         <!-- <h2 class="text-gray-400 text-sm sm:text-base lg:text-lg">{{ label }}</h2> -->
 
-        <div class="flex flex-col flex-grow w-full h-full">
+        <div class="flex flex-col grow w-full h-full">
           <div class="flex w-full px-5 space-x-5 mb-2">
             <schedule-week-selector
               label="Programme de la semaine courante"
@@ -45,14 +45,14 @@
               @click="setIsCurrentScheduleDisplay(false)"
             />
           </div>
-          <div class="flex justify-center items-center flex-grow w-full h-full" id="schedule-fetching" v-if="isFetchingNewSchedule">
+          <div class="flex justify-center items-center grow w-full h-full" id="schedule-fetching" v-if="isFetchingNewSchedule">
             <loader className="w-10 h-10 border-t-blue-500" customColors />
           </div>
           <transition name="slide-right" type="animation" mode="out-in" v-else>
             <schedule-display
               v-if="isCurrentScheduleDisplayed"
               id="current-week"
-              class="flex flex-col flex-grow h-full w-full px-5"
+              class="flex flex-col grow h-full w-full px-5"
               label="Programme de la semaine courante"
               :weekFrom="currentWeek.start"
               :weekTo="currentWeek.end"
@@ -62,7 +62,7 @@
             <schedule-display
               v-else
               id="next-week"
-              class="flex flex-col flex-grow h-full w-full px-5"
+              class="flex flex-col grow h-full w-full px-5"
               label="Programme de la semaine prochaine"
               :weekFrom="nextWeek.start"
               :weekTo="nextWeek.end"

@@ -15,7 +15,7 @@
       </div>
     </div>
     <!-- NAME -->
-    <div class="capitalize flex-grow flex items-center justify-center text-bgray-700 font-semibold text-lg 2xl:text-xl">{{ town.name }}</div>
+    <div class="capitalize grow flex items-center justify-center text-bgray-700 font-semibold text-lg 2xl:text-xl">{{ town.name }}</div>
 
     <router-link
       :to="{ name: 'schedule', params: { wilayaId: town.wilayaId, townId: town.code } }"

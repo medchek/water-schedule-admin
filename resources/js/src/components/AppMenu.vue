@@ -20,8 +20,8 @@
           <Icon :icon="mdiMenu" class="w-8 h-8" />
         </button>
       </div>
-      <div id="menu-links" class="flex flex-col flex-grow w-full py-5 px-2 md:px-4">
-        <div class="flex-grow space-y-3">
+      <div id="menu-links" class="flex flex-col grow w-full py-5 px-2 md:px-4">
+        <div class="grow space-y-3">
           <menu-link :icon="mdiMapOutline" to="/wilayas">Wilayas</menu-link>
           <menu-link :icon="mdiMapMarkerRadius" :to="townLink">Communes</menu-link>
           <menu-link :icon="mdiClockOutline" :to="scheduleLink">Programme d'eau</menu-link>
@@ -36,7 +36,7 @@
   <!-- APP HEADER WHEN THE SIDE MENU IS CLOSED -->
   <div
     id="app-header"
-    class="lg:hidden flex-grow-0 flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full min-h-12 bg-white px-4 text-bgray-700 mb-2"
+    class="lg:hidden grow-0 flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full min-h-12 bg-white px-4 text-bgray-700 mb-2"
   >
     <p>SEAAL</p>
     <button id="close-menu" class="w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu" v-if="!renderMenu">

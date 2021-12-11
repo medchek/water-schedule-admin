@@ -6,7 +6,7 @@
     <form class="w-full h-full flex flex-col justify-between" @submit.prevent="submit">
       <h1 class="w-full text-bgray-700 text-lg sm:text-xl lg:text-xl font-semibold px-5">{{ formTitle }} - {{ currentWilaya.name }}</h1>
       <town-form-delete-warning v-if="actionData && actionData.action === 'delete'" :townName="actionData.townName" :wilayaName="currentWilaya.name" />
-      <section v-else class="flex-grow h-full w-full px-5 py-5 space-y-4">
+      <section v-else class="grow h-full w-full px-5 py-5 space-y-4">
         <town-input placeholder="" label="Nom de la commune" v-model="townName" :error="townNameError" @resetInput="resetInput" />
         <town-input
           placeholder="(optionnel)"

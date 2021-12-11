@@ -1,5 +1,5 @@
 <template>
-  <main id="towns-main" class="flex-grow flex flex-col h-full overflow-hidden">
+  <main id="towns-main" class="grow flex flex-col h-full overflow-hidden">
     <!-- <section class="flex flex-col h-full"> -->
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
       <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Communes {{ headerWilayaName }}</span>
@@ -31,7 +31,7 @@
         />
       </div>
     </section>
-    <section id="content-main" class="relative w-full h-full flex-grow overflow-y-auto py-4">
+    <section id="content-main" class="relative w-full h-full grow overflow-y-auto py-4">
       <div class="w-full h-full flex items-center" v-if="isFetching">
         <loader className="w-12 h-12 mx-auto border-t-blue-500" customColors />
       </div>

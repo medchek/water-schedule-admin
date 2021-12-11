@@ -5,7 +5,7 @@
     directement à la list des communes de la Wilaya choisie et au programme d'eau de la commune choisie.
   </p>
   <form class="space-y-4" @submit.prevent="onSubmit">
-    <!-- <div class="flex-grow pt-1">
+    <!-- <div class="grow pt-1">
       <h6 class="font-semibold text-bgray-500">Wilaya par défaut</h6>
       <select class="h-12 w-full rounded-md mt-2 focus:ring-2 ring-blue-300 outline-none px-4 text-gray-500">
         <option>Alger</option>

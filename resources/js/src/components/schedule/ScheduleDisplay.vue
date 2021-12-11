@@ -1,10 +1,10 @@
 <template>
-  <div class="flex-grow h-full overflow-y-hidden">
-    <div class="flex flex-grow w-full h-full justify-center items-center font-medium text-bgray-700 text-center" v-if="isStoreScheduleEmpty">
+  <div class="grow h-full overflow-y-hidden">
+    <div class="flex grow w-full h-full justify-center items-center font-medium text-bgray-700 text-center" v-if="isStoreScheduleEmpty">
       Le programme d'eau de {{ targetWeek }} n'a pas encore été ajouté pour {{ townName }}.
     </div>
-    <div class="flex flex-grow w-full h-full overflow-y-auto" v-else>
-      <section class="flex flex-col space-y-2 flex-grow">
+    <div class="flex grow w-full h-full overflow-y-auto" v-else>
+      <section class="flex flex-col space-y-2 grow">
         <div v-for="schedule in displaySchedule" :key="schedule.day" class="flex items-center bg-white rounded-md overflow-hidden shadow-sm h-full">
           <p
             class="
@@ -29,7 +29,7 @@
           >
             {{ schedule.day }}
           </p>
-          <p class="text-xs sm:text-sm flex-grow pl-4 text-bgray-700 font-semibold sm:font-medium first-letter:capitalize">
+          <p class="text-xs sm:text-sm grow pl-4 text-bgray-700 font-semibold sm:font-medium first-letter:capitalize">
             <span v-for="(message, index) in schedule.message" :key="index"> {{ index > 0 ? ` puis ` : "" }} {{ message }} </span>
           </p>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-grow flex flex-col h-full overflow-hidden">
+  <section class="grow flex flex-col h-full overflow-hidden">
     <div id="content-header" class="flex flex-col md:flex-row md:items-center md:justify-between px-5 md:h-16 md:min-h-16 space-y-2 md:space-y-0">
       <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Wilayas</span>
       <input
@@ -11,7 +11,7 @@
       />
     </div>
 
-    <section id="content-main" class="relative w-full h-full flex-grow overflow-y-auto py-2 my-2">
+    <section id="content-main" class="relative w-full h-full grow overflow-y-auto py-2 my-2">
       <!-- LOADDER -->
       <div class="w-full h-full flex items-center" v-if="isFetching">
         <loader className="w-12 h-12 mx-auto border-t-blue-500" customColors />
@@ -28,7 +28,7 @@
         v-if="!isFetching && !errorFetching && wilayas"
       >
         <div class="flex flex-col bg-white h-36 px-4 pb-4 rounded" v-for="wilaya in wilayas" :key="wilaya.code">
-          <div class="flex-grow flex items-center justify-center text-bgray-700 font-semibold text-lg 2xl:text-xl text-center">
+          <div class="grow flex items-center justify-center text-bgray-700 font-semibold text-lg 2xl:text-xl text-center">
             {{ wilaya.code }} {{ wilaya.name }}
           </div>
           <router-link
