@@ -15,6 +15,10 @@ module.exports = {
                     menu: "#0C1027",
                     header: "#030B1E",
                     card: "#0D1437",
+                    alt: "#1c2e60",
+                    cancel: "#141830",
+                    blue: "#000D46",
+                    blue2: "#253791",
                 },
             },
             borderRadius: {
