@@ -48,3 +48,13 @@ export const sortArrayOfObjects = (arr: any[], property: string) => {
     const cloned = [...arr];
     return cloned.sort((a, b) => a[property].localeCompare(b[property]));
 };
+
+/** Retrives the darkMode key from the localStorage
+ * @returns if the darkMode key does not exist in the localStorage or if its value is not "yes" returns false */
+export const isLocalStorageDarkMode = (): boolean => {
+    const value = localStorage.getItem("darkMode");
+    if (value) {
+        if (value === "yes") return true;
+    }
+    return false;
+};
