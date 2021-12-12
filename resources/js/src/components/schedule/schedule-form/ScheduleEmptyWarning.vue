@@ -1,16 +1,19 @@
 <template>
   <section id="schedule-empty-warning" class="flex flex-col justify-center items-center w-full h-full text-center font-semibold px-4">
-    <p class="text-bgray-800">{{ targetScheduleMessage }}.</p>
-    <p class="mt-1 font-normal">Veillez confirmer que c'est bien votre choix</p>
+    <p class="text-bgray-800 dark:text-bgray-200">{{ targetScheduleMessage }}.</p>
+    <p class="mt-1 font-normal dark:text-bgray-400">Veillez confirmer que c'est bien votre choix</p>
     <div class="flex w-full space-x-2 justify-center mt-2">
-      <button class="bg-blue-400 hover:bg-blue-500 w-28 px-3 py-2 rounded font-semibold text-white" @click="$emit('confirm')" :disabled="isLoading">
+      <button
+        class="bg-blue-500 hover:bg-blue-400 focus:bg-blue-600 w-28 px-3 py-2 rounded font-semibold text-white"
+        @click="$emit('confirm')"
+        :disabled="isLoading"
+      >
         <loader v-if="isLoading" dark thin className="w-6 h-6" />
         <span v-else>confirmer</span>
       </button>
       <button
-        class="bg-gray-200 hover:bg-gray-300 w-28 px-3 py-2 rounded font-semibold text-bgray-600 disabled:bg-gray-100 disabled:text-gray-300"
+        class="bg-gray-200 hover:bg-gray-300 w-28 px-3 py-2 rounded font-semibold text-bgray-600 dark:bg-dark-cancel dark:text-bgray-400"
         @click="$emit('cancel')"
-        :disabled="isLoading"
       >
         retour
       </button>

@@ -43,10 +43,11 @@
 import { computed, defineAsyncComponent, defineComponent, ref } from "vue";
 import SettingSelectorButton from "../components/settings/SettingSelectorButton.vue";
 import ViewContainer from "../components/ViewContainer.vue";
-import { mdiLockOutline, mdiViewDashboard } from "@mdi/js";
 import SettingsPassword from "../components/settings/SettingsPassword.vue";
 import { SettingsList, SettingType } from "../types/components";
 import FlexibleLoader from "../components/FlexibleLoader.vue";
+// icons
+import { mdiLockOutline, mdiViewDashboard, mdiBrightness4 } from "@mdi/js";
 
 export default defineComponent({
   components: {
@@ -56,12 +57,17 @@ export default defineComponent({
       loader: () => import("../components/settings/SettingsUi.vue"),
       loadingComponent: FlexibleLoader,
     }),
+    SettingsTheme: defineAsyncComponent({
+      loader: () => import("../components/settings/SettingsTheme.vue"),
+      loadingComponent: FlexibleLoader,
+    }),
     SettingsPassword,
   },
   setup() {
     const settingsList: SettingsList = [
       { label: "Mot de passe", component: "password", icon: mdiLockOutline },
       { label: "Interface", component: "ui", icon: mdiViewDashboard },
+      { label: "Apparence", component: "theme", icon: mdiBrightness4 },
     ];
 
     const selectSettings = (settingType: SettingType) => {

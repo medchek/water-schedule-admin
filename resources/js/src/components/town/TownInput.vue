@@ -3,8 +3,8 @@
     <label :for="randId" class="text-bgray-500 text-sm md:text-base font-medium">{{ label }}</label>
     <div class="w-full h-10 relative mt-1">
       <input
-        class="w-full h-full rounded px-2 border focus:ring-2"
-        :class="error ? 'ring-2 ring-red-300' : 'ring-blue-200'"
+        class="w-full h-full rounded px-2 border focus:ring-2 dark:placeholder-bgray-500"
+        :class="error ? 'ring-2 ring-red-300 dark:ring-red-500' : 'ring-blue-200 dark:ring-indigo-500'"
         :dir="rtl ? 'rtl' : 'ltr'"
         :placeholder="placeholder"
         @input="$emit('update:modelValue', $event.target.value)"

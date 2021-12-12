@@ -1,54 +1,47 @@
 <template>
-  <h3 class="text-blue-light text-xl font-semibold mb-2">Interface</h3>
-  <p id="setting-description" class="text-gray-500 text-sm mb-5">
-    Ces paramètres vous permettent de choisir la Wilaya et la commune par défaut. En réglant ces derniers, les liens du menu vont être adaptés pour vous mener
-    directement à la list des communes de la Wilaya choisie et au programme d'eau de la commune choisie.
-  </p>
-  <form class="space-y-4" @submit.prevent="onSubmit">
-    <!-- <div class="grow pt-1">
-      <h6 class="font-semibold text-bgray-500">Wilaya par défaut</h6>
-      <select class="h-12 w-full rounded-md mt-2 focus:ring-2 ring-blue-300 outline-none px-4 text-gray-500">
-        <option>Alger</option>
-      </select>
-      <span class="text-xs text-gray-400">Si aucune wilaya n'est choisi, le menu va mener a la wilaya d'Alger par default.</span>
-    </div> -->
-
-    <setting-select-input
-      label="Wilaya par défaut"
-      info="Si aucune wilaya n'est choisie, le menu va mener à la wilaya d'Alger par défaut"
-      :data="wilayaList"
-      :isFetching="isFetchingWilaya"
-      targetProperty="code"
-      selectPrompt="Veuillez selectionner une wilaya"
-      v-model="selectedWilaya"
-      :disabled="isFetchingTowns"
-      displayCode
-    />
-    <setting-select-input
-      label="Commune par défaut"
-      placeholder="Vous devez d'abord choisir une wilaya"
-      info="Si aucune commune n'est choisie,  le menu va mener au programme d'eau de la commune d'Alger-Centre par défaut"
-      selectPrompt="Veuillez selectionner une commune"
-      :data="townsList"
-      targetProperty="code"
-      v-model="selectedTown"
-      :isFetching="isFetchingTowns"
-    />
-    <div class="pt-1 w-full flex items-center justify-end">
-      <settings-submit-button
-        :isLoading="isSendingData"
-        :title="
-          !canSubmit && !isDiffThanStore
-            ? 'Vous devez choisir une wilaya ou une commune différente avant de pouvoir confirmer'
-            : !canSubmit
-            ? 'Vous devez choisir une Wilaya et une commune avant de pouvoir confirmer'
-            : ''
-        "
-        :disabled="!canSubmit"
-        >Confirmer</settings-submit-button
-      >
-    </div>
-  </form>
+  <settings-container
+    label="Interface"
+    description=" Ces paramètres vous permettent de choisir la Wilaya et la commune par défaut. En réglant ces derniers, les liens du menu vont être adaptés pour vous mener
+    directement à la list des communes de la Wilaya choisie et au programme d'eau de la commune choisie."
+  >
+    <form class="space-y-4" @submit.prevent="onSubmit">
+      <setting-select-input
+        label="Wilaya par défaut"
+        info="Si aucune wilaya n'est choisie, le menu va mener à la wilaya d'Alger par défaut"
+        :data="wilayaList"
+        :isFetching="isFetchingWilaya"
+        targetProperty="code"
+        selectPrompt="Veuillez selectionner une wilaya"
+        v-model="selectedWilaya"
+        :disabled="isFetchingTowns"
+        displayCode
+      />
+      <setting-select-input
+        label="Commune par défaut"
+        placeholder="Vous devez d'abord choisir une wilaya"
+        info="Si aucune commune n'est choisie,  le menu va mener au programme d'eau de la commune d'Alger-Centre par défaut"
+        selectPrompt="Veuillez selectionner une commune"
+        :data="townsList"
+        targetProperty="code"
+        v-model="selectedTown"
+        :isFetching="isFetchingTowns"
+      />
+      <div class="pt-1 w-full flex items-center justify-end">
+        <settings-submit-button
+          :isLoading="isSendingData"
+          :title="
+            !canSubmit && !isDiffThanStore
+              ? 'Vous devez choisir une wilaya ou une commune différente avant de pouvoir confirmer'
+              : !canSubmit
+              ? 'Vous devez choisir une Wilaya et une commune avant de pouvoir confirmer'
+              : ''
+          "
+          :disabled="!canSubmit"
+          >Confirmer</settings-submit-button
+        >
+      </div>
+    </form>
+  </settings-container>
 </template>
 
 <script lang="ts">
@@ -59,11 +52,12 @@ import { flashSnack } from "../../lib/shared";
 import { Town } from "../../store/modules/towns";
 import { SaveUserSettingsPayload, Settings } from "../../store/modules/user";
 import { Wilaya } from "../../store/modules/wilayas";
+import SettingsContainer from "./SettingsContainer.vue";
 import SettingSelectInput from "./SettingSelectInput.vue";
 import SettingsSubmitButton from "./SettingsSubmitButton.vue";
 
 export default defineComponent({
-  components: { SettingSelectInput, SettingsSubmitButton },
+  components: { SettingSelectInput, SettingsSubmitButton, SettingsContainer },
   name: "app-settings",
   setup() {
     const store = useStore();

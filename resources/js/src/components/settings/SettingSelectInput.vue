@@ -8,10 +8,10 @@
       <span v-else>{{ placeholder }}</span>
     </div>
 
-    <div class="relative flex items-center h-12 w-full text-sm text-gray-500 mt-2" v-else>
+    <div class="relative flex items-center h-12 w-full text-sm text-gray-500 dark:text-gray-700 mt-2" v-else>
       <select
         :id="labelId"
-        class="h-full w-full rounded-md focus:ring-2 ring-blue-300 outline-none px-4 disabled:opacity-60 capitalize"
+        class="h-full w-full rounded-md focus:ring-2 ring-blue-300 dark:ring-indigo-500 outline-none px-4 disabled:opacity-60 capitalize"
         :class="[(isFetching || disabled) && 'cursor-not-allowed']"
         :value="modelValue"
         @change="handleOnChange($event.target.value)"
@@ -30,7 +30,7 @@
         {{ selectPrompt }}
       </div>
     </div>
-    <span class="text-xs min-h-5 text-gray-400">{{ info }}</span>
+    <span class="text-xs min-h-5 text-gray-400 dark:text-bgray-600">{{ info }}</span>
   </div>
 </template>
 

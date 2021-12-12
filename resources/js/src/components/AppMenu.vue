@@ -1,19 +1,51 @@
 <template>
   <!-- Overlay -->
   <transition name="fade">
-    <div id="menu-overlay" class="absolute lg:hidden w-full h-full top-0 left-0 ring-0 blur-0 bg-bgray-700 bg-opacity-50 z-10" v-if="renderMenu"></div>
+    <div id="menu-overlay" class="absolute lg:hidden w-full h-full top-0 left-0 ring-0 blur-0 bg-bgray-700/50 dark:bg-gray-900/80 z-10" v-if="renderMenu"></div>
   </transition>
   <!-- END OVERLAY -->
   <transition name="slide">
     <section
       ref="menuRef"
       id="menu"
-      class="absolute lg:relative h-full z-10 flex flex-col min-w-72 md:min-w-64 2xl:min-w-80 bg-gradient-to-bl from-blue-400 to-blue-900 text-white shadow"
+      class="
+        absolute
+        lg:relative
+        h-full
+        z-10
+        flex flex-col
+        min-w-72
+        md:min-w-64
+        2xl:min-w-80
+        bg-gradient-to-bl
+        from-blue-400
+        to-blue-900
+        dark:from-dark-menu dark:to-dark-alt
+        text-white
+        shadow
+      "
       v-if="renderMenu"
     >
       <div
         id="logo"
-        class="flex items-center justify-between text-3xl font-bold italic w-full h-12 xl:h-14 bg-gradient-to-tr from-blue-50 to-white px-4 text-bgray-700"
+        class="
+          flex
+          items-center
+          justify-between
+          text-3xl
+          font-bold
+          italic
+          w-full
+          h-12
+          xl:h-14
+          bg-gradient-to-tr
+          from-blue-50
+          to-white
+          dark:from-dark-header dark:to-dark-header
+          px-4
+          text-bgray-700
+          dark:text-white
+        "
       >
         <p>SEAAL</p>
         <button id="close-menu" class="lg:hidden w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu">

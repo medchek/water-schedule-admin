@@ -2,7 +2,21 @@
   <select
     name="wilaya-selector"
     id="wilaya-select"
-    class="capitalize rounded-md h-10 w-full md:w-52 px-2 font-semibold bg-white text-bgray-700 focus:outline-none focus:ring-blue-300 focus:ring-2"
+    class="
+      capitalize
+      rounded-md
+      h-10
+      w-full
+      md:w-52
+      px-2
+      font-semibold
+      bg-white
+      text-bgray-700
+      focus:outline-none
+      ring-blue-300
+      dark:ring-indigo-500
+      focus:ring-2
+    "
     title="Selectionner une autre commune"
     v-model="selectedTownCode"
     @change="handleSelectChange"

@@ -2,28 +2,46 @@
   <main id="towns-main" class="grow flex flex-col h-full overflow-hidden">
     <!-- <section class="flex flex-col h-full"> -->
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
-      <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Communes {{ headerWilayaName }}</span>
+      <span class="text-bgray-700 dark:text-white text-2xl 2xl:text-3xl font-semibold">Communes {{ headerWilayaName }}</span>
     </div>
 
     <section id="towns-toolbar" class="flex flex-col lg:flex-row lg:items-center justify-between lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0">
-      <button id="add-town" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-2 h-10 rounded-md" @click="openForm">
+      <!-- <button
+        id="add-town"
+        class="bg-blue-600 hover:bg-blue-500 dark:bg-white text-white dark:text-dark-bg font-semibold px-2 h-10 rounded-md"
+        @click="openForm"
+      >
         <Icon :icon="mdiPlusBoxMultiple" class="w-6 h-6 mr-1" />
         Ajouter une commune
-      </button>
+      </button> -->
+      <app-open-modal-button id="add-town" @click="openForm" :icon="mdiPlusBoxMultiple"> Ajouter une commune</app-open-modal-button>
 
       <div class="flex justify-between lg:justify-end space-x-4">
         <select
           name="wilaya-selector"
           id="wilaya-select"
-          class="rounded-md w-full lg:w-40 xl:w-52 px-2 font-semibold bg-white text-bgray-700 focus:outline-none focus:ring-blue-300 focus:ring-2"
+          class="
+            rounded-md
+            w-full
+            lg:w-40
+            xl:w-52
+            px-2
+            font-semibold
+            bg-white
+            text-bgray-700
+            focus:outline-none
+            ring-blue-300
+            dark:ring-indigo-500
+            focus:ring-2
+          "
           v-model="currentRouteWilayaId"
           @change="handleSelectChange"
         >
           <option v-for="wilaya in wilayas" :key="wilaya.code" :value="wilaya.code">{{ wilaya.code }} - {{ wilaya.name }}</option>
         </select>
-        <!-- {{ currentRouteWilayaId }} -->
+
         <app-input
-          className="h-10 text-sm sm:text-base w-full lg:w-80"
+          className="h-10 text-sm sm:text-base w-full lg:w-80 "
           v-model.trim.lazy="searchTerm"
           :appendIcon="mdiMagnify"
           placeholder="Chercher une commune"
@@ -74,6 +92,7 @@ import TownForm from "../components/town/TownForm.vue";
 import TownCard from "../components/town/TownCard.vue";
 import { TownActionData } from "../types/components";
 import { addPreposition } from "../lib/shared";
+import AppOpenModalButton from "../components/AppOpenModalButton.vue";
 
 export default defineComponent({
   /*
@@ -102,7 +121,7 @@ export default defineComponent({
         return next({ name: "wilayas" });
       });
   },*/
-  components: { Icon, AppInput, Loader, TownForm, TownCard },
+  components: { Icon, AppInput, Loader, TownForm, TownCard, AppOpenModalButton },
   setup() {
     const store = useStore();
     const route = useRoute();

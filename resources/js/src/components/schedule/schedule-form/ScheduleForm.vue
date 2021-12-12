@@ -2,9 +2,9 @@
   <Modal
     :showModal="showModal"
     @modalClickedOutside="$emit('formClickedOutside')"
-    className="relative flex flex-col justify-between w-full sm:w-3/4 md:w-2/3 2xl:w-1/2 h-full bg-white rounded-md  py-2 overflow-hidden"
+    className="relative flex flex-col justify-between w-full sm:w-3/4 md:w-2/3 2xl:w-1/2 h-full bg-white dark:bg-dark-bg rounded-md  py-2 overflow-hidden"
   >
-    <h1 class="w-full text-bgray-700 text-lg sm:text-xl lg:text-2xl font-semibold px-5">{{ formTitle }} le programme d'eau</h1>
+    <h1 class="w-full text-bgray-700 dark:text-bgray-300 text-lg sm:text-xl lg:text-2xl font-semibold px-5">{{ formTitle }} le programme d'eau</h1>
     <!-- FROM EMPTY WARNINING -->
     <schedule-empty-warning
       v-if="displayFormEmptyWarning !== null"
@@ -18,7 +18,7 @@
       <!-- <section id="schedule-content-wrapper" class="flex flex-col w-full grow overflow-hidden"> -->
       <!-- WEEK TABS  -->
       <div id="tabs-container" class="flex px-5">
-        <button
+        <!-- <button
           class="w-full h-16 text-sm sm:text-lg border-b-8"
           :class="
             isNextWeekSchedule ? 'text-bgray-300 border-gray-300 hover:border-gray-200' : 'text-bgray-800 border-blue-500 hover:border-blue-400 font-semibold'
@@ -35,7 +35,9 @@
           @click="setIsNextWeekSchedule(true)"
         >
           Semaine prochaine
-        </button>
+        </button> -->
+        <schedule-form-week-selector :isSelected="!isNextWeekSchedule" @click="setIsNextWeekSchedule(false)">Cette semaine</schedule-form-week-selector>
+        <schedule-form-week-selector :isSelected="isNextWeekSchedule" @click="setIsNextWeekSchedule(true)">Semaine prochaine</schedule-form-week-selector>
       </div>
       <!-- FROM RENDER -->
       <div class="flex flex-col grow h-full overflow-y-auto overflow-x-hidden px-5" id="modal-form-container">
@@ -88,7 +90,11 @@
     </section>
     <!-- ACTION BUTTONS -->
     <!-- Hide it when the empty from warning message is truthy -->
-    <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t px-5" v-if="displayFormEmptyWarning === null">
+    <section
+      id="modal-actions"
+      class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t dark:border-bgray-700 px-5"
+      v-if="displayFormEmptyWarning === null"
+    >
       <!-- <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t px-5"> -->
       <button class="h-9 sm:h-10 w-18 bg-red-500 text-white rounded font-semibold" @click="autoFill">auto fill</button>
       <button
@@ -98,12 +104,7 @@
         <loader v-if="isSendingData && !displayFormEmptyWarning" dark thin className="w-6 h-6" />
         <span v-else>Confirmer</span>
       </button>
-      <button
-        class="h-9 sm:h-10 w-24 sm:w-28 text-sm sm:text-base bg-gray-200 hover:bg-gray-100 text-gray-400 rounded font-semibold"
-        @click="$emit('formClickedOutside')"
-      >
-        Annuler
-      </button>
+      <app-cancel-button @click="$emit('formClickedOutside')" />
     </section>
   </Modal>
 </template>
@@ -116,6 +117,10 @@ import ScheduleDaySubform from "./ScheduleDaySubform.vue";
 import WeekDisplay from "../WeekDisplay.vue";
 import Modal from "../../Modal.vue";
 import AppTimePicker from "../../AppTimePicker.vue";
+import ScheduleFormWeekSelector from "./ScheduleFormWeekSelector.vue";
+import AppCancelButton from "../../AppCancelButton.vue";
+
+//icons
 import { mdiPlusBoxMultiple, mdiPlus } from "@mdi/js";
 //
 import { computed, ComputedRef, defineAsyncComponent, defineComponent, reactive, ref } from "vue";
@@ -152,6 +157,8 @@ export default defineComponent({
     Loader,
     ScheduleEmptyWarning: defineAsyncComponent({ loadingComponent: FlexibleLoader, loader: () => import("./ScheduleEmptyWarning.vue") }),
     ScheduleDaySubform,
+    ScheduleFormWeekSelector,
+    AppCancelButton,
   },
   emits: ["formClickedOutside", "formSaved"],
   props: {

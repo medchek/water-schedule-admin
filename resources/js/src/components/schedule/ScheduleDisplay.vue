@@ -1,11 +1,19 @@
 <template>
   <div class="grow h-full overflow-y-hidden">
-    <div class="flex grow w-full h-full justify-center items-center font-medium text-bgray-700 text-center" v-if="isStoreScheduleEmpty">
-      Le programme d'eau de {{ targetWeek }} n'a pas encore été ajouté pour {{ townName }}.
+    <div class="flex grow w-full h-full justify-center items-center font-medium text-bgray-700 dark:text-bgray-100 text-center" v-if="isStoreScheduleEmpty">
+      <p>
+        Le programme d'eau de {{ targetWeek }} n'a pas encore été ajouté pour
+        <span class="font-bold text-blue-600 dark:text-white capitalize"> {{ townName }}</span
+        >.
+      </p>
     </div>
     <div class="flex grow w-full h-full overflow-y-auto" v-else>
       <section class="flex flex-col space-y-2 grow">
-        <div v-for="schedule in displaySchedule" :key="schedule.day" class="flex items-center bg-white rounded-md overflow-hidden shadow-sm h-full">
+        <div
+          v-for="schedule in displaySchedule"
+          :key="schedule.day"
+          class="flex items-center bg-white dark:bg-dark-menu rounded-md overflow-hidden shadow-sm h-full"
+        >
           <p
             class="
               text-sm
@@ -18,18 +26,20 @@
               md:min-w-28
               h-full
               text-bgray-700
+              dark:text-white
               bg-gradient-to-br
               from-bgray-200
               to-gray-50
+              dark:from-dark-card dark:to-dark-alt
               border-r-2
               md:border-r-4
               pl-3
             "
-            :class="[schedule.waterUnavailable ? ' border-red-300' : 'border-blue-300']"
+            :class="[schedule.waterUnavailable ? ' border-red-300 dark:border-red-500' : 'border-blue-300 dark:border-blue-500']"
           >
             {{ schedule.day }}
           </p>
-          <p class="text-xs sm:text-sm grow pl-4 text-bgray-700 font-semibold sm:font-medium first-letter:capitalize">
+          <p class="text-xs sm:text-sm grow pl-4 text-bgray-700 dark:text-bgray-50 font-semibold sm:font-medium first-letter:capitalize">
             <span v-for="(message, index) in schedule.message" :key="index"> {{ index > 0 ? ` puis ` : "" }} {{ message }} </span>
           </p>
         </div>

@@ -1,7 +1,7 @@
 <template>
-  <div class="space-y-3 hover:bg-bgray-50">
+  <div class="space-y-3 hover:bg-bgray-50 dark:hover:bg-dark-alt/25">
     <section class="flex justify-between items-center">
-      <label class="font-semibold text-bgray-800 text-base sm:text-lg capitalize">{{ day }}</label>
+      <label class="font-semibold text-bgray-800 dark:text-bgray-200 text-base sm:text-lg capitalize">{{ day }}</label>
       <!-- Only show this if the are no more than 2 schedule segments to control the amount of data sent to the server -->
       <!-- and only if the water is cut on the same day, so that the user can chose a time for the water to be restored later on the same day -->
       <button

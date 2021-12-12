@@ -1,21 +1,41 @@
 <template>
   <div>
     <form
-      class="flex flex-col m-auto w-full sm:w-4/5 md:2/3 lg:w-1/2 2xl:w-2/5 rounded p-5 sm:border border-gray-100 bg-transparent sm:bg-white"
+      class="
+        flex flex-col
+        m-auto
+        w-full
+        sm:w-4/5
+        md:2/3
+        lg:w-1/2
+        2xl:w-2/5
+        rounded
+        p-5
+        sm:border
+        border-gray-100
+        bg-transparent
+        sm:bg-white
+        dark:sm:bg-dark-card dark:border-none
+      "
       method="POST"
       @submit.prevent="login"
     >
       <div class="w-full text-center">
-        <p class="text-5xl italic font-bold text-blue-900">SEAAL</p>
+        <p class="text-5xl italic font-bold text-blue-900 dark:text-blue-light">SEAAL</p>
         <p class="text-gray-400 h-10">Programme d'eau</p>
       </div>
 
       <div class="space-y-3 mb-6 mt-2">
-        <input type="email" placeholder="Email" class="w-full h-12 rounded-md pl-2 border-2 border-blue-50 focus:ring-2 ring-blue-200" v-model="email" />
+        <input
+          type="email"
+          placeholder="Email"
+          class="w-full h-12 rounded-md pl-2 border-2 border-blue-50 focus:ring-2 ring-blue-200 dark:ring-indigo-500 dark:placeholder-bgray-500"
+          v-model="email"
+        />
         <input
           type="password"
           placeholder="Mot de pass"
-          class="w-full h-12 rounded-md pl-2 border-2 border-blue-50 focus:ring-2 ring-blue-200"
+          class="w-full h-12 rounded-md pl-2 border-2 border-blue-50 focus:ring-2 ring-blue-200 dark:ring-indigo-500 dark:placeholder-bgray-500"
           v-model="password"
           @dblclick="isAuthenticated"
         />
@@ -25,15 +45,17 @@
         class="
           h-12
           w-full
-          bg-gradient-to-tr
           transition-colors
-          from-blue-500
-          to-blue-600
-          hover:to-blue-300
-          focus:to-blue-800
+          bg-blue-500
+          dark:bg-dark-alt
+          hover:bg-blue-light
+          dark:hover:bg-blue-light/50
+          focus:bg-blue-600
+          dark:focus:bg-dark-header
           rounded
           font-semibold
           text-white text-lg
+          disabled:cursor-not-allowed disabled:bg-bgray-400 disabled:text-bgray-700
         "
         type="submit"
         :disabled="!canLogin || isLoading"

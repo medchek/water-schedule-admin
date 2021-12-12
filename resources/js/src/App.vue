@@ -1,15 +1,25 @@
 <template>
-  <router-view class="w-full h-screen max-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-bgray-100"> </router-view>
-  <div id="modal" class="absolute overflow-hidden"></div>
-  <Snack />
+  <div id="global-scaffold" class="w-full h-full" :class="[isDarkMode && 'dark']">
+    <router-view
+      class="w-full h-screen max-h-screen flex flex-col dark:bg-gradient-to-b dark:from-dark-bg dark:to-dark-bg bg-gradient-to-br from-gray-50 to-bgray-100"
+    >
+    </router-view>
+    <div id="modal" class="absolute overflow-hidden"></div>
+    <Snack />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, ComputedRef, defineComponent } from "vue";
+import { useStore } from "vuex";
 import Snack from "./components/Snack.vue";
 
 export default defineComponent({
-  setup() {},
+  setup() {
+    const store = useStore();
+    const isDarkMode: ComputedRef<boolean> = computed(() => store.getters.getIsDarkMode);
+    return { isDarkMode };
+  },
   components: {
     Snack,
   },

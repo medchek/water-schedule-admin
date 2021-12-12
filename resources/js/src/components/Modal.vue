@@ -1,18 +1,21 @@
 <template>
   <transition name="fade">
     <!-- v-if="showModal" -->
-    <section class="absolute flex items-center justify-center bg-bgray-700 bg-opacity-50 w-screen h-screen py-4 px-4 sm:px-0 z-50 overflow-hidden">
-      <transition name="scale">
-        <div :class="className" id="modal-base" v-if="triggerTransition" ref="modalRef">
-          <slot></slot>
-        </div>
-      </transition>
+    <section class="absolute flex items-center justify-center w-screen h-screen sm:px-0 z-50 overflow-hidden" :class="[isDarkMode && 'dark']">
+      <div class="w-full h-full bg-gray-700/50 dark:bg-gray-900/80 py-4 px-4 overflow-hidden flex items-center justify-center">
+        <transition name="scale">
+          <div :class="className" id="modal-base" v-if="triggerTransition" ref="modalRef">
+            <slot></slot>
+          </div>
+        </transition>
+      </div>
     </section>
   </transition>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, ref } from "vue";
+import { computed, ComputedRef, defineComponent, onMounted, onUnmounted, ref } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   emits: ["modalClickedOutside"],
@@ -85,7 +88,10 @@ export default defineComponent({
       document.body.removeEventListener("keydown", onKeyPress, { capture: true });
     });
 
-    return { modalRef, triggerTransition };
+    const store = useStore();
+    const isDarkMode: ComputedRef<boolean> = computed(() => store.getters.getIsDarkMode);
+
+    return { modalRef, triggerTransition, isDarkMode };
   },
 });
 </script>

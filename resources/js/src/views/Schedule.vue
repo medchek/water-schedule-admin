@@ -4,20 +4,23 @@
   </section>
   <section class="grow flex flex-col h-full overflow-hidden" v-else>
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
-      <span class="text-bgray-700 text-lg md:text-xl 2xl:text-2xl font-semibold"
+      <span class="text-bgray-700 dark:text-white text-lg md:text-xl 2xl:text-2xl font-semibold"
         >Programme d'eau - <span class="capitalize">{{ currentTown.name }}</span> - {{ wilaya.name }}</span
       >
     </div>
 
     <section id="schedule-toolbar" class="flex flex-col md:flex-row items-center justify-between md:h-14 w-full px-5 space-y-2 md:space-y-0">
-      <button
+      <!-- <button
         id="add-schedule"
         class="w-full md:w-auto text-sm lg:text-base bg-blue-600 hover:bg-blue-500 text-white font-semibold px-2 h-10 rounded-md"
         @click="openModal"
       >
         <Icon :icon="mdiPlusBoxMultiple" class="w-6 h-6 mr-1" />
         Modifier le programme d'eau
-      </button>
+      </button> -->
+      <app-open-modal-button class="w-full md:w-auto" id="add-schedule" @click="openModal" :icon="mdiPlusBoxMultiple">
+        Modifier le programme d'eau</app-open-modal-button
+      >
       <!-- TEST -->
       <!-- <button class="bg-red-500 text-white font-semibold px-2 rounded" @click="runTest">Run test</button> -->
       <!-- TEST -->
@@ -75,7 +78,7 @@
       </section>
     </section>
 
-    <teleport to="#app-modal">
+    <teleport to="#app-modal" class="dark">
       <transition name="fade">
         <schedule-form v-if="showModal" :showModal="showModal" @formClickedOutside="closeModal" @formSaved="closeModal" />
       </transition>
@@ -105,6 +108,7 @@ import { Town } from "../store/modules/towns";
 import { Wilaya } from "../store/modules/wilayas";
 
 import { TownScheduleState } from "../store/modules/schedules";
+import AppOpenModalButton from "../components/AppOpenModalButton.vue";
 
 export default defineComponent({
   components: {
@@ -118,6 +122,7 @@ export default defineComponent({
     Loader,
     // ScheduleEmptyWarning: defineAsyncComponent({ loader: () => import("../components/schedule/ScheduleEmptyWarning.vue"), loadingComponent: Loader }),
     ScheduleForm,
+    AppOpenModalButton,
   },
   setup() {
     const isFetching = ref(true);

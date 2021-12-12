@@ -1,12 +1,27 @@
 <template>
   <section class="grow flex flex-col h-full overflow-hidden">
     <div id="content-header" class="flex flex-col md:flex-row md:items-center md:justify-between px-5 md:h-16 md:min-h-16 space-y-2 md:space-y-0">
-      <span class="text-bgray-700 text-2xl 2xl:text-3xl font-semibold">Wilayas</span>
+      <span class="text-bgray-700 dark:text-white text-2xl 2xl:text-3xl font-semibold">Wilayas</span>
       <input
         type="search"
-        class="w-full md:w-60 xl:w-80 2xl:w-96 h-10 px-2 border border-gray-200 focus:ring-2 placeholder-gray-300 focus:ring-blue-200 rounded-md"
+        class="
+          w-full
+          md:w-60
+          xl:w-80
+          2xl:w-96
+          h-10
+          px-2
+          border border-gray-200
+          focus:ring-2
+          placeholder-gray-300
+          dark:placeholder-bgray-400
+          ring-blue-200
+          dark:ring-indigo-500
+          rounded-md
+        "
+        spellcheck="false"
         placeholder="Chercher une wilaya"
-        maxlength="30"
+        maxlength="50"
         @input="searchTerm = $event.target.value"
       />
     </div>
@@ -27,37 +42,12 @@
         class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-none gap-4 w-full h-auto px-5"
         v-if="!isFetching && !errorFetching && wilayas"
       >
-        <div class="flex flex-col bg-white h-36 px-4 pb-4 rounded" v-for="wilaya in wilayas" :key="wilaya.code">
-          <div class="grow flex items-center justify-center text-bgray-700 font-semibold text-lg 2xl:text-xl text-center">
-            {{ wilaya.code }} {{ wilaya.name }}
-          </div>
-          <router-link
-            :to="{ name: 'towns', params: { wilayaId: wilaya.id } }"
-            class="
-              text-center text-sm
-              xl:text-base
-              flex
-              items-center
-              justify-center
-              bg-gray-100
-              hover:bg-blue-100
-              focus:bg-bgray-200
-              transition-colors
-              h-9
-              w-full
-              font-semibold
-              text-blue-400
-              rounded-md
-            "
-          >
-            Voir les communes
-          </router-link>
-        </div>
+        <wilaya-card v-for="wilaya in wilayas" :wilaya="wilaya" :key="wilaya.code" />
       </div>
       <!-- SUCCESS BUT NO SEARCH RESULT -->
 
-      <div v-if="!isFetching && !errorFetching && searchTerm.length && !wilayas.length" class="w-full text-center text-lg text-bgray-700">
-        <p>Aucune wilaya n'a été trouvée dans votre recherche.</p>
+      <div v-if="!isFetching && !errorFetching && searchTerm.length && !wilayas.length" class="w-full text-center text-lg text-bgray-700 font-bold">
+        <p>Aucune wilaya n'a été ne correspond à votre recherche.</p>
       </div>
     </section>
   </section>
@@ -66,10 +56,11 @@
 import { computed, defineComponent, onMounted, ref, ComputedRef } from "vue";
 import { useStore } from "vuex";
 import Loader from "../components/Loader.vue";
+import WilayaCard from "../components/wilaya/WilayaCard.vue";
 import { Wilaya } from "../store/modules/wilayas";
 
 export default defineComponent({
-  components: { Loader },
+  components: { Loader, WilayaCard },
   setup() {
     const store = useStore();
     const isFetching = ref<boolean>(false);

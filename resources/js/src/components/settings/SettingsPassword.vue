@@ -1,27 +1,30 @@
 <template>
-  <!-- <section class="h-full overflow-scroll"> -->
-  <h3 class="text-blue-light text-xl font-semibold mb-2">Mot de Passe</h3>
-  <p id="setting-description" class="text-gray-500 text-sm mb-4">
-    Pour mettre à jour votre mot de pass, vous devez d'abord entrer le mot de pass actuel avant de confirmer le nouveau.
-  </p>
-  <form @submit.prevent="submit">
-    <div class="mt-1 mb-1" v-for="(input, key) in inputsData" :key="key">
-      <label class="font-semibold text-bgray-500">{{ input.label }}</label>
-      <input
-        v-model="input.value"
-        type="password"
-        class="h-12 w-full rounded-md mt-2 focus:ring-2 outline-none px-4 text-gray-500"
-        :class="[input.error ? 'ring-red-400 ring-2' : 'ring-blue-300']"
-      />
-      <div class="text-xs lg:text-sm text-red-500 min-h-5 w-full py-2 font-semibold">{{ input.error }}</div>
-    </div>
+  <settings-container
+    label="Mot de Passe"
+    description="Pour mettre à jour votre mot de pass, vous devez d'abord entrer le mot de pass actuel avant de confirmer le nouveau."
+  >
+    <form @submit.prevent="submit">
+      <div class="mt-1 mb-1" v-for="(input, key) in inputsData" :key="key">
+        <label class="font-semibold text-bgray-500">{{ input.label }}</label>
+        <input
+          v-model="input.value"
+          type="password"
+          class="h-12 w-full rounded-md mt-2 focus:ring-2 outline-none px-4 text-gray-500"
+          :class="[input.error ? 'ring-red-400 dark:ring-red-500 ring-2' : 'ring-blue-300 dark:ring-indigo-500']"
+        />
+        <div class="text-xs lg:text-sm text-red-500 min-h-5 w-full py-2 font-semibold">{{ input.error }}</div>
+      </div>
 
-    <div class="pt-1 w-full flex items-center justify-end">
-      <settings-submit-button :title="!canSubmit ? 'Vous devez remplir tout les champs' : ''" :disabled="!canSubmit || isSendingData" :isLoading="isSendingData"
-        >Confirmer</settings-submit-button
-      >
-    </div>
-  </form>
+      <div class="pt-1 w-full flex items-center justify-end">
+        <settings-submit-button
+          :title="!canSubmit ? 'Vous devez remplir tout les champs' : ''"
+          :disabled="!canSubmit || isSendingData"
+          :isLoading="isSendingData"
+          >Confirmer</settings-submit-button
+        >
+      </div>
+    </form>
+  </settings-container>
   <!-- </section> -->
 </template>
 
@@ -32,10 +35,11 @@ import { useStore } from "vuex";
 import { flashSnack } from "../../lib/shared";
 import { ResetPasswordPayload } from "../../store/modules/user";
 import Loader from "../Loader.vue";
+import SettingsContainer from "./SettingsContainer.vue";
 import SettingsSubmitButton from "./SettingsSubmitButton.vue";
 
 export default defineComponent({
-  components: { Loader, SettingsSubmitButton },
+  components: { Loader, SettingsSubmitButton, SettingsContainer },
   name: "password-settings",
   setup() {
     const store = useStore();

@@ -5,8 +5,8 @@
       <input
         readonly
         :type="type"
-        class="w-full h-full rounded px-2 border focus:ring-2 cursor-pointer"
-        :class="error.length > 0 ? 'ring-2 ring-red-300' : 'ring-blue-200'"
+        class="w-full h-full rounded px-2 border focus:ring-2 cursor-pointer dark:placeholder-bgray-500 dark:bg-bgray-100"
+        :class="error.length > 0 ? 'ring-2 ring-red-300 dark:ring-red-500' : 'ring-blue-200 dark:ring-indigo-600'"
         :placeholder="placeholder"
         :value="time"
         @click="isOpen = !isOpen"
@@ -16,7 +16,7 @@
       <button
         v-if="time"
         title="réinitialiser"
-        class="absolute right-0 top-0 h-full w-10 text-blue-700 hover:text-gray-700 focus:bg-gray-100 rounded-r"
+        class="absolute right-0 top-0 h-full w-10 text-blue-700 dark:text-dark-bg hover:text-gray-700 focus:bg-gray-100 rounded-r"
         @click="resetTime"
       >
         <icon :icon="mdiClose" />
@@ -30,25 +30,71 @@
       <div
         id="picker"
         :class="isPickerTop && 'bottom-0'"
-        class="absolute flex flex-col bg-white w-full h-80 left-0 right-0 mx-auto z-100 mt-2 rounded shadow-xl overflow-hidden"
+        class="
+          absolute
+          flex flex-col
+          bg-white
+          dark:bg-dark-card
+          w-full
+          h-80
+          left-0
+          right-0
+          mx-auto
+          z-100
+          mt-2
+          rounded
+          shadow-xl
+          overflow-hidden
+          dark:shadow-black/40
+        "
         v-if="isOpen"
         ref="pickerRef"
       >
-        <p class="picker__HEADER flex items-center justify-center grow-0 bg-blue-500 min-h-10 md:min-h-12 text-3xl sm:text-4xl text-white w-full">
+        <p
+          class="
+            picker__HEADER
+            flex
+            items-center
+            justify-center
+            grow-0
+            bg-blue-500
+            dark:bg-dark-alt/80
+            min-h-10
+            md:min-h-12
+            text-3xl
+            sm:text-4xl
+            text-white
+            w-full
+          "
+        >
           {{ timePickerDisplay }}
         </p>
-        <div class="flex min-h-8 font-semibold bg-bgray-100 text-bgray-600 text-sm md:text-base">
+        <div class="flex min-h-8 font-semibold bg-bgray-100 dark:bg-dark-cancel text-bgray-600 dark:text-bgray-300 text-sm md:text-base">
           <p class="flex justify-center items-center h-full w-full">Heurs</p>
           <p class="flex justify-center items-center h-full w-full">Minutes</p>
         </div>
-        <div class="relative flex grow h-auto overflow-y-hidden border border-gray-100">
-          <section class="flex flex-col w-full">
+        <!--  -->
+        <div class="relative flex grow h-auto overflow-y-hidden border border-gray-100 dark:border-dark-alt dark:border-t-transparent">
+          <section class="flex flex-col w-full" id="hours-section">
             <div class="grow h-full max-h-full overflow-y-scroll">
               <button
                 v-for="n in 24"
-                class="w-full h-6 md:h-8 transition-colors hover:bg-bgray-200 focus:bg-bgray-300 font-semibold text-sm md:text-base text-gray-800"
+                class="
+                  w-full
+                  h-6
+                  md:h-8
+                  transition-colors
+                  font-semibold
+                  text-sm
+                  md:text-base
+                  hover:bg-bgray-200
+                  focus:bg-bgray-300
+                  dark:hover:bg-bgray-500/50 dark:focus:bg-blue-900/50
+                  text-gray-800
+                  dark:text-bgray-200
+                "
                 :key="n"
-                :class="[hours === n - 1 && 'bg-bgray-300']"
+                :class="[hours === n - 1 && 'bg-bgray-300 dark:bg-dark-alt']"
                 type="button"
                 @click="selectHours(n - 1)"
               >
@@ -56,12 +102,25 @@
               </button>
             </div>
           </section>
-          <section class="w-full h-full">
+          <section class="w-full h-full" id="minutes-section">
             <div class="grow h-full max-h-full overflow-y-scroll">
               <button
                 v-for="n in 60"
-                class="w-full h-6 md:h-8 transition-colors hover:bg-bgray-200 focus:bg-bgray-300 font-semibold text-sm md:text-base text-gray-800"
-                :class="[minutes === n - 1 && 'bg-bgray-300']"
+                class="
+                  w-full
+                  h-6
+                  md:h-8
+                  transition-colors
+                  font-semibold
+                  text-sm
+                  md:text-base
+                  hover:bg-bgray-200
+                  focus:bg-bgray-300
+                  dark:hover:bg-bgray-500/50 dark:focus:bg-blue-900/50
+                  text-gray-800
+                  dark:text-bgray-200
+                "
+                :class="[minutes === n - 1 && 'bg-bgray-300 dark:bg-dark-alt']"
                 :key="n"
                 type="button"
                 @click="selectMinutes(n - 1)"

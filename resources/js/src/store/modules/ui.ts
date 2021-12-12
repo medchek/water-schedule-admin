@@ -1,3 +1,4 @@
+import { isLocalStorageDarkMode } from "./../../lib/utils";
 import { Module } from "vuex";
 
 export type SnackType = "info" | "error" | "success";
@@ -9,12 +10,14 @@ export interface Snack {
 
 export interface Ui {
     snack: Snack;
+    isDark: boolean;
 }
 
 let timeout: ReturnType<typeof setTimeout> | null = null;
 
 const uiModule: Module<Ui, any> = {
     state: (): Ui => ({
+        isDark: isLocalStorageDarkMode(), // initialzie the value from the localStorage if it exists
         snack: {
             isShown: false,
             message: ``,
@@ -23,6 +26,7 @@ const uiModule: Module<Ui, any> = {
     }),
     getters: {
         getSnack: (state) => state.snack,
+        getIsDarkMode: (state) => state.isDark,
     },
     mutations: {
         SHOW_SNACK(state, payload: { message: string; type?: SnackType }) {
@@ -32,6 +36,14 @@ const uiModule: Module<Ui, any> = {
         },
         HIDE_SNACK(state) {
             state.snack.isShown = false;
+        },
+        SET_DARK_MODE(state, payload: boolean = true) {
+            if (payload !== state.isDark) {
+                state.isDark = payload;
+                // a boolean cannot be stored in the localstrage, hence "y" will refer the a true, n will refer to false
+                const localStorageValue = payload ? "yes" : "no";
+                localStorage.setItem("darkMode", localStorageValue);
+            }
         },
     },
 

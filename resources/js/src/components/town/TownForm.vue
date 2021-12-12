@@ -1,10 +1,10 @@
 <template>
   <modal
     @modalClickedOutside="$emit('formClickedOutside')"
-    className="relative flex flex-col justify-between w-full sm:w-3/4 md:w-2/3 2xl:w-1/2 bg-white rounded-md  py-2 overflow-hidden"
+    className="relative flex flex-col justify-between w-full sm:w-3/4 md:w-2/3 2xl:w-1/2 bg-white dark:bg-dark-bg rounded-md  py-2 overflow-hidden"
   >
     <form class="w-full h-full flex flex-col justify-between" @submit.prevent="submit">
-      <h1 class="w-full text-bgray-700 text-lg sm:text-xl lg:text-xl font-semibold px-5">{{ formTitle }} - {{ currentWilaya.name }}</h1>
+      <h1 class="w-full text-bgray-700 dark:text-bgray-200 text-lg sm:text-xl lg:text-xl font-semibold px-5">{{ formTitle }} - {{ currentWilaya.name }}</h1>
       <town-form-delete-warning v-if="actionData && actionData.action === 'delete'" :townName="actionData.townName" :wilayaName="currentWilaya.name" />
       <section v-else class="grow h-full w-full px-5 py-5 space-y-4">
         <town-input placeholder="" label="Nom de la commune" v-model="townName" :error="townNameError" @resetInput="resetInput" />
@@ -17,7 +17,7 @@
           @resetInput="resetInput(true)"
         />
       </section>
-      <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t px-5">
+      <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t dark:border-bgray-700 px-5">
         <button
           type="submit"
           class="
@@ -46,13 +46,13 @@
           <loader v-if="isSendingData" dark thin className="w-6 h-6" />
           <span v-else>Confirmer</span>
         </button>
-        <button
+        <app-cancel-button
           type="button"
           class="h-9 sm:h-10 w-24 sm:w-28 text-sm sm:text-base bg-gray-200 hover:bg-gray-100 text-gray-400 rounded font-semibold"
           @mousedown="$emit('formClickedOutside')"
         >
           Annuler
-        </button>
+        </app-cancel-button>
       </section>
     </form>
   </modal>
@@ -64,6 +64,7 @@ import Loader from "../Loader.vue";
 import Modal from "../Modal.vue";
 import TownInput from "./TownInput.vue";
 import TownFormDeleteWarning from "./TownFormDeleteWarning.vue";
+import AppCancelButton from "../AppCancelButton.vue";
 
 import { mdiClose } from "@mdi/js";
 import Icon from "../Icon.vue";
@@ -75,7 +76,7 @@ import { addPreposition } from "../../lib/shared";
 import { Wilaya } from "../../store/modules/wilayas";
 
 export default defineComponent({
-  components: { Modal, Loader, Icon, TownInput, TownFormDeleteWarning },
+  components: { Modal, Loader, Icon, TownInput, TownFormDeleteWarning, AppCancelButton },
 
   emits: ["formClickedOutside", "formSaved"],
   props: {
