@@ -93,7 +93,7 @@ import WeekDisplay from "../components/schedule/WeekDisplay.vue";
 import Modal from "../components/Modal.vue";
 import AppTimePicker from "../components/AppTimePicker.vue";
 import AppTownSelector from "../components/AppTownSelector.vue";
-import ScheduleWeekSelector from "../components/schedule/ScheduleWeekSelector.vue";
+import ScheduleWeekSelector from "../components/schedule/ScheduleDisplayWeekSelector.vue";
 import ScheduleForm from "../components/schedule/schedule-form/ScheduleForm.vue";
 import { mdiPlusBoxMultiple } from "@mdi/js";
 //
