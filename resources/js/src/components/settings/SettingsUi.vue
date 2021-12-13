@@ -116,7 +116,6 @@ export default defineComponent({
       return true;
     });
     const canSubmit: ComputedRef<boolean> = computed(() => {
-      console.log("re-evaluating canSubmit");
       if (selectedWilaya.value === null || selectedTown.value === null) return false;
       // if the values are diff than store allow submit, else do not
       return isDiffThanStore.value;
