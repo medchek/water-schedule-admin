@@ -9,7 +9,7 @@
         @click="addScheduleSegment('current', dayIndex)"
         :title="`Ajouter un autre programme d'eau pour ${day}`"
       >
-        <icon :icon="mdiPlus" className="h-6 text-gray-500 hover:text-gray-700" />
+        <icon :icon="mdiPlus" className="h-6 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" />
       </button>
     </section>
     <!-- DISPLAY THE INPUTS FOR MULTIPLE PERIODS -->
@@ -35,7 +35,7 @@
             :error="errors[index].to"
           />
           <button v-if="index > 0" @click="removeScheduleSegment(index)" title="supprimer">
-            <icon :icon="mdiClose" className="h-5 w-5 text-gray-500 hover:text-gray-700" />
+            <icon :icon="mdiClose" className="h-5 w-5 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" />
           </button>
         </div>
       </div>
