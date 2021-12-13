@@ -48,7 +48,7 @@
           transition-colors
           bg-blue-500
           dark:bg-dark-alt
-          hover:bg-blue-light
+          hover:bg-blue-400
           dark:hover:bg-blue-light/50
           focus:bg-blue-600
           dark:focus:bg-dark-header
