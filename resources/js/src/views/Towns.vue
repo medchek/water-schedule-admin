@@ -95,32 +95,6 @@ import { addPreposition } from "../lib/shared";
 import AppOpenModalButton from "../components/AppOpenModalButton.vue";
 
 export default defineComponent({
-  /*
-  beforeRouteEnter(from, to, next) {
-    console.log("from params => ", from.params.wilayaId);
-    console.log("beforeendter");
-    // resolves to the status code
-    store
-      .dispatch("fetchTowns", {
-        wilayaId: from.params.wilayaId,
-      })
-      .then((status) => {
-        if (status === 200) {
-          next();
-        } else {
-          next({ name: "not-found" });
-        }
-      })
-      .catch((err) => {
-        console.log(`[Towns]: ${err}`);
-        store.dispatch("flashSnack", {
-          // message, type, time
-          message: `Wilaya ${from.params.wilayaId} n'existe pas`,
-          type: "error",
-        });
-        return next({ name: "wilayas" });
-      });
-  },*/
   components: { Icon, AppInput, Loader, TownForm, TownCard, AppOpenModalButton },
   setup() {
     const store = useStore();
@@ -150,7 +124,6 @@ export default defineComponent({
     const isFetching = ref(false);
     const isFetchingError = ref(false);
     const fetchTownsData = () => {
-      console.warn("FETCH TOWNS REQUESTED in Towns.vue");
       if (!isFetching.value && !towns.value) isFetching.value = true;
       store
         .dispatch("fetchTowns", {
@@ -163,13 +136,15 @@ export default defineComponent({
           }
         })
         .catch((err) => {
-          console.error(`[Towns fetching error]: ${err}`);
-          store.dispatch("flashSnack", {
-            // message, type, time
-            message: `Wilaya ${route.params.wilayaId} n'existe pas`,
-            type: "error",
-          });
-          return router.replace({ name: "wilayas" });
+          const status = err.response.status;
+          if (status === 404) {
+            store.dispatch("flashSnack", {
+              // message, type, time
+              message: `Wilaya ${route.params.wilayaId} n'existe pas`,
+              type: "error",
+            });
+            return router.replace({ name: "not-found" });
+          }
         });
     };
 

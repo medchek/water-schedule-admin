@@ -141,7 +141,8 @@ const userModule: Module<WilayasModuleState, any> = {
                 // throw new Error(`[fetchTowns] unexpected response status from the server: code ${response.status}`);
             } catch (err) {
                 // err.response.status
-                throw new Error(`[fetchTowns] Failed to get towns data from api => ${err}`);
+                console.error(`[fetchTowns] Failed to get towns data from api => ${err}`);
+                throw err;
             }
         },
         async saveTown({ commit }, payload: AddTownRequest) {
