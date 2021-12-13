@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import store from "../store";
 import Home from "../views/Home.vue";
-import Login from "../views/Login.vue";
 // import NotFound from "../views/NotFound.vue";
 import Wilayas from "../views/Wilayas.vue";
 // import Towns from "../views/Towns.vue";
 // import Schedule from "../views/Schedule.vue";
 // import ScheduleRefactor from "../views/ScheduleRefactor.vue";
 
+const Login = () => import("../views/Login.vue");
 const NotFound = () => import("../views/NotFound.vue");
 const Towns = () => import("../views/Towns.vue");
 const Schedule = () => import("../views/Schedule.vue");
@@ -75,6 +76,14 @@ const router = createRouter({
     routes,
 });
 
-// router.beforeEach((to, from, next) => {});
+router.beforeEach((from, to, next) => {
+    store.dispatch("startRouteProgress");
+    // check if user is not authenthicaed
+    next();
+});
+
+router.beforeResolve(() => {
+    store.dispatch("successfulNavigation");
+});
 
 export default router;

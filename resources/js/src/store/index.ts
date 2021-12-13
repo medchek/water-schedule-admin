@@ -4,6 +4,7 @@ import user from "./modules/user";
 import wilayas from "./modules/wilayas";
 import towns from "./modules/towns";
 import schedules from "./modules/schedules";
+import routing from "./modules/routing";
 
 export default createStore({
     modules: {
@@ -12,6 +13,7 @@ export default createStore({
         wilayas,
         towns,
         schedules,
+        routing,
     },
     // plugins: [createLogger()],
 });

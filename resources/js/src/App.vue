@@ -1,5 +1,6 @@
 <template>
   <div id="global-scaffold" class="w-full h-full" :class="[isDarkMode && 'dark']">
+    <app-route-progress />
     <router-view
       class="w-full h-screen max-h-screen flex flex-col dark:bg-gradient-to-b dark:from-dark-bg dark:to-dark-bg bg-gradient-to-br from-gray-50 to-bgray-100"
     >
@@ -12,16 +13,19 @@
 <script lang="ts">
 import { computed, ComputedRef, defineComponent } from "vue";
 import { useStore } from "vuex";
+import AppRouteProgress from "./components/AppRouteProgress.vue";
 import Snack from "./components/Snack.vue";
 
 export default defineComponent({
   setup() {
     const store = useStore();
     const isDarkMode: ComputedRef<boolean> = computed(() => store.getters.getIsDarkMode);
+
     return { isDarkMode };
   },
   components: {
     Snack,
+    AppRouteProgress,
   },
 });
 </script>
@@ -39,5 +43,15 @@ body {
 }
 input:focus {
   outline: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
