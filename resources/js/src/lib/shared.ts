@@ -30,8 +30,7 @@ axios.interceptors.response.use(
         if (status == 419 || status == 401) {
             const currentRoute = document.location.pathname;
             if (currentRoute.toLowerCase() !== "/login" && store.getters.getUser !== null) {
-                // router.push("/login");
-                flashSnack({ message: "Votre session a expiré, veuillez vous reconnecter" });
+                store.commit("RESET_USER");
             }
         }
 
@@ -94,101 +93,6 @@ export interface Time {
     hours: number | null;
     minutes: number | null;
 }
-interface WeekSchedule {
-    dimanche: Period[];
-    lundi: Period[];
-    mardi: Period[];
-    mercredi: Period[];
-    jeudi: Period[];
-    vendredi: Period[];
-    samedi: Period[];
-}
-export const baseScheduleData = (): WeekSchedule => ({
-    dimanche: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-    lundi: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-    mardi: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-    mercredi: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-    jeudi: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-    vendredi: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-    samedi: [
-        {
-            from: {
-                hours: null,
-                minutes: null,
-            },
-            to: {
-                hours: null,
-                minutes: null,
-            },
-        },
-    ],
-});
 
 /**
  * Form error for each period

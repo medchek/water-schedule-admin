@@ -8,10 +8,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, watch } from "vue";
 
 import store from "../store";
 import Menu from "../components/AppMenu.vue";
+
+import { flashSnack } from "../lib/shared";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
 export default defineComponent({
   components: { Menu },
   beforeRouteEnter(_, from, next) {
@@ -23,7 +28,7 @@ export default defineComponent({
 
     const redirectToLogin = () => {
       next({ replace: true, name: "login" });
-      store.dispatch("flashSnack", {
+      flashSnack({
         message: "Vous devez être connecté pour accéder à cette page",
         time: 5000,
       });
@@ -43,6 +48,27 @@ export default defineComponent({
       .catch(() => {
         redirectToLogin();
       });
+  },
+  // beforeRouteUpdate(_, __, next) {
+  //   console.log("BEFORE ROUTE LEAVE");
+  //   const isUserLogged = store.getters.getUser;
+  //   if (isUserLogged === null) {
+  //     next({ replace: true, name: "login" });
+  //   } else {
+  //     next();
+  //   }
+  // },
+  setup() {
+    const store = useStore();
+    const isUserLogged = computed(() => store.getters.getUser);
+    const router = useRouter();
+
+    watch(isUserLogged, (newVal) => {
+      if (!newVal) {
+        router.replace({ name: "login" });
+        flashSnack({ message: "Votre session a expiré, veuillez vous reconnecter" });
+      }
+    });
   },
 });
 </script>
