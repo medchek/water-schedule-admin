@@ -63,7 +63,19 @@ const userModule: Module<UserModuleState, any> = {
                 throw new Error(`Failed authentication check => ${err}`);
             }
         },
-
+        async logout({ commit }) {
+            try {
+                const response = await axios.post("/logout");
+                if (response.status === 204) {
+                    // delete the user state
+                    commit("RESET_USER");
+                }
+                return response;
+            } catch (err) {
+                console.error("user.ts@logout error => ", err);
+                throw err;
+            }
+        },
         async resetPassword(_, payload: ResetPasswordPayload) {
             try {
                 const request = {

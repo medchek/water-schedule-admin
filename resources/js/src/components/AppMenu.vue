@@ -152,29 +152,33 @@ export default defineComponent({
     const logout = () => {
       // start loading
       isLogoutLoading.value = true;
-
-      axios
-        .post("/logout")
-        .then((response) => {
+      store
+        .dispatch("logout")
+        .then(() => {
           isLogoutLoading.value = false;
-          if (response.status === 204) {
-            // delete the user state
-            store.commit("RESET_USER");
-            router.replace({ name: "login" });
+          router.replace({ name: "login" });
+          store.dispatch("flashSnack", {
+            message: "Vous êtes maintenant déconnecté",
+            type: "info",
+          });
+        })
+        .catch((err) => {
+          const status = err.response.status;
+          isLogoutLoading.value = false;
+          // if the session expired, show successful logout message
+          if (status == 419 /* || status == 401 */) {
             store.dispatch("flashSnack", {
               message: "Vous êtes maintenant déconnecté",
               type: "info",
+            });
+          } else {
+            // if it's another error, show a generic message
+            store.dispatch("flashSnack", {
+              message: "Une erreur est survenu lors de la déconnexion",
               time: 5000,
+              type: "error",
             });
           }
-        })
-        .catch((err) => {
-          isLogoutLoading.value = false;
-          store.dispatch("flashSnack", {
-            message: "Une erreur est survenu lors de la déconnexion",
-            time: 5000,
-            type: "error",
-          });
           throw new Error(`Error while logging out: ${err}`);
         });
     };
