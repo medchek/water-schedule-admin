@@ -1,7 +1,7 @@
 <template>
   <settings-container
     label="Apparence"
-    description="Vous pouvez regler l'apparence de l'application en choisissant entre le thème clair ou thème sombre selon vos préférences."
+    description="Vous pouvez regler l'apparence de l'application en choisissant entre le thème clair ou le thème sombre selon vos préférences."
   >
     <section class="flex space-y-5 flex-col">
       <settings-theme-selector :icon="mdiBrightness5" @click="selectTheme('light')" text="Claire" :isSelected="!isDarkMode" />
