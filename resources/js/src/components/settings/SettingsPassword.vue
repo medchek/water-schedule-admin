@@ -149,7 +149,7 @@ export default defineComponent({
 
                 if (message && message === "leaked password") {
                   inputsData.newPassword.error =
-                    "Le nouveau mot de passe choisi a été trouvé dans la liste des fuites de données, pour votre sécurité veuillez choisir un nouveau";
+                    "Le nouveau mot de passe choisi a été trouvé dans la liste de fuites des données, pour votre sécurité veuillez choisir un nouveau";
                 } else {
                   // else, data sent was unexpected
                   return flashSnack({
