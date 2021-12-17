@@ -102,36 +102,6 @@ const userModule: Module<ScheduleModuleState, any> = {
             },
     },
     mutations: {
-        /*
-        SAVE_SCHEDULE(state, payload: AddSchedulePayload) {
-            try {
-                const { townCode, current, next } = payload;
-
-                if (Object.prototype.hasOwnProperty.call(state.schedules, townCode)) {
-                    // merge(parsedPayload, state.schedules[townCode]);
-                    if (current !== undefined) {
-                        state.schedules[townCode].current = current;
-                    }
-                    if (next !== undefined) {
-                        state.schedules[townCode].next = next;
-                    }
-                    // console.warn("[MUTATION:SAVE_SCHEDULE] merging completed@ new value", state.schedules[townCode]);
-                } else {
-                    // console.warn("[MUTATION:SAVE_SCHEDULE] INSERTING NEW SCHEDULE = ", payload);
-                    if (current !== undefined && next !== undefined) {
-                        state.schedules[townCode] = {
-                            townCode,
-                            current,
-                            next,
-                        };
-                    }
-                }
-            } catch (error) {
-                console.error("[SAVE_SCHEDULE] caught error", error);
-                throw new Error(`[Mutation@SAVE_SCHEDULE] caught error ${error}`);
-            }
-        },
-        */
         /**
          * Store fetched schedules in the state
          * @param state
@@ -173,21 +143,6 @@ const userModule: Module<ScheduleModuleState, any> = {
                 throw new Error(`[action:fetchSchedule] Failed to get schedule from api => ${err}`);
             }
         },
-        // async saveSchedule({ commit }, payload: ScheduleRequest) {
-        //     try {
-        //         const { townCode } = payload;
-
-        //         const response: AxiosResponse<ScheduleResponse> = await axios.post("/api/schedules", payload);
-
-        //         console.log("[schedules.ts][action:saveSchedule] successfully saved schedule on the server => RESPONSE CONTENT:", response.data);
-        //         commit("SAVE_SCHEDULE", { townCode, ...response.data });
-        //         return response;
-        //     } catch (err: any) {
-        //         console.error("action@saveSchedule:", err.response.data);
-        //         throw new Error(`[action:saveSchedule] Failed to save schedule => ${err}`);
-        //     }
-        // },
-
         async saveSchedule({ state, commit }, requestPayload: ScheduleFormRequest) {
             try {
                 console.log("saving the schedule...");
