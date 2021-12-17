@@ -6,14 +6,6 @@
     </div>
 
     <section id="towns-toolbar" class="flex flex-col lg:flex-row lg:items-center justify-between lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0">
-      <!-- <button
-        id="add-town"
-        class="bg-blue-600 hover:bg-blue-500 dark:bg-white text-white dark:text-dark-bg font-semibold px-2 h-10 rounded-md"
-        @click="openForm"
-      >
-        <Icon :icon="mdiPlusBoxMultiple" class="w-6 h-6 mr-1" />
-        Ajouter une commune
-      </button> -->
       <app-open-modal-button id="add-town" @click="openForm" :icon="mdiPlusBoxMultiple"> Ajouter une commune</app-open-modal-button>
 
       <div class="flex justify-between lg:justify-end space-x-4">
@@ -50,19 +42,29 @@
       </div>
     </section>
     <section id="content-main" class="relative w-full h-full grow overflow-y-auto py-4">
-      <div class="w-full h-full flex items-center" v-if="isFetching">
+      <!-- FETCHING & RETRY COMPONENTS -->
+      <!-- <div class="w-full h-full flex items-center" v-if="isFetching">
         <loader className="w-12 h-12 mx-auto border-t-blue-500" customColors />
-      </div>
+      </div> -->
+      <load-and-retry
+        v-if="isFetching || isFetchingError"
+        :hasFailed="isFetchingError"
+        :isFetching="isFetching"
+        @retry="fetchTownsData"
+        text="Une érreur est survenu lors de l'obtention des communes"
+      />
+      <!-- NO TOWNS ADD FOR WILAYA -->
       <p
         v-else-if="!isFetching && towns !== undefined && towns instanceof Array && towns.length === 0"
         class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-800"
       >
         Aucune commune n'a été ajoutée pour {{ currentRouteWilaya.name }}
       </p>
+      <!-- NO FILTER MATCH -->
       <p v-else-if="searchTerm && (!filteredTowns || !filteredTowns.length)" class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-600">
         Aucune commune ne corresponds à votre recherche
       </p>
-
+      <!-- REGULAR -->
       <div v-else class="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-none gap-4 w-full h-auto px-5">
         <!-- @edit & @delete send the same object with the difference in the action type (edit or delete), hence using it in both emits -->
         <town-card v-for="town in filteredTowns" :key="town.id" :town="town" @edit="onAction" @delete="onAction" />
@@ -93,9 +95,10 @@ import TownCard from "../components/town/TownCard.vue";
 import { TownActionData } from "../types/components";
 import { addPreposition } from "../lib/shared";
 import AppOpenModalButton from "../components/AppOpenModalButton.vue";
+import Retry from "../components/Retry.vue";
 
 export default defineComponent({
-  components: { Icon, AppInput, Loader, TownForm, TownCard, AppOpenModalButton },
+  components: { Icon, AppInput, Loader, TownForm, TownCard, AppOpenModalButton, LoadAndRetry: Retry },
   setup() {
     const store = useStore();
     const route = useRoute();
@@ -125,26 +128,31 @@ export default defineComponent({
     const isFetchingError = ref(false);
     const fetchTownsData = () => {
       if (!isFetching.value && !towns.value) isFetching.value = true;
+      isFetchingError.value = false;
       store
         .dispatch("fetchTowns", {
           wilayaId: route.params.wilayaId,
         })
         .then((status) => {
           if (status === 200) {
-            isFetching.value = false;
             isFetchingError.value = false;
           }
         })
         .catch((err) => {
           const status = err.response.status;
+          isFetchingError.value = true;
+
           if (status === 404) {
             store.dispatch("flashSnack", {
               // message, type, time
               message: `Wilaya ${route.params.wilayaId} n'existe pas`,
               type: "error",
             });
-            return router.replace({ name: "not-found" });
+            router.replace("not-found");
           }
+        })
+        .finally(() => {
+          isFetching.value = false;
         });
     };
 
@@ -197,7 +205,9 @@ export default defineComponent({
       currentRouteWilaya,
       headerWilayaName,
       handleSelectChange,
+      fetchTownsData,
       isFetching,
+      isFetchingError,
       filteredTowns,
 
       isFormOpen,

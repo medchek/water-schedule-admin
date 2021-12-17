@@ -1,7 +1,12 @@
 <template>
-  <section class="grow flex flex-col h-full justify-center" v-if="isFetching" id="complete-data-fetching">
-    <loader className="w-14 h-14 mx-auto border-t-blue-500" customColors />
-  </section>
+  <load-and-retry
+    v-if="isFetching || failedFetching"
+    @retry="fetchAll"
+    :isFetching="isFetching"
+    :hasFailed="failedFetching"
+    text="Une érreur est survenue lors de la récupération des programmes d'eau"
+  />
+
   <section class="grow flex flex-col h-full overflow-hidden" v-else>
     <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
       <span class="text-bgray-700 dark:text-white text-lg md:text-xl 2xl:text-2xl font-semibold"
@@ -10,27 +15,15 @@
     </div>
 
     <section id="schedule-toolbar" class="flex flex-col md:flex-row items-center justify-between md:h-14 w-full px-5 space-y-2 md:space-y-0">
-      <!-- <button
-        id="add-schedule"
-        class="w-full md:w-auto text-sm lg:text-base bg-blue-600 hover:bg-blue-500 text-white font-semibold px-2 h-10 rounded-md"
-        @click="openModal"
-      >
-        <Icon :icon="mdiPlusBoxMultiple" class="w-6 h-6 mr-1" />
-        Modifier le programme d'eau
-      </button> -->
       <app-open-modal-button class="w-full md:w-auto" id="add-schedule" @click="openModal" :icon="mdiPlusBoxMultiple">
         Modifier le programme d'eau</app-open-modal-button
       >
-      <!-- TEST -->
-      <!-- <button class="bg-red-500 text-white font-semibold px-2 rounded" @click="runTest">Run test</button> -->
-      <!-- TEST -->
+
       <app-town-selector :towns="wilayaTowns" />
     </section>
-    <!-- <section id="content-main" class="flex flex-col relative w-full h-full grow overflow-y-auto py-4"> -->
+
     <section id="content-main" class="flex flex-col w-full h-full grow overflow-y-auto py-4">
       <section class="flex grow w-full overflow-x-hidden">
-        <!-- <h2 class="text-gray-400 text-sm sm:text-base lg:text-lg">{{ label }}</h2> -->
-
         <div class="flex flex-col grow w-full h-full">
           <div class="flex w-full px-5 space-x-5 mb-2">
             <schedule-week-selector
@@ -49,7 +42,7 @@
             />
           </div>
           <div class="flex justify-center items-center grow w-full h-full" id="schedule-fetching" v-if="isFetchingNewSchedule">
-            <loader className="w-10 h-10 border-t-blue-500" customColors />
+            <loader className="w-10 h-10 border-t-blue-500 dark:border-t-dark-blue2" customColors />
           </div>
           <transition name="slide-right" type="animation" mode="out-in" v-else>
             <schedule-display
@@ -74,7 +67,6 @@
             />
           </transition>
         </div>
-        <!-- <div v-for="n in 7" :key="n" class=""></div> -->
       </section>
     </section>
 
@@ -95,6 +87,8 @@ import AppTimePicker from "../components/AppTimePicker.vue";
 import AppTownSelector from "../components/AppTownSelector.vue";
 import ScheduleWeekSelector from "../components/schedule/ScheduleDisplayWeekSelector.vue";
 import ScheduleForm from "../components/schedule/schedule-form/ScheduleForm.vue";
+import Retry from "../components/Retry.vue";
+
 import { mdiPlusBoxMultiple } from "@mdi/js";
 //
 import { computed, ComputedRef, defineAsyncComponent, defineComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from "vue";
@@ -123,6 +117,7 @@ export default defineComponent({
     // ScheduleEmptyWarning: defineAsyncComponent({ loader: () => import("../components/schedule/ScheduleEmptyWarning.vue"), loadingComponent: Loader }),
     ScheduleForm,
     AppOpenModalButton,
+    LoadAndRetry: Retry,
   },
   setup() {
     const isFetching = ref(true);
@@ -149,25 +144,44 @@ export default defineComponent({
     const fetchWilayas = async () => {
       // search for the wilaya data first
       if (wilaya.value === undefined) {
-        await store.dispatch("fetchWilayas");
+        return await store.dispatch("fetchWilayas");
       }
     };
 
     const fetchTowns = async () => {
       // search for towns data
       if (wilayaTowns.value === undefined) {
-        await store.dispatch("fetchTowns", { wilayaId: wilayaCode.value });
+        return await store.dispatch("fetchTowns", { wilayaId: wilayaCode.value });
       }
     };
 
     const fetchSchedule = async () => {
       if (storeSchedule.value === undefined) {
-        await store.dispatch("fetchSchedule", { townCode: townCode.value });
+        return await store.dispatch("fetchSchedule", { townCode: townCode.value });
       }
     };
     // fetch the schedule of another town
     const fetchTargetSchedule = async (targetTownCode: number) => {
       await store.dispatch("fetchSchedule", { townCode: targetTownCode });
+    };
+
+    const failedFetching = ref(false);
+
+    const fetchAll = async () => {
+      failedFetching.value = false;
+      setIsFetching(true);
+      try {
+        await Promise.all([fetchWilayas(), fetchTowns(), fetchSchedule()]);
+        // await fetchWilayas()
+        // await fetchTowns();
+        // await fetchSchedule();
+      } catch (error) {
+        console.error("[Schedule.vue@fetchAll]", error);
+        failedFetching.value = true;
+        return error;
+      } finally {
+        setIsFetching(false);
+      }
     };
 
     onMounted(async () => {
@@ -178,20 +192,10 @@ export default defineComponent({
         return;
       }
       try {
-        await fetchWilayas();
-        // only remove the loader if the towns are available, otherwise keep it loading until the towns are fetched
-        if (wilayaTowns.value !== undefined && storeSchedule.value !== undefined) setIsFetching(false);
-        // search for towns data
-        await fetchTowns();
-        // search for schedule
-        await fetchSchedule();
-        setIsFetching(false);
+        await fetchAll();
       } catch (err) {
         console.error("[Schedule.vue@onMounted] error while fetching data", err);
       }
-      // TODO: DONE
-      // the form needs to be populated with the schedule vuex data if there they are retrived from the server
-      // therefore, both
     });
 
     const startOfCurrentWeek = startOfWeek(new Date(), { locale: { code: "ar-dz" }, weekStartsOn: 0 });
@@ -233,14 +237,6 @@ export default defineComponent({
     };
 
     const isFetchingNewSchedule = ref(false);
-    // const handleTownSelected = async (townCode: number) => {
-    //   const targetSchedule = store.getters.getScheduleByTownCode(townCode);
-    //   if (targetSchedule === undefined) {
-    //     isFetchingNewSchedule.value = true;
-    //     await fetchTargetSchedule(townCode);
-    //     isFetchingNewSchedule.value = false;
-    //   }
-    // };
 
     watch(townCode, async (newTownCode) => {
       if (Number.isNaN(newTownCode)) return;
@@ -254,6 +250,8 @@ export default defineComponent({
 
     return {
       isFetching,
+      failedFetching,
+      fetchAll,
       currentWeek,
       nextWeek,
       showModal,
