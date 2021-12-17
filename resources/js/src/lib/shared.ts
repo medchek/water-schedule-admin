@@ -1,4 +1,4 @@
-import axiosDefault from "axios";
+import axiosDefault, { AxiosError } from "axios";
 import router from "../router";
 import store from "../store";
 import { SnackType } from "../store/modules/ui";
@@ -25,17 +25,18 @@ axios.interceptors.response.use(
     (response) => {
         return response;
     },
-    (error) => {
-        const status: number = error.response.status;
-        if (status == 419 || status == 401) {
-            const currentRoute = document.location.pathname;
-            if (currentRoute.toLowerCase() !== "/login" && store.getters.getUser !== null) {
-                store.commit("RESET_USER");
+    (error: AxiosError) => {
+        if (error.response) {
+            const status: number = error.response.status;
+            if (status == 419 || status == 401) {
+                const currentRoute = document.location.pathname;
+                if (currentRoute.toLowerCase() !== "/login" && store.getters.getUser !== null) {
+                    store.commit("RESET_USER");
+                }
             }
-        }
-
-        if (status === 404) {
-            router.replace({ name: "not-found" });
+            // if (status === 404) {
+            //     router.replace({ name: "not-found" });
+            // }
         }
 
         return Promise.reject(error);
