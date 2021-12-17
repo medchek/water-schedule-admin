@@ -6,7 +6,7 @@
       dark === false && customColors === false && 'border-bgray-600 border-t-transparent',
       thin ? 'border-2' : 'border-4',
     ]"
-    class="border-4 rounded-half animate-spin"
+    class="rounded-half animate-spin"
   ></span>
 </template>
 
