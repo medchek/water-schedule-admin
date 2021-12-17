@@ -16,7 +16,7 @@ class Town extends Model
         'code',
         'protected',
         'added_by',
-        'modied_by'
+        'modified_by'
     ];
 
     protected $casts = [
