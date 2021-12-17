@@ -8,14 +8,7 @@
       <town-form-delete-warning v-if="actionData && actionData.action === 'delete'" :townName="actionData.townName" :wilayaName="currentWilaya.name" />
       <section v-else class="grow h-full w-full px-5 py-5 space-y-4">
         <town-input placeholder="" label="Nom de la commune" v-model="townName" :error="townNameError" @resetInput="resetInput" />
-        <town-input
-          placeholder="(optionnel)"
-          rtl
-          label="Nom de la commune en arabe"
-          v-model="arTownName"
-          :error="arTownNameError"
-          @resetInput="resetInput(true)"
-        />
+        <town-input rtl label="Nom de la commune en arabe" v-model="arTownName" :error="arTownNameError" @resetInput="resetInput(true)" />
       </section>
       <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t dark:border-bgray-700 px-5">
         <button
@@ -35,7 +28,9 @@
             font-semibold
             disabled:bg-bgray-400
             transition-colors
+            disabled:cursor-not-allowed
           "
+          :title="!canSubmit && !isSendingData && !townName && !arTownName ? 'Vous devez remplir tous les champs' : ''"
           :class="[
             !canSubmit && 'cursor-not-allowed',
             actionData && actionData.action === 'delete' ? 'bg-red-500 hover:bg-red-400 focus:bg-red-600' : 'bg-blue-500 hover:bg-blue-400 focus:bg-blue-600',
@@ -43,7 +38,7 @@
           :disabled="!canSubmit"
           @click="submit"
         >
-          <loader v-if="isSendingData" dark thin className="w-6 h-6" />
+          <loader v-if="isSendingData" dark className="w-6 h-6" />
           <span v-else>Confirmer</span>
         </button>
         <app-cancel-button
@@ -59,7 +54,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, onMounted, PropType, ref, warn } from "vue";
+import { computed, ComputedRef, defineComponent, PropType, ref } from "vue";
 import Loader from "../Loader.vue";
 import Modal from "../Modal.vue";
 import TownInput from "./TownInput.vue";
@@ -70,7 +65,7 @@ import { mdiClose } from "@mdi/js";
 import Icon from "../Icon.vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { AddTownRequest, Town, TownSearch, UpdateTownRequst } from "../../store/modules/towns";
+import { AddTownRequest, TownSearch, UpdateTownRequst } from "../../store/modules/towns";
 import { TownActionData } from "../../types/components";
 import { addPreposition } from "../../lib/shared";
 import { Wilaya } from "../../store/modules/wilayas";
@@ -125,48 +120,42 @@ export default defineComponent({
         arTownName.value = arTownNameError.value = "";
       }
     };
+    /**
+     * compares the local town name/arName to the vuex store if it exists
+     */
+    const isDifferentThatStore = (): { name: boolean; arName: boolean } => {
+      return {
+        name: townName.value.trim().toLowerCase() != storeTown.value?.name,
+        arName: arTownName.value.trim().toLowerCase() != storeTown.value?.arName,
+      };
+    };
+
     // form only can be submitted if length is greater than 3 and data is not being sent to the server
     // also in case the edit values have been passed, only submit the form the values have changed
     const canSubmit: ComputedRef<boolean> = computed(() => {
       // if the request is to delete the town, only disable the button if the data is being sent
       // since the user has nothing to input
+      const action = props.actionData?.action;
 
       if (isSendingData.value) return false;
-      if (props.actionData && props.actionData.action === "delete" && !isSendingData.value) return true;
+      if (action && action === "delete") return true;
       else {
         const name = townName.value.trim().toLowerCase();
         const arName = arTownName.value.trim().toLowerCase();
 
-        if (!storeTown.value) {
-          if (!name.length) return false;
-          if (name.length < 3 && !arName) return false;
-          // only if arabic name is set check for its validation
-          if (arName) {
-            if (arName.length < 3) return false;
-          }
+        if (name.length < 3 || name.length > 30 || arName.length < 3 || arName.length > 30) {
+          return false;
+        } else if (action && action === "edit") {
+          const isDiff = isDifferentThatStore();
+
+          if (!isDiff.name && !isDiff.arName) {
+            return false;
+            // else edit identical to store name
+          } else return true;
+          // else regular check
         } else {
-          /// edit
-          if (!name && !arName) return false;
-
-          const storeTownName = storeTown.value.name.trim().toLowerCase();
-          const storeArTownName = storeTown.value.arName ? storeTown.value.arName.trim().toLowerCase() : "";
-          if (name.length) {
-            if (name.length < 3 || name.length > 30) return false;
-
-            if (name === storeTownName && !arName) {
-              return false;
-            }
-          }
-          if (arName.length > 0) {
-            if (arName.length < 3 || arName.length > 30) return false;
-
-            if (arName === storeArTownName && name === storeTownName) {
-              return false;
-            }
-          }
+          return true;
         }
-
-        return true;
       }
     });
 
@@ -288,12 +277,9 @@ export default defineComponent({
         // recheck for input validity again, in case the user presses the button without correcting the errors
 
         // if (handleOnBlurAr() && handleOnBlur()) {
-        isSendingData.value = true;
         const canSubmit = checkFormOnSubmit();
-        console.warn("can submit?", canSubmit);
 
         if (!canSubmit) {
-          isSendingData.value = false;
           return;
         }
         // remove any errors if the form can be submitted
@@ -312,9 +298,11 @@ export default defineComponent({
      * Sumit logic for add & edit actions
      */
     const addTown = () => {
+      isSendingData.value = true;
+
       const addTownBody: AddTownRequest = {
         wilayaId: currentWilayaCode.value,
-        name: townName.value,
+        name: townName.value.trim(),
         arName: arTownName.value.trim(),
       };
       store
@@ -327,27 +315,30 @@ export default defineComponent({
           emit("formSaved");
         })
         .catch((err: any) => {
-          isSendingData.value = false;
-
           store.dispatch("flashSnack", {
             message: "Une érreur est survenu lors de l'opération.",
             type: "error",
           });
           console.error("[TownForm.vue]", err);
+        })
+        .finally(() => {
+          isSendingData.value = false;
         });
     };
     const updateTown = () => {
+      isSendingData.value = true;
+
       if (storeTown.value) {
+        const isDiff = isDifferentThatStore();
         const updateTownBody: UpdateTownRequst = {
           townId: storeTown.value.id,
         };
-        if (storeTown.value.name != townName.value.trim().toLowerCase()) {
+        if (townName.value.trim().toLowerCase() && isDiff.name) {
           updateTownBody.name = townName.value.trim().toLowerCase();
         }
-        if (storeTown.value.arName == null && arTownName.value.trim().length > 3 && storeTown.value.arName != arTownName.value.trim().toLowerCase()) {
+        if (arTownName.value.trim().toLowerCase() && isDiff.arName) {
           updateTownBody.arName = arTownName.value.trim().toLowerCase();
         }
-
         store
           .dispatch("updateTown", updateTownBody)
           .then(() => {
@@ -358,12 +349,14 @@ export default defineComponent({
             emit("formSaved");
           })
           .catch((err) => {
-            isSendingData.value = false;
             store.dispatch("flashSnack", {
               message: "Une érreur est survenu lors de l'opération.",
               type: "error",
             });
             console.error("[TownForm.vue]", err);
+          })
+          .finally(() => {
+            isSendingData.value = false;
           });
       } else {
         console.error("[TownForm@updateTown] storeTown is not set");
