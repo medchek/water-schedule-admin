@@ -103,8 +103,8 @@ export default defineComponent({
         await store.dispatch("fetchTowns", { wilayaId: newlySelectedWilaId });
         isFetchingTowns.value = false;
         // also remove any previously selected town so that the user choses a new one
-        selectedTown.value = null;
       }
+      selectedTown.value = null;
     });
 
     /** Checks if the wilaya code and town code settings in the vuex store differ from the local selectedWilaya and selectedTown respectively */
