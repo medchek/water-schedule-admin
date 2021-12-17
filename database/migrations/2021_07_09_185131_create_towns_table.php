@@ -16,7 +16,7 @@ class CreateTownsTable extends Migration
         Schema::create('towns', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('ar_name')->nullable()->default(null);
+            $table->string('ar_name');
             $table->unsignedInteger('code')->unique();
             $table->timestamps();
 
