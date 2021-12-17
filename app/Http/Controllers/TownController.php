@@ -6,6 +6,7 @@ use App\Http\Resources\TownResource;
 use Illuminate\Http\Request;
 use App\Models\Town;
 use App\Models\Wilaya;
+use App\Services\TownService;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,15 +14,6 @@ use Illuminate\Support\Facades\Log;
 
 class TownController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($wilaya_id)
-    {
-        return response("ok", 200);
-    }
 
     /**
      * Display a listing of the resource by the given wilaya_id.
@@ -77,59 +69,47 @@ class TownController extends Controller
             $validated = validator($request->all(), [
                 'wilayaId' => 'required|digits_between:1,58|exists:App\Models\Wilaya,id',
                 'name' => 'required|between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\'-]+$/i',
-                'arName' => 'nullable|between:3,30|regex:/^[ء-ي ]+$/iu',
-                // 'arName' => 'nullable|between:3,30|regex:/^[\u0621-\u064A]+$/i/',
-                // 'code' => 'bail|numeric|unique:towns|digits_between:1,2400000',
+                'arName' => 'required|between:3,30|regex:/^[ء-ي ]+$/iu',
             ]);
-            // [
-            //     'wilayaId.required' => 'You must specify a wilaya'
-            // ]
 
             if ($validated->fails()) {
                 return response($validated->errors(), 400);
             }
 
-            $wilaya_id = $request->wilayaId;
-            $wilaya = Wilaya::find($wilaya_id);
+            $wilayaId = $request->wilayaId;
+            $wilaya = Wilaya::find($wilayaId);
 
             if (!$wilaya) {
                 return response("invalid wilya, not found", 400);
             }
 
-            // check if the wilaya already has a town with the same name
-            $doesTownExists = null;
-            if (isset($request->arName) && !empty($request->arName)) {
-                // takes into account the arabic word as well
-                $doesTownExists = Town::where('name', $request->name)->orWhere('ar_name', $request->arName)->where('wilaya_id', $request->wilayaId)->first();
-            } else {
-                $doesTownExists = Town::where('name', $request->name)->where('wilaya_id', $request->wilayaId)->first();
-            }
+            $doesTownExists = Town::where('name', $request->name)->orWhere('ar_name', $request->arName)->where('wilaya_id', $request->wilayaId)->first();
+
+            Log::channel("stderr")->debug($doesTownExists);
 
             if ($doesTownExists) {
                 return response("town with this name already exists", 422);
             }
+
+            $townServices = new TownService;
+
             // prepare the town code for the next town to be added by incrementing the current count
-            $town_code = $wilaya->towns()->count() + 1;
+            $townCode = $wilaya->towns()->count() + 1;
 
 
-
-            $town = new Town();
-
-
-            $town->wilaya_id = $wilaya_id;
+            $town = new Town;
+            $town->wilaya_id = $wilayaId;
 
             $town->name = strtolower($request->name);
-            $town->ar_name = $request->arName ? strtolower($request->arName) : null;
+            $town->ar_name = strtolower($request->arName);
 
-
-            $town_code = intval($wilaya_id . 0 . ($town_code < 10 ? '0' . $town_code : $town_code));
-            $town->code = $town_code;
-            $town->protected = false; // so that the user cannot edit/delete it
+            $town->code = $townServices->generateTownCode($wilayaId, $townCode);
+            $town->protected = false; // so that the user can edit/delete it
             $town->added_by = Auth::id();
 
-            Log::channel("stderr")->debug($town);
-
+            // Log::channel("stderr")->debug($town);
             $town->save();
+
             return response()->json(new TownResource($town), 201);
         } catch (Exception $e) {
             response($e->getMessage(), 503);
@@ -156,32 +136,33 @@ class TownController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Log::channel("stderr")->debug("Patch request id => {$request->arName}");
-
-        if (!isset($request->name) && !isset($request->arName)) {
-            return;
-        }
-        $validated = validator($request->all(), [
-            'name' => 'between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\'-]+$/i',
-            'arName' => 'between:3,30|regex:/^[ء-ي ]+$/iu',
-        ], [
-            "arName.regex" => "invalid regex"
-        ]);
-        if ($validated->fails()) {
-            return response($validated->errors(), 400);
-        }
-
         if (!isset($id) || !is_numeric($id) || $id <= 0) {
             return response('requested id is invalid', 400);
         }
 
+        if (!isset($request->name) && !isset($request->arName)) {
+            return response("invalid request", 400);
+        }
+
+
+        $validation = validator($request->all(), [
+            "name" => "between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\'-]+$/i",
+            "arName" => "between:3,30|regex:/^[ء-ي ]+$/iu",
+        ]);
+
+
+        if ($validation->fails()) {
+            return response("invalid request data", 400);
+        }
+
+        $townServices = new TownService;
         try {
 
             // check if town with the requested name already exists
             $name = strtolower($request->name);
-            $ar_name = $request->arName;
+            $ar_name = strtolower($request->arName);
 
-            if ($this->checkIfTownNameExists($name, $ar_name)) {
+            if ($townServices->checkTownExistance($name, $ar_name, $id)) {
                 return response("@update: town with this name already exists", 422);
             }
 
@@ -189,24 +170,18 @@ class TownController extends Controller
             $town = Town::find($id);
 
             if (!$town) {
-                return response('town not found', 404);
+                return response("town not found", 404);
             }
             if ($town->protected === true) {
-                return response('cannot change protected entry', 403);
+                return response("cannot change protected entry", 403);
             }
 
-
-
-            if (strtolower($name) === strtolower($town->name) && !isset($ar_name)) {
+            if ($name === $town->name || $ar_name === $town->ar_name) {
                 Log::channel("stderr")->error($name);
-                return response('updated value cannot have the same name', 403);
+                return response("updated value cannot both be identical to the current ones", 403);
             }
-            // if the arabic name was given, check if both values are identical
-            if (isset($ar_name)) {
-                if (strtolower($name) === strtolower($town->name) && $ar_name === $town->ar_name) {
-                    return response('updated value cannot both be identical to the current ones', 403);
-                }
-            }
+
+
 
             // everything is ok by now
 
