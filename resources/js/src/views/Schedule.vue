@@ -1,11 +1,5 @@
 <template>
-  <load-and-retry
-    v-if="isFetching || failedFetching"
-    @retry="fetchAll"
-    :isFetching="isFetching"
-    :hasFailed="failedFetching"
-    text="Une érreur est survenue lors de la récupération des programmes d'eau"
-  />
+  <load-and-retry v-if="isFetching || failedFetching" @retry="fetchAll" :isFetching="isFetching" :hasFailed="failedFetching" :text="'schedule.errorFetching'" />
 
   <view-container class="grow flex flex-col h-full overflow-hidden" v-else>
     <template v-slot:label>

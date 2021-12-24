@@ -104,8 +104,10 @@
         "currentWeekSchedule": "توقيت الأسبوع الحالي",
         "nextWeekSchedule": "توقيت الأسبوع المقبل",
         "waterSchedule": "جدول توقيت المياه",
+
         "addSchedule": "إضافة برنامج ماء آخر لـيوم {day}",
         "modifySchedule": "تعديل برنامج المياه",
+        "errorFetching": "لقد حدث خلل حين عملية تلقي برامج المياه",
         "confirmChoice": "يرجى تأكيد اختياركم",
         "scheduleNotAddedYet": "لم يتم بعد إضافة برنامج الماء {targetWeek} لبلدبة",
         "noWaterAllDayLong": "قطع كامل طوال اليوم",

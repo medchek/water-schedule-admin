@@ -50,7 +50,7 @@
         :hasFailed="isFetchingError"
         :isFetching="isFetching"
         @retry="fetchTownsData"
-        text="Une érreur est survenu lors de l'obtention des communes"
+        :text="'town.errorFetching'"
       />
       <!-- NO TOWNS ADD FOR WILAYA -->
       <p

@@ -20,7 +20,7 @@
         @retry="fetchWilayas"
         :hasFailed="fetchingError"
         :isFetching="isFetching"
-        text="Use erreur est survenu lors de l'obtention des wilayas"
+        :text="'wilaya.errorFetching'"
       />
       <!-- SUCCESS -->
 

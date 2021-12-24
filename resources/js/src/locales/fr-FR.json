@@ -108,6 +108,7 @@
 
         "addSchedule": "Ajouter un autre programme d'eau pour {day}",
         "modifySchedule": "Modifier le programme d'eau",
+        "errorFetching": "Une érreur est survenue lors de la récupération des programmes d'eau",
         "confirmChoice": "Veuillez confirmer que c'est bien votre choix",
         "scheduleNotAddedYet": "Le programme d'eau de { targetWeek } n'a pas encore été ajouté pour",
         "noWaterAllDayLong": "coupure total durant toute la journée",
