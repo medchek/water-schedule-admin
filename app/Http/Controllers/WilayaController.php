@@ -19,10 +19,12 @@ class WilayaController extends Controller
      */
     public function index()
     {
-        // optimize it to WHERE id >= 10 AND id < 20 for pagination
-        // $wilayas = Wilaya::all()->skip(0)->take(5);
-        $wilayas = Wilaya::all();
-        return response($wilayas, 200);
+        try {
+            $wilayas = Wilaya::all();
+            return response(WilayaResource::collection($wilayas), 200);
+        } catch (Exception $_) {
+            return response("error while getting data", 503);
+        }
     }
 
     /**
@@ -41,7 +43,7 @@ class WilayaController extends Controller
                 ->get();
             return response(WilayaResource::collection($wilayas), 200);
         } catch (Exception $_) {
-            return response("error getting wilay data", 503);
+            return response("error while getting data", 503);
         }
     }
 
