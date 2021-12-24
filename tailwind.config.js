@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
     content: ["./storage/framework/views/*.php", "./resources/**/*.blade.php", "./resources/**/*.js", "./resources/**/*.vue"],
@@ -43,11 +44,13 @@ module.exports = {
                 64: "16rem",
                 72: "18rem",
                 80: "20rem",
+                90: "24rem",
                 124: "31rem",
                 130: "34rem",
             },
             width: {
                 18: "4.5rem",
+                90: "24rem",
                 100: "27rem",
                 124: "31rem",
                 128: "32rem",
@@ -68,5 +71,13 @@ module.exports = {
     variants: {
         extend: {},
     },
-    plugins: [],
+    plugins: [
+        plugin(function ({ addVariant, e }) {
+            addVariant("arabic", ({ modifySelectors, separator }) => {
+                modifySelectors(({ className }) => {
+                    return [".arabic", `.arabic${e(`${separator}${className}`)}`].join(" ");
+                });
+            });
+        }),
+    ],
 };
