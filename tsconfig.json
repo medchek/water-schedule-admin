@@ -12,6 +12,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true
   },
   "include": [
     "./resources/js/**/*.ts",
