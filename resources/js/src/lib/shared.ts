@@ -31,6 +31,8 @@ axios.interceptors.response.use(
             if (status == 419 || status == 401) {
                 const currentRoute = document.location.pathname;
                 if (currentRoute.toLowerCase() !== "/login" && store.getters.getUser !== null) {
+                    // set the session state as expired
+                    store.commit("SET_SESSION_EXPIRED", true);
                     store.commit("RESET_USER");
                 }
             }
@@ -85,6 +87,7 @@ export const addPreposition = (word: string): string => {
 // a function is used to assure a total deep cloning
 export type Days = "dimanche" | "lundi" | "mardi" | "mercredi" | "jeudi" | "vendredi" | "samedi";
 export type enDays = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
+export type arDays = "السبت" | "الأحد" | "الإثنين" | "الثلاثاء" | "الأربعاء" | "الخميس" | "الجمعة";
 
 export interface Period {
     from: Time;
@@ -104,15 +107,17 @@ export interface FormError {
 }
 
 export interface FormSchedule {
-    day: Days;
+    frDay: Days;
     enDay: enDays;
+    arDay: arDays;
     errors: FormError[];
     schedule: Period[];
 }
 export const scheduleFormData = (): FormSchedule[] => [
     {
-        day: "dimanche",
+        frDay: "dimanche",
         enDay: "sunday",
+        arDay: "الأحد",
         errors: [
             {
                 from: "",
@@ -133,8 +138,9 @@ export const scheduleFormData = (): FormSchedule[] => [
         ],
     },
     {
-        day: "lundi",
+        frDay: "lundi",
         enDay: "monday",
+        arDay: "الإثنين",
         errors: [
             {
                 from: "",
@@ -155,8 +161,9 @@ export const scheduleFormData = (): FormSchedule[] => [
         ],
     },
     {
-        day: "mardi",
+        frDay: "mardi",
         enDay: "tuesday",
+        arDay: "الثلاثاء",
         errors: [
             {
                 from: "",
@@ -177,8 +184,9 @@ export const scheduleFormData = (): FormSchedule[] => [
         ],
     },
     {
-        day: "mercredi",
+        frDay: "mercredi",
         enDay: "wednesday",
+        arDay: "الأربعاء",
         errors: [
             {
                 from: "",
@@ -199,8 +207,9 @@ export const scheduleFormData = (): FormSchedule[] => [
         ],
     },
     {
-        day: "jeudi",
+        frDay: "jeudi",
         enDay: "thursday",
+        arDay: "الخميس",
         errors: [
             {
                 from: "",
@@ -221,8 +230,9 @@ export const scheduleFormData = (): FormSchedule[] => [
         ],
     },
     {
-        day: "vendredi",
+        frDay: "vendredi",
         enDay: "friday",
+        arDay: "الجمعة",
         errors: [
             {
                 from: "",
@@ -243,8 +253,9 @@ export const scheduleFormData = (): FormSchedule[] => [
         ],
     },
     {
-        day: "samedi",
+        frDay: "samedi",
         enDay: "saturday",
+        arDay: "السبت",
         errors: [
             {
                 from: "",
@@ -269,6 +280,7 @@ export const scheduleFormData = (): FormSchedule[] => [
 // this is needed for ordering by weekly order
 export const frDaysByOrder = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 export const enDaysByOrder = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+export const arDaysByOrder = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
 
 /**
  * Compares two time objects.
@@ -302,6 +314,19 @@ export const isTimeAGreaterThanB = (a: Time, b: Time): boolean => {
         }
     }
     return false;
+};
+
+/** Checks if the time equals to midnight 00:00 */
+export const isTimeMidnight = ({ hours, minutes }: Time) => {
+    if (!hours === null || !minutes === null) return false;
+    if (hours === 0 && minutes === 0) return true;
+    else return false;
+};
+/** Checks if the time equals to 23:59 */
+export const isTimeOneMinuteBeforeMidnight = ({ hours, minutes }: Time) => {
+    if (!hours === null || !minutes === null) return false;
+    if (hours === 23 && minutes === 59) return true;
+    else return;
 };
 
 /**

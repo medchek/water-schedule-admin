@@ -24,15 +24,18 @@ export interface SaveUserSettingsPayload {
 }
 interface UserModuleState {
     user: User | null;
+    sessionExpired: boolean;
 }
 
 const userModule: Module<UserModuleState, any> = {
     state: () => ({
         user: null,
+        sessionExpired: false,
     }),
     getters: {
         getUser: (state) => state.user,
         getUserSettings: (state) => (state.user ? state.user.settings : null),
+        getIsSessionExpired: (state) => state.sessionExpired,
     },
     mutations: {
         SET_USER(state, payload: User) {
@@ -43,6 +46,9 @@ const userModule: Module<UserModuleState, any> = {
         },
         SAVE_USER_SETTINGS(state, payload: Settings) {
             if (state.user !== null) state.user.settings = payload;
+        },
+        SET_SESSION_EXPIRED(state, value = true) {
+            state.sessionExpired = value;
         },
     },
 
@@ -63,12 +69,14 @@ const userModule: Module<UserModuleState, any> = {
                 throw new Error(`Failed authentication check => ${err}`);
             }
         },
-        async logout({ commit }) {
+        async logout({ commit }, noAutoReset = false) {
             try {
                 const response = await axios.post("/logout");
                 if (response.status === 204) {
-                    // delete the user state
-                    commit("RESET_USER");
+                    if (!noAutoReset) {
+                        // delete the user state
+                        commit("RESET_USER");
+                    }
                 }
                 return response;
             } catch (err) {
