@@ -1,5 +1,5 @@
-import { ScheduleFormRequest, ScheduleProps, ScheduleRequest, TargetSchedule } from "./../../types/components.d";
-import { FormSchedule, Period, scheduleFormData, Time } from "./../../lib/shared";
+import { ScheduleFormRequest, TargetSchedule } from "./../../types/components.d";
+import { Period } from "./../../lib/shared";
 import { Module } from "vuex";
 import { axios } from "../../lib/shared";
 
@@ -130,12 +130,12 @@ const userModule: Module<ScheduleModuleState, any> = {
         async fetchSchedule({ commit }, payload: { townCode: number }) {
             const townCode = payload.townCode;
             try {
-                console.log("[schedules.ts@action:fetchSchedule] preparing to get schedule data from the server", payload);
+                // console.log("[schedules.ts@action:fetchSchedule] preparing to get schedule data from the server", payload);
 
                 const response: AxiosResponse<FetchScheduleServerResponse> = await axios.get(`/api/schedules/${townCode}`);
                 commit("STORE_FETCHED_SCHEDULES", { townCode, ...response.data });
 
-                console.log(`[schedules.ts][action:fetchSchedule] successfully retireived data for town ${townCode}: RESPONSE CONTENT=>`, response.data);
+                // console.log(`[schedules.ts][action:fetchSchedule] successfully retireived data for town ${townCode}: RESPONSE CONTENT=>`, response.data);
                 return response.status;
                 // throw new Error(`[fetchTowns] unexpected response status from the server: code ${response.status}`);
             } catch (err: any) {
@@ -192,7 +192,7 @@ const userModule: Module<ScheduleModuleState, any> = {
                     commit("STORE_SAVED_TARGET_SCHEDULE", serverNextPayload);
                 }
 
-                console.log("schedules.ts@saveSchedule: SUCCESSFULLY STORED SCHEDULE", response.data);
+                // console.log("schedules.ts@saveSchedule: SUCCESSFULLY STORED SCHEDULE", response.data);
             } catch (err: any) {
                 console.error("action@saveSchedule:", err.response.data);
                 throw new Error(`[action:saveSchedule] Failed to save schedule => ${err}`);
