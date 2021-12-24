@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- lower than lg stack the menu on top of the content as a header for when the user hides the side menu, another should appear on the top of the screen -->
-    <div class="flex h-full w-full flex-col lg:flex-row overflow-hidden">
+    <div class="flex h-full w-full flex-col lg:flex-row lg:arabic:flex-row-reverse overflow-hidden">
       <Menu />
       <router-view name="content"></router-view>
     </div>
@@ -16,6 +16,8 @@ import Menu from "../components/AppMenu.vue";
 import { flashSnack } from "../lib/shared";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+import i18n from "../locales";
 
 export default defineComponent({
   components: { Menu },
@@ -29,10 +31,11 @@ export default defineComponent({
     const redirectToLogin = () => {
       next({ replace: true, name: "login" });
       flashSnack({
-        message: "Vous devez être connecté pour accéder à cette page",
+        message: i18n.global.t("general.snack.errors.unauthorized"),
         time: 5000,
       });
     };
+
     // if the user is not auth, redirect to login
     // if (!store.getters.getUser) return redirectToLogin();
 
@@ -60,13 +63,14 @@ export default defineComponent({
   // },
   setup() {
     const store = useStore();
-    const isUserLogged = computed(() => store.getters.getUser);
+    const isSessionExpired = computed(() => store.getters.getIsSessionExpired);
     const router = useRouter();
+    const { t } = useI18n();
 
-    watch(isUserLogged, (newVal) => {
-      if (!newVal) {
+    watch(isSessionExpired, (newVal) => {
+      if (newVal) {
         router.replace({ name: "login" });
-        flashSnack({ message: "Votre session a expiré, veuillez vous reconnecter" });
+        flashSnack({ message: t("general.snack.errors.sessionExpired") });
       }
     });
   },

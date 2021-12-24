@@ -1,0 +1,188 @@
+{
+    "general": {
+        "delete": "Supprimer",
+        "confirm": "Confirmer",
+        "cancel": "Annuler",
+        "back": "Retour",
+        "add": "Ajouter",
+        "modify": "Modifier",
+        "retry": "Reéssayer",
+        "reset": "Réinitialiser",
+        "wilaya": "Wilaya",
+        "wilayas": "Wilayas",
+        "town": "Commune",
+        "towns": "Communes",
+        "schedule": "Programme d'eau",
+        "logout": "Se déconnecter",
+        "settings": "Paramètres",
+        "hours": "heurs",
+        "minutes": "minutes",
+        "email": "Email",
+        "password": "Mot de passe",
+        "login": "Connexion",
+
+        "mustFillAllFields": "Vous devez remplir tous les champs",
+
+        "snack": {
+            "info": {
+                "savingSuccess": "Données sauvgardées avec succès",
+                "loginSuccess": "Vous êtes maintenant connecté",
+                "logoutSuccess": "Vous êtes maintenant connecté",
+                "alreadyLoggedIn": "Vous êtes déja connecté"
+            },
+            "errors": {
+                "wrongCredentials": "Email ou mot de pass incorrect",
+                "tooManyLogins": "Vous avez essayer de vous connecter plusieurs fois en un espace de temps court, veillez attendre avant to reéssayer",
+                "cors": "Une errreur est survenue lors de la connexion (CORS)",
+                "errorWhileLogin": "Une errreur est survenue lors de la connexion",
+                "errorWhileLogout": "Une erreur est survenu lors de la déconnexion",
+                "unauthorized": "Vous devez être connecté pour accéder à cette page",
+                "sessionExpired": "Votre session a expiré, veuillez vous reconnecter",
+                "sendingError": "Une erreur est survenu lors de l'envoi des données, veuillez reéssayer",
+                "savingError": "Une érreur est survenu lors de l'enregistrement des données",
+                "failedOperation": "Une érreur est survenu lors de l'opération"
+            }
+        }
+    },
+
+    "wilaya": {
+        "searchForWilaya": "Chercher une wilaya",
+        "goToTowns": "Voir les communes",
+        "errorFetching": "Use erreur est survenu lors de l'obtention des wilayas",
+        "noSearchMatch": "Aucune wilaya ne correspond à votre recherche"
+    },
+
+    "town": {
+        "searchForTown": "Chercher une commune",
+        "townsOf": "Communes {town}",
+        "addTown": "Ajouter une commune",
+        "townName": "Nom de la commune",
+        "arabicTownName": "Nom de la commune en Arabe",
+        "errorFetching": "Use erreur est survenu lors de l'obtention des communes",
+        "noTownsAdded": " Aucune commune n'a été ajoutée pour { wilaya }",
+        "noSearchMatch": "Aucune commune ne corresponds à votre recherche",
+        "wilayaNotFound": "Wilaya {wilayaCode} n'existe pas",
+        "goToSchedule": "Programme d'eau",
+        "selectAnotherWilaya": "Selectionner une autre wilaya",
+
+        "addedSuccessfully": "Commune ajoutée avec succès",
+        "editedSuccessfully": "Commune modifiée avec succès",
+        "deletedSuccessfully": "Commune supprimée",
+
+        "delete": {
+            "aboutToDelete": "Vous êtes sur le point de supprimer la commune",
+            "fromWilaya": "de la wilaya",
+            "thisDeletesRelatedSchedule": "Cela supprimera aussi tous les programmes d'eau lié à cette commune",
+            "irreversibleAction": "Cette action est irréversible"
+        },
+
+        "errors": {
+            "editedNameMustDifferFromCurrent": "Le nouveau nom de la commune modifiée doit être different du nom actuel",
+            "editedArNameMustDifferFromCurrent": "Le nouveau nom Arabe de la commune modifiée doit être different du nom Arabe actuel",
+            "alreadyExists": "{townName} existe déja comme commune {wilaya}",
+            "nameLength": "Le nom de la commune doit être entre 3 et 30 caractères",
+            "arNameLength": "Le nom Arabe de la commune doit être entre 3 et 30 caractères",
+            "mustBeArabic": "Ce champ doit contenir le nom de la commune en Arabe",
+            "mustBeLatin": "Ce champ doit contenir le nom de la commune en alphabet latin",
+            "noSpecialChars": "Le nom de la commune ne peut contenir des caractères spéciaux ni des chiffres"
+        }
+    },
+
+    "schedule": {
+        "then": "puis",
+        "from": "À partir de",
+        "to": "Jusqu'à",
+        "toWeek": "au",
+        "currentWeek": "Cette semaine",
+        "theCurrentWeek": "la @.lower:schedule.currentWeek",
+        "selectAnotherTown": "Selectionner une autre commune",
+
+        "nextWeek": "Semaine prochaine",
+        "theNextWeek": "la @.lower:schedule.nextWeek",
+
+        "fromSpecificToSpecific": "à partir de {from} Jusqu'à {to}",
+
+        "currentWeekSchedule": "Programme de la semaine courante",
+        "nextWeekSchedule": "Programme de la semaine prochaine",
+        "waterSchedule": "le programme d'eau",
+
+        "addSchedule": "Ajouter un autre programme d'eau pour {day}",
+        "modifySchedule": "Modifier le programme d'eau",
+        "confirmChoice": "Veuillez confirmer que c'est bien votre choix",
+        "scheduleNotAddedYet": "Le programme d'eau de { targetWeek } n'a pas encore été ajouté pour",
+        "noWaterAllDayLong": "coupure total durant toute la journée",
+        "savingSuccess": "Programme(s) d'eau enregistré(s) avec success",
+
+        "emptyCurrentWeekSchedule": "Le programme d'eau de cette semaine a été laissé  enitèrement vide, cela signifie que le programme v'a affiché une coupure total durant toute la semaine",
+        "emptyNextWeekSchedule": "Le programme d'eau de la semaine prochaine a été laissé enitèrement vide, cela signifie que le programme v'a affiché une coupure total durant toute la semaine prochaine",
+        "emptyBothSchedules": "Les programmes d'eau des deux semaines ont été laissés enitèrement vide, cela signifie que les programmes vont affichés une coupure total durant cette semaine et celle d'après",
+        "emptyEitherScheule": "Un des programmes d'eau a été laissé  enitèrement vide, cela signifie que le programme v'a afficher une coupure total durant toute la semaine",
+        "info": {
+            "noChangesMade": "Aucun changement n'a été encore fait"
+        },
+        "errors": {
+            "promptFixErrors": "Veillez d'abord corriger les erreurs",
+            "addedFromMustBeGreaterThanPreviousTo": "Le temps de rétablissement ajouté au meme jour doit être supérieure au temps de coupure précédent",
+            "addedToMustBeGreaterThanPreviousTo": "Le temps de coupure d'eau ajouté au meme jour doit être supérieure au temps de coupure précédent",
+            "addedFromMustBeSetWhenAddedToIsSet": "Ce temps doit aussi être réglé quand le temps de coupure a été reglé pour le temps additionnel du même jour",
+            "mustNotBeMidnight": "Le temps de coupure d'eau ne peut pas égaler 00:00",
+            "mustNotBeOneMinuteBeforeMidnight": "Le temps de rétablissement d'eau ne peut pas égaler 23:59",
+            "fromMustBeLessThanTo": "Le temps de rétablissement d'eau doit être inférieur au temps de coupure",
+            "toMustBeGreaterThanFrom": "Le temps de coupure d'eau doit être supérieure au temps de rétablissement",
+            "previousToMustBeLessThanAdded": "Le temps de coupure doit être inférieur au nouveau temps de rétablissement ajouté au même jour",
+            "previousToMustBeSetIfAddedTimeIsSet": "Le temps de coupure doit être réglé quand vous avez précisé d'autres temps additionnels du même jour"
+        }
+    },
+
+    "settings": {
+        "password": {
+            "label": "Mot de Passe",
+            "description": "Pour mettre à jour votre mot de pass, vous devez d'abord entrer le mot de pass actuel avant de confirmer le nouveau",
+            "successfullyChanged": "Le mot de passe a été changé avec succès",
+            "currentPassword": "Mot de passe actuel",
+            "newPassword": "Nouveau mot de passe",
+            "confirmNewPassword": "Confirmer le nouveau mot de passe",
+            "errors": {
+                "short": "Le nouveau mot de passe doit comprendre 8 charactères au minimum",
+                "alphanumeric": "Le nouveau mot de passe doit contenir des chiffres et des lettres et doit comprendre 8 charactères au minimum",
+                "wrongConfirmed": "Le mot de passe confirmé ne correspond au nouveau mot de passe",
+                "sameAsCurrent": "Le nouveau mot de passe doit être different du mot de passe actuel",
+                "incorrectCurrent": "Le mot de passe actuel est incorrect",
+                "leaked": "Le nouveau mot de passe choisi a été trouvé dans la liste de fuites des données, pour votre sécurité veuillez choisir un nouveau",
+                "invalidRequest": "Les informatios envoyées au serveur sont invalides"
+            }
+        },
+        "theme": {
+            "label": "Apparence",
+            "description": "Vous pouvez regler l'apparence de l'application en choisissant entre le thème clair ou le thème sombre selon vos préférences",
+            "dark": "sombre",
+            "light": "claire"
+        },
+        "lang": {
+            "label": "Langues"
+        },
+        "ui": {
+            "label": "Interface",
+            "description": "Ces paramètres vous permettent de choisir la Wilaya et la commune par défaut. En réglant ces derniers, les liens du menu vont être adaptés pour vous mener directement à la list des communes de la Wilaya choisie et au programme d'eau de la commune choisie",
+            "wilayaInputLabel": "Wilaya par défaut",
+            "wilayaInputInfo": "Si aucune wilaya n'est choisie, le menu va mener à la wilaya d'Alger par défaut",
+            "wilayaInputPrompt": "Veuillez selectionner une wilaya",
+
+            "townInputLabel": "Commune par défaut",
+            "townInputInfo": "Si aucune commune n'est choisie,  le menu va mener au programme d'eau de la commune d'Alger-Centre par défaut",
+            "townInputPrompt": "Veuillez selectionner une commune",
+            "townInputPlaceholder": "Vous devez d'abord choisir une wilaya",
+
+            "mustChooseWilayaFirst": "Vous devez choisir une wilaya ou une commune différente avant de pouvoir confirmer",
+            "mustChooseTown": "Vous devez choisir une Wilaya et une commune avant de pouvoir confirmer",
+            "errors": {
+                "422": "Rien n'a changé, sauvegarde annulée (code: 422)",
+                "400": "Erreur, Requêt érronée (code: 400)",
+                "403": "Erreur, Method http de la requêt érronée (code: 403)",
+                "404": "Erreur, Le serveur n'a pas pu trouver les données demandées (code: 404)"
+            }
+        }
+    },
+
+    "notFound": "Cette page n'existe pas"
+}

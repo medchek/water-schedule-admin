@@ -1,14 +1,12 @@
 <template>
-  <main id="towns-main" class="grow flex flex-col h-full overflow-hidden">
-    <!-- <section class="flex flex-col h-full"> -->
-    <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
-      <span class="text-bgray-700 dark:text-white text-2xl 2xl:text-3xl font-semibold">Communes {{ headerWilayaName }}</span>
-    </div>
+  <view-container id="towns-main" :label="t('town.townsOf', { town: headerWilayaName })">
+    <section
+      id="towns-toolbar"
+      class="flex flex-col lg:flex-row lg:arabic:flex-row-reverse lg:items-center justify-between lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0"
+    >
+      <app-open-modal-button id="add-town" @click="openForm" :icon="mdiPlusBoxMultiple">{{ t("town.addTown") }}</app-open-modal-button>
 
-    <section id="towns-toolbar" class="flex flex-col lg:flex-row lg:items-center justify-between lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0">
-      <app-open-modal-button id="add-town" @click="openForm" :icon="mdiPlusBoxMultiple"> Ajouter une commune</app-open-modal-button>
-
-      <div class="flex justify-between lg:justify-end space-x-4">
+      <div class="flex arabic:flex-row-reverse justify-between lg:justify-end space-x-4 arabic:space-x-reverse">
         <select
           name="wilaya-selector"
           id="wilaya-select"
@@ -26,17 +24,18 @@
             dark:ring-indigo-500
             focus:ring-2
           "
+          :title="t('town.selectAnotherWilaya')"
           v-model="currentRouteWilayaId"
           @change="handleSelectChange"
         >
-          <option v-for="wilaya in wilayas" :key="wilaya.code" :value="wilaya.code">{{ wilaya.code }} - {{ wilaya.name }}</option>
+          <option v-for="wilaya in wilayas" :key="wilaya.code" :value="wilaya.code">{{ wilaya.code }} - {{ isArLocale ? wilaya.arName : wilaya.name }}</option>
         </select>
 
         <app-input
           className="h-10 text-sm sm:text-base w-full lg:w-80 "
           v-model.trim.lazy="searchTerm"
           :appendIcon="mdiMagnify"
-          placeholder="Chercher une commune"
+          :placeholder="t('town.searchForTown')"
           clearable
         />
       </div>
@@ -58,14 +57,15 @@
         v-else-if="!isFetching && towns !== undefined && towns instanceof Array && towns.length === 0"
         class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-800"
       >
-        Aucune commune n'a été ajoutée pour {{ currentRouteWilaya.name }}
+        <!-- Aucune commune n'a été ajoutée pour {{ currentRouteWilaya.name }} -->
+        {{ t("town.noTownsAdded", { wilaya: currentRouteWilaya.name }) }}
       </p>
       <!-- NO FILTER MATCH -->
       <p v-else-if="searchTerm && (!filteredTowns || !filteredTowns.length)" class="px-4 text-base md:text-lg font-semibold w-full text-center text-gray-600">
-        Aucune commune ne corresponds à votre recherche
+        {{ t("town.noSearchMatch") }}
       </p>
       <!-- REGULAR -->
-      <div v-else class="relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-none gap-4 w-full h-auto px-5">
+      <div v-else class="relative arabic:direction-rtl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-none gap-4 w-full h-auto px-5">
         <!-- @edit & @delete send the same object with the difference in the action type (edit or delete), hence using it in both emits -->
         <town-card v-for="town in filteredTowns" :key="town.id" :town="town" @edit="onAction" @delete="onAction" />
       </div>
@@ -77,10 +77,10 @@
       </transition>
     </teleport>
     <!-- </section> -->
-  </main>
+  </view-container>
 </template>
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, onMounted, reactive, ref, warn, watch } from "vue";
+import { computed, ComputedRef, defineComponent, onMounted, ref, watch } from "vue";
 import { mdiPlusBoxMultiple, mdiMagnify } from "@mdi/js";
 import Icon from "../components/Icon.vue";
 import AppInput from "../components/AppInput.vue";
@@ -96,10 +96,13 @@ import { TownActionData } from "../types/components";
 import { addPreposition } from "../lib/shared";
 import AppOpenModalButton from "../components/AppOpenModalButton.vue";
 import Retry from "../components/Retry.vue";
+import ViewContainer from "../components/ViewContainer.vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
-  components: { Icon, AppInput, Loader, TownForm, TownCard, AppOpenModalButton, LoadAndRetry: Retry },
+  components: { Icon, AppInput, Loader, TownForm, TownCard, AppOpenModalButton, LoadAndRetry: Retry, ViewContainer },
   setup() {
+    const { t } = useI18n();
     const store = useStore();
     const route = useRoute();
     const router = useRouter();
@@ -109,18 +112,20 @@ export default defineComponent({
     const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getWilayas);
     const currentRouteWilayaId = ref(route.params.wilayaId as string);
 
+    const isArLocale = computed(() => store.getters.getIsArLang);
     const filteredTowns: ComputedRef<Town[] | Towns | null> = computed(() => {
       if (!towns.value) return null;
       if (!searchTerm.value) return towns.value;
-      return towns.value.filter((town) => town.name.toLowerCase().includes(searchTerm.value.trim().toLowerCase()));
+      // localization support
+      const targetName: "name" | "arName" = isArLocale.value ? "arName" : "name";
+      return towns.value.filter((town) => town[targetName].toLowerCase().includes(searchTerm.value.trim().toLowerCase()));
     });
     // console.warn(filteredTowns.value);
     const currentRouteWilaya = computed(() => wilayas.value.find((wilaya) => wilaya.code === parseInt(currentRouteWilayaId.value)));
     const headerWilayaName = computed(() => {
       const targetWilaya = currentRouteWilaya.value;
       if (targetWilaya) {
-        const wilayaName = targetWilaya.name;
-        return addPreposition(wilayaName);
+        return isArLocale.value ? targetWilaya.arName : addPreposition(targetWilaya.name);
       }
     });
 
@@ -215,6 +220,9 @@ export default defineComponent({
       closeForm,
       onAction,
       actionValues,
+      // localization
+      isArLocale,
+      t,
     };
   },
 });

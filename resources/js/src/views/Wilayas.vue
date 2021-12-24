@@ -1,31 +1,19 @@
 <template>
-  <section class="grow flex flex-col h-full overflow-hidden">
-    <div id="content-header" class="flex flex-col md:flex-row md:items-center md:justify-between px-5 md:h-16 md:min-h-16 space-y-2 md:space-y-0">
-      <span class="text-bgray-700 dark:text-white text-2xl 2xl:text-3xl font-semibold">Wilayas</span>
-      <input
-        type="search"
-        class="
-          w-full
-          md:w-60
-          xl:w-80
-          2xl:w-96
-          h-10
-          px-2
-          border border-gray-200
-          focus:ring-2
-          placeholder-gray-300
-          dark:placeholder-bgray-400
-          ring-blue-200
-          dark:ring-indigo-500
-          rounded-md
-        "
+  <view-container :label="t('general.wilayas')">
+    <section
+      id="towns-toolbar"
+      class="flex flex-col lg:flex-row lg:arabic:flex-row-reverse lg:items-center justify-end lg:h-14 w-full mb-2 px-5 space-y-2 lg:space-y-0"
+    >
+      <app-input
         spellcheck="false"
-        placeholder="Chercher une wilaya"
         maxlength="50"
-        @input="searchTerm = $event.target.value"
+        className="h-10 text-sm sm:text-base w-full lg:w-80 "
+        v-model.trim.lazy="searchTerm"
+        :appendIcon="mdiMagnify"
+        :placeholder="t('wilaya.searchForWilaya')"
+        clearable
       />
-    </div>
-
+    </section>
     <section id="content-main" class="relative w-full h-full grow overflow-y-auto py-2 my-2">
       <load-and-retry
         v-if="isFetching || fetchingError"
@@ -37,7 +25,21 @@
       <!-- SUCCESS -->
 
       <div
-        class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-none gap-4 w-full h-auto px-5"
+        class="
+          relative
+          grid
+          arabic:direction-rtl
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          xl:grid-cols-4
+          2xl:grid-cols-5
+          grid-rows-none
+          gap-4
+          w-full
+          h-auto
+          px-5
+        "
         v-if="!isFetching && !fetchingError && wilayas"
       >
         <wilaya-card v-for="wilaya in wilayas" :wilaya="wilaya" :key="wilaya.code" />
@@ -48,19 +50,26 @@
         <p>Aucune wilaya n'a été ne correspond à votre recherche.</p>
       </div>
     </section>
-  </section>
+  </view-container>
 </template>
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, ComputedRef } from "vue";
 import { useStore } from "vuex";
+import AppInput from "../components/AppInput.vue";
 import Loader from "../components/Loader.vue";
 import Retry from "../components/Retry.vue";
 import WilayaCard from "../components/wilaya/WilayaCard.vue";
+import ViewContainer from "../components/ViewContainer.vue";
+
 import { Wilaya } from "../store/modules/wilayas";
 
+import { mdiMagnify } from "@mdi/js";
+import { useI18n } from "vue-i18n";
+
 export default defineComponent({
-  components: { Loader, WilayaCard, LoadAndRetry: Retry },
+  components: { Loader, WilayaCard, LoadAndRetry: Retry, AppInput, ViewContainer },
   setup() {
+    const { t } = useI18n();
     const store = useStore();
     const isFetching = ref<boolean>(false);
     const fetchingError = ref<boolean>(false);
@@ -69,7 +78,7 @@ export default defineComponent({
     const isAuth = computed(() => store.getters.getUser);
 
     const allWilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getWilayas);
-    const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getFilteredWilayas(searchTerm.value.trim()));
+    const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getFilteredWilayas(searchTerm.value));
 
     const fetchWilayas = () => {
       isFetching.value = true;
@@ -91,7 +100,7 @@ export default defineComponent({
       fetchWilayas();
     });
 
-    return { fetchWilayas, isFetching, fetchingError, wilayas, searchTerm };
+    return { fetchWilayas, isFetching, fetchingError, wilayas, searchTerm, mdiMagnify, t };
   },
 });
 </script>

@@ -1,40 +1,40 @@
 <template>
   <div class="space-y-3 hover:bg-bgray-50 dark:hover:bg-dark-alt/25">
-    <section class="flex justify-between items-center">
+    <section class="flex justify-between items-center arabic:direction-rtl">
       <label class="font-semibold text-bgray-800 dark:text-bgray-200 text-base sm:text-lg capitalize">{{ day }}</label>
       <!-- Only show this if the are no more than 2 schedule segments to control the amount of data sent to the server -->
       <!-- and only if the water is cut on the same day, so that the user can chose a time for the water to be restored later on the same day -->
       <button
         v-if="periods.length < 2 && periods[0].to.hours !== null"
         @click="addScheduleSegment('current', dayIndex)"
-        :title="`Ajouter un autre programme d'eau pour ${day}`"
+        :title="t('schedule.addSchedule', { day })"
       >
         <icon :icon="mdiPlus" className="h-6 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" />
       </button>
     </section>
     <!-- DISPLAY THE INPUTS FOR MULTIPLE PERIODS -->
     <section v-for="(period, index) in periods" :key="index" class="flex items-center justify-between">
-      <div class="flex grow justify-between space-x-4 px-1">
+      <div class="flex arabic:flex-row-reverse grow justify-between space-x-4 arabic:space-x-reverse px-1">
         <!-- FROM INPUT -->
         <app-time-picker-input
           class="w-full h-auto"
-          placeholder="À partir de"
+          :placeholder="t('schedule.from')"
           v-model="period.from"
           @updated="($newVal) => handleOnUpdated($newVal, 'from', index)"
           @hasReset="() => handleHasReset('from', index)"
           :error="errors[index].from"
         />
-        <div class="flex w-full h-auto space-x-2">
+        <div class="flex arabic:flex-row-reverse w-full h-auto space-x-2 arabic:space-x-reverse">
           <!-- TO INPUT -->
           <app-time-picker-input
             class="w-full h-10"
-            placeholder="Jusqu'à"
+            :placeholder="t('schedule.to')"
             v-model="period.to"
             @updated="($newVal) => handleOnUpdated($newVal, 'to', index)"
             @hasReset="() => handleHasReset('to', index)"
             :error="errors[index].to"
           />
-          <button v-if="index > 0" @click="removeScheduleSegment(index)" title="supprimer">
+          <button v-if="index > 0" @click="removeScheduleSegment(index)" :title="t('general.delete')">
             <icon :icon="mdiClose" className="h-5 w-5 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" />
           </button>
         </div>
@@ -44,8 +44,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, watch } from "vue";
-import { FormError, isTimeAGreaterThanB, isTimeALessThanB, isTimeEmpty, Period, Time } from "../../../lib/shared";
+import { computed, defineComponent, PropType } from "vue";
+import { FormError, isTimeAGreaterThanB, isTimeEmpty, isTimeMidnight, isTimeOneMinuteBeforeMidnight, Period, Time } from "../../../lib/shared";
 import Icon from "../../Icon.vue";
 
 import { mdiPlus, mdiClose } from "@mdi/js";
@@ -60,6 +60,8 @@ import {
   TargetSchedule,
   TargetTime,
 } from "../../../types/components";
+import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: { Icon, AppTimePickerInput },
@@ -67,13 +69,17 @@ export default defineComponent({
   props: {
     targetSchedule: { type: String as PropType<TargetSchedule>, required: true },
     dayIndex: { type: Number, required: true },
-    day: { type: String, required: true },
+    frDay: { type: String, required: true },
+    arDay: { type: String, required: true },
     periods: { type: Object as PropType<Period[]>, required: true },
     errors: {
       type: Array as PropType<FormError[]>,
     },
   },
   setup(props, { emit }) {
+    const { t } = useI18n();
+    const store = useStore();
+    const day = computed(() => (store.getters.getIsArLang ? props.arDay : props.frDay));
     const handleOnUpdated = (updatedTime: Time, targetTime: TargetTime, periodIndex: number) => {
       const args: SetTimeArgs = {
         newValue: updatedTime,
@@ -111,46 +117,6 @@ export default defineComponent({
       };
       emit("removeDaySegment", args);
     };
-    /*
-    const checkForErrors = (targetTime: TargetTime, periodIndex: number): void => {
-      resetError(targetTime, periodIndex);
-      const periods = props.periods;
-      for (let i = 0; i < periods.length; i++) {
-        const { from, to } = periods[i];
-        if (isTimeEmpty(from) || isTimeEmpty(to)) continue;
-
-        // first check if from is less than to
-        const isCorrectTime = isTimeALessThanB(from, to);
-
-        if (!isCorrectTime) {
-          console.log("time is not correct");
-          const errorMessage =
-            targetTime === "from"
-              ? "Le temp de rétablissment d'eau doit être inferieur au temp de coupure"
-              : "Le temp de coupure d'eau doit être superieur au temp de rétablissement";
-
-          return setError(errorMessage, targetTime, i);
-        }
-        console.log(i);
-        // extra check for day segments, where from & to times should be greater than "to" value of the previous segment
-        if (periodIndex > 0) {
-          const previousSegement = periods[periodIndex - 1];
-
-          console.log(isTimeALessThanB(previousSegement.to, from));
-          if (!isTimeEmpty(previousSegement.to)) {
-            console.log("previous time is not empty, running....");
-            if (!isTimeALessThanB(previousSegement.to, from) || !isTimeALessThanB(previousSegement.to, to)) {
-              console.log("previous segement must be less than the new one");
-              const errorMessage = "Ce temp doit être surperieur au précédent temp de coupure du meme jour";
-              return setError(errorMessage, targetTime, i);
-            }
-          }
-        }
-
-        // console.warn("is time correct", isCorrectTime);
-      }
-    };
-    */
 
     /**
      * Check for errors on every priod isnide the periods props
@@ -168,38 +134,56 @@ export default defineComponent({
           // if so throw an error
 
           if (!isTimeEmpty(from) && !isTimeEmpty(previousTo) && !isTimeAGreaterThanB(from, previousTo)) {
-            setError("Le temp de rétablissement ajouté au meme jour doit être supérieure au temp de coupure précédent", "from", i);
+            // "Le temp de rétablissement ajouté au meme jour doit être supérieure au temp de coupure précédent"
+            setError(t("schedule.errors.addedFromMustBeGreaterThanPreviousTo"), "from", i);
           }
           // check if the to time is not empty, previous to time is not empty (to only show the error message if not empty), and the to is greather than the previous to
           // if so throw an error
           if (!isTimeEmpty(to) && !isTimeEmpty(previousTo) && !isTimeAGreaterThanB(to, previousTo)) {
-            setError("Le temp de coupure d'eau ajouté au meme jour doit être supérieure au temp de coupure précédent", "to", i);
+            // Le temp de coupure d'eau ajouté au meme jour doit être supérieure au temp de coupure précédent
+            setError(t("schedule.errors.addedToMustBeGreaterThanPreviousTo"), "to", i);
           }
           // the from value must be set for additonal time segements if the to value has been set
           if (isTimeEmpty(from) && !isTimeEmpty(to)) {
-            setError("Ce temp doit être aussi régler quand le temp de coupure a été reglé pour le temp additionnel du même jour", "from", i);
+            // Ce temp doit être aussi régler quand le temp de coupure a été reglé pour le temp additionnel du même jour
+            setError(t("schedule.errors.addedFromMustBeSetWhenAddedToIsSet"), "from", i);
           }
+        }
+
+        // the from values must never be 23:59
+        if (isTimeOneMinuteBeforeMidnight(from)) {
+          // Le temp de rétablissement d'eau ne peut pas égaler 23:59
+          setError(t("schedule.errors.mustNotBeOneMinuteBeforeMidnight"), "from", i);
+        }
+        // the to valus must never be 00:00
+        if (isTimeMidnight(to)) {
+          // Le temp de coupure d'eau ne peut pas égaler 00:00
+          setError(t("schedule.errors.mustNotBeMidnight"), "to", i);
         }
 
         // check from validity
         if (isTimeAGreaterThanB(from, to) && !isTimeEmpty(to)) {
-          setError("Le temp de rétablissement d'eau doit être inférieur au temp de coupure", "from", i);
+          // Le temp de rétablissement d'eau doit être inférieur au temp de coupure
+          setError(t("schedule.errors.fromMustBeLessThanTo"), "from", i);
         }
 
         // check for to validity
         if (!isTimeEmpty(from) && !isTimeEmpty(to) && !isTimeAGreaterThanB(to, from)) {
-          setError("Le temp de coupure d'eau doit être supérieure au temp de rétablissement", "to", i);
+          // Le temp de coupure d'eau doit être supérieure au temp de rétablissement
+          setError(t("schedule.errors.toMustBeGreaterThanFrom"), "to", i);
         }
 
         // if the user adds more segements, validate the next one as well..
         if (props.periods[i + 1]) {
           const { to: nextTo, from: nextFrom } = props.periods[i + 1];
           if (!isTimeEmpty(from) && isTimeAGreaterThanB(to, nextFrom)) {
-            setError("Le temp de coupure doit être inférieur au nouveau temp de rétablissement ajouté au même jour", "to", i);
+            // Le temp de coupure doit être inférieur au nouveau temp de rétablissement ajouté au même jour
+            setError(t("schedule.errors.previousToMustBeLessThanAdded"), "to", i);
           }
 
           if ((!isTimeEmpty(nextFrom) || !isTimeEmpty(nextTo)) && isTimeEmpty(to)) {
-            setError("Le temp de coupure doit être réglé quand vous avez préciser d'autres temps additionnels du même jour", "to", i);
+            // Le temp de coupure doit être réglé quand vous avez préciser d'autres temps additionnels du même jour
+            setError(t("schedule.errors.previousToMustBeSetIfAddedTimeIsSet"), "to", i);
           }
         }
       });
@@ -239,7 +223,10 @@ export default defineComponent({
       handleHasReset,
       removeScheduleSegment,
       addScheduleSegment,
-
+      // localized day
+      day,
+      // localization
+      t,
       // icons
       mdiPlus,
       mdiClose,

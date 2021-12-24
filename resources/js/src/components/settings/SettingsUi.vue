@@ -1,26 +1,22 @@
 <template>
-  <settings-container
-    label="Interface"
-    description=" Ces paramètres vous permettent de choisir la Wilaya et la commune par défaut. En réglant ces derniers, les liens du menu vont être adaptés pour vous mener
-    directement à la list des communes de la Wilaya choisie et au programme d'eau de la commune choisie."
-  >
-    <form class="space-y-4" @submit.prevent="onSubmit">
+  <settings-container :label="t('settings.ui.label')" :description="t('settings.ui.description') + '.'">
+    <form class="space-y-4 arabic:direction-rtl" @submit.prevent="onSubmit">
       <setting-select-input
-        label="Wilaya par défaut"
-        info="Si aucune wilaya n'est choisie, le menu va mener à la wilaya d'Alger par défaut"
+        :label="t('settings.ui.wilayaInputLabel')"
+        :info="t('settings.ui.wilayaInputInfo')"
+        :selectPrompt="t('settings.ui.wilayaInputPrompt')"
         :data="wilayaList"
         :isFetching="isFetchingWilaya"
         targetProperty="code"
-        selectPrompt="Veuillez selectionner une wilaya"
         v-model="selectedWilaya"
         :disabled="isFetchingTowns"
         displayCode
       />
       <setting-select-input
-        label="Commune par défaut"
-        placeholder="Vous devez d'abord choisir une wilaya"
-        info="Si aucune commune n'est choisie,  le menu va mener au programme d'eau de la commune d'Alger-Centre par défaut"
-        selectPrompt="Veuillez selectionner une commune"
+        :label="t('settings.ui.townInputLabel')"
+        :placeholder="t('settings.ui.townInputPlaceholder')"
+        :info="t('settings.ui.townInputInfo')"
+        :selectPrompt="t('settings.ui.townInputPrompt')"
         :data="townsList"
         targetProperty="code"
         v-model="selectedTown"
@@ -29,15 +25,9 @@
       <div class="pt-1 w-full flex items-center justify-end">
         <settings-submit-button
           :isLoading="isSendingData"
-          :title="
-            !canSubmit && !isDiffThanStore
-              ? 'Vous devez choisir une wilaya ou une commune différente avant de pouvoir confirmer'
-              : !canSubmit
-              ? 'Vous devez choisir une Wilaya et une commune avant de pouvoir confirmer'
-              : ''
-          "
+          :title="!canSubmit && !isDiffThanStore ? t('settings.ui.mustChooseWilayaFirst') : !canSubmit ? t('settings.ui.mustChooseTown') : ''"
           :disabled="!canSubmit"
-          >Confirmer</settings-submit-button
+        />
         >
       </div>
     </form>
@@ -47,6 +37,7 @@
 <script lang="ts">
 import axios, { AxiosError } from "axios";
 import { computed, ComputedRef, defineComponent, onMounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 import { flashSnack } from "../../lib/shared";
 import { Town } from "../../store/modules/towns";
@@ -61,6 +52,7 @@ export default defineComponent({
   name: "app-settings",
   setup() {
     const store = useStore();
+    const { t } = useI18n();
     // wilaya
     const isFetchingWilaya = ref(false);
     const wilayaList: ComputedRef<Wilaya[]> = computed(() => store.getters.getWilayas);
@@ -137,7 +129,7 @@ export default defineComponent({
           .then(() => {
             isSendingData.value = false;
             flashSnack({
-              message: "Données sauvgardées avec succès",
+              message: t("general.snack.info.savingSuccess"),
               type: "info",
             });
           })
@@ -146,7 +138,8 @@ export default defineComponent({
             if (axios.isAxiosError(err)) {
               const status = err.response?.status;
               // generic message to all failures
-              let errorMessage = "Une erreur est survenu lors de la sauvgarde des données, veuillez reéssayer";
+              // let errorMessage = "Une erreur est survenu lors de la sauvgarde des données, veuillez reéssayer";
+              let errorMessage = t("general.snack.errors.savingError");
               if (status === 422) errorMessage = "Rien n'a changé, sauvegarde annulée (code: 422)";
               if (status === 400) errorMessage = "Erreur, Requêt érronée (code: 400)";
               if (status === 403) errorMessage = "Erreur, Method http de la requêt érronée (code: 403)";
@@ -177,6 +170,8 @@ export default defineComponent({
       onSubmit,
       isSendingData,
       isDiffThanStore,
+      //localization
+      t,
     };
   },
 });

@@ -55,10 +55,11 @@ const userModule: Module<WilayasModuleState, any> = {
                 return state.towns[wilayaId];
             },
         getSortedTownsByWilayaId:
-            (state) =>
+            (state, _, __, rootGetters) =>
             (wilayaId: number): Town[] | undefined => {
                 if (!state.towns[wilayaId]) return undefined;
-                return sortArrayOfObjects(state.towns[wilayaId], "name");
+                const targetName: "name" | "arName" = rootGetters.getLanguage === "ar" ? "arName" : "name";
+                return sortArrayOfObjects(state.towns[wilayaId], targetName);
             },
         getTownById:
             (state) =>

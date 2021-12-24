@@ -27,13 +27,14 @@
         text-sm
         lg:text-base
         z-100
+        arabic:direction-rtl arabic:pr-3
       "
       :class="snack.type === 'error' ? 'bg-red-100 text-red-500 ' : 'text-bgray-700 bg-gradient-to-bl to-blue-50 from-bgray-100'"
     >
       <p class="grow font-semibold py-2 my-2">{{ snack.message }}</p>
       <button
         v-if="closable"
-        class="min-w-8 w-8 lg:w-14 h-full"
+        class="min-w-8 w-6 lg:w-10 h-full"
         :class="[snack.type === 'error' ? 'focus:bg-red-50' : 'focus:bg-blue-100']"
         @click="closeSnack"
       >

@@ -5,14 +5,18 @@
         flex
         items-center
         space-x-3
+        arabic:space-x-reverse
         justify-start
         w-full
         h-10
         2xl:h-12
         font-semibold
         text-sm
+        arabic:text-base
+        2xl:arabic:text-lg
         md:text-base
         2xl:text-lg
+        arabic:direction-rtl
         transition-colors
         hover:bg-blue-50/20
         rounded

@@ -19,12 +19,15 @@
     :disabled="disabled || isLoading"
   >
     <loader className="w-7 h-7" v-if="isLoading" />
-    <span v-else><slot></slot></span>
+    <span v-else
+      ><slot>{{ t("general.confirm") }}</slot></span
+    >
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
 import Loader from "../Loader.vue";
 
 export default defineComponent({
@@ -44,6 +47,9 @@ export default defineComponent({
       default: false,
     },
   },
-  setup() {},
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
 });
 </script>

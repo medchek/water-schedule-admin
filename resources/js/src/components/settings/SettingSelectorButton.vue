@@ -15,6 +15,7 @@
       shadow-lg
       dark:shadow-none dark:shadow-blue-500/20
       lg:shadow-none
+      arabic:direction-rtl
     "
     :class="[
       isSelected

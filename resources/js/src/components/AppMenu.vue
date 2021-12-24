@@ -4,13 +4,14 @@
     <div id="menu-overlay" class="absolute lg:hidden w-full h-full top-0 left-0 ring-0 blur-0 bg-bgray-700/50 dark:bg-gray-900/80 z-10" v-if="renderMenu"></div>
   </transition>
   <!-- END OVERLAY -->
-  <transition name="slide">
+  <transition :name="slideAnimationName">
     <section
       ref="menuRef"
       id="menu"
       class="
         absolute
         lg:relative
+        arabic:right-0
         h-full
         z-10
         flex flex-col
@@ -30,8 +31,9 @@
         id="logo"
         class="
           flex
+          arabic:flex-row-reverse
           items-center
-          justify-between
+          justify-start
           text-3xl
           font-bold
           italic
@@ -45,35 +47,37 @@
           px-4
           text-bgray-700
           dark:text-white
+          space-x-2
+          arabic:space-x-reverse
         "
       >
-        <p>SEAAL</p>
         <button id="close-menu" class="lg:hidden w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu">
           <Icon :icon="mdiMenu" class="w-8 h-8" />
         </button>
+        <p>SEAAL</p>
       </div>
       <div id="menu-links" class="flex flex-col grow w-full py-5 px-2 md:px-4">
         <div class="grow space-y-3">
-          <menu-link :icon="mdiMapOutline" to="/wilayas">Wilayas</menu-link>
-          <menu-link :icon="mdiMapMarkerRadius" :to="townLink">Communes</menu-link>
-          <menu-link :icon="mdiClockOutline" :to="scheduleLink">Programme d'eau</menu-link>
+          <menu-link :icon="mdiMapOutline" to="/wilayas">{{ t("general.wilayas") }}</menu-link>
+          <menu-link :icon="mdiMapMarkerRadius" :to="townLink">{{ t("general.towns") }}</menu-link>
+          <menu-link :icon="mdiClockOutline" :to="scheduleLink">{{ t("general.schedule") }}</menu-link>
         </div>
         <div class="space-y-3">
-          <menu-link :icon="mdiCogOutline" to="/settings">Paramètres</menu-link>
-          <menu-link :icon="mdiLogout" to="/logout" :prevent="logout" :isLoading="isLogoutLoading">Se déconnecter</menu-link>
+          <menu-link :icon="mdiCogOutline" to="/settings">{{ t("general.settings") }}</menu-link>
+          <menu-link :icon="mdiLogout" to="/logout" :prevent="logout" :isLoading="isLogoutLoading">{{ t("general.logout") }}</menu-link>
         </div>
       </div>
     </section>
   </transition>
   <!-- APP HEADER WHEN THE SIDE MENU IS CLOSED -->
-  <div
-    id="app-header"
-    class="lg:hidden grow-0 flex items-center justify-between text-3xl 2xl:text-4xl font-bold italic w-full min-h-12 bg-white px-4 text-bgray-700 mb-2"
-  >
-    <p>SEAAL</p>
-    <button id="close-menu" class="w-9 h-9 focus:bg-bgray-100 text-bgray-700 rounded" @click="toggleMenu" v-if="!renderMenu">
-      <Icon :icon="mdiMenu" class="w-8 h-8" />
-    </button>
+  <div id="responive-app-header" class="lg:hidden grow-0 arabic:flex-row-reverse flex justify-between items-center w-full min-h-12 bg-white px-4 mb-2">
+    <div class="flex items-center justify-start space-x-2 arabic:space-x-reverse arabic:flex-row-reverse text-bgray-700">
+      <button id="close-menu" class="w-9 h-9 focus:bg-bgray-100 rounded" @click="toggleMenu">
+        <Icon :icon="mdiMenu" class="w-8 h-8" />
+      </button>
+      <p class="text-3xl 2xl:text-4xl italic font-bold">SEAAL</p>
+    </div>
+    <account-menu forceLight />
   </div>
   <!-- END APP HEADER -->
 </template>
@@ -83,19 +87,22 @@ import { computed, ComputedRef, defineComponent, onMounted, onUnmounted, ref, wa
 import { mdiMapOutline, mdiMapMarkerRadius, mdiClockOutline, mdiLogout, mdiMenu, mdiCogOutline } from "@mdi/js";
 import MenuLink from "./AppMenuLink.vue";
 import Icon from "./Icon.vue";
-import { axios } from "../lib/shared";
 
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { Town } from "../store/modules/towns";
 import { Settings } from "../store/modules/user";
+import { useI18n } from "vue-i18n";
+import AccountMenu from "./account-menu/AccountMenu.vue";
 
 export default defineComponent({
   components: {
     Icon,
     MenuLink,
+    AccountMenu,
   },
   setup() {
+    const { t } = useI18n();
     const router = useRouter();
     const store = useStore();
     const userSettings: ComputedRef<Settings | null> = computed(() => store.getters.getUserSettings);
@@ -155,32 +162,32 @@ export default defineComponent({
       store
         .dispatch("logout")
         .then(() => {
-          isLogoutLoading.value = false;
           router.replace({ name: "login" });
           store.dispatch("flashSnack", {
-            message: "Vous êtes maintenant déconnecté",
+            message: t("general.snack.info.loginSuccess"),
             type: "info",
           });
         })
         .catch((err) => {
           const status = err.response.status;
-          isLogoutLoading.value = false;
           // if the session expired, show successful logout message
-          if (status == 419 /* || status == 401 */) {
+          if (status && status == 419 /* || status == 401 */) {
             store.dispatch("flashSnack", {
-              message: "Vous êtes maintenant déconnecté",
+              message: t("general.snack.info.logoutSuccess"),
+
               type: "info",
             });
           } else {
             // if it's another error, show a generic message
             store.dispatch("flashSnack", {
-              message: "Une erreur est survenu lors de la déconnexion",
+              message: t("general.snack.error.errorWhileLogout"),
               time: 5000,
               type: "error",
             });
           }
           throw new Error(`Error while logging out: ${err}`);
-        });
+        })
+        .finally(() => (isLogoutLoading.value = false));
     };
     const windowWidth = ref<number>(window.innerWidth);
     let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -237,7 +244,11 @@ export default defineComponent({
       },
       { immediate: true }
     );
-
+    // if ar lang slide the menu from/to the right when it's absolute
+    const slideAnimationName = computed(() => {
+      const isAr: boolean = store.getters.getIsArLang;
+      return isAr ? "slide-right" : "slide";
+    });
     // console.log(internalInstance?.appContext.config.globalProperties);
     return {
       mdiMapOutline,
@@ -253,7 +264,12 @@ export default defineComponent({
       menuRef,
       scheduleLink,
       townLink,
+      // animation
+      slideAnimationName,
+      // icons
       mdiCogOutline,
+      // i18n
+      t,
     };
   },
 });
@@ -271,15 +287,33 @@ export default defineComponent({
 .fade-leave-to {
   opacity: 0;
 }
+/* regular left slide */
+
 .slide-enter-active {
   animation: slide 0.3s;
 }
 .slide-leave-active {
   animation: slide 0.3s reverse;
 }
+/* right slide */
+.slide-right-enter-active {
+  animation: slide-right 0.3s;
+}
+.slide-right-leave-active {
+  animation: slide-right 0.3s reverse;
+}
+
 @keyframes slide {
   from {
     transform: translateX(-400px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-right {
+  from {
+    transform: translateX(400px);
   }
   to {
     transform: translateX(0);

@@ -1,16 +1,17 @@
 <template>
-  <section class="grow h-full w-full px-5 py-5 space-y-4 text-center font-medium text-gray-700 dark:text-bgray-400 dark:border-bgray-700">
+  <section class="grow h-full w-full px-5 py-5 space-y-4 text-center font-medium text-gray-700 dark:text-bgray-400 dark:border-bgray-700 arabic:direction-rlt">
     <p>
-      Vous êtes sur le point de supprimer la commune <span class="font-bold">{{ townName }}</span> de la wilaya
+      {{ t("town.delete.aboutToDelete") }} <span class="font-bold">{{ townName }}</span> {{ t("town.delete.fromWilaya") }}
       <span class="font-semibold">{{ prefixedWilayaName }}</span
-      >. Cela supprimera aussi tous les programmes d'eau lié à cette commune.
+      >. {{ t("town.delete.thisDeletesRelatedSchedule") }}.
     </p>
-    <p class="text-red-500 font-semibold">Cette action est irréversible.</p>
+    <p class="text-red-500 font-semibold">{{ t("town.delete.irreversibleAction") }}.</p>
   </section>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
 import { addPreposition } from "../../lib/shared";
 
 export default defineComponent({
@@ -25,9 +26,12 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const { t } = useI18n();
     const prefixedWilayaName = computed(() => addPreposition(props.wilayaName));
     return {
       prefixedWilayaName,
+      // localization
+      t,
     };
   },
 });

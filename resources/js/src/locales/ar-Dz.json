@@ -1,0 +1,186 @@
+{
+    "general": {
+        "delete": "حذف",
+        "confirm": "تأكيد",
+        "cancel": "إلغاء",
+        "back": "العودة",
+        "add": "إضافة",
+        "modify": "تعديل",
+        "retry": "إعادة المحاولة",
+        "reset": "إعادة التعيين",
+        "wilaya": "ولاية",
+        "wilayas": "الولايات",
+        "town": "بلدية",
+        "towns": "البلديات",
+        "schedule": "جدول توقيت المياه",
+        "logout": "تسجيل الخروج",
+        "settings": "الإعدادات",
+        "hours": "ساعات",
+        "minutes": "الدقائق",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة السر",
+        "login": "تسجيل الدخول",
+        "mustFillAllFields": "يجب ملء جميع الحقول",
+
+        "snack": {
+            "info": {
+                "savingSuccess": "تم حفظ المعطيات بنجاح",
+                "loginSuccess": "تم تسجيل الدخول بنجاح",
+                "logoutSuccess": "تم تسجيل الخروج بنجاح",
+                "alreadyLoggedIn": "تم تسجيل الدخول من قبل"
+            },
+            "errors": {
+                "wrongCredentials": "يوجد خطأ في البريد البريد الإلكتروني أو كلمة السر",
+                "tooManyLogins": "لفد تمت محاولة تسجيل الدخول عدة مرات في وقت قصير، يرجى الإنتظار قبل إعادة المحاولة",
+                "cors": "لقد حدث خلل عند محاولة تصجيل الدخول (CORS)",
+                "errorWhileLogin": "لقد حدث خلل عند محاولة تصجيل الدخول",
+                "errorWhileLogout": "لقد حدث خلل عند محاولة تصجيل الخروج",
+                "unauthorized": "يجب تسجيل الدخول للإطلاع على هذه الصفحة",
+                "sessionExpired": "لقد انتهت صلاحية حصتكم (session)، يرجى إعادة تصجيل الدخول مجددا",
+                "sendingError": "لقد حدث خلل عند إرسال المعطيات، يرجى إعادة المحاولة",
+                "savingError": "لقد حدث خلل عند محاولة حفظ المعطيات",
+                "failedOperation": "حدث خلل أثناء العملية, الرجاء اعادة المحاولة"
+            }
+        }
+    },
+
+    "wilaya": {
+        "searchForWilaya": "البحث على ولاية",
+        "goToTowns": "تصفح البلديات",
+        "errorFetching": "لقد حدث خلل حين عملية تلقي الولاية",
+        "noSearchMatch": "لا تتوافق أي ولاية مع بحثك"
+    },
+
+    "town": {
+        "searchForTown": "البحث على بلدية",
+        "townsOf": "بلديات {town}",
+        "addTown": "إضافة بلدية",
+        "townName": "إسم البلدية بلاتنية",
+        "arabicTownName": "إسم البلدية بالعربية",
+        "errorFetching": "لقد حدث خلل حين عملية تلقي البلديات",
+        "noTownsAdded": "لم تضف أي بلدية لـ {{ currentRouteWilaya }}",
+        "noSearchMatch": "لا تتوافق أي بلدية مع بحثك",
+        "wilayaNotFound": "لم يتم العثور علي الولاية {wilayaCode}",
+        "goToSchedule": "برنامج الماء",
+        "selectAnotherWilaya": "إختبار ولاية أخرى",
+
+        "addedSuccessfully": "تمت إضافة البلدية بنجاح",
+        "editedSuccessfully": "تم تعديل البلدية بنجاح",
+        "deletedSuccessfully": "تم حذف البلدية بنجاح",
+
+        "delete": {
+            "aboutToDelete": "أنت على وشك حذف البلدية",
+            "fromWilaya": "التابعة لولاية",
+            "thisDeletesRelatedSchedule": "سيؤدي هذا أيضًا إلى حذف جميع برامج المياه المرتبطة بهذه البلدية",
+            "irreversibleAction": "لا يمكن التراجع عن الحذف"
+        },
+
+        "errors": {
+            "editedNameMustDifferFromCurrent": "يجب أن يكون الاسم الجديد المعدل للبلدية مختلفًا عن الاسم الحالي",
+            "editedArNameMustDifferFromCurrent": "يجب أن يكون الاسم العربي الجديد المعدل للبلدية مختلفًا عن الاسم الحالي",
+            "alreadyExists": "توجد بلدية من بلديات ولاية {wilaya} بهذا الإسم",
+            "nameLength": "يجب أن يتراوح اسم البلدية بين 3 و 30 حرفًا",
+            "arNameLength": "يجب أن يكون الاسم العربي للبلدية بين 3 و 30 حرفًا",
+            "mustBeArabic": "يجب أن يحتوي هذا الحقل على اسم البلدية باللغة العربية",
+            "mustBeLatin": "يجب أن يحتوي هذا الحقل على اسم البلدية باللاتينية",
+            "noSpecialChars": "يجب أن يحتوي هذا الحقل على اسم البلدية باللاتينية و يجب ألا يحتوي على أحرف خاصة أو أعداد"
+        }
+    },
+
+    "schedule": {
+        "then": "ثم",
+        "from": "ابتداءً من",
+        "to": "إلى غاية",
+        "toWeek": "إلى",
+        "currentWeek": "الأسبوع الحالي",
+        "theCurrentWeek": "@:schedule.currentWeek",
+        "selectAnotherTown": "إختبار بلدية أخرى",
+
+        "nextWeek": "الأسبوع المقبل",
+        "theNextWeek": "@:schedule.nextWeek",
+
+        "fromSpecificToSpecific": "من {from} الى غاية {to}",
+
+        "currentWeekSchedule": "توقيت الأسبوع الحالي",
+        "nextWeekSchedule": "توقيت الأسبوع المقبل",
+        "waterSchedule": "جدول توقيت المياه",
+        "addSchedule": "إضافة برنامج ماء آخر لـيوم {day}",
+        "modifySchedule": "تعديل برنامج المياه",
+        "confirmChoice": "يرجى تأكيد اختياركم",
+        "scheduleNotAddedYet": "لم يتم بعد إضافة برنامج الماء {targetWeek} لبلدبة",
+        "noWaterAllDayLong": "قطع كامل طوال اليوم",
+        "savingSuccess": "لقد تم حفظ برنامج المياه بنجاح",
+
+        "emptyCurrentWeekSchedule": "لقد تم ترك برنامج المياه لهذا الأسبوع فراغا, هذا يعني أن الأسبوع الحالي سيعرض قطعا تاما للمياه",
+        "emptyNextWeekSchedule": "لقد تم ترك برنامج المياه للأسبوع القادم فراغا, هذا يعني أن الأسبوع القادم سيعرض قطعا تاما للمياه",
+        "emptyBothSchedules": "لقد تم ترك برنامج المياه لكلا الأسبوعين فارغا, هذا يعني أن الأسبوع الحاي والقادم سيعرضان قطعا تاما للمياه",
+        "emptyEitherScheule": "لقد تم ترك أحد برامج المياه فراغا, هذا يعني أن الأسبوع الموافق لذالك البرنامج سيعرض قطعا تاما للمياه ",
+        "info": {
+            "noChangesMade": "لم يتم إجراء أي تغييرات"
+        },
+        "errors": {
+            "promptFixErrors": "يرجى تصحيح الأخطاء أولا",
+            "addedFromMustBeGreaterThanPreviousTo": "يجب أن يكون توقيت رجوع المياه المضاف بعد توقيت قطع المياه السابق لنفس اليوم",
+            "addedToMustBeGreaterThanPreviousTo": "يجب أن يكون توقيت قطع المياه المضاف بعد توقيت توقيف المياه السابق لنفس اليوم",
+            "addedFromMustBeSetWhenAddedToIsSet": "يجب أن يكون هذا الوقت مضبوطا أيضا عند ضبط وقت قطع المياه المضاف لنفس اليوم",
+            "mustNotBeMidnight": "لايمكن ضبط وقت قطع المياه على 00:00",
+            "mustNotBeOneMinuteBeforeMidnight": "لايمكن ضبط وقت رجوع المياه على 23:59",
+            "fromMustBeLessThanTo": "يجب أن يكون وقت رجوع المياه قبل وقت قطعه",
+            "toMustBeGreaterThanFrom": "يجب أن يكون وقت قطع المياه بعد وقت رجوعه",
+            "previousToMustBeLessThanAdded": "يجب أن يكون وقت قطع المياه قبل وقت رجوع المياه المضاف في نفس اليوم",
+            "previousToMustBeSetIfAddedTimeIsSet": "يجب أن يكون وقت قطع المياه مضبوط عند تحديد لأوقات أخرى إضافية في نفس اليوم"
+        }
+    },
+
+    "settings": {
+        "password": {
+            "label": "كلمة السر",
+            "description": "لتعدبل كلمة السر، يجب أن تدخل كلمة السر الحالية قبل تأكيد الجديدة",
+            "successfullyChanged": "تم تغيير كلمة السر بنجاح",
+            "currentPassword": "كلمة السر الحالية",
+            "newPassword": "كلمة السر الجديدة",
+            "confirmNewPassword": "تأكيد كلمة السر الجديدة",
+            "errors": {
+                "short": "يجب أن تحمل كلمة السر الجديدة 8 أحرف على الأقل",
+                "alphanumeric": "يجب أن تحمل كلمة السر الجديدة 8 أحرف/أعداد على الأقل",
+                "wrongConfirmed": "كلمة السر المؤكدة لا تتوافق مع كلمة السر الجديدة",
+                "sameAsCurrent": " يجب على كلمة السر الجديدة أن لا تتوافق مع كلمة السر الحالية",
+                "incorrectCurrent": "كلمة السر الحالية خاطئة",
+                "leaked": "تم عثور كلمة السر المختارة في قائمة المعلومات المسربة، لحمايتكم يرجى اختيار كلمة سر جديدة",
+                "invalidRequest": "المعلومات المبعوثة خاطئة"
+            }
+        },
+        "theme": {
+            "label": "المظهر",
+            "description": "بإمكانكم تعديل المظهر باختيار إما النمط الداكن أو النمط الفاتح",
+            "dark": "داكن",
+            "light": "فاتح"
+        },
+        "lang": {
+            "label": "اللغات"
+        },
+        "ui": {
+            "label": "االواجهة",
+            "description": "تمكن هذه الاعدادات من احتيار الولاية والبلدية التلقائية، بتعديل هذه الأخيرة، ستتغير روابط القائمة لتأخذكم مباشرة لقائمة بلديات الولاية المختارة وبرنامج مياه البلدية المختارة",
+            "wilayaInputLabel": "الولاية التلقائية",
+            "wilayaInputInfo": "إذا لم تختر أي ولاية، ستأخذكم روابط القائمة إلى ولاية الجزائر تلقائيا",
+            "wilayaInputPrompt": "يرجى اختيار الولاية",
+
+            "townInputLabel": "بلدية تلقائي",
+            "townInputInfo": "إذا لم تختر أي بلدية، ستأخذكم روابط القائمة إلى  بلدية برنامج الماء للجزائر الوسطى تلقائيا",
+            "townInputPrompt": "يرجى اختيار البلدية",
+            "townInputPlaceholder": "يجب اختيار الولاية أولا",
+
+            "mustChooseWilayaFirst": "يجب أن تختار ولاية أو بلدية مختلفة قبل التأكيد",
+            "mustChooseTown": "يحب إختيار الولاية والبلدية قبل التأكيد",
+            "errors": {
+                "422": "Rien n'a changé, sauvegarde annulée (code: 422)",
+                "400": "Erreur, Requêt érronée (code: 400)",
+                "403": "Erreur, Method http de la requêt érronée (code: 403)",
+                "404": "Erreur, Le serveur n'a pas pu trouver les données demandées (code: 404)"
+            }
+        }
+    },
+
+    "notFound": "هذه الصفحة غير موجودة"
+}

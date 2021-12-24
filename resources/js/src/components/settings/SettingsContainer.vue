@@ -1,6 +1,6 @@
 <template>
-  <h3 class="text-blue-light text-xl font-semibold mb-2">{{ label }}</h3>
-  <p id="setting-description" class="text-gray-500 text-sm mb-4">
+  <h3 class="text-blue-light text-xl font-semibold mb-2 arabic:direction-rtl">{{ label }}</h3>
+  <p id="setting-description" class="text-gray-500 text-sm mb-4 arabic:direction-rtl">
     {{ description }}
   </p>
   <slot></slot>

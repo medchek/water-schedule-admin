@@ -18,7 +18,7 @@
         :disabled="isFetching || disabled"
       >
         <option class="capitalize" v-for="item in data" :key="item[targetProperty]" :value="item[targetProperty]">
-          {{ displayCode ? `${item.code} -` : "" }} {{ item.name }}
+          {{ displayCode ? `${item.code} -` : "" }} {{ isArLocale ? item.arName : item.name }}
         </option>
       </select>
 
@@ -35,12 +35,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
+import { useStore } from "vuex";
 import Loader from "../Loader.vue";
-
-interface InputDataStructure {
-  code: number;
-}
 
 export default defineComponent({
   components: { Loader },
@@ -99,11 +96,18 @@ export default defineComponent({
     },
   },
   setup(_, { emit }) {
+    const store = useStore();
+    const isArLocale = computed(() => store.getters.getIsArLang);
     const labelId = `select-${Math.ceil(Math.random() * 1000)}`;
     const handleOnChange = (code: string) => {
       emit("update:modelValue", parseInt(code));
     };
-    return { labelId, handleOnChange };
+    return {
+      labelId,
+      handleOnChange,
+      // localization
+      isArLocale,
+    };
   },
 });
 </script>

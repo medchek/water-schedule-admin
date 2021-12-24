@@ -16,14 +16,19 @@
     "
     @click="$emit('click')"
   >
-    Annuler
+    {{ t("general.cancel") }}
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   emits: ["click"],
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
 });
 </script>

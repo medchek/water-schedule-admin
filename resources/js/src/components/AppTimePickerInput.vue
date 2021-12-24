@@ -1,29 +1,31 @@
 <template>
   <div class="relative w-full h-full">
     <!-- :value="hours !== null && minutes !== null ? time : null" -->
-    <div class="w-full h-10 relative">
-      <input
-        readonly
-        :type="type"
-        class="w-full h-full rounded px-2 border focus:ring-2 cursor-pointer dark:placeholder-bgray-500 dark:bg-bgray-100"
-        :class="error.length > 0 ? 'ring-2 ring-red-300 dark:ring-red-500' : 'ring-blue-200 dark:ring-indigo-600'"
-        :placeholder="placeholder"
-        :value="time"
-        @click="isOpen = !isOpen"
-        ref="inputRef"
-      />
-      <!-- button previous v-if="hours !== null || minutes !== null" -->
-      <button
-        v-if="time"
-        title="réinitialiser"
-        class="absolute right-0 top-0 h-full w-10 text-blue-700 dark:text-dark-bg hover:text-gray-700 focus:bg-gray-100 rounded-r"
-        @click="resetTime"
-      >
-        <icon :icon="mdiClose" />
-      </button>
+    <div class="w-full min-h-10 relative">
+      <div class="h-10 w-full relative">
+        <input
+          readonly
+          :type="type"
+          class="w-full h-full rounded px-2 border focus:ring-2 cursor-pointer dark:placeholder-bgray-500 dark:bg-bgray-100"
+          :class="error.length > 0 ? 'ring-2 ring-red-300 dark:ring-red-500' : 'ring-blue-200 dark:ring-indigo-600'"
+          :placeholder="placeholder"
+          :value="time"
+          @click="isOpen = !isOpen"
+          ref="inputRef"
+        />
+        <!-- RESET CROSS -->
+        <button
+          v-if="time"
+          :title="t('general.reset')"
+          class="absolute right-0 arabic:left-0 top-0 h-full w-10 text-blue-700 dark:text-dark-bg hover:text-gray-700 focus:bg-gray-100 rounded-r"
+          @click="resetTime"
+        >
+          <icon :icon="mdiClose" />
+        </button>
+      </div>
     </div>
 
-    <p class="relative text-xs md:text-sm text-red-500 font-semibold mt-0.5">{{ error }}</p>
+    <p class="relative text-xs md:text-sm text-red-500 font-semibold mt-0.5 arabic:direction-rtl">{{ error }}</p>
 
     <!-- <div class="absolute flex sm:hidden items-center justify-center top-0 right-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-10" v-if="isOpen"></div> -->
     <transition name="scale" type="animation" v-if="!disabled">
@@ -70,8 +72,8 @@
           {{ timePickerDisplay }}
         </p>
         <div class="flex min-h-8 font-semibold bg-bgray-100 dark:bg-dark-cancel text-bgray-600 dark:text-bgray-300 text-sm md:text-base">
-          <p class="flex justify-center items-center h-full w-full">Heurs</p>
-          <p class="flex justify-center items-center h-full w-full">Minutes</p>
+          <p class="flex justify-center items-center h-full w-full">{{ t("general.hours") }}</p>
+          <p class="flex justify-center items-center h-full w-full">{{ t("general.minutes") }}</p>
         </div>
         <!--  -->
         <div class="relative flex grow h-auto overflow-y-hidden border border-gray-100 dark:border-dark-alt dark:border-t-transparent">
@@ -136,13 +138,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, PropType, ref, watch } from "vue";
+import { computed, defineComponent, PropType, ref, watch } from "vue";
 import { addZeroToSingleDigit } from "../lib/utils";
-import { ScheduleProps } from "../types/components";
 
 import { mdiClose } from "@mdi/js";
 import Icon from "./Icon.vue";
 import { Period, Time } from "../lib/shared";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: { Icon },
@@ -167,6 +169,7 @@ export default defineComponent({
     type: { type: String, default: "text" },
   },
   setup(props, { emit }) {
+    const { t } = useI18n();
     const inputRef = ref<HTMLInputElement | null>(null);
     const pickerRef = ref<HTMLElement | null>(null);
     const isOpen = ref<boolean>(false);
@@ -290,6 +293,8 @@ export default defineComponent({
       mdiClose,
       resetTime,
       timePickerDisplay,
+      // i18n
+      t,
     };
   },
 });

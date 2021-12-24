@@ -1,11 +1,8 @@
 <template>
-  <settings-container
-    label="Mot de Passe"
-    description="Pour mettre à jour votre mot de pass, vous devez d'abord entrer le mot de pass actuel avant de confirmer le nouveau."
-  >
+  <settings-container :label="t('settings.password.label')" :description="`${t('settings.password.description')}.`">
     <form @submit.prevent="submit">
-      <div class="mt-1 mb-1" v-for="(input, key) in inputsData" :key="key">
-        <label class="font-semibold text-bgray-500">{{ input.label }}</label>
+      <div class="mt-1 mb-1 arabic:direction-rtl" v-for="(input, key) in inputsData" :key="key">
+        <label class="font-semibold text-bgray-500">{{ t(input.label) }}</label>
         <input
           v-model="input.value"
           type="password"
@@ -15,13 +12,8 @@
         <div class="text-xs lg:text-sm text-red-500 min-h-5 w-full py-2 font-semibold">{{ input.error }}</div>
       </div>
 
-      <div class="pt-1 w-full flex items-center justify-end">
-        <settings-submit-button
-          :title="!canSubmit ? 'Vous devez remplir tout les champs' : ''"
-          :disabled="!canSubmit || isSendingData"
-          :isLoading="isSendingData"
-          >Confirmer</settings-submit-button
-        >
+      <div class="pt-1 w-full flex items-center justify-end arabic:direction-rtl">
+        <settings-submit-button :title="!canSubmit ? t('general.mustFillAllFields') : ''" :disabled="!canSubmit || isSendingData" :isLoading="isSendingData" />
       </div>
     </form>
   </settings-container>
@@ -31,6 +23,7 @@
 <script lang="ts">
 import axios, { AxiosError } from "axios";
 import { computed, ComputedRef, defineComponent, reactive, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 import { flashSnack } from "../../lib/shared";
 import { ResetPasswordPayload } from "../../store/modules/user";
@@ -43,20 +36,21 @@ export default defineComponent({
   name: "password-settings",
   setup() {
     const store = useStore();
+    const { t } = useI18n();
 
     const inputsData = reactive({
       currentPassword: {
-        label: "Mot de passe actuel",
+        label: "settings.password.currentPassword",
         value: "",
         error: "",
       },
       newPassword: {
-        label: "Nouveau mot de passe",
+        label: "settings.password.newPassword",
         value: "",
         error: "",
       },
       confirmNewPassword: {
-        label: "Confirmer le nouveau mot de passe",
+        label: "settings.password.confirmNewPassword",
         value: "",
         error: "",
       },
@@ -89,22 +83,22 @@ export default defineComponent({
       const isPasswordCorrect = passwordRegex.test(newPassword);
 
       if (newPassword.length < 8 || newPassword.length > 100) {
-        inputsData.newPassword.error = "Le nouveau mot de passe doit comprendre 8 charactères au minimum";
+        inputsData.newPassword.error = t("settings.password.errors.alphanumeric");
         return false;
       }
 
       if (!isPasswordCorrect) {
-        inputsData.newPassword.error = "Le nouveau mot de passe doit contenir des chiffres et des lettres et doit comprendre 8 charactères au minimum";
+        inputsData.newPassword.error = t("settings.password.errors.alphanumeric");
         return false;
       }
 
       if (newPassword !== confirmNewPassword) {
-        inputsData.confirmNewPassword.error = "Le mot de passe confirmé ne correspond au nouveau mot de passe";
+        inputsData.confirmNewPassword.error = t("settings.password.errors.wrongConfirmed");
         return false;
       }
 
       if (newPassword === currentPassword) {
-        inputsData.newPassword.error = "Le nouveau mot de passe doit être different du mot de passe actuel";
+        inputsData.newPassword.error = t("settings.password.errors.sameAsCurrent");
         return false;
       }
 
@@ -127,7 +121,7 @@ export default defineComponent({
           .then(() => {
             isSendingData.value = false; // stop loader
             flashSnack({
-              message: "Le mot de passe a été changé avec succès",
+              message: t("settings.password.successfullyChanged"),
               type: "info",
             });
             resetForm();
@@ -140,7 +134,7 @@ export default defineComponent({
               const message = err.response?.data;
               if (status == 403) {
                 // 403 = forbidden = incorrect password
-                inputsData.currentPassword.error = "Le mot de passe actuel est incorrect";
+                inputsData.currentPassword.error = t("settings.password.errors.incorrectCurrent");
                 return;
               }
               // bad request = invalid data while validating
@@ -148,12 +142,11 @@ export default defineComponent({
                 // if the server indicated that this password was found in the leaked list
 
                 if (message && message === "leaked password") {
-                  inputsData.newPassword.error =
-                    "Le nouveau mot de passe choisi a été trouvé dans la liste de fuites des données, pour votre sécurité veuillez choisir un nouveau";
+                  inputsData.newPassword.error = t("settings.password.errors.leaked");
                 } else {
                   // else, data sent was unexpected
                   return flashSnack({
-                    message: "Les informatios envoyées au serveur sont invalides",
+                    message: t("settings.password.errors.invalidRequest"),
                     type: "error",
                   });
                 }
@@ -162,7 +155,7 @@ export default defineComponent({
 
             // any other error
             flashSnack({
-              message: "Une erreur est survenu lors de l'envoi des données, veuillez reéssayer",
+              message: t("general.snack.errors.sendingError"),
               type: "error",
             });
             console.error("[SettingsPassword.vue@submit]", err);
@@ -176,6 +169,8 @@ export default defineComponent({
 
       submit,
       isSendingData,
+      // localization
+      t,
     };
   },
 });

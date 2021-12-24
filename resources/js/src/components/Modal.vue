@@ -1,7 +1,10 @@
 <template>
   <transition name="fade">
     <!-- v-if="showModal" -->
-    <section class="absolute flex items-center justify-center w-screen h-screen sm:px-0 z-50 overflow-hidden" :class="[isDarkMode && 'dark']">
+    <section
+      class="absolute flex items-center justify-center w-screen h-screen sm:px-0 z-50 overflow-hidden"
+      :class="[isDarkMode && 'dark', isArLocale && 'arabic']"
+    >
       <div class="w-full h-full bg-gray-700/50 dark:bg-gray-900/80 py-4 px-4 overflow-hidden flex items-center justify-center">
         <transition name="scale">
           <div :class="className" id="modal-base" v-if="triggerTransition" ref="modalRef">
@@ -90,8 +93,9 @@ export default defineComponent({
 
     const store = useStore();
     const isDarkMode: ComputedRef<boolean> = computed(() => store.getters.getIsDarkMode);
+    const isArLocale: ComputedRef<boolean> = computed(() => store.getters.getIsArLang);
 
-    return { modalRef, triggerTransition, isDarkMode };
+    return { modalRef, triggerTransition, isDarkMode, isArLocale };
   },
 });
 </script>

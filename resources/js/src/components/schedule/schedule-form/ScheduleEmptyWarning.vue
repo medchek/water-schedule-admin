@@ -1,21 +1,20 @@
 <template>
-  <section id="schedule-empty-warning" class="flex flex-col justify-center items-center w-full h-full text-center font-semibold px-4">
+  <section id="schedule-empty-warning" class="flex flex-col justify-center items-center w-full h-full text-center font-semibold px-4 arabic:direction-rtl">
     <p class="text-bgray-800 dark:text-bgray-200">{{ targetScheduleMessage }}.</p>
-    <p class="mt-1 font-normal dark:text-bgray-400">Veillez confirmer que c'est bien votre choix</p>
-    <div class="flex w-full space-x-2 justify-center mt-2">
-      <button
+    <p class="mt-1 font-normal dark:text-bgray-400">{{ t("schedule.confirmChoice") }}</p>
+    <div class="flex w-full space-x-2 justify-center arabic:space-x-reverse mt-2">
+      <app-confirm-button
         class="bg-blue-500 hover:bg-blue-400 focus:bg-blue-600 w-28 px-3 py-2 rounded font-semibold text-white"
         @click="$emit('confirm')"
         :disabled="isLoading"
+        :isLoading="isLoading"
       >
-        <loader v-if="isLoading" dark thin className="w-6 h-6" />
-        <span v-else>confirmer</span>
-      </button>
+      </app-confirm-button>
       <button
         class="bg-gray-200 hover:bg-gray-300 w-28 px-3 py-2 rounded font-semibold text-bgray-600 dark:bg-dark-cancel dark:text-bgray-400"
         @click="$emit('cancel')"
       >
-        retour
+        {{ t("general.back") }}
       </button>
     </div>
   </section>
@@ -23,9 +22,12 @@
 
 <script lang="ts">
 import { computed, defineAsyncComponent, defineComponent, PropType } from "vue";
+import { useI18n } from "vue-i18n";
+import AppConfirmButton from "../../AppConfirmButton.vue";
 export default defineComponent({
   components: {
     Loader: defineAsyncComponent(() => import("../../Loader.vue")),
+    AppConfirmButton,
   },
   props: {
     isLoading: {
@@ -39,18 +41,21 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const { t } = useI18n();
     const targetScheduleMessage = computed(() => {
       return props.target === "current"
-        ? "Le programme d'eau de cette semaine a été laissé  enitèrement vide, cela signifie que le programme v'a affiché une coupure total durant toute la semaine"
+        ? t("schedule.emptyCurrentWeekSchedule")
         : props.target === "next"
-        ? "Le programme d'eau de la semaine prochaine a été laissé enitèrement vide, cela signifie que le programme v'a affiché une coupure total durant toute la semaine prochaine"
+        ? t("schedule.emptyNextWeekSchedule")
         : props.target === "both"
-        ? "Les programmes d'eau des deux semaines ont été laissés enitèrement vide, cela signifie que les programmes vont affichés une coupure total durant cette semaine et celle d'après"
-        : "Un des programmes d'eau a été laissé  enitèrement vide, cela signifie que le programme v'a afficher une coupure total durant toute la semaine";
+        ? t("schedule.emptyBothSchedules")
+        : t("schedule.emptyEitherSchedules");
     });
 
     return {
       targetScheduleMessage,
+      // localization
+      t,
     };
   },
 });

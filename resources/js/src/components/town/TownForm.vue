@@ -3,51 +3,32 @@
     @modalClickedOutside="$emit('formClickedOutside')"
     className="relative flex flex-col justify-between w-full sm:w-3/4 md:w-2/3 2xl:w-1/2 bg-white dark:bg-dark-bg rounded-md  py-2 overflow-hidden"
   >
-    <form class="w-full h-full flex flex-col justify-between" @submit.prevent="submit">
-      <h1 class="w-full text-bgray-700 dark:text-bgray-200 text-lg sm:text-xl lg:text-xl font-semibold px-5">{{ formTitle }} - {{ currentWilaya.name }}</h1>
+    <form class="w-full h-full flex flex-col justify-between arabic:direction-rtl" @submit.prevent="submit">
+      <h1 class="w-full text-bgray-700 dark:text-bgray-200 text-lg sm:text-xl lg:text-xl font-semibold px-5">
+        {{ formTitle }} - {{ isArLocale ? "ولاية " + currentWilaya.arName : currentWilaya.name }}
+      </h1>
       <town-form-delete-warning v-if="actionData && actionData.action === 'delete'" :townName="actionData.townName" :wilayaName="currentWilaya.name" />
       <section v-else class="grow h-full w-full px-5 py-5 space-y-4">
-        <town-input placeholder="" label="Nom de la commune" v-model="townName" :error="townNameError" @resetInput="resetInput" />
-        <town-input rtl label="Nom de la commune en arabe" v-model="arTownName" :error="arTownNameError" @resetInput="resetInput(true)" />
+        <town-input ltr placeholder="" :label="t('town.townName')" v-model="townName" :error="townNameError" @resetInput="resetInput" />
+        <town-input rtl :label="t('town.arabicTownName')" v-model="arTownName" :error="arTownNameError" @resetInput="resetInput(true)" />
       </section>
-      <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t dark:border-bgray-700 px-5">
-        <button
+      <section
+        id="modal-actions"
+        class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 arabic:space-x-reverse border-t dark:border-bgray-700 px-5"
+      >
+        <app-confirm-button
+          :isDelete="actionData && actionData.action === 'delete'"
           type="submit"
-          class="
-            h-9
-            sm:h-10
-            w-24
-            sm:w-28
-            text-sm
-            sm:text-base
-            bg-blue-500
-            hover:bg-blue-400
-            focus:bg-blue-600
-            text-white
-            rounded
-            font-semibold
-            disabled:bg-bgray-400
-            transition-colors
-            disabled:cursor-not-allowed
-          "
-          :title="!canSubmit && !isSendingData && !townName && !arTownName ? 'Vous devez remplir tous les champs' : ''"
-          :class="[
-            !canSubmit && 'cursor-not-allowed',
-            actionData && actionData.action === 'delete' ? 'bg-red-500 hover:bg-red-400 focus:bg-red-600' : 'bg-blue-500 hover:bg-blue-400 focus:bg-blue-600',
-          ]"
+          :isLoading="isSendingData"
           :disabled="!canSubmit"
+          :title="!canSubmit && !isSendingData && !townName && !arTownName ? t('general.mustFillAllFields') : ''"
           @click="submit"
-        >
-          <loader v-if="isSendingData" dark className="w-6 h-6" />
-          <span v-else>Confirmer</span>
-        </button>
+        />
         <app-cancel-button
           type="button"
           class="h-9 sm:h-10 w-24 sm:w-28 text-sm sm:text-base bg-gray-200 hover:bg-gray-100 text-gray-400 rounded font-semibold"
           @mousedown="$emit('formClickedOutside')"
-        >
-          Annuler
-        </app-cancel-button>
+        />
       </section>
     </form>
   </modal>
@@ -69,9 +50,11 @@ import { AddTownRequest, TownSearch, UpdateTownRequst } from "../../store/module
 import { TownActionData } from "../../types/components";
 import { addPreposition } from "../../lib/shared";
 import { Wilaya } from "../../store/modules/wilayas";
+import AppConfirmButton from "../AppConfirmButton.vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
-  components: { Modal, Loader, Icon, TownInput, TownFormDeleteWarning, AppCancelButton },
+  components: { Modal, Loader, Icon, TownInput, TownFormDeleteWarning, AppCancelButton, AppConfirmButton },
 
   emits: ["formClickedOutside", "formSaved"],
   props: {
@@ -82,8 +65,10 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const { t } = useI18n();
     const store = useStore();
     const route = useRoute();
+    const isArLocale = computed(() => store.getters.getIsArLang);
     const currentWilayaCode = computed(() => parseInt(route.params.wilayaId as string));
     const currentWilaya: ComputedRef<Wilaya> = computed(() => store.getters.getWilayaByCode(currentWilayaCode.value));
     const isSendingData = ref(false);
@@ -91,12 +76,12 @@ export default defineComponent({
     const formTitle = computed(() => {
       if (props.actionData) {
         if (props.actionData.action === "edit") {
-          return `Editer ${props.actionData.townName}`;
+          return `${t("general.modify")} ${props.actionData.townName}`;
         } else {
-          return `Supprimer ${props.actionData.townName}`;
+          return `${t("general.delete")} ${props.actionData.townName}`;
         }
       } else {
-        return `Ajouter une commune`;
+        return t("town.addTown");
       }
     });
     const storeTown: ComputedRef<TownSearch | undefined> = computed(() => {
@@ -112,8 +97,11 @@ export default defineComponent({
     const arTownName = ref<string>(storeTown.value && storeTown.value.arName ? storeTown.value.arName : "");
     const arTownNameError = ref("");
 
+    /**
+     * reset an input
+     * @param ar reset the town arabic input
+     */
     const resetInput = (ar = false) => {
-      console.log("resetting input");
       if (!ar) {
         townName.value = townNameError.value = "";
       } else {
@@ -160,6 +148,7 @@ export default defineComponent({
     });
 
     const checkFormOnSubmit = () => {
+      const wilayaName = isArLocale.value ? currentWilaya.value.arName : addPreposition(currentWilaya.value.name);
       const name = townName.value.trim().toLowerCase();
       const arName = arTownName.value.trim().toLowerCase();
       const storeName = storeTown.value?.name || "";
@@ -169,52 +158,59 @@ export default defineComponent({
       // edit
       if (action && action === "edit") {
         //  TOWN NAME FIELD
-
+        // edit name must be diff than current
         if (name) {
           if (name === storeName && arName == storeArName) {
-            townNameError.value = "Le nouveau nom de la commune éditée doit être different du nom actuel.";
+            // townNameError.value = "Le nouveau nom de la commune éditée doit être different du nom actuel.";
+            townNameError.value = t("town.errors.editedNameMustDifferFromCurrent");
             return false;
           }
 
           const doesTownExist: boolean = store.getters.doesTownExist(currentWilayaCode.value, name);
           if (name !== storeName) {
             if (doesTownExist) {
-              townNameError.value = `${name} existe déja comme commune ${addPreposition(currentWilaya.value.name)}`;
+              // townNameError.value = `${name} existe déja comme commune ${addPreposition(currentWilaya.value.name)}`;
+              townNameError.value = t("town.errors.alreadyExists", { townName: name, wilaya: wilayaName });
               return false;
             }
           }
 
+          // town name must be 3 to 30 chars
           if (name.length < 3 || name.length > 30) {
-            townNameError.value = "Le nom de la commune doit être entre 3 et 30 caractères.";
+            // townNameError.value = "Le nom de la commune doit être entre 3 et 30 caractères.";
+            townNameError.value = t("town.errors.nameLength");
             return false;
           }
 
+          // no special chars no number
           if (!/^[a-zàâçéèêëîïôûùüÿñæœ .'-]+$/i.test(name)) {
-            townNameError.value = "Le nom de la commune ne peut contenir des caractères spéciaux ni des chiffres.";
+            // townNameError.value = "Le nom de la commune ne peut contenir des caractères spéciaux ni des chiffres.";
+            townNameError.value = t("towns.errors.noSpecialChars");
             return false;
           }
         }
         // ARABIC TOWN NAME FIELD
         if (arName) {
           if (arName === storeArName && name == storeName) {
-            arTownNameError.value = "Le nouveau nom de la commune éditée doit être different du nom actuel.";
+            arTownNameError.value = t("town.errors.editedArNameMustDifferFromCurrent");
             return false;
           }
           if (arName !== storeArName) {
             const doesArTownExist = store.getters.doesTownExist(currentWilayaCode.value, arTownName.value.trim(), true);
+            // must differ from current
             if (doesArTownExist) {
-              arTownNameError.value = `${arName} existe déja comme commune ${addPreposition(currentWilaya.value.name)}`;
+              arTownNameError.value = t("town.errors.alreadyExists", { townName: name, wilaya: wilayaName });
               return false;
             }
           }
 
           if (arName.length < 3 || arName.length > 30) {
-            arTownNameError.value = "Le nom Arabe de la commune doit être entre 3 et 30 caractères.";
+            arTownNameError.value = t("town.current.arNameLength");
             return false;
           }
 
-          if (!/^[ء-ي]+$/iu.test(arName)) {
-            arTownNameError.value = "Ce champ doit contenir le nom de la commune en Arabe";
+          if (!/^[ء-ي ]+$/iu.test(arName)) {
+            arTownNameError.value = t("town.errors.mustBeArabic");
             return false;
           }
         }
@@ -227,12 +223,12 @@ export default defineComponent({
         // CHECK THE OBLIGATORY FIELD FIRST
         if (name.length > 0) {
           if (name.length < 3 || name.length > 30) {
-            townNameError.value = "Le nom de la commune doit être entre 3 et 30 caractères.";
+            townNameError.value = t("town.errors.nameLength");
             return false;
           }
 
           if (!/^[a-zàâçéèêëîïôûùüÿñæœ .'-]+$/i.test(name)) {
-            townNameError.value = "Le nom de la commune ne peut contenir des caractères spéciaux ni des chiffres.";
+            townNameError.value = t("town.errors.noSpecialChars");
             return false;
           }
 
@@ -241,7 +237,7 @@ export default defineComponent({
           const doesTownExist: boolean = store.getters.doesTownExist(currentWilayaCode.value, name);
 
           if (doesTownExist) {
-            townNameError.value = `${name} existe déja comme commune ${addPreposition(currentWilaya.value.name)}`;
+            townNameError.value = t("town.errors.alreadyExists", { townName: name, wilaya: wilayaName });
             return false;
           }
         }
@@ -249,18 +245,18 @@ export default defineComponent({
         if (arName.length > 0) {
           // 3 to 30 chars only
           if (arName.length < 3 || arName.length > 30) {
-            arTownNameError.value = "Le nom Arabe de la commune doit être entre 3 et 30 caractères.";
+            arTownNameError.value = t("town.current.arNameLength");
             return false;
           }
 
-          if (!/^[ء-ي]+$/iu.test(arName)) {
-            arTownNameError.value = "Ce champ doit contenir le nom de la commune en Arabe";
+          if (!/^[ء-ي ]+$/iu.test(arName)) {
+            arTownNameError.value = t("town.errors.mustBeArabic");
             return false;
           }
 
           const doesArTownExist = store.getters.doesTownExist(currentWilayaCode.value, arTownName.value.trim(), true);
           if (doesArTownExist) {
-            arTownNameError.value = `${arName} existe déja comme commune ${addPreposition(currentWilaya.value.name)}`;
+            arTownNameError.value = t("town.errors.alreadyExists", { townName: name, wilaya: wilayaName });
             return false;
           }
         }
@@ -309,14 +305,14 @@ export default defineComponent({
         .dispatch("saveTown", addTownBody)
         .then(() => {
           store.dispatch("flashSnack", {
-            message: "Commune ajoutée avec succès.",
+            message: t("town.addedSuccessfully"),
             type: "info",
           });
           emit("formSaved");
         })
         .catch((err: any) => {
           store.dispatch("flashSnack", {
-            message: "Une érreur est survenu lors de l'opération.",
+            message: t("town.failedOperation"), // add failed
             type: "error",
           });
           console.error("[TownForm.vue]", err);
@@ -325,6 +321,7 @@ export default defineComponent({
           isSendingData.value = false;
         });
     };
+
     const updateTown = () => {
       isSendingData.value = true;
 
@@ -343,14 +340,14 @@ export default defineComponent({
           .dispatch("updateTown", updateTownBody)
           .then(() => {
             store.dispatch("flashSnack", {
-              message: "Commune éditée avec succès.",
+              message: t("town.editedSuccessfully"),
               type: "info",
             });
             emit("formSaved");
           })
           .catch((err) => {
             store.dispatch("flashSnack", {
-              message: "Une érreur est survenu lors de l'opération.",
+              message: t("town.failedOperation"), // edit failed
               type: "error",
             });
             console.error("[TownForm.vue]", err);
@@ -369,7 +366,7 @@ export default defineComponent({
           .dispatch("deleteTown", props.actionData.townId)
           .then(() => {
             store.dispatch("flashSnack", {
-              message: "Commune supprimée.",
+              message: t("town.deletedSuccessfully"),
               type: "info",
             });
             emit("formSaved");
@@ -377,7 +374,7 @@ export default defineComponent({
           .catch((err) => {
             isSendingData.value = false;
             store.dispatch("flashSnack", {
-              message: "Une érreur est survenu lors de l'opération.",
+              message: t("town.failedOperation"), // delete fail
               type: "error",
             });
             console.error("[TownForm.vue]", err);
@@ -398,6 +395,10 @@ export default defineComponent({
 
       canSubmit,
       submit,
+
+      // localization
+      t,
+      isArLocale,
       //
       isSendingData,
       mdiClose,

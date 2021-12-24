@@ -17,19 +17,21 @@
       dark:ring-indigo-500
       focus:ring-2
     "
-    title="Selectionner une autre commune"
+    :title="t('schedule.selectAnotherTown')"
     v-model="selectedTownCode"
     @change="handleSelectChange"
   >
     <!-- <option value="16">Alger</option> -->
-    <option v-for="town in towns" :key="town.id" :value="town.code">{{ town.name }}</option>
+    <option v-for="town in towns" :key="town.id" :value="town.code">{{ isArLocale ? town.arName : town.name }}</option>
   </select>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, ref, watch } from "@vue/runtime-core";
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
 import { Town } from "../store/modules/towns";
 export default defineComponent({
   props: {
@@ -40,8 +42,10 @@ export default defineComponent({
   },
   emits: ["townSelected"],
   setup(_, { emit }) {
+    const store = useStore();
     const route = useRoute();
     const router = useRouter();
+    const { t } = useI18n();
 
     const routetWilayaCode = computed(() => parseInt(route.params.wilayaId as string));
     const routeTownCode = computed(() => parseInt(route.params.townId as string));
@@ -66,9 +70,14 @@ export default defineComponent({
       // if the routeTownCode changed from the outside, update the selectedTownCode
       selectedTownCode.value = newVal;
     });
+
+    const isArLocale = computed(() => store.getters.getIsArLang);
     return {
       selectedTownCode,
       handleSelectChange,
+      // localization
+      t,
+      isArLocale,
     };
   },
 });

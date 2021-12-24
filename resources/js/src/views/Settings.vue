@@ -1,6 +1,6 @@
 <template>
-  <view-container label="Paramètres">
-    <div id="settings-base" class="overflow-hidden flex flex-col lg:flex-row grow h-full w-full">
+  <view-container :label="t('general.settings')">
+    <div id="settings-base" class="overflow-hidden flex flex-col lg:flex-row lg:arabic:flex-row-reverse grow h-full w-full">
       <section
         id="settings-selectors"
         class="
@@ -11,7 +11,7 @@
           w-full
           lg:w-72 lg:min-w-72
           xl:w-80 xl:min-w-80
-          2xl:w-124 2xl:min-w-124
+          2xl:w-90 2xl:min-w-90
           space-x-4
           lg:space-x-0 lg:space-y-4
           pr-5
@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineAsyncComponent, defineComponent, ref } from "vue";
+import { computed, ComputedRef, defineAsyncComponent, defineComponent, ref } from "vue";
 import SettingSelectorButton from "../components/settings/SettingSelectorButton.vue";
 import ViewContainer from "../components/ViewContainer.vue";
 import SettingsPassword from "../components/settings/SettingsPassword.vue";
@@ -48,6 +48,7 @@ import { SettingsList, SettingType } from "../types/components";
 import FlexibleLoader from "../components/FlexibleLoader.vue";
 // icons
 import { mdiLockOutline, mdiViewDashboard, mdiBrightness4 } from "@mdi/js";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: {
@@ -64,11 +65,12 @@ export default defineComponent({
     SettingsPassword,
   },
   setup() {
-    const settingsList: SettingsList = [
-      { label: "Mot de passe", component: "password", icon: mdiLockOutline },
-      { label: "Interface", component: "ui", icon: mdiViewDashboard },
-      { label: "Apparence", component: "theme", icon: mdiBrightness4 },
-    ];
+    const { t } = useI18n();
+    const settingsList: ComputedRef<SettingsList> = computed(() => [
+      { label: t("settings.password.label"), component: "password", icon: mdiLockOutline },
+      { label: t("settings.ui.label"), component: "ui", icon: mdiViewDashboard },
+      { label: t("settings.theme.label"), component: "theme", icon: mdiBrightness4 },
+    ]);
 
     const selectSettings = (settingType: SettingType) => {
       selectedComponent.value = settingType;
@@ -81,6 +83,8 @@ export default defineComponent({
       selectSettings,
       selectedComponent,
       selectedComponentName,
+      // localization
+      t,
     };
   },
 });

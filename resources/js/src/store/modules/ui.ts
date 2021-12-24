@@ -1,4 +1,4 @@
-import { isLocalStorageDarkMode } from "./../../lib/utils";
+import { isLocalStorageDarkMode, setLocaleStorageLang, getLocaleStorageLang } from "./../../lib/utils";
 import { Module } from "vuex";
 
 export type SnackType = "info" | "error" | "success";
@@ -11,12 +11,14 @@ export interface Snack {
 export interface Ui {
     snack: Snack;
     isDark: boolean;
+    language: "fr" | "ar";
 }
 
 let timeout: ReturnType<typeof setTimeout> | null = null;
 
 const uiModule: Module<Ui, any> = {
     state: (): Ui => ({
+        language: getLocaleStorageLang(), // defaults to french
         isDark: isLocalStorageDarkMode(), // initialzie the value from the localStorage if it exists
         snack: {
             isShown: false,
@@ -27,6 +29,8 @@ const uiModule: Module<Ui, any> = {
     getters: {
         getSnack: (state) => state.snack,
         getIsDarkMode: (state) => state.isDark,
+        getLanguage: (state) => state.language,
+        getIsArLang: (state) => state.language === "ar",
     },
     mutations: {
         SHOW_SNACK(state, payload: { message: string; type?: SnackType }) {
@@ -45,6 +49,12 @@ const uiModule: Module<Ui, any> = {
                 localStorage.setItem("darkMode", localStorageValue);
             }
         },
+        SET_LANGUAGE_FR(state) {
+            state.language = "fr";
+        },
+        SET_LANGUAGE_AR(state) {
+            state.language = "ar";
+        },
     },
 
     actions: {
@@ -60,6 +70,18 @@ const uiModule: Module<Ui, any> = {
                 },
                 time === undefined ? 3000 : time
             );
+        },
+        setLanguageAr({ commit, state }) {
+            if (state.language !== "ar") {
+                setLocaleStorageLang("ar");
+                commit("SET_LANGUAGE_AR");
+            }
+        },
+        setLanguageFr({ commit, state }) {
+            if (state.language !== "fr") {
+                setLocaleStorageLang("fr");
+                commit("SET_LANGUAGE_FR");
+            }
         },
     },
 };

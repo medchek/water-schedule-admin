@@ -4,7 +4,10 @@
     @modalClickedOutside="$emit('formClickedOutside')"
     className="relative flex flex-col justify-between w-full sm:w-3/4 md:w-2/3 2xl:w-1/2 h-full bg-white dark:bg-dark-bg rounded-md  py-2 overflow-hidden"
   >
-    <h1 class="w-full text-bgray-700 dark:text-bgray-300 text-lg sm:text-xl lg:text-2xl font-semibold px-5">{{ formTitle }} le programme d'eau</h1>
+    <h1 class="w-full text-bgray-700 dark:text-bgray-300 text-lg sm:text-xl lg:text-2xl font-semibold px-5 arabic:direction-rtl arabic:text-right">
+      <!-- {{ formTitle }} le programme d'eau -->
+      {{ t("schedule.modifySchedule") }}
+    </h1>
     <!-- FROM EMPTY WARNINING -->
     <schedule-empty-warning
       v-if="displayFormEmptyWarning !== null"
@@ -17,27 +20,13 @@
     <section id="schedule-content-wrapper" class="flex flex-col w-full grow overflow-hidden" v-else>
       <!-- <section id="schedule-content-wrapper" class="flex flex-col w-full grow overflow-hidden"> -->
       <!-- WEEK TABS  -->
-      <div id="tabs-container" class="flex px-5">
-        <!-- <button
-          class="w-full h-16 text-sm sm:text-lg border-b-8"
-          :class="
-            isNextWeekSchedule ? 'text-bgray-300 border-gray-300 hover:border-gray-200' : 'text-bgray-800 border-blue-500 hover:border-blue-400 font-semibold'
-          "
-          @click="setIsNextWeekSchedule(false)"
-        >
-          Cette semaine
-        </button>
-        <button
-          class="w-full h-16 text-sm sm:text-lg border-b-8"
-          :class="
-            isNextWeekSchedule ? 'text-bgray-800 border-blue-500 hover:border-blue-400 font-semibold' : 'text-bgray-300 border-gray-300 hover:border-gray-200'
-          "
-          @click="setIsNextWeekSchedule(true)"
-        >
-          Semaine prochaine
-        </button> -->
-        <schedule-form-week-selector :isSelected="!isNextWeekSchedule" @click="setIsNextWeekSchedule(false)">Cette semaine</schedule-form-week-selector>
-        <schedule-form-week-selector :isSelected="isNextWeekSchedule" @click="setIsNextWeekSchedule(true)">Semaine prochaine</schedule-form-week-selector>
+      <div id="tabs-container" class="flex arabic:flex-row-reverse px-5">
+        <schedule-form-week-selector :isSelected="!isNextWeekSchedule" @click="setIsNextWeekSchedule(false)">{{
+          t("schedule.currentWeek")
+        }}</schedule-form-week-selector>
+        <schedule-form-week-selector :isSelected="isNextWeekSchedule" @click="setIsNextWeekSchedule(true)">{{
+          t("schedule.nextWeek")
+        }}</schedule-form-week-selector>
       </div>
       <!-- FROM RENDER -->
       <div class="flex flex-col grow h-full overflow-y-auto overflow-x-hidden px-5" id="modal-form-container">
@@ -49,7 +38,8 @@
                 v-for="(schedule, dayIndex) in currentSchedule"
                 :periods="schedule.schedule"
                 :dayIndex="dayIndex"
-                :day="schedule.day"
+                :frDay="schedule.frDay"
+                :arDay="schedule.arDay"
                 targetSchedule="current"
                 :key="schedule.day"
                 :errors="schedule.errors"
@@ -71,7 +61,8 @@
                 :periods="schedule.schedule"
                 targetSchedule="next"
                 :dayIndex="dayIndex"
-                :day="schedule.day"
+                :frDay="schedule.frDay"
+                :arDay="schedule.arDay"
                 :key="schedule.day"
                 :errors="schedule.errors"
                 @addDaySegment="addScheduleSegment"
@@ -95,15 +86,8 @@
       class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t dark:border-bgray-700 px-5"
       v-if="displayFormEmptyWarning === null"
     >
-      <!-- <section id="modal-actions" class="flex items-center justify-end min-h-16 h-16 w-full space-x-4 border-t px-5"> -->
       <button class="h-9 sm:h-10 w-18 bg-red-500 text-white rounded font-semibold" @click="autoFill">auto fill</button>
-      <button
-        class="h-9 sm:h-10 w-24 sm:w-28 text-sm sm:text-base bg-blue-500 hover:bg-blue-400 focus:bg-blue-600 text-white rounded font-semibold"
-        @click="onSubmit"
-      >
-        <loader v-if="isSendingData && !displayFormEmptyWarning" dark thin className="w-6 h-6" />
-        <span v-else>Confirmer</span>
-      </button>
+      <app-confirm-button :disabled="isSendingData" @click="onSubmit" :isLoading="isSendingData && !displayFormEmptyWarning" />
       <app-cancel-button @click="$emit('formClickedOutside')" />
     </section>
   </Modal>
@@ -116,8 +100,8 @@ import ScheduleDisplay from "../ScheduleDisplay.vue";
 import ScheduleDaySubform from "./ScheduleDaySubform.vue";
 import WeekDisplay from "../WeekDisplay.vue";
 import Modal from "../../Modal.vue";
-import AppTimePicker from "../../AppTimePicker.vue";
 import ScheduleFormWeekSelector from "./ScheduleFormWeekSelector.vue";
+import AppConfirmButton from "../../AppConfirmButton.vue";
 import AppCancelButton from "../../AppCancelButton.vue";
 
 //icons
@@ -146,6 +130,7 @@ import { ScheduleDays, TownScheduleState } from "../../../store/modules/schedule
 
 import equal from "fast-deep-equal";
 import FlexibleLoader from "../../FlexibleLoader.vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: {
@@ -153,12 +138,12 @@ export default defineComponent({
     ScheduleDisplay,
     WeekDisplay,
     Modal,
-    AppTimePicker,
     Loader,
     ScheduleEmptyWarning: defineAsyncComponent({ loadingComponent: FlexibleLoader, loader: () => import("./ScheduleEmptyWarning.vue") }),
     ScheduleDaySubform,
     ScheduleFormWeekSelector,
     AppCancelButton,
+    AppConfirmButton,
   },
   emits: ["formClickedOutside", "formSaved"],
   props: {
@@ -170,7 +155,7 @@ export default defineComponent({
   setup(_, { emit }) {
     const route = useRoute();
     const store = useStore();
-
+    const { t } = useI18n();
     // const wilayaCode = parseInt(route.params.wilayaId as string);
     const townCode = parseInt(route.params.townId as string);
     const storeSchedule: ComputedRef<TownScheduleState | undefined> = computed(() => {
@@ -199,7 +184,7 @@ export default defineComponent({
         const schedule = storeScheduleClone[targetSchedule]!.schedule;
         if (schedule) {
           formArray.forEach((day, index) => {
-            const targetDay = frDaysMapper[day.day] as keyof ScheduleDays;
+            const targetDay = frDaysMapper[day.frDay] as keyof ScheduleDays;
             // console.log("day=>", day, "targetDay=", targetDay, "schedule.targetDay=", schedule[targetDay]);
             const storeSchedule = schedule[targetDay];
             day.schedule = storeSchedule;
@@ -450,16 +435,14 @@ export default defineComponent({
         // else redirect to where the error was found
         if (formErrors.current && !formErrors.next) setIsNextWeekSchedule(false);
         if (formErrors.next && !formErrors.current) setIsNextWeekSchedule(true);
-        flashSnack({ message: "Veillez d'abord corriger les erreurs.", type: "error" });
+        flashSnack({ message: t("schedule.errors.promptFixErrors"), type: "error" });
         return;
       }
 
       const request: ScheduleFormRequest = generateRequestObject();
 
-      console.log(request);
-
       if (!request.current.wasChanged && !request.next.wasChanged) {
-        return flashSnack({ message: "Aucun changement n'a été encore fait." });
+        return flashSnack({ message: t("schedule.info.noChangesMade") });
       }
       // check if any of the forms were not filled and
       const isEmptyWarningDisplayed = setDisplayFormEmptyWarning();
@@ -478,13 +461,13 @@ export default defineComponent({
         .dispatch("saveSchedule", request)
         .then(() => {
           //
-          flashSnack({ message: "Programme(s) d'eau enregistré(s) avec success.", type: "info" });
+          flashSnack({ message: t("schedule.savingSuccess"), type: "info" });
           emit("formSaved");
           isSendingData.value = false;
         })
         .catch((err: any) => {
           //
-          flashSnack({ message: "Une érreur est survenu lors de l'enregistrement des données.", type: "error" });
+          flashSnack({ message: t("general.snack.errors.savingError"), type: "error" });
 
           isSendingData.value = false;
         });
@@ -545,6 +528,9 @@ export default defineComponent({
       mdiPlusBoxMultiple,
       mdiPlus,
 
+      // localization
+      t,
+
       // test
       autoFill,
     };
@@ -581,7 +567,3 @@ export default defineComponent({
 }
 </style>
 
-
-function hasScheduleBeenUpdated() {
-  throw new Error("Function not implemented.");
-}

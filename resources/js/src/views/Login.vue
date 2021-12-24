@@ -20,24 +20,23 @@
       method="POST"
       @submit.prevent="login"
     >
-      <div class="w-full text-center">
+      <div class="w-full text-center arabic:direction-rtl">
         <p class="text-5xl italic font-bold text-blue-900 dark:text-blue-light">SEAAL</p>
-        <p class="text-gray-400 h-10">Programme d'eau</p>
+        <p class="text-gray-400 h-10">{{ t("general.schedule") }}</p>
       </div>
 
       <div class="space-y-3 mb-6 mt-2">
         <input
           type="email"
           placeholder="Email"
-          class="w-full h-12 rounded-md pl-2 border-2 border-blue-50 focus:ring-2 ring-blue-200 dark:ring-indigo-500 dark:placeholder-bgray-500"
+          class="w-full h-12 rounded-md pl-2 arabic:pr-2 border-2 border-blue-50 focus:ring-2 ring-blue-200 dark:ring-indigo-500 dark:placeholder-bgray-500"
           v-model="email"
         />
         <input
           type="password"
-          placeholder="Mot de pass"
-          class="w-full h-12 rounded-md pl-2 border-2 border-blue-50 focus:ring-2 ring-blue-200 dark:ring-indigo-500 dark:placeholder-bgray-500"
+          placeholder="Mot de passe"
+          class="w-full h-12 rounded-md pl-2 arabic:pr-2 border-2 border-blue-50 focus:ring-2 ring-blue-200 dark:ring-indigo-500 dark:placeholder-bgray-500"
           v-model="password"
-          @dblclick="isAuthenticated"
         />
       </div>
 
@@ -55,13 +54,13 @@
           rounded
           font-semibold
           text-white text-lg
-          disabled:cursor-not-allowed disabled:bg-bgray-400 disabled:text-bgray-700
+          disabled:cursor-not-allowed disabled:bg-bgray-400 disabled:text-bgray-700 disabled:dark:text-bgray-400 disabled:dark:bg-bgray-700
         "
         type="submit"
         :disabled="!canLogin || isLoading"
       >
         <loader dark v-if="isLoading" />
-        <span v-else>Connexion</span>
+        <span v-else>{{ t("general.login") }}</span>
       </button>
     </form>
   </div>
@@ -73,15 +72,17 @@ import Loader from "../components/Loader.vue";
 import { AxiosLogin, flashSnack, isAuth } from "../lib/shared";
 import store from "../store";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+import i18n from "../locales";
 
 export default defineComponent({
   components: { Loader },
-  beforeRouteEnter(_to, from, next) {
+  beforeRouteEnter(_, __, next) {
     // user is authenticated
     const redirectHome = () => {
       next({ replace: true, name: "wilayas" });
       store.dispatch("flashSnack", {
-        message: "Vous êtes déja connecté",
+        message: i18n.global.t("general.snack.info.alreadyLoggedIn"),
         type: "info",
         time: 5000,
       });
@@ -104,8 +105,9 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-    const email = ref<string>("admin@seaal.com");
-    const password = ref<string>("12345678");
+    const { t } = useI18n();
+    const email = ref<string>("");
+    const password = ref<string>("");
     const canLogin = computed(() => {
       return email.value.length && password.value.length;
     });
@@ -130,9 +132,11 @@ export default defineComponent({
                 // redierct to the home page
                 // save the
                 store.dispatch("fetchUser").then(() => {
+                  // set the expired session state back it its initial value if it has gotten previously changed
+                  store.commit("SET_SESSION_EXPIRED", false);
                   router.replace({ name: "wilayas" });
                   flashSnack({
-                    message: "Vous êtes maintenant connecté",
+                    message: t("general.snack.info.loginSuccess"),
                     type: "info",
                     time: 5000,
                   });
@@ -144,18 +148,18 @@ export default defineComponent({
                 switch (loginError.response.status) {
                   case 422:
                     // invalid credentials
-                    flashSnack({ message: "Email ou mot de pass incorrect.", type: "error" });
+                    flashSnack({ message: t("general.snack.errors.wrongCredentials"), type: "error" });
                     break;
                   case 429:
                     // too many attempts
                     flashSnack({
-                      message: "Vous avez essayer de vous connecter plusieurs fois en un espace de temp court, veillez attendre avant to reéssayer.",
+                      message: t("general.snack.errors.tooManyLogins"),
                       type: "error",
                       time: 5000,
                     });
                     break;
                   default:
-                    flashSnack({ message: "Une errreur est survenue lors de la connexion.", type: "error" });
+                    flashSnack({ message: t("general.snack.errors.errorWhileLogin"), type: "error" });
                     break;
                 }
                 throw new Error(`Error while attempting to login: ${loginError}`);
@@ -164,7 +168,7 @@ export default defineComponent({
         })
         .catch((err) => {
           isLoading.value = false;
-          flashSnack({ message: "Une errreur est survenue lors de la connexion (CORS).", type: "error" });
+          flashSnack({ message: t("general.snack.errors.cors"), type: "error" });
           throw new Error(`Error while getting CSRF token: ${err}`);
         });
     };
@@ -186,6 +190,8 @@ export default defineComponent({
       canLogin,
       isLoading,
       isAuthenticated,
+      // localization
+      t,
     };
   },
 });

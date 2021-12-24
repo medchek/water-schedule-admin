@@ -1,5 +1,5 @@
 <template>
-  <div id="global-scaffold" class="w-full h-full" :class="[isDarkMode && 'dark']">
+  <div id="global-scaffold" class="w-full h-full" :class="[isDarkMode && 'dark', isArLocale && 'arabic']">
     <app-route-progress />
     <router-view
       class="w-full h-screen max-h-screen flex flex-col dark:bg-gradient-to-b dark:from-dark-bg dark:to-dark-bg bg-gradient-to-br from-gray-50 to-bgray-100"
@@ -20,8 +20,9 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const isDarkMode: ComputedRef<boolean> = computed(() => store.getters.getIsDarkMode);
+    const isArLocale: ComputedRef<boolean> = computed(() => store.getters.getIsArLang);
 
-    return { isDarkMode };
+    return { isDarkMode, isArLocale };
   },
   components: {
     Snack,

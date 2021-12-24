@@ -1,11 +1,8 @@
 <template>
-  <settings-container
-    label="Apparence"
-    description="Vous pouvez regler l'apparence de l'application en choisissant entre le thème clair ou le thème sombre selon vos préférences."
-  >
+  <settings-container :label="t('settings.theme.label')" :description="t('settings.theme.description') + '.'">
     <section class="flex space-y-5 flex-col">
-      <settings-theme-selector :icon="mdiBrightness5" @click="selectTheme('light')" text="Claire" :isSelected="!isDarkMode" />
-      <settings-theme-selector :icon="mdiBrightness4" @click="selectTheme('dark')" text="Sombre" :isSelected="isDarkMode" darkSelector />
+      <settings-theme-selector :icon="mdiBrightness5" @click="selectTheme('light')" :text="t('settings.theme.light')" :isSelected="!isDarkMode" />
+      <settings-theme-selector :icon="mdiBrightness4" @click="selectTheme('dark')" :text="t('settings.theme.dark')" :isSelected="isDarkMode" darkSelector />
     </section>
   </settings-container>
 </template>
@@ -20,11 +17,13 @@ import SettingsContainer from "./SettingsContainer.vue";
 import { mdiBrightness5, mdiBrightness4 } from "@mdi/js";
 import SettingsThemeSelector from "./SettingsThemeSelector.vue";
 import { useStore } from "vuex";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: { SettingsContainer, SettingsThemeSelector },
   setup() {
     const store = useStore();
+    const { t } = useI18n();
     const isDarkMode = computed(() => store.getters.getIsDarkMode);
 
     const selectTheme = (theme: "light" | "dark") => {
@@ -34,7 +33,14 @@ export default defineComponent({
         store.commit("SET_DARK_MODE", payload);
       }
     };
-    return { mdiBrightness5, mdiBrightness4, selectTheme, isDarkMode };
+    return {
+      mdiBrightness5,
+      mdiBrightness4,
+      selectTheme,
+      isDarkMode,
+      // localization
+      t,
+    };
   },
 });
 </script>

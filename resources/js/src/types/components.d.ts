@@ -52,6 +52,7 @@ export interface TownActionData {
 }
 
 export interface ScheduleDisplay {
+    arDay: string;
     day: string;
     waterUnavailable: boolean;
     message: string[];

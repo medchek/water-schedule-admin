@@ -7,16 +7,17 @@
     text="Une érreur est survenue lors de la récupération des programmes d'eau"
   />
 
-  <section class="grow flex flex-col h-full overflow-hidden" v-else>
-    <div id="content-header" class="flex items-center justify-between px-5 h-16 min-h-16">
-      <span class="text-bgray-700 dark:text-white text-lg md:text-xl 2xl:text-2xl font-semibold"
-        >Programme d'eau - <span class="capitalize">{{ currentTown.name }}</span> - {{ wilaya.name }}</span
-      >
-    </div>
+  <view-container class="grow flex flex-col h-full overflow-hidden" v-else>
+    <template v-slot:label>
+      {{ t("general.schedule") }} - <span class="capitalize"> {{ title.townName }}</span> - {{ title.wilayaName }}
+    </template>
 
-    <section id="schedule-toolbar" class="flex flex-col md:flex-row items-center justify-between md:h-14 w-full px-5 space-y-2 md:space-y-0">
+    <section
+      id="schedule-toolbar"
+      class="flex flex-col md:flex-row lg:arabic:flex-row-reverse items-center justify-between md:h-14 w-full px-5 space-y-2 md:space-y-0"
+    >
       <app-open-modal-button class="w-full md:w-auto" id="add-schedule" @click="openModal" :icon="mdiPlusBoxMultiple">
-        Modifier le programme d'eau</app-open-modal-button
+        {{ t("schedule.modifySchedule") }}</app-open-modal-button
       >
 
       <app-town-selector :towns="wilayaTowns" />
@@ -25,16 +26,16 @@
     <section id="content-main" class="flex flex-col w-full h-full grow overflow-y-auto py-4">
       <section class="flex grow w-full overflow-x-hidden">
         <div class="flex flex-col grow w-full h-full">
-          <div class="flex w-full px-5 space-x-5 mb-2">
+          <div id="schedule-selector-buttons" class="flex arabic:flex-row-reverse w-full px-5 space-x-5 arabic:space-x-reverse mb-2">
             <schedule-week-selector
-              label="Programme de la semaine courante"
+              :label="t('schedule.currentWeekSchedule')"
               :weekFrom="currentWeek.start"
               :weekTo="currentWeek.end"
               :isSelected="isCurrentScheduleDisplayed"
               @click="setIsCurrentScheduleDisplay(true)"
             />
             <schedule-week-selector
-              label="Programme de la semaine prochaine"
+              :label="t('schedule.nextWeekSchedule')"
               :weekFrom="nextWeek.start"
               :weekTo="nextWeek.end"
               :isSelected="!isCurrentScheduleDisplayed"
@@ -52,7 +53,7 @@
               label="Programme de la semaine courante"
               :weekFrom="currentWeek.start"
               :weekTo="currentWeek.end"
-              :townName="currentTown.name"
+              :townName="isArLocale ? currentTown.arName : currentTown.name"
               target="current"
             />
             <schedule-display
@@ -62,7 +63,7 @@
               label="Programme de la semaine prochaine"
               :weekFrom="nextWeek.start"
               :weekTo="nextWeek.end"
-              :townName="currentTown.name"
+              :townName="isArLocale ? currentTown.arName : currentTown.name"
               target="next"
             />
           </transition>
@@ -75,7 +76,7 @@
         <schedule-form v-if="showModal" :showModal="showModal" @formClickedOutside="closeModal" @formSaved="closeModal" />
       </transition>
     </teleport>
-  </section>
+  </view-container>
 </template>
 <script lang="ts">
 // components
@@ -83,16 +84,16 @@ import Icon from "../components/Icon.vue";
 import ScheduleDisplay from "../components/schedule/ScheduleDisplay.vue";
 import WeekDisplay from "../components/schedule/WeekDisplay.vue";
 import Modal from "../components/Modal.vue";
-import AppTimePicker from "../components/AppTimePicker.vue";
 import AppTownSelector from "../components/AppTownSelector.vue";
 import ScheduleWeekSelector from "../components/schedule/ScheduleDisplayWeekSelector.vue";
 import ScheduleForm from "../components/schedule/schedule-form/ScheduleForm.vue";
 import Retry from "../components/Retry.vue";
+import ViewContainer from "../components/ViewContainer.vue";
 
 import { mdiPlusBoxMultiple } from "@mdi/js";
 //
-import { computed, ComputedRef, defineAsyncComponent, defineComponent, onBeforeUnmount, onMounted, reactive, ref, watch } from "vue";
-import { startOfWeek, endOfWeek, addDays, getWeek } from "date-fns";
+import { computed, ComputedRef, defineComponent, onMounted, ref, watch } from "vue";
+import { startOfWeek, endOfWeek, addDays } from "date-fns";
 
 import { formatDate } from "../lib/utils";
 import { useRoute, useRouter } from "vue-router";
@@ -103,6 +104,7 @@ import { Wilaya } from "../store/modules/wilayas";
 
 import { TownScheduleState } from "../store/modules/schedules";
 import AppOpenModalButton from "../components/AppOpenModalButton.vue";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   components: {
@@ -110,14 +112,13 @@ export default defineComponent({
     ScheduleDisplay,
     WeekDisplay,
     Modal,
-    AppTimePicker,
     AppTownSelector,
     ScheduleWeekSelector,
     Loader,
-    // ScheduleEmptyWarning: defineAsyncComponent({ loader: () => import("../components/schedule/ScheduleEmptyWarning.vue"), loadingComponent: Loader }),
     ScheduleForm,
     AppOpenModalButton,
     LoadAndRetry: Retry,
+    ViewContainer,
   },
   setup() {
     const isFetching = ref(true);
@@ -248,6 +249,14 @@ export default defineComponent({
       }
     });
 
+    const isArLocale: ComputedRef<boolean> = computed(() => store.getters.getIsArLang);
+    const title = computed(() => {
+      return {
+        townName: isArLocale.value ? currentTown.value?.arName : currentTown.value?.name,
+        wilayaName: isArLocale.value ? wilaya.value.arName : wilaya.value.name,
+      };
+    });
+    const { t } = useI18n();
     return {
       isFetching,
       failedFetching,
@@ -264,15 +273,16 @@ export default defineComponent({
       wilaya,
       wilayaTowns,
       currentTown,
+      title,
       //
       isCurrentScheduleDisplayed,
       setIsCurrentScheduleDisplay,
-      // handleTownSelected,
-
       isFetchingNewSchedule,
       // icons
       mdiPlusBoxMultiple,
-      // ----
+      // localization
+      t,
+      isArLocale,
     };
   },
 });
