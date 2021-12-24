@@ -4,7 +4,7 @@
 
 body {
     /* font-family: "Nunito", sans-serif; */
-    font-family: "open sans", sans-serif;
+    font-family: "open sans", "IBM Plex Sans Arabic", "Cairo", "Noto Kufi Arabic", sans-serif;
     overflow: hidden;
 }
 
@@ -12,4 +12,20 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@layer utilities {
+    .direction-rtl {
+        direction: rtl;
+    }
+    .arabic select,
+    .arabic input {
+        direction: rtl;
+    }
+    .direction-ltr {
+        direction: ltr;
+    }
+    .direction-init {
+        direction: initial;
+    }
 }
