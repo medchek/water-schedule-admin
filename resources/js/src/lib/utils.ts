@@ -23,16 +23,6 @@ export const frDaysMapper = {
     vendredi: "friday",
 };
 
-export const enDaysMapper = {
-    saturday: "samedi",
-    sunday: "dimanche",
-    monday: "lundi",
-    tuesday: "mardi",
-    wednesday: "mercredi",
-    thursday: "jeudi",
-    friday: "vendredi",
-};
-
 export const randNumber = (min: number, max: number): number => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -46,7 +36,8 @@ export const randNumber = (min: number, max: number): number => {
 export const sortArrayOfObjects = (arr: any[], property: string) => {
     if (!arr) throw new Error("array cannot be empty");
     const cloned = [...arr];
-    return cloned.sort((a, b) => a[property].localeCompare(b[property]));
+    // return cloned.sort((a, b) => a[property].localeCompare(b[property], ["ar"]));
+    return cloned.sort((a, b) => new Intl.Collator().compare(a[property], b[property]));
 };
 
 /** Retrives the darkMode key from the localStorage
@@ -57,4 +48,21 @@ export const isLocalStorageDarkMode = (): boolean => {
         if (value === "yes") return true;
     }
     return false;
+};
+
+/**
+ * Sets the app language in the localStorage
+ * @param lang the language either ar or fr
+ */
+export const setLocaleStorageLang = (lang: "fr" | "ar") => {
+    if (lang !== "fr" && lang !== "ar") lang = "fr"; // default fr
+    localStorage.setItem("lang", lang);
+};
+/**
+ * Retrives the lang value from the localeStorage
+ * @returns if the lang value does not exist or is invalid, return "fr" by default, otherwise, return the key value
+ */
+export const getLocaleStorageLang = () => {
+    const lang = localStorage.getItem("lang");
+    return lang !== null && (lang === "fr" || lang === "ar") ? lang : "fr";
 };
