@@ -22,22 +22,13 @@ import i18n from "../locales";
 export default defineComponent({
   components: { Menu },
   beforeRouteEnter(_, from, next) {
-    // ! DEVONLY
-    // console.warn("YOU ARE CURRENTLY ACCESSING THE APP FROM AN UNPROTECTED ROUTE WHICH IS MEANT FOR DEVELOPEMENT ONLY");
-    // console.warn("DO NOT FORGET TO REVERT BACK TO AUTH CHECKING WHEN DONE WITH TESTING");
-
-    // return next();
-
     const redirectToLogin = () => {
-      next({ replace: true, name: "login" });
+      next({ replace: true, name: "login", params: { code: 401 } });
       flashSnack({
         message: i18n.global.t("general.snack.errors.unauthorized"),
         time: 5000,
       });
     };
-
-    // if the user is not auth, redirect to login
-    // if (!store.getters.getUser) return redirectToLogin();
 
     store
       .dispatch("fetchUser")
@@ -52,15 +43,6 @@ export default defineComponent({
         redirectToLogin();
       });
   },
-  // beforeRouteUpdate(_, __, next) {
-  //   console.log("BEFORE ROUTE LEAVE");
-  //   const isUserLogged = store.getters.getUser;
-  //   if (isUserLogged === null) {
-  //     next({ replace: true, name: "login" });
-  //   } else {
-  //     next();
-  //   }
-  // },
   setup() {
     const store = useStore();
     const isSessionExpired = computed(() => store.getters.getIsSessionExpired);
