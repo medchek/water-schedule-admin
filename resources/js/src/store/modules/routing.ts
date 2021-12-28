@@ -79,6 +79,13 @@ const routingModule: Module<RoutingModuleState, any> = {
             commit("SET_ROUTE_PROGRESS", 100);
             dispatch("hideProgress");
         },
+        // instantly stops and hides the progress without waiting 500ms
+        instantlyHideProgress({ commit }) {
+            stopProgressInterval();
+            cancelHideProgressTimeout();
+            commit("HIDE_PROGRESS");
+            commit("RESET_ROUTE_PROGRESS");
+        },
         hideProgress({ commit }) {
             cancelHideProgressTimeout();
             // wait for the animation to finish before hiding the progressbar

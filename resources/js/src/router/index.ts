@@ -1,12 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import store from "../store";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 // import NotFound from "../views/NotFound.vue";
-import Wilayas from "../views/Wilayas.vue";
+// import Wilayas from "../views/Wilayas.vue";
 // import Towns from "../views/Towns.vue";
 // import Schedule from "../views/Schedule.vue";
 // import ScheduleRefactor from "../views/ScheduleRefactor.vue";
 
+const Home = () => import("../views/Home.vue");
+
+const Wilayas = () => import("../views/Wilayas.vue");
 const Login = () => import("../views/Login.vue");
 const NotFound = () => import("../views/NotFound.vue");
 const Towns = () => import("../views/Towns.vue");
@@ -48,19 +51,6 @@ const routes: Array<RouteRecordRaw> = [
                     content: Settings,
                 },
             },
-            // {
-            //     path: "/wilaya/:wilayaId/town/:townId/schedule/refactored",
-            //     name: "schedule-ref",
-            //     components: {
-            //         content: ScheduleRefactor,
-            //     },
-            //     beforeEnter() {
-            //         console.clear();
-            //         console.warn(
-            //             "[ScheduleRefactor] this route serves as a ground for upgrading the form handling logic to be at vuex level, bringing a harmony between data fetched from the server and the processing of said data at the component level. After the task is complete, this should replace the current schedule route which handles the form at the component level"
-            //         );
-            //     },
-            // },
         ],
     },
     {
@@ -80,6 +70,15 @@ router.beforeEach((from, to, next) => {
     store.dispatch("startRouteProgress");
     // check if user is not authenthicaed
     next();
+});
+router.onError(() => {
+    store.dispatch("instantlyHideProgress");
+});
+
+router.afterEach((from, to, failure) => {
+    if (from.params.code && from.params.code == "401") {
+        store.dispatch("instantlyHideProgress");
+    }
 });
 
 router.beforeResolve(() => {
