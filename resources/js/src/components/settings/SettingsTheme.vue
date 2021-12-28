@@ -29,7 +29,6 @@ export default defineComponent({
     const selectTheme = (theme: "light" | "dark") => {
       const payload: boolean = theme === "light" ? false : true;
       if (payload !== isDarkMode.value) {
-        console.log("running");
         store.commit("SET_DARK_MODE", payload);
       }
     };

@@ -27,7 +27,6 @@
 
     <p class="relative text-xs md:text-sm text-red-500 font-semibold mt-0.5 arabic:direction-rtl">{{ error }}</p>
 
-    <!-- <div class="absolute flex sm:hidden items-center justify-center top-0 right-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 z-10" v-if="isOpen"></div> -->
     <transition name="scale" type="animation" v-if="!disabled">
       <div
         id="picker"
@@ -75,7 +74,7 @@
           <p class="flex justify-center items-center h-full w-full">{{ t("general.hours") }}</p>
           <p class="flex justify-center items-center h-full w-full">{{ t("general.minutes") }}</p>
         </div>
-        <!--  -->
+        <!-- hours & minutes -->
         <div class="relative flex grow h-auto overflow-y-hidden border border-gray-100 dark:border-dark-alt dark:border-t-transparent">
           <section class="flex flex-col w-full" id="hours-section">
             <div class="grow h-full max-h-full overflow-y-scroll">
@@ -222,13 +221,6 @@ export default defineComponent({
 
     const hours = ref<number | null>(props.modelValue.hours);
     const minutes = ref<number | null>(props.modelValue.minutes);
-
-    // const time = computed(() => {
-    //   if (hours.value === null && minutes.value === null) return null;
-    //   const hoursDisplay = hours.value === null ? "--" : addZeroToSingleDigit(hours.value);
-    //   const minutesDisplay = minutes.value === null ? "--" : addZeroToSingleDigit(minutes.value);
-    //   return `${hoursDisplay}:${minutesDisplay}`;
-    // });
     const time = computed(() => {
       const { hours, minutes } = props.modelValue;
 
