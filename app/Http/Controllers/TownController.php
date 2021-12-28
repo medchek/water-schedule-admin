@@ -9,50 +9,53 @@ use App\Models\Wilaya;
 use App\Services\TownService;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class TownController extends Controller
 {
 
+    // /**
+    //  * Display a listing of the resource by the given wilaya_id.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function getByWilayaId($wilaya_id)
+    // {
+    //     if (isset($wilaya_id) && is_numeric($wilaya_id) && $wilaya_id > 0) {
+
+    //         $wilaya = Wilaya::find($wilaya_id);
+
+    //         if ($wilaya) {
+    //             $towns = $wilaya->towns()->get();
+    //             // Log::channel("stderr")->debug($towns);
+    //             return response(TownResource::collection($towns), 200);
+    //         } else {
+    //             return response("wilaya not found", 404);
+    //         }
+    //     }
+    // }
+
     /**
      * Display a listing of the resource by the given wilaya_id.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getByWilayaId($wilaya_id)
+    public function getByWilayaId($wilayaId)
     {
-        if (isset($wilaya_id) && is_numeric($wilaya_id) && $wilaya_id > 0) {
-
-            $wilaya = Wilaya::find($wilaya_id);
-
-            if ($wilaya) {
-                $towns = $wilaya->towns()->get();
-                // Log::channel("stderr")->debug($towns);
-                return response(TownResource::collection($towns), 200);
-            } else {
-                return response('wilaya not found', 404);
-            }
-        }
-    }
-
-    /**
-     * Display a listing of the resource by the given wilaya_id.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function publicGetByWilayaId($wilaya_id)
-    {
-        if (isset($wilaya_id) && is_numeric($wilaya_id) && $wilaya_id > 0) {
+        if (isset($wilayaId) && is_numeric($wilayaId) && $wilayaId > 0) {
             try {
-
-                $towns = Town::where('wilaya_id', $wilaya_id)->get();
+                $towns = Cache::rememberForever("{$wilayaId}-towns", function () use ($wilayaId) {
+                    return Town::where("wilaya_id", $wilayaId)->get();
+                });
                 return response(TownResource::collection($towns), 200);
             } catch (Exception $err) {
-                return response('could not find towns', 404);
+                Log::channel("stderr")->error($err);
+                return response("could not find towns", 404);
             }
         } else {
-            return response('invalid arguments', 400);
+            return response("invalid arguments", 400);
         }
     }
 
@@ -67,9 +70,9 @@ class TownController extends Controller
         try {
             // Log::channel("stderr")->debug($request);
             $validated = validator($request->all(), [
-                'wilayaId' => 'required|digits_between:1,58|exists:App\Models\Wilaya,id',
-                'name' => 'required|between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\'-]+$/i',
-                'arName' => 'required|between:3,30|regex:/^[ء-ي ]+$/iu',
+                "wilayaId" => "required|digits_between:1,58|exists:App\Models\Wilaya,id",
+                "name" => "required|between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\"-]+$/i",
+                "arName" => "required|between:3,30|regex:/^[ء-ي ]+$/iu",
             ]);
 
             if ($validated->fails()) {
@@ -83,7 +86,7 @@ class TownController extends Controller
                 return response("invalid wilya, not found", 400);
             }
 
-            $doesTownExists = Town::where('name', $request->name)->orWhere('ar_name', $request->arName)->where('wilaya_id', $request->wilayaId)->first();
+            $doesTownExists = Town::where("name", $request->name)->orWhere("ar_name", $request->arName)->where("wilaya_id", $request->wilayaId)->first();
 
             Log::channel("stderr")->debug($doesTownExists);
 
@@ -137,7 +140,7 @@ class TownController extends Controller
     public function update(Request $request, $id)
     {
         if (!isset($id) || !is_numeric($id) || $id <= 0) {
-            return response('requested id is invalid', 400);
+            return response("requested id is invalid", 400);
         }
 
         if (!isset($request->name) && !isset($request->arName)) {
@@ -146,7 +149,7 @@ class TownController extends Controller
 
 
         $validation = validator($request->all(), [
-            "name" => "between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\'-]+$/i",
+            "name" => "between:3,30|regex:/^[a-zàâçéèêëîïôûùüÿñæœ .\"-]+$/i",
             "arName" => "between:3,30|regex:/^[ء-ي ]+$/iu",
         ]);
 
@@ -210,18 +213,18 @@ class TownController extends Controller
     {
 
         if (!isset($id) || !is_numeric($id) || $id <= 0) {
-            return response('requested id is invalid', 400);
+            return response("requested id is invalid", 400);
         }
 
         try {
             $town = Town::find($id);
 
             if (!$town) {
-                return response('town not found', 404);
+                return response("town not found", 404);
             }
 
             if ($town->protected === true) {
-                return response('cannot delete protected entry', 403);
+                return response("cannot delete protected entry", 403);
             }
             Log::channel("stderr")->debug("DESTROY");
             $response = [
@@ -245,9 +248,9 @@ class TownController extends Controller
 
         $ar_name_sql = "";
         if (isset($ar_name)) {
-            $ar_name_sql = "OR ar_name='{$ar_name}'";
+            $ar_name_sql = 'OR ar_name="{$ar_name}"';
         }
-        $alreadyExists = DB::table("towns")->select("name", "ar_name")->whereRaw("name='{$name}' {$ar_name_sql}")->get();
+        $alreadyExists = DB::table("towns")->select("name", "ar_name")->whereRaw('name="{$name}" {$ar_name_sql}')->get();
 
         return count($alreadyExists) > 0;
     }

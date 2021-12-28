@@ -6,6 +6,7 @@ use App\Http\Resources\WilayaResource;
 use App\Models\Wilaya;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 // use Illuminate\Http\Response;
@@ -20,7 +21,10 @@ class WilayaController extends Controller
     public function index()
     {
         try {
-            $wilayas = Wilaya::all();
+
+            $wilayas = Cache::rememberForever("wilayas", function () {
+                return Wilaya::all();
+            });
             return response(WilayaResource::collection($wilayas), 200);
         } catch (Exception $_) {
             return response("error while getting data", 503);

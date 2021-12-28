@@ -8,6 +8,7 @@ use App\Models\Schedule;
 use App\Models\Town;
 use App\Services\ScheduleService;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class ScheduleController extends Controller
@@ -58,17 +59,17 @@ class ScheduleController extends Controller
     {
 
         if (isset($town_code) && is_numeric($town_code)) {
-            $town = Town::where('code', $town_code)->count();
+            $town = Town::where("code", $town_code)->count();
             if ($town === 0) {
-                return response('invalid town', 404);
+                return response("invalid town", 404);
             };
 
             $scheduleServices = new ScheduleService;
             $currentWeekScheduleCode =  $scheduleServices->getScheduleCode($town_code);
             $nextWeekScheduleCode = $scheduleServices->getScheduleCode($town_code, true);
 
-            $currentWeekSchedule = Schedule::where('code', $currentWeekScheduleCode)->first();
-            $nextWeekSchedule = Schedule::where('code', $nextWeekScheduleCode)->first();
+            $currentWeekSchedule = Schedule::where("code", $currentWeekScheduleCode)->first();
+            $nextWeekSchedule = Schedule::where("code", $nextWeekScheduleCode)->first();
 
             $responseData = [
                 "current" => isset($currentWeekSchedule) ? new ScheduleResource($currentWeekSchedule) : null,
@@ -86,12 +87,16 @@ class ScheduleController extends Controller
      * @param int $town_code  the town code
      * @param bool $next whether the method returns the current week or next week schedule
      */
-    private function getPublicWeekSchedule($town_code, $next = false)
+    private function getPublicWeekSchedule($townCode, $next = false)
     {
         $scheduleServices = new ScheduleService;
-        $schedule_code = $next ? $scheduleServices->getScheduleCode($town_code, true) : $scheduleServices->getScheduleCode($town_code);
+        $scheduleCode = $scheduleServices->getScheduleCode($townCode, $next);
+        $cacheName = "{$scheduleCode}-schedule";
 
-        $schedule = Schedule::where('code', $schedule_code)->first();
+        // remember for a day
+        $schedule = Cache::remember($cacheName, 60 * 60 * 24, function () use ($scheduleCode) {
+            return Schedule::where("code", $scheduleCode)->first();
+        });
 
         if ($schedule !== null) {
 
@@ -102,39 +107,12 @@ class ScheduleController extends Controller
         }
     }
 
-    public function getCurrentWeekSchedule($town_code)
+    public function getCurrentWeekSchedule($townCode)
     {
-        return $this->getPublicWeekSchedule($town_code);
+        return $this->getPublicWeekSchedule($townCode);
     }
-    public function getNextWeekSchedule($town_code)
+    public function getNextWeekSchedule($townCode)
     {
-        return $this->getPublicWeekSchedule($town_code, true);
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $schedule_code the schedule id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $schedule_code)
-    {
-        return response("update ok", 200);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    private function clg($message)
-    {
-        Log::channel("stderr")->debug($message);
+        return $this->getPublicWeekSchedule($townCode, true);
     }
 }

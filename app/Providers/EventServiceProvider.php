@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Schedule;
+use App\Models\Town;
+use App\Models\Wilaya;
+use App\Observers\ScheduleObserver;
+use App\Observers\TownObserver;
+use App\Observers\WilayaObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +33,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Wilaya::observe(WilayaObserver::class);
+        Town::observe(TownObserver::class);
+        Schedule::observe(ScheduleObserver::class);
     }
 }
