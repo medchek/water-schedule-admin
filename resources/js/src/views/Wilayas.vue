@@ -20,7 +20,7 @@
         @retry="fetchWilayas"
         :hasFailed="fetchingError"
         :isFetching="isFetching"
-        :text="'wilaya.errorFetching'"
+        :text="t('wilaya.errorFetching')"
       />
       <!-- SUCCESS -->
 

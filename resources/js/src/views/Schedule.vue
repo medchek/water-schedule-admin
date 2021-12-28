@@ -1,5 +1,11 @@
 <template>
-  <load-and-retry v-if="isFetching || failedFetching" @retry="fetchAll" :isFetching="isFetching" :hasFailed="failedFetching" :text="'schedule.errorFetching'" />
+  <load-and-retry
+    v-if="isFetching || failedFetching"
+    @retry="fetchAll"
+    :isFetching="isFetching"
+    :hasFailed="failedFetching"
+    :text="t('schedule.errorFetching')"
+  />
 
   <view-container class="grow flex flex-col h-full overflow-hidden" v-else>
     <template v-slot:label>

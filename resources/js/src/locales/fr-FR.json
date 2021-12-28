@@ -22,6 +22,7 @@
         "login": "Connexion",
 
         "mustFillAllFields": "Vous devez remplir tous les champs",
+        "requiredField": "Ce champ est obligatoir",
 
         "snack": {
             "info": {

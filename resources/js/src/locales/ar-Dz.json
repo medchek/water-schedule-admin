@@ -20,7 +20,9 @@
         "email": "البريد الإلكتروني",
         "password": "كلمة السر",
         "login": "تسجيل الدخول",
+
         "mustFillAllFields": "يجب ملء جميع الحقول",
+        "requiredField": "يجب ملء هذا الحقل",
 
         "snack": {
             "info": {

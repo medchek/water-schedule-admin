@@ -164,13 +164,12 @@ export default defineComponent({
         .then(() => {
           router.replace({ name: "login" });
           store.dispatch("flashSnack", {
-            message: t("general.snack.info.loginSuccess"),
+            message: t("general.snack.info.logoutSuccess"),
             type: "info",
           });
         })
         .catch((err) => {
           const status = err.response.status;
-          // if the session expired, show successful logout message
           if (status && status == 419 /* || status == 401 */) {
             store.dispatch("flashSnack", {
               message: t("general.snack.info.logoutSuccess"),
