@@ -432,4 +432,35 @@ class ScheduleService
       throw new Exception("invalid request");
     }
   } // prepareScheduleModels
+
+  /**
+   * Deletes all previously stored schedule entries related to the target town that matches the $townCode. 
+   * Deletion is based on both the current week number and current week year
+   * @param int $townCode the target town code 
+   */
+  public function deleteOldSchedules(int $townCode)
+  {
+    // used to delete any schedule that is prior to the current week & year
+    $currentWeekNumber =  $this->getCurrentWeekNumber();
+    $currentWeekYear = $this->getCurrentWeekYear();
+    // remove any old entries that belong to the same town
+    // delete reconds that belong to previous week(s) of the same or previous year(s)
+    Log::channel("stderr")->debug("deleting old schedules");
+    try {
+
+      Schedule::where("town_code", $townCode)->where("year", "<", $currentWeekYear)->orWhere(function ($query) use ($currentWeekNumber, $currentWeekYear) {
+        $query->where("week_number", "<", $currentWeekNumber)
+          ->where("year", '<=', $currentWeekYear);
+      })->chunk(
+        50,
+        function ($schedules) {
+          foreach ($schedules as $schedule) {
+            $schedule->delete();
+          }
+        }
+      );
+    } catch (Exception $e) {
+      Log::channel("stderr")->error($e->getMessage());
+    }
+  }
 }
