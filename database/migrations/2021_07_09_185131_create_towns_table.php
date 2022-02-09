@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\TownSeeder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -32,6 +33,10 @@ class CreateTownsTable extends Migration
             $table->unsignedBigInteger('wilaya_id');
             $table->foreign('wilaya_id')->references('id')->on('wilayas');
         });
+
+
+        $seeder = new TownSeeder;
+        $seeder->run();
     }
 
     /**
