@@ -17,7 +17,7 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['POST', 'GET',  'DELETE', 'PATCH'],
 
     'allowed_origins' => [env('SANCTUM_STATEFUL_DOMAINS', 'http://127.0.0.1:8000')],
 
