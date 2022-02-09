@@ -26,12 +26,14 @@ module.exports = {
                 half: "50%",
             },
             minHeight: {
+                4: "1rem",
                 5: "1.25rem",
                 8: "2rem",
                 10: "2.5rem",
                 12: "3rem",
                 14: "3.5rem",
                 16: "4rem",
+                24: "6rem",
                 28: "7rem",
                 36: "9rem",
                 80: "20rem",
@@ -39,6 +41,7 @@ module.exports = {
             minWidth: {
                 8: "2rem",
                 14: "3.5rem",
+                16: "4rem",
                 24: "6rem",
                 28: "7rem",
                 64: "16rem",
@@ -47,6 +50,21 @@ module.exports = {
                 90: "24rem",
                 124: "31rem",
                 130: "34rem",
+            },
+            maxWidth: {
+                14: "3.5rem",
+                16: "4rem",
+                20: "5rem",
+                24: "6rem",
+            },
+            maxHeight: {
+                14: "3.5rem",
+                16: "4rem",
+                20: "5rem",
+                24: "6rem",
+            },
+            height: {
+                18: "4.5rem",
             },
             width: {
                 18: "4.5rem",
