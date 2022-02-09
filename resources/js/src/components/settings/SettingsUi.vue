@@ -28,7 +28,6 @@
           :title="!canSubmit && !isDiffThanStore ? t('settings.ui.mustChooseWilayaFirst') : !canSubmit ? t('settings.ui.mustChooseTown') : ''"
           :disabled="!canSubmit"
         />
-        >
       </div>
     </form>
   </settings-container>
