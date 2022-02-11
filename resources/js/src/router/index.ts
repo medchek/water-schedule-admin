@@ -1,3 +1,4 @@
+import { axios } from "./../lib/shared";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import store from "../store";
 // import Home from "../views/Home.vue";
@@ -11,6 +12,7 @@ const Home = () => import("../views/Home.vue");
 
 const Wilayas = () => import("../views/Wilayas.vue");
 const Login = () => import("../views/Login.vue");
+const Signup = () => import("../views/Signup.vue");
 const NotFound = () => import("../views/NotFound.vue");
 const Towns = () => import("../views/Towns.vue");
 const Schedule = () => import("../views/Schedule.vue");
@@ -57,6 +59,26 @@ const routes: Array<RouteRecordRaw> = [
         path: "/login",
         name: "login",
         component: Login,
+    },
+    {
+        path: "/install",
+        name: "install",
+        component: Signup,
+        beforeEnter: async (from, to, next) => {
+            try {
+                await axios.get("/api/can-install");
+                next();
+            } catch (err: any) {
+                const responseText: string | undefined = err.response.data;
+                if (responseText && responseText === "already logged") {
+                    next({ name: "wilayas", replace: true });
+                } else {
+                    next({ name: "login", replace: true });
+                }
+            }
+
+            // store.dispatch("fetchUser");
+        },
     },
     { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
 ];
