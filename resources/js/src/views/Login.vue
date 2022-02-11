@@ -47,7 +47,14 @@
         </div>
       </div>
       <!-- RECAPTCHA DIV -->
-      <vue-recaptcha ref="recaptchaRef" :sitekey="recaptchaKey" size="invisible" @expired="onCaptchaExpired" @verify="onCaptchaVerified"></vue-recaptcha>
+      <vue-recaptcha
+        ref="recaptchaRef"
+        :sitekey="recaptchaKey"
+        size="invisible"
+        @error="onCaptchaError"
+        @expired="onCaptchaExpired"
+        @verify="onCaptchaVerified"
+      ></vue-recaptcha>
       <button
         class="
           h-12
@@ -62,7 +69,7 @@
           rounded
           font-semibold
           text-white text-lg
-          disabled:cursor-not-allowed disabled:bg-bgray-400 disabled:text-bgray-700 disabled:dark:text-bgray-400 disabled:dark:bg-bgray-700
+          disabled:cursor-not-allowed disabled:bg-bgray-200 disabled:text-bgray-500 disabled:dark:text-bgray-400 disabled:dark:bg-bgray-700
         "
         type="submit"
         :disabled="!canLogin || isLoading"
@@ -122,7 +129,7 @@ export default defineComponent({
     const recaptchaKey = process.env.MIX_RECAPTCHA_SITE_KEY;
 
     const canLogin = computed(() => {
-      return email.value.length && password.value.length;
+      return email.value.length > 0 && password.value.length > 0;
     });
     const isLoading = ref<boolean>(false);
     const startLoading = () => (isLoading.value = true);
@@ -130,6 +137,7 @@ export default defineComponent({
 
     const triggerRecaptcha = () => {
       if (recaptchaRef.value) {
+        console.log("triggerRecaptcha");
         const recaptcha: any = recaptchaRef.value;
         recaptcha.execute();
       }
@@ -168,7 +176,6 @@ export default defineComponent({
                 });
               })
               .catch((loginError) => {
-                console.warn(loginError.response.status);
                 switch (loginError.response.status) {
                   case 422:
                     // invalid credentials
@@ -234,8 +241,8 @@ export default defineComponent({
       startLoading();
       login(res);
     };
-    const onCaptchaExpired = () => console.log("captcha expired");
-    // const onCaptchaError = () => console.log("capatcha error");
+    const onCaptchaExpired = () => resetRecaptcha();
+    const onCaptchaError = () => console.log("capatcha error");
     // const onCaptchaRender = () => console.log("capatcha render");
     return {
       login,
@@ -252,6 +259,7 @@ export default defineComponent({
       recaptchaKey,
       onCaptchaVerified,
       onCaptchaExpired,
+      onCaptchaError,
       // localization
       t,
     };
