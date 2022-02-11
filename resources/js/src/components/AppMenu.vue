@@ -179,7 +179,7 @@ export default defineComponent({
           } else {
             // if it's another error, show a generic message
             store.dispatch("flashSnack", {
-              message: t("general.snack.error.errorWhileLogout"),
+              message: t("general.snack.errors.errorWhileLogout"),
               time: 5000,
               type: "error",
             });
