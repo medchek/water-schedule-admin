@@ -1,5 +1,6 @@
 const mix = require("laravel-mix");
 const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,25 +15,31 @@ const webpack = require("webpack");
 mix.ts("resources/js/app.ts", "public/js")
     .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
     .vue({ version: 3 })
-    .sourceMaps()
-    .disableNotifications()
-    // .browserSync({
-    //     proxy: "http://127.0.0.1:8000",
-    //     host: "http://127.0.0.1",
-    //     port: 8000,
-    //     localOnly: true,
+    .disableNotifications();
 
-    //     // socket: {
-    //     //     domain: "127.0.0.1:8000",
-    //     // },
-    //     notify: false,
-    // })
-    .webpackConfig({
-        devtool: mix.inProduction() ? false : "inline-source-map",
-        plugins: [
-            new webpack.DefinePlugin({
-                // __VUE_OPTIONS_API__: false,
-                __VUE_PROD_DEVTOOLS__: false,
-            }),
-        ],
-    });
+if (!mix.inProduction()) {
+    mix.sourceMaps()
+        .webpackConfig({
+            devtool: mix.inProduction() ? false : "inline-source-map",
+            plugins: [
+                new webpack.DefinePlugin({
+                    // __VUE_OPTIONS_API__: false,
+                    __VUE_PROD_DEVTOOLS__: false,
+                    __INTLIFY_PROD_DEVTOOLS__: false,
+                }),
+                // new BundleAnalyzerPlugin(),
+            ],
+            stats: {
+                children: true,
+            },
+        })
+        .options({
+            hmrOptions: {
+                host: "seaal-water-schedule.test",
+            },
+        });
+}
+
+if (mix.inProduction()) {
+    mix.version().extract(["vue", "axios"]);
+}
