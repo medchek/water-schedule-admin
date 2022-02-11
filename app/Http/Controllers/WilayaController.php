@@ -25,7 +25,7 @@ class WilayaController extends Controller
             $wilayas = Cache::rememberForever("wilayas", function () {
                 return Wilaya::all();
             });
-            return response(WilayaResource::collection($wilayas), 200);
+            return response()->json(WilayaResource::collection($wilayas), 200);
         } catch (Exception $_) {
             return response("error while getting data", 503);
         }
