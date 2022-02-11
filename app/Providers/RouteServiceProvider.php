@@ -68,5 +68,9 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('app-hourly-requests', function (Request $request) {
             return Limit::perHour(500)->by($request->ip());
         });
+
+        RateLimiter::for('install', function (Request $request) {
+            return Limit::perMinute(30)->by($request->ip());
+        });
     }
 }
