@@ -150,7 +150,7 @@
                 "wrongConfirmed": "Le mot de passe confirmé ne correspond au nouveau mot de passe",
                 "sameAsCurrent": "Le nouveau mot de passe doit être different du mot de passe actuel",
                 "incorrectCurrent": "Le mot de passe actuel est incorrect",
-                "leaked": "Le nouveau mot de passe choisi a été trouvé dans la liste de fuites des données, pour votre sécurité veuillez choisir un nouveau",
+                "leaked": "Le nouveau mot de passe choisi a été trouvé dans la liste de fuites des données. Pour votre sécurité, veuillez choisir un nouveau",
                 "invalidRequest": "Les informatios envoyées au serveur sont invalides"
             }
         },
