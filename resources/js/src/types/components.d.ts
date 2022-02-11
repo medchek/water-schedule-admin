@@ -126,3 +126,11 @@ export interface ScheduleFormRequest {
 export type SettingType = "password" | "app";
 
 export type SettingsList = { label: string; component: string; icon: string }[];
+
+type SignupFormDataEntry = { label: string; placeholder: string; value: string; info?: string; error: string; type?: string };
+export interface SignupFormData {
+    name: SignupFormDataEntry;
+    email: SignupFormDataEntry;
+    password: SignupFormDataEntry;
+    confirmPassword: SignupFormDataEntry;
+}
