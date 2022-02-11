@@ -1,5 +1,4 @@
 import axiosDefault, { AxiosError } from "axios";
-import router from "../router";
 import store from "../store";
 import { SnackType } from "../store/modules/ui";
 
@@ -10,15 +9,12 @@ const env = (envVar: string | undefined, fallback?: string) => {
 };
 
 export const axios = axiosDefault.create({
-    baseURL: env(process.env.SANCTUM_STATEFUL_DOMAINS, "http://127.0.0.1:8000"),
+    baseURL: `${env(process.env.MIX_API_PROTOCOL, "http")}://${env(process.env.MIX_API_HOST, "127.0.0.1:8000")}`,
     headers: {
-        // "X-CSRF-TOKEN": window.Laravel,
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json",
         Accept: "application/json",
-        // "Access-Control-Allow-Credentials": true,
     },
-    // withCredentials: true,
 });
 
 axios.interceptors.response.use(
@@ -53,9 +49,11 @@ AxiosLogin.defaults.withCredentials = true;
 
 export { AxiosLogin };
 
+export const apiPath = (path: string) => `/api/${path}`;
+
 export const isAuth = async (): Promise<boolean> => {
     try {
-        const response = await axios("/api/user");
+        const response = await axios(apiPath("user"));
         console.log("shared@isAuth() fetch user response =>", response);
         if (response.status === 200) {
             return true;
@@ -71,6 +69,10 @@ export const flashSnack = ({ message, time, type }: { message: string; time?: nu
     store.dispatch("flashSnack", { message, type: type || "info", time: time || 5000 });
 };
 
+export const flashErrorSnack = (message: string, time?: number) => {
+    store.dispatch("flashSnack", { message, type: "error", time: time || 5000 });
+};
+
 /**
  * Adds __d'__ or __de__ according to the french grammar rules (mainly used for displaying wilaya and town names)
  * @param word the word to add the preposition to
@@ -83,8 +85,7 @@ export const addPreposition = (word: string): string => {
         return `de ${word}`;
     }
 };
-// schedule data pattern
-// a function is used to assure a total deep cloning
+
 export type Days = "dimanche" | "lundi" | "mardi" | "mercredi" | "jeudi" | "vendredi" | "samedi";
 export type enDays = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
 export type arDays = "السبت" | "الأحد" | "الإثنين" | "الثلاثاء" | "الأربعاء" | "الخميس" | "الجمعة";
