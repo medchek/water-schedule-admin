@@ -317,7 +317,7 @@ class ScheduleService
    * @param bool $isNext the target schedule so that the function generates week number and year of the next week
    * @return Schedule schedule model instance intended to be inserted into the database
    */
-  private function preparePostModel(int $townCode, array | null $scheduleData, bool $isNext = false): Schedule
+  private function preparePostModel(int $townCode,  /* array | null */ $scheduleData, bool $isNext = false): Schedule
   {
 
     $weekNumber =  !$isNext ? $this->getCurrentWeekNumber() : $this->getNextWeekNumber();
