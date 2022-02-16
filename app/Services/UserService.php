@@ -9,14 +9,21 @@ use App\Models\UserSetting;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
 
 class UserService
 {
+
+  public const ACCOUNT_LEVEL_ADMIN = 2;
+  public const ACCOUNT_LEVEL_SUBADMIN = 1;
+  public const ACCOUNT_LEVEL_EDITOR = 0;
+
   /**
    * Updates the user password
    */
@@ -28,7 +35,7 @@ class UserService
         // "user_id" => "required|integer|exists:App\Models\User,id",
         "current_password" => "bail|required|current_password",
         // "new_password" => "bail|required|confirmed|different:current_password|min:8|regex:/(?=.*[a-zA-Z])(?=.*[0-9])/", // must contain both numbers and letters
-        "new_password" => ["bail", "required", "confirmed", "different:current_password", Password::min(8)->letters()->numbers()->uncompromised()]
+        "new_password" => ["bail", "required", "confirmed", "different:current_password", "string", Password::min(8)->letters()->numbers()->uncompromised()]
       ],
       // custom error messages
       // [
@@ -79,6 +86,15 @@ class UserService
       return response("server error", 500);
     }
   }
+
+  private function doUserSettingsExist(): bool
+  {
+    $currentUser = User::find(Auth::id());
+    $doUserSettingsExist = $currentUser->settings;
+    // if the settings are already set, a post request is forbidden
+    return isset($doUserSettingsExist);
+  }
+
   /**
    * Valides the user app settings that should contain the wilaya_code and town_code that the user wishes to use by default
    * @return string if error is encountered while validating, returns a string containing the error message. If the validation succeeds, returns an empty string 
@@ -124,10 +140,8 @@ class UserService
    */
   public function storeUserAppSettings(array $data): Response
   {
-    $currentUser = User::find(Auth::id());
-    $doUserSettingsExist = $currentUser->settings;
     // if the settings are already set, a post request is forbidden
-    if (isset($doUserSettingsExist)) {
+    if ($this->doUserSettingsExist()) {
       return response("settings already exist, cannot store", 403);
     }
 
@@ -198,5 +212,37 @@ class UserService
 
     $userSettings->save();
     return response(new UserSettingsResource($userSettings), 200);
+  }
+
+  public function storeUserLang(string $data): Response
+  {
+    // if the settings are already set, a post request is forbidden
+    if ($this->doUserSettingsExist()) {
+      return response("settings already exist, cannot store", 403);
+    }
+
+    $validation = Validator::make($data, [
+      'lang' => [
+        'required',
+        Rule::in(["fr", "ar"]),
+      ],
+    ]);
+
+    if ($validation->fails()) {
+      return response("invalid data", 400);
+    }
+
+    return response($data, 201);
+  }
+  /**
+   * Checks whether the first user has been created or not (which should be the admin user).
+   * Uses a indefinitly timed cache that will only reset when the admin account is created
+   */
+  public function isFirstUserCreated(): bool
+  {
+    $count = Cache::rememberForever("can-install", function () {
+      return User::count();
+    });
+    return $count !== 0;
   }
 }
