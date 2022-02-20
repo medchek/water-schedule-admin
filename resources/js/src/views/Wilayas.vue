@@ -32,7 +32,10 @@
             </div>
             <!-- SUCCESS BUT NO SEARCH RESULT -->
 
-            <div v-if="!isFetching && !fetchingError && searchTerm.length && !wilayas.length" class="w-full text-center text-lg text-bgray-700 font-bold">
+            <div
+                v-if="!isFetching && !fetchingError && searchTerm.length && !wilayas.length"
+                class="w-full text-center text-lg text-bgray-700 font-bold"
+            >
                 <p>{{ t("wilaya.noSearchMatch") }}.</p>
             </div>
         </section>
@@ -64,7 +67,9 @@ export default defineComponent({
         const isAuth = computed(() => store.getters.getUser);
 
         const allWilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getWilayas);
-        const wilayas: ComputedRef<Wilaya[]> = computed(() => store.getters.getFilteredWilayas(searchTerm.value));
+        const wilayas: ComputedRef<Wilaya[]> = computed(() =>
+            store.getters.getFilteredWilayas(searchTerm.value)
+        );
 
         const fetchWilayas = () => {
             isFetching.value = true;
