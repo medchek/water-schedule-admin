@@ -122,6 +122,18 @@
         "info": {
             "noChangesMade": "Aucun changement n'a été encore fait"
         },
+        "actions": {
+            "actions": "Actions",
+            "setWaterAvailableLabel": "Régler l'eau comme disponible durant",
+            "resetScheduleLabel": "Réinitialiser le programme de",
+            "allCurrentWeek": "Toute cette semaine",
+            "allNextWeek": "Toute la semaine prochaine",
+            "bothWeeks": "Les deux semaines",
+            "bothSchedules": "Les deux programmes",
+            "setWaterActionName": "Remplir un programme",
+            "resetWaterActionName": "Réinitialiser un programme",
+            "title": "Si vous n'avez pas encore confirmer, vous pouvez fermer puis rouvrir le formulair à nouveau pour annuler une action"
+        },
         "errors": {
             "promptFixErrors": "Veillez d'abord corriger les erreurs",
             "addedFromMustBeGreaterThanPreviousTo": "Le temps de rétablissement ajouté au meme jour doit être supérieure au temps de coupure précédent",

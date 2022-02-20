@@ -122,6 +122,19 @@
         "info": {
             "noChangesMade": "لم يتم إجراء أي تغييرات"
         },
+        "actions": {
+            "actions": "إجراءات",
+            "setWaterAvailableLabel": "ضبط توقيت الماء كمتوفر خلال",
+            "resetScheduleLabel": "إعادة ضبط توقيت مياه",
+            "allCurrentWeek": "كل هذا الاسبوع",
+            "allNextWeek": "كل الاسبوع المقبل",
+            "bothWeeks": "كلا الأسبوعين",
+            "bothSchedules": "كلا جدولين التوقيت",
+            "setWaterActionName": "ملء جدول توقيت الماء",
+            "resetWaterActionName": "إعادة ضبط توقيت المياه",
+            "title": "ٌإذا لم يتم التأكيد بعد, يمكن غلق الجدول و إعادة فتحة للإلغاء اللإجراءات"
+        },
+
         "errors": {
             "promptFixErrors": "يرجى تصحيح الأخطاء أولا",
             "addedFromMustBeGreaterThanPreviousTo": "يجب أن يكون توقيت رجوع المياه المضاف بعد توقيت قطع المياه السابق لنفس اليوم",
