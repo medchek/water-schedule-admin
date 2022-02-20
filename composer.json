@@ -2,8 +2,11 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "LGPL-3.0",
     "require": {
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
