@@ -25,12 +25,5 @@
     <div id="app"></div>
     <div id="app-modal" class="absolute top-0 left-0"></div>
 </body>
-{{-- <script script src="{{mix(" /js/app.js")}}"> </script> --}}
-@production
-<script src="js/manifest.js"> </script>
-<script src="js/vendor.js"> </script>
-@endproduction
 <script src="{{ mix('js/app.js') }}"> </script>
-{{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
-
 </html>

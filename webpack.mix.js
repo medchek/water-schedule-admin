@@ -18,28 +18,23 @@ mix.ts("resources/js/app.ts", "public/js")
     .disableNotifications();
 
 if (!mix.inProduction()) {
-    mix.sourceMaps()
-        .webpackConfig({
-            devtool: mix.inProduction() ? false : "inline-source-map",
-            plugins: [
-                new webpack.DefinePlugin({
-                    // __VUE_OPTIONS_API__: false,
-                    __VUE_PROD_DEVTOOLS__: false,
-                    __INTLIFY_PROD_DEVTOOLS__: false,
-                }),
-                // new BundleAnalyzerPlugin(),
-            ],
-            stats: {
-                children: true,
-            },
-        })
-        .options({
-            hmrOptions: {
-                host: "seaal-water-schedule.test",
-            },
-        });
+    mix.sourceMaps().webpackConfig({
+        devtool: mix.inProduction() ? false : "inline-source-map",
+        plugins: [
+            new webpack.DefinePlugin({
+                // __VUE_OPTIONS_API__: false,
+                __VUE_PROD_DEVTOOLS__: false,
+                __INTLIFY_PROD_DEVTOOLS__: false,
+            }),
+            // new BundleAnalyzerPlugin(),
+        ],
+        stats: {
+            children: true,
+        },
+    });
 }
 
 if (mix.inProduction()) {
-    mix.version().extract(["vue", "axios"]);
+    mix.version();
+    // .extract(["vue", "axios"]);
 }
