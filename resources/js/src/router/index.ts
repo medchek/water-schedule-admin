@@ -1,6 +1,7 @@
 import { axios } from "./../lib/shared";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import store from "../store";
+import { loadLocaleMessages } from "../locales";
 // import Home from "../views/Home.vue";
 // import NotFound from "../views/NotFound.vue";
 // import Wilayas from "../views/Wilayas.vue";
@@ -88,9 +89,9 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((from, to, next) => {
+router.beforeEach(async (_, __, next) => {
     store.dispatch("startRouteProgress");
-    // check if user is not authenthicaed
+    await loadLocaleMessages(store.getters.getLanguage);
     next();
 });
 router.onError(() => {

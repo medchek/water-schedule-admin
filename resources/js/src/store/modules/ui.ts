@@ -1,4 +1,8 @@
-import { isLocalStorageDarkMode, setLocaleStorageLang, getLocaleStorageLang } from "./../../lib/utils";
+import {
+    isLocalStorageDarkMode,
+    setLocaleStorageLang,
+    getLocaleStorageLang,
+} from "./../../lib/utils";
 import { Module } from "vuex";
 
 export type SnackType = "info" | "error" | "success";
@@ -58,7 +62,10 @@ const uiModule: Module<Ui, any> = {
     },
 
     actions: {
-        flashSnack({ commit }, { message, type, time }: { message: string; type?: SnackType; time?: number | false }) {
+        flashSnack(
+            { commit },
+            { message, type, time }: { message: string; type?: SnackType; time?: number | false }
+        ) {
             commit("SHOW_SNACK", { message, type });
             // if time is 0, don't hide the snack
             if (time === 0 || time === false) return;
