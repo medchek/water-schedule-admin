@@ -95,7 +95,6 @@ export default defineComponent({
     setup(_, { emit }) {
         const store = useStore();
         const router = useRouter();
-        const isArLocale = computed(() => store.getters.getIsArLang);
         const { t } = useI18n();
 
         const user = computed(() => store.getters.getUser);
