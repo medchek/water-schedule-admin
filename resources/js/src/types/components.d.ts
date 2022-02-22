@@ -123,11 +123,18 @@ export interface ScheduleFormRequest {
 
 // Settings.vue
 
-export type SettingType = "password" | "app";
+export type SettingsComponent = "password" | "ui" | "theme";
 
-export type SettingsList = { label: string; component: string; icon: string }[];
+export type SettingsList = { label: string; component: SettingsComponent; icon: string }[];
 
-type SignupFormDataEntry = { label: string; placeholder: string; value: string; info?: string; error: string; type?: string };
+type SignupFormDataEntry = {
+    label: string;
+    placeholder: string;
+    value: string;
+    info?: string;
+    error: string;
+    type?: string;
+};
 export interface SignupFormData {
     name: SignupFormDataEntry;
     email: SignupFormDataEntry;
