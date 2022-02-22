@@ -41,7 +41,8 @@
                 "sessionExpired": "Votre session a expiré, veuillez vous reconnecter",
                 "sendingError": "Une erreur est survenu lors de l'envoi des données, veuillez reéssayer",
                 "savingError": "Une érreur est survenu lors de l'enregistrement des données",
-                "failedOperation": "Une érreur est survenu lors de l'opération"
+                "failedOperation": "Une érreur est survenu lors de l'opération",
+                "langImport": "Une érreur est survenu lors du chargement des langues"
             }
         }
     },
