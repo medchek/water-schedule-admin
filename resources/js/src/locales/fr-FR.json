@@ -28,7 +28,7 @@
             "info": {
                 "savingSuccess": "Données sauvgardées avec succès",
                 "loginSuccess": "Vous êtes maintenant connecté",
-                "logoutSuccess": "Vous êtes maintenant connecté",
+                "logoutSuccess": "Vous êtes maintenant déconnecté",
                 "alreadyLoggedIn": "Vous êtes déja connecté"
             },
             "errors": {
@@ -50,7 +50,7 @@
     "wilaya": {
         "searchForWilaya": "Chercher une wilaya",
         "goToTowns": "Voir les communes",
-        "errorFetching": "Use erreur est survenu lors de l'obtention des wilayas",
+        "errorFetching": "Une erreur est survenu lors de l'obtention des wilayas",
         "noSearchMatch": "Aucune wilaya ne correspond à votre recherche"
     },
 
@@ -60,7 +60,7 @@
         "addTown": "Ajouter une commune",
         "townName": "Nom de la commune",
         "arabicTownName": "Nom de la commune en Arabe",
-        "errorFetching": "Use erreur est survenu lors de l'obtention des communes",
+        "errorFetching": "Une erreur est survenu lors de l'obtention des communes",
         "noTownsAdded": " Aucune commune n'a été ajoutée pour { wilaya }",
         "noSearchMatch": "Aucune commune ne corresponds à votre recherche",
         "wilayaNotFound": "Wilaya {wilayaCode} n'existe pas",
