@@ -9,8 +9,13 @@
     <link rel="shortcut icon" type="image/png" href="/fav/favicon.ico" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{asset("/css/app.css")}}" rel="stylesheet">
 
+    @production
+    <link href="{{secure_asset("/css/app.css")}}" rel="stylesheet">
+    @else
+    <link href="{{asset("/css/app.css")}}" rel="stylesheet">
+    @endproduction
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -26,4 +31,5 @@
     <div id="app-modal" class="absolute top-0 left-0"></div>
 </body>
 <script src="{{ mix('js/app.js') }}"> </script>
+
 </html>
