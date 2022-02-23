@@ -14,11 +14,9 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 
 mix.ts("resources/js/app.ts", "public/js")
     .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
-    .vue({ version: 3 })
-    .disableNotifications();
-
-if (!mix.inProduction()) {
-    mix.sourceMaps().webpackConfig({
+    .vue({ version: 3, runtimeOnly: mix.inProduction() })
+    .disableNotifications()
+    .webpackConfig({
         devtool: mix.inProduction() ? false : "inline-source-map",
         plugins: [
             new webpack.DefinePlugin({
@@ -32,6 +30,9 @@ if (!mix.inProduction()) {
             children: true,
         },
     });
+
+if (!mix.inProduction()) {
+    mix.sourceMaps();
 }
 
 if (mix.inProduction()) {
