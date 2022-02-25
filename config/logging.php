@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -43,8 +42,8 @@ return [
         ],
 
         'single' => [
-            'driver' => App::environment('local') ? 'single' : 'errorlog',
-            'path' => App::environment('local') ? storage_path('logs/laravel.log') : null,
+            'driver' => env('APP_ENV', 'local') === 'local' ? 'single' : 'errorlog',
+            'path' => env('APP_ENV', 'local') === 'local' ? storage_path('logs/laravel.log') : null,
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
