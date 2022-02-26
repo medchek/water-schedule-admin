@@ -9,7 +9,10 @@ const env = (envVar: string | undefined, fallback?: string) => {
 };
 
 export const axios = axiosDefault.create({
-    baseURL: `${env(process.env.MIX_API_PROTOCOL, "http")}://${env(process.env.MIX_API_HOST, "127.0.0.1:8000")}`,
+    baseURL: `${env(process.env.MIX_API_PROTOCOL, "http")}://${env(
+        process.env.MIX_API_HOST,
+        "127.0.0.1:8000"
+    )}`,
     headers: {
         "X-Requested-With": "XMLHttpRequest",
         "Content-Type": "application/json",
@@ -44,7 +47,7 @@ axios.interceptors.response.use(
  * Axios instance with  "Access-Control-Allow-Credentials" header and "withCredentials" set to true
  */
 const AxiosLogin = axios;
-AxiosLogin.defaults.headers["Access-Control-Allow-Credentials"] = true;
+AxiosLogin.defaults.headers.common["Access-Control-Allow-Credentials"] = true;
 AxiosLogin.defaults.withCredentials = true;
 
 export { AxiosLogin };
@@ -65,7 +68,15 @@ export const isAuth = async (): Promise<boolean> => {
     }
 };
 
-export const flashSnack = ({ message, time, type }: { message: string; time?: number; type?: SnackType }) => {
+export const flashSnack = ({
+    message,
+    time,
+    type,
+}: {
+    message: string;
+    time?: number;
+    type?: SnackType;
+}) => {
     store.dispatch("flashSnack", { message, type: type || "info", time: time || 5000 });
 };
 
@@ -87,7 +98,14 @@ export const addPreposition = (word: string): string => {
 };
 
 export type Days = "dimanche" | "lundi" | "mardi" | "mercredi" | "jeudi" | "vendredi" | "samedi";
-export type enDays = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
+export type enDays =
+    | "sunday"
+    | "monday"
+    | "tuesday"
+    | "wednesday"
+    | "thursday"
+    | "friday"
+    | "saturday";
 export type arDays = "السبت" | "الأحد" | "الإثنين" | "الثلاثاء" | "الأربعاء" | "الخميس" | "الجمعة";
 
 export interface Period {
@@ -279,9 +297,33 @@ export const scheduleFormData = (): FormSchedule[] => [
 ];
 
 // this is needed for ordering by weekly order
-export const frDaysByOrder = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
-export const enDaysByOrder = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-export const arDaysByOrder = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+export const frDaysByOrder = [
+    "dimanche",
+    "lundi",
+    "mardi",
+    "mercredi",
+    "jeudi",
+    "vendredi",
+    "samedi",
+];
+export const enDaysByOrder = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+];
+export const arDaysByOrder = [
+    "الأحد",
+    "الإثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت",
+];
 
 /**
  * Compares two time objects.
