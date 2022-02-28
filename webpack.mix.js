@@ -36,6 +36,5 @@ if (!mix.inProduction()) {
 }
 
 if (mix.inProduction()) {
-    mix.version();
-    // .extract(["vue", "axios"]);
+    mix.version().extract(["vue", "axios"]);
 }
