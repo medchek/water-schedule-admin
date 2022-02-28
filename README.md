@@ -1,29 +1,32 @@
 
-# Water Schedule Administration
+# Water Availablity Administration
 
 <p align="center">
-  <img src="./.github/demo-light.jpg" width="90%">
+  <img src="./.github/demo-light.jpg" />
 </p>
 
-This app is an admin panel that gives the ability to set and manage the water schedule for all the Algerian wilayas (districts) and their respective towns. The app was created as a result of the water crysis that resulted in the cease of continuous 24h/7d water availability in my country. It permits to manage the water schedule by setting the time of water supply cutting and restoration of both current and next week. It then exposes the schedules data to a public api that is accessed through the Android/iOS app which is a related project available in this [repository](https://github.com/medcheck/water-schedule-app).
+This app is an admin panel that allows to set and manage the water availablity schedules of all the Algerian wilayas (districts) and their respective towns. The app was created as a result of a drastic decrease in rainfaill rates that has led to the cease of continuous 24h/7d water supply in my country. This situation made it difficult to tell the exact time at which the water is restored or cut as well as to plan for any tasks involving water usage.
 
-## info
+Therefore, the objective of this app is to offer a tool to set and adjust water availabilty schedules data that can be accessed through an Android/iOS app, which is a related project available in this [repository](https://github.com/medcheck/water-schedule-app).
 
-Backend api is written in PHP using **Laravel**.
 
-Frontend is an SPA written in typescript using **Vuejs** (with vuex for state management) and **Tailwind** as a css framework.
+## information
 
-Other features:  
+Backend api is written in PHP using [Laravel](https://laravel.com/).
+
+Frontend is an SPA written in typescript using [Vue](https://vuejs.org/guide/introduction.html) (with [vuex](https://vuex.vuejs.org/) for state management) and [Tailwind](https://tailwindcss.com/) as a css framework.
+
+### features:  
 
 - Api caching.
-- Ratelimiting
+- Ratelimiting.
 - Lazy loaded routes and translations.
-- Fully responsive.
-- Multiple themes & languages
+- Fully responsive and intuitive interface.
+- Multiple themes & languages.
 - And more...
 
 <p align="center">
-  <img src="./.github/demo-dark.jpg" width="90%">
+  <img src="./.github/demo-dark.jpg" />
 </p>
 
 ## Disclaimer
