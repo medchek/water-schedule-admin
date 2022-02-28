@@ -2,15 +2,8 @@ import { axios } from "./../lib/shared";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import store from "../store";
 import { loadLocaleMessages } from "../locales";
-// import Home from "../views/Home.vue";
-// import NotFound from "../views/NotFound.vue";
-// import Wilayas from "../views/Wilayas.vue";
-// import Towns from "../views/Towns.vue";
-// import Schedule from "../views/Schedule.vue";
-// import ScheduleRefactor from "../views/ScheduleRefactor.vue";
 
 const Home = () => import("../views/Home.vue");
-
 const Wilayas = () => import("../views/Wilayas.vue");
 const Login = () => import("../views/Login.vue");
 const Signup = () => import("../views/Signup.vue");
@@ -90,9 +83,14 @@ const router = createRouter({
 });
 
 router.beforeEach(async (_, __, next) => {
-    store.dispatch("startRouteProgress");
-    await loadLocaleMessages(store.getters.getLanguage);
-    next();
+    try {
+        store.dispatch("startRouteProgress");
+        await loadLocaleMessages(store.getters.getLanguage);
+    } catch (e) {
+        console.error("[beforeEach] Could not load locales");
+    } finally {
+        next();
+    }
 });
 router.onError(() => {
     store.dispatch("instantlyHideProgress");

@@ -67,7 +67,7 @@ export default defineComponent({
                 callback();
             } catch {
                 flashErrorSnack(t("general.snack.errors.langImport"));
-                throw new Error("could not load ar language data");
+                console.log(`Could not load ${locale} language data`);
             } finally {
                 isLangLoading.value = null;
             }
