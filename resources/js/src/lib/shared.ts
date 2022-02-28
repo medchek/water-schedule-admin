@@ -2,8 +2,8 @@ import axiosDefault, { AxiosError } from "axios";
 import store from "../store";
 import { SnackType } from "../store/modules/ui";
 
-const env = (envVar: string | undefined, fallback?: string) => {
-    if (!envVar && !fallback) throw new ErrorEvent("empty env variable and no fallback was passed");
+export const env = (envVar: string | undefined, fallback?: string) => {
+    if (!envVar && !fallback) return console.error("empty env variable and no fallback was passed");
     if (!envVar && fallback) return fallback;
     else return envVar;
 };
