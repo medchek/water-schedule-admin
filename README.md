@@ -9,14 +9,13 @@ This app is an admin panel that allows to set and manage the water availablity s
 
 Therefore, the objective of this app is to offer a tool to set and adjust water availabilty schedules data that can be accessed through an Android/iOS app, which is a related project available in this [repository](https://github.com/medcheck/water-schedule-app).
 
-
 ## information
 
 Backend api is written in PHP using [Laravel](https://laravel.com/).
 
 Frontend is an SPA written in typescript using [Vue](https://vuejs.org/guide/introduction.html) (with [vuex](https://vuex.vuejs.org/) for state management) and [Tailwind](https://tailwindcss.com/) as a css framework.
 
-### features:  
+### features  
 
 - Api caching.
 - Ratelimiting.
@@ -35,4 +34,4 @@ The SEAAL (Société des Eaux et de l’Assainissement d’Alger) brand name is 
 
 ## License
 
-The app is released under the [LGPL-3.0 license](https://opensource.org/licenses/LGPL-3.0).
+The app is released under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
