@@ -66,7 +66,7 @@ import { computed, defineComponent, ref } from "vue";
 import { useStore } from "vuex";
 import { VueRecaptcha } from "vue-recaptcha";
 import Loader from "../components/Loader.vue";
-import { AxiosLogin, flashSnack, isAuth } from "../lib/shared";
+import { AxiosLogin, flashSnack } from "../lib/shared";
 import store from "../store";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
@@ -118,9 +118,9 @@ export default defineComponent({
 
         const triggerRecaptcha = () => {
             if (recaptchaRef.value) {
-                // console.log("triggerRecaptcha");
                 const recaptcha: any = recaptchaRef.value;
                 recaptcha.execute();
+                stopLoading();
             }
         };
         const resetRecaptcha = () => {
@@ -157,6 +157,7 @@ export default defineComponent({
                                 });
                             })
                             .catch((loginError) => {
+                                resetRecaptcha();
                                 switch (loginError.response.status) {
                                     case 422:
                                         // invalid credentials
@@ -180,6 +181,7 @@ export default defineComponent({
                                         });
                                         break;
                                 }
+
                                 throw new Error(`Error while attempting to login: ${loginError}`);
                             })
                             .finally(() => {
@@ -197,21 +199,11 @@ export default defineComponent({
                 });
         };
 
-        const isAuthenticated = () => {
-            isAuth()
-                .then(() => {
-                    console.log("is auth ok!");
-                })
-                .catch(() => {
-                    console.log("is not auth :(");
-                });
-        };
-
         // ERROR CHECKS HANDLING
         const emailError = ref("");
         const passwordError = ref("");
         const resetErrors = () => (emailError.value = passwordError.value = "");
-        /** Returns true if any of the fields are empty, true if the form is correctly filled */
+        /** Returns true if any of the fields are empty, false if the form is correctly filled */
         const checkFormErrors = (): boolean => {
             resetErrors();
             if (email.value.length <= 0 || password.value.length <= 0) {
@@ -222,6 +214,8 @@ export default defineComponent({
         };
 
         const submit = () => {
+            startLoading();
+            // console.log("starting loading");
             if (!checkFormErrors()) {
                 triggerRecaptcha();
             }
@@ -232,17 +226,18 @@ export default defineComponent({
             login(res);
         };
         const onCaptchaExpired = () => resetRecaptcha();
-        const onCaptchaError = () => console.log("capatcha error");
+        const onCaptchaError = () => {
+            stopLoading();
+            // console.log("capatcha error");
+        };
         // const onCaptchaRender = () => console.log("capatcha render");
         return {
-            login,
             email,
             password,
             emailError,
             passwordError,
             canLogin,
             isLoading,
-            isAuthenticated,
             // captcha
             submit,
             recaptchaRef,
