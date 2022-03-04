@@ -112,7 +112,7 @@ class ScheduleController extends Controller
 
         if ($schedule !== null) {
 
-            return response(new ScheduleResource($schedule), 200);
+            return response(new ScheduleResource($schedule, $next), 200);
             //  	}
         } else {
             return response("schedule not found", 404);
