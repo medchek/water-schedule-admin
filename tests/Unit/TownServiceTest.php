@@ -25,7 +25,7 @@ class TownServiceTest extends TestCase
         $name = "djasr kasentina";
         $arTown = "جسر قسنطينة";
 
-        $result = $townService->checkTownExistance($name, $arTown, 16);
+        $result = $townService->checkTownExistence($name, $arTown, 16);
         $this->assertTrue($result);
     }
 
@@ -34,7 +34,24 @@ class TownServiceTest extends TestCase
         $townService = new TownService;
         $name = "London";
         $arTown =  "لندن";
-        $result = $townService->checkTownExistance($name, $arTown, 16);
+        $result = $townService->checkTownExistence($name, $arTown, 16);
+        $this->assertFalse($result);
+    }
+
+    public function testCheckTownCodeExistanceReturnsTrueWhenAValidTownCodeIsProvided()
+    {
+        $townService = new TownService;
+        // 16001 is a valid town code, 1 is not
+        $validTownCode = 16001; // Alger-centre
+        $result = $townService->checkTownCodeExistence($validTownCode);
+        $this->assertTrue($result);
+    }
+    public function testCheckTownCodeExistanceReturnsFalseWhenAnInValidTownCodeIsProvided()
+    {
+        $townService = new TownService;
+        // 16001 is a valid town code, 1 is not
+        $invalidTownCode = 1; // none existant town code, refer to town seeders for a complete list
+        $result = $townService->checkTownCodeExistence($invalidTownCode);
         $this->assertFalse($result);
     }
 }
