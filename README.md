@@ -9,6 +9,10 @@ This app is an admin panel that allows to set and manage the water availablity s
 
 Therefore, the objective of this app is to offer a tool to set and adjust water availabilty schedules data that can be accessed through an Android/iOS app, which is a related project available in this [repository](https://github.com/medcheck/water-schedule-app).
 
+## Demo
+
+A demo can be accessed [here](https://water-schedule.herokuapp.com/login). Note that the app is hosted for free with some limitations. There is a time required for the app to "wake up" as it automatically shuts down after 30mins of inactivity. It might therefore take some time for the app to render for the first time. This obviously would not happen when the app is hosted in a regular production environement.
+
 ## information
 
 Backend api is written in PHP using [Laravel](https://laravel.com/).
