@@ -93,7 +93,7 @@ class ScheduleController extends Controller
 
         // check
         $townServices = new TownService;
-        $doesTownExist = $townServices->checkTownCodeExistance($townCode);
+        $doesTownExist = $townServices->checkTownCodeExistence($townCode);
 
         if (!$doesTownExist) {
             return response("invalid town code", 404);
