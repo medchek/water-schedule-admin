@@ -39,9 +39,18 @@ class TownService
   }
 
   /**
+   * Check if the town with the given code exist*
+   * @return bool true if the town is present, false otherwise
+   */
+  public function checkTownCodeExistence(int $townCode)
+  {
+    return Town::where("code", $townCode)->first() !== null;
+  }
+
+  /**
    * Check if the given names exist in the the database 
    */
-  public function checkTownExistance(string $name, string $arName, int $wilayaId)
+  public function checkTownExistence(string $name, string $arName, int $wilayaId)
   {
     if (!isset($wilayaId) || !is_numeric($wilayaId) || $wilayaId <= 0) {
       throw new Error("Invalid wilaya id");
