@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\Town;
 use App\Services\ScheduleService;
+use App\Services\TownService;
 use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -89,12 +90,23 @@ class ScheduleController extends Controller
      */
     private function getPublicWeekSchedule($townCode, $next = false)
     {
+
+        // check
+        $townServices = new TownService;
+        $doesTownExist = $townServices->checkTownCodeExistance($townCode);
+
+        if (!$doesTownExist) {
+            return response("invalid town code", 404);
+        }
+
+
         $scheduleServices = new ScheduleService;
         $scheduleCode = $scheduleServices->getScheduleCode($townCode, $next);
         $cacheName = "{$scheduleCode}-schedule";
 
-        // remember for a day
-        $schedule = Cache::remember($cacheName, 60 * 60 * 24, function () use ($scheduleCode) {
+
+        // remember for half a day, cache is automatically cleared when a new schedule for the provided town is added
+        $schedule = Cache::remember($cacheName, 60 * 60 * 12, function () use ($scheduleCode) {
             return Schedule::where("code", $scheduleCode)->first();
         });
 
