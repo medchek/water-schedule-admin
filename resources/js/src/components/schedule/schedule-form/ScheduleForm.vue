@@ -67,6 +67,9 @@
                                 @setError="handleSetError"
                                 @resetError="handleResetError"
                                 @resetAllDayErrors="handleResetAllDayErrors"
+                                :clipboard="clipboard"
+                                @setClipboard="setClipboard"
+                                @pasteClipboard="handlePasteClipboard"
                             />
                         </section>
                     </week-display>
@@ -93,6 +96,9 @@
                                 @setError="handleSetError"
                                 @resetError="handleResetError"
                                 @resetAllDayErrors="handleResetAllDayErrors"
+                                :clipboard="clipboard"
+                                @setClipboard="setClipboard"
+                                @pasteClipboard="handlePasteClipboard"
                             />
                         </section>
                     </week-display>
@@ -157,6 +163,7 @@ import {
 
 import {
     AddSegmentArgs,
+    PasteClipboardArgs,
     RemoveSegmentArgs,
     ResetAllErrorsArgs,
     ResetErrorArgs,
@@ -627,6 +634,22 @@ export default defineComponent({
             }
         };
 
+        const clipboard = ref<Period[] | null>(null);
+        const setClipboard = (clipboardData: Period[]) => (clipboard.value = clipboardData);
+        const handlePasteClipboard = ({ targetSchedule, dayIndex, data }: PasteClipboardArgs) => {
+            const schedule = targetSchedule === "current" ? currentSchedule : nextSchedule;
+
+            const clonedData: Period[] = JSON.parse(JSON.stringify(data));
+
+            schedule[dayIndex].schedule = clonedData;
+            if (clonedData.length > 1) {
+                schedule[dayIndex].errors.push({
+                    from: "",
+                    to: "",
+                });
+            }
+        };
+
         return {
             currentSchedule,
             nextSchedule,
@@ -653,7 +676,10 @@ export default defineComponent({
             isSendingData,
             setWaterAvailableAllWeek,
             resetWaterSchedule,
-
+            // clipboard
+            clipboard,
+            setClipboard,
+            handlePasteClipboard,
             // icons
             mdiPlusBoxMultiple,
             mdiPlus,

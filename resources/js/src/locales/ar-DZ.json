@@ -24,6 +24,12 @@
         "mustFillAllFields": "يجب ملء جميع الحقول",
         "requiredField": "يجب ملء هذا الحقل",
 
+        "moreOptions": "المزيد من العمليات",
+        "copy": "نسخ",
+        "paste": "لصق",
+        "nothingToCopy": "لا يوجد أي شيء للنسخ",
+        "nothingToPaste": "لا يوجد أي شيء للصق",
+
         "snack": {
             "info": {
                 "savingSuccess": "تم حفظ المعطيات بنجاح",
@@ -123,6 +129,7 @@
         "info": {
             "noChangesMade": "لم يتم إجراء أي تغييرات"
         },
+
         "actions": {
             "actions": "إجراءات",
             "setWaterAvailableLabel": "ضبط توقيت الماء كمتوفر خلال",

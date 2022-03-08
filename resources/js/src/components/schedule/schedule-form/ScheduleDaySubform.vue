@@ -7,21 +7,49 @@
             >
             <!-- Only show this if the are no more than 2 schedule segments to control the amount of data sent to the server -->
             <!-- and only if the water is cut on the same day, so that the user can chose a time for the water to be restored later on the same day -->
-            <button
-                v-if="displayAddSegment"
-                @click="addScheduleSegment()"
-                :title="t('schedule.addSchedule', { day })"
-            >
-                <icon
-                    :icon="mdiPlus"
-                    className="h-6 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-                />
-            </button>
+            <div class="flex">
+                <div class="flex space-x-1" v-if="isCopyPasteOpen">
+                    <button
+                        :title="isEmptyClipboard ? t('general.nothingToPaste') : t('general.paste')"
+                        :disabled="isEmptyClipboard"
+                        @click="handlePaste"
+                        class="dark:text-bgray-400 text-gray-500 hover:text-gray-700 dark:hover:text-bgray-200 disabled:text-bgray-200 disabled:dark:text-bgray-800"
+                    >
+                        <icon
+                            :icon="showPasteSuccess ? mdiCheck : mdiContentPaste"
+                            className="h-5"
+                        />
+                    </button>
+                    <button
+                        :title="isEmptyPeriod ? t('general.nothingToCopy') : t('general.copy')"
+                        :disabled="isEmptyPeriod"
+                        @click="handleCopy"
+                        class="dark:text-bgray-400 text-gray-500 hover:text-gray-700 dark:hover:text-bgray-200 disabled:text-bgray-200 disabled:dark:text-bgray-800"
+                    >
+                        <icon :icon="showCopySuccess ? mdiCheck : mdiContentCopy" className="h-5" />
+                    </button>
+                </div>
+
+                <button
+                    v-if="displayAddSegment"
+                    @click="addScheduleSegment()"
+                    :title="t('schedule.addSchedule', { day })"
+                    class="dark:text-bgray-400 text-gray-500 hover:text-gray-700 dark:hover:text-bgray-200"
+                >
+                    <icon :icon="mdiPlus" className="h-5 md:h-6" />
+                </button>
+                <button
+                    :title="t('general.moreOptions')"
+                    class="dark:text-bgray-400 text-gray-500 hover:text-gray-700 dark:hover:text-bgray-200"
+                >
+                    <icon @click="toggleOpenCopyPaste" :icon="mdiDotsVertical" className="h-5" />
+                </button>
+            </div>
         </section>
         <!-- DISPLAY THE INPUTS FOR MULTIPLE PERIODS -->
 
         <section
-            v-for="(period, index) in periods"
+            v-for="(period, index) in computedPeriods"
             :key="index"
             class="flex items-center justify-between"
         >
@@ -66,9 +94,10 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, PropType } from "vue";
+import { computed, ComputedRef, defineComponent, PropType, ref } from "vue";
 import {
     FormError,
+    isPeriodEmpty,
     isTimeAGreaterThanB,
     isTimeEmpty,
     isTimeMidnight,
@@ -78,10 +107,18 @@ import {
 } from "../../../lib/shared";
 import Icon from "../../Icon.vue";
 
-import { mdiPlus, mdiClose } from "@mdi/js";
+import {
+    mdiPlus,
+    mdiClose,
+    mdiDotsVertical,
+    mdiContentCopy,
+    mdiContentPaste,
+    mdiCheck,
+} from "@mdi/js";
 import AppTimePickerInput from "../../AppTimePickerInput.vue";
 import {
     AddSegmentArgs,
+    PasteClipboardArgs,
     RemoveSegmentArgs,
     ResetErrorArgs,
     ResetTimeArgs,
@@ -103,6 +140,8 @@ export default defineComponent({
         "setError",
         "resetError",
         "resetAllDayErrors",
+        "setClipboard",
+        "pasteClipboard",
     ],
     props: {
         targetSchedule: { type: String as PropType<TargetSchedule>, required: true },
@@ -114,11 +153,16 @@ export default defineComponent({
             type: Array as PropType<FormError[]>,
             required: true,
         },
+        clipboard: {
+            validator: (v: any) => typeof v === "object" || v === null,
+            required: true,
+        },
     },
     setup(props, { emit }) {
         const { t } = useI18n();
         const store = useStore();
         const day = computed(() => (store.getters.getIsArLang ? props.arDay : props.frDay));
+        const computedPeriods = computed(() => props.periods);
         const handleOnUpdated = (
             updatedTime: Time,
             targetTime: TargetTime,
@@ -160,6 +204,7 @@ export default defineComponent({
                 targetSchedule: props.targetSchedule,
             };
             emit("resetTime", args);
+            resetError(targetTime, periodIndex);
         };
 
         const addScheduleSegment = () => {
@@ -303,12 +348,79 @@ export default defineComponent({
                 targetSchedule: props.targetSchedule,
             });
 
+        /***
+         * COPY PASTING HANDLING
+         */
+
+        const isCopyPasteOpen = ref(false);
+        const isEmptyClipboard = computed(() => props.clipboard === null);
+        const isEmptyPeriod = computed(
+            () => props.periods === null || isPeriodEmpty(props.periods[0])
+        );
+        const toggleOpenCopyPaste = () => (isCopyPasteOpen.value = !isCopyPasteOpen.value);
+
+        const showCopySuccess = ref(false);
+        const showPasteSuccess = ref(false);
+
+        let successTimeout: ReturnType<typeof setTimeout> | null = null;
+
+        const triggerSuccess = (type: "copy" | "paste") => {
+            // reset any check marks if there is any
+            showCopySuccess.value = showPasteSuccess.value = false;
+            type === "copy" ? (showCopySuccess.value = true) : (showPasteSuccess.value = true);
+            successTimeout = setTimeout(() => {
+                clearSuccess(type);
+                // close the menu after showing the check
+                isCopyPasteOpen.value = false;
+            }, 500);
+        };
+
+        const clearSuccess = (type: "copy" | "paste") => {
+            type === "copy" ? (showCopySuccess.value = false) : (showPasteSuccess.value = false);
+            if (successTimeout) clearTimeout(successTimeout);
+        };
+
+        const handleCopy = () => {
+            const newClipboard = (props.periods as Period[]).filter((period) => {
+                return !isPeriodEmpty(period);
+            });
+            if (newClipboard.length === 0) return;
+            emit("setClipboard", newClipboard);
+            triggerSuccess("copy");
+        };
+
+        const handlePaste = () => {
+            // exclude any period that is empty
+            const data = (props.clipboard as Period[]).filter((period) => {
+                return !isPeriodEmpty(period);
+            });
+            // dont proceed if data is empty
+            if (data.length === 0) return;
+            const args: PasteClipboardArgs = {
+                targetSchedule: props.targetSchedule,
+                dayIndex: props.dayIndex,
+                data,
+            };
+            emit("pasteClipboard", args);
+            triggerSuccess("paste");
+        };
+
         return {
             handleOnUpdated,
             handleHasReset,
             removeScheduleSegment,
             addScheduleSegment,
             displayAddSegment,
+            computedPeriods,
+            // copy paste handling
+            isCopyPasteOpen,
+            toggleOpenCopyPaste,
+            isEmptyClipboard,
+            isEmptyPeriod,
+            handleCopy,
+            handlePaste,
+            showCopySuccess,
+            showPasteSuccess,
             // localized day
             day,
             // localization
@@ -316,6 +428,10 @@ export default defineComponent({
             // icons
             mdiPlus,
             mdiClose,
+            mdiDotsVertical,
+            mdiContentCopy,
+            mdiContentPaste,
+            mdiCheck,
         };
     },
 });

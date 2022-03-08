@@ -1,3 +1,4 @@
+import { TargetSchedule } from "./components.d";
 import { Time } from "./../lib/shared";
 // schedule related types
 import { Period } from "../lib/shared";
@@ -105,6 +106,12 @@ export interface ResetErrorArgs {
 export interface ResetAllErrorsArgs {
     targetSchedule: TargetSchedule;
     dayIndex: number;
+}
+
+export interface PasteClipboardArgs {
+    targetSchedule: TargetSchedule;
+    dayIndex: number;
+    data: Period[];
 }
 
 export interface ScheduleFormRequest {

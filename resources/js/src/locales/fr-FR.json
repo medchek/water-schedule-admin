@@ -23,6 +23,12 @@
 
         "mustFillAllFields": "Vous devez remplir tous les champs",
         "requiredField": "Ce champ est obligatoir",
+        "moreOptions": "Plus d'options",
+
+        "copy": "Copier",
+        "paste": "Coller",
+        "nothingToCopy": "Rien à copier",
+        "nothingToPaste": "Rien à coller",
 
         "snack": {
             "info": {
@@ -123,6 +129,7 @@
         "info": {
             "noChangesMade": "Aucun changement n'a été encore fait"
         },
+
         "actions": {
             "actions": "Actions",
             "setWaterAvailableLabel": "Régler l'eau comme disponible durant",
