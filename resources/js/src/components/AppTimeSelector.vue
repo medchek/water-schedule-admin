@@ -2,16 +2,25 @@
     <div
         class="fixed flex items-center justify-center left-0 right-0 top-0 bottom-0 w-screen h-screen bg-dark-bg/40 dark:bg-dark-bg/80 z-10"
         @click="handleEmitOnClickOutside"
+        @keydown.esc="handleEmitOnClosePicker"
     >
         <div
             class="fixed flex flex-col bg-white dark:bg-dark-card w-3/4 md:w-80 h-[32rem] md:h-[35rem] left-0 right-0 mx-auto z-100 mt-2 rounded shadow-xl overflow-hidden dark:shadow-black/40"
             ref="pickerRef"
         >
             <p
-                class="picker__HEADER flex items-center justify-center grow-0 bg-blue-500 dark:bg-dark-alt/80 min-h-12 text-4xl text-white w-full"
+                class="relative picker__HEADER flex items-center justify-center grow-0 bg-blue-500 dark:bg-dark-alt/80 min-h-12 text-4xl text-white w-full"
             >
                 {{ timePickerDisplay }}
+                <button
+                    type="button"
+                    @click="handleEmitOnClosePicker"
+                    class="absolute flex justify-center items-center right-2 h-7 w-7 focus:bg-white/10 rounded-md"
+                >
+                    <Icon :icon="mdiClose" className="w-6 h-6" />
+                </button>
             </p>
+
             <div
                 class="flex min-h-8 font-semibold bg-bgray-100 dark:bg-dark-cancel text-bgray-600 dark:text-bgray-300 text-base"
             >
@@ -71,6 +80,9 @@
 import { defineComponent, onMounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { addZeroToSingleDigit } from "../lib/utils";
+import Icon from "./Icon.vue";
+
+import { mdiClose } from "@mdi/js";
 
 export default defineComponent({
     props: {
@@ -87,7 +99,7 @@ export default defineComponent({
             validator: (v: any) => typeof v === "number" || v === null,
         },
     },
-    emits: ["onClickOutside", "onHourSelected", "onMinSelected"],
+    emits: ["onClickOutside", "onHourSelected", "onMinSelected", "onClosePicker"],
     setup(props, { emit }) {
         const { t } = useI18n();
         const pickerRef = ref<HTMLElement | null>(null);
@@ -99,34 +111,31 @@ export default defineComponent({
             }
         };
 
+        const handleEmitOnClosePicker = () => {
+            emit("onClosePicker");
+        };
+
         const hoursListRef = ref<HTMLElement | null>(null);
         const minListRef = ref<HTMLElement | null>(null);
-
         const mountedHour = ref<number | null>(null);
         const mountedMin = ref<number | null>(null);
-
         onMounted(() => {
             const hoursIndex = props.hours as number;
             const minutesIndex = props.minutes as number;
-
             mountedHour.value = hoursIndex;
             mountedMin.value = minutesIndex;
-
             const hoursList = document.getElementById("hours-selector")! as HTMLElement;
             const minutesList = document.getElementById("minutes-selector")! as HTMLElement;
-
             if (hoursList && props.hours) {
                 const scrollBy = (hoursList.children[hoursIndex] as HTMLElement).offsetTop;
                 hoursList.scrollTo({ top: scrollBy - 100, behavior: "smooth" });
             }
-
             if (minutesList && props.minutes) {
                 const scrollBy =
                     (minutesList.children[minutesIndex] as HTMLElement).offsetTop - 150;
                 minutesList.scrollTo({ top: scrollBy - 100, behavior: "smooth" });
             }
         });
-
         watch([() => props.hours, () => props.minutes], ([newHour, newMin], [_, __]) => {
             if (newHour !== mountedHour.value && newMin !== mountedMin.value) {
                 emit("onClickOutside");
@@ -138,10 +147,14 @@ export default defineComponent({
             hoursListRef,
             minListRef,
             handleEmitOnClickOutside,
+            handleEmitOnClosePicker,
             addZeroToSingleDigit,
             t,
+            //
+            mdiClose,
         };
     },
+    components: { Icon },
 });
 </script>
 <style>

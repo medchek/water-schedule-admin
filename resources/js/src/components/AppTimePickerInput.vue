@@ -46,6 +46,7 @@
                 @onClickOutside="closePicker"
                 @onHourSelected="selectHours"
                 @onMinSelected="selectMinutes"
+                @onClosePicker="closePicker"
             />
         </transition>
 
@@ -54,15 +55,7 @@
 </template>
 
 <script lang="ts">
-import {
-    computed,
-    defineAsyncComponent,
-    defineComponent,
-    onMounted,
-    PropType,
-    ref,
-    watch,
-} from "vue";
+import { computed, defineAsyncComponent, defineComponent, PropType, ref } from "vue";
 import { addZeroToSingleDigit } from "../lib/utils";
 
 import { mdiClose } from "@mdi/js";
