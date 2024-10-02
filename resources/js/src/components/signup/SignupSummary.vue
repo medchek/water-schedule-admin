@@ -10,17 +10,13 @@
   </signup-content>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script script lang="ts">
+import {  PropType } from "vue";
 import { SignupFormData } from "../../types/components";
 import SignupContent from "./SignupContent.vue";
 import SignupSingleSummary from "./SignupSingleSummary.vue";
 
-export default defineComponent({
-  components: { SignupContent, SignupSingleSummary },
-  props: {
-    signupFormData: Object as PropType<SignupFormData>,
-  },
-  setup() {},
-});
+const props = defineProps({
+    signupFormData: Object as PropType<SignupFormData>
+})
 </script>
