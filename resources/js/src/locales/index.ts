@@ -26,17 +26,15 @@ const i18n = createI18n({
 
 // locale lazy loading
 export async function loadLocaleMessages(locale: AvailableLocales) {
-    if (env(process.env.MIX_APP_DEBUG, "false") == "true") console.log("Loading locales");
+    if (env(import.meta.env.VITE_APP_DEBUG, "false") == "true") console.log("Loading locales");
 
     // if the locales have already been loaded, dont load them again
     if (i18n.global.availableLocales.includes(locale)) return;
 
     const localeFileName: AvailableLocalesFiles = locale === "ar" ? "ar-DZ" : "fr-FR";
     // load locale messages with dynamic import
-    const messages = await import(
-        /* webpackChunkName: "locale-[request]" */ `./${localeFileName}.json`
-    );
-    if (env(process.env.MIX_APP_DEBUG, "false") == "true") {
+    const messages = await import(`./${localeFileName}.json`);
+    if (env(import.meta.env.VITE_APP_DEBUG, "false") == "true") {
         console.log("locales successfully imported", messages);
     }
 

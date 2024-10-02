@@ -9,8 +9,8 @@ export const env = (envVar: string | undefined, fallback?: string) => {
 };
 
 export const axios = axiosDefault.create({
-    baseURL: `${env(process.env.MIX_API_PROTOCOL, "http")}://${env(
-        process.env.MIX_API_HOST,
+    baseURL: `${env(import.meta.env.VITE_API_PROTOCOL, "http")}://${env(
+        import.meta.env.VITE_API_HOST,
         "127.0.0.1:8000"
     )}`,
     headers: {
@@ -61,7 +61,7 @@ export const isAuth = async (): Promise<boolean> => {
         if (response.status === 200) {
             return true;
         } else {
-            throw new Error("Cound not get the user");
+            throw new Error("Couldn't not get the user");
         }
     } catch (err) {
         throw new Error(`Failed authentication check => ${err}`);
@@ -404,9 +404,9 @@ export const fillRemainingPeriod = (unmutablePeriod: Period): Period => {
     if (from.hours === null) period.from.hours = 0;
     if (from.minutes === null) period.from.minutes = 0;
     // to
-    // only set the mintues to 59 if the hours were not fileld by the user,
+    // only set the minutes to 59 if the hours were not fileld by the user,
     if (to.hours === null && to.minutes === null) period.to.minutes = 59;
-    // if the user set the "to" hours set the mintues to 0
+    // if the user set the "to" hours set the minutes to 0
     if (to.hours !== null && to.minutes === null) period.to.minutes = 0;
 
     if (to.hours === null) period.to.hours = 23;

@@ -107,7 +107,7 @@ export default defineComponent({
         const password = ref<string>("");
 
         const recaptchaRef = ref<any | null>(null);
-        const recaptchaKey = process.env.MIX_RECAPTCHA_SITE_KEY as string;
+        const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string;
 
         const canLogin = computed(() => {
             return email.value.length > 0 && password.value.length > 0;
