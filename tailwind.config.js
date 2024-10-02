@@ -1,8 +1,13 @@
-const colors = require("tailwindcss/colors");
-const plugin = require("tailwindcss/plugin");
+import colors from "tailwindcss/colors";
+import plugin from "tailwindcss/plugin";
 
-module.exports = {
-    content: ["./storage/framework/views/*.php", "./resources/**/*.blade.php", "./resources/**/*.js", "./resources/**/*.vue"],
+export default {
+    content: [
+        "./storage/framework/views/*.php",
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
     darkMode: "class", // or 'media' or 'class'
     theme: {
         extend: {
