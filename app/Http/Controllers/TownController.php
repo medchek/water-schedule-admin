@@ -49,7 +49,7 @@ class TownController extends Controller
                 $towns = Cache::rememberForever("{$wilayaId}-towns", function () use ($wilayaId) {
                     return Town::where("wilaya_id", $wilayaId)->get();
                 });
-                return response(TownResource::collection($towns), 200);
+                return response()->json(TownResource::collection($towns), 200);
             } catch (Exception $err) {
                 Log::channel("stderr")->error($err);
                 return response("could not find towns", 404);
@@ -83,7 +83,7 @@ class TownController extends Controller
             $wilaya = Wilaya::find($wilayaId);
 
             if (!$wilaya) {
-                return response("invalid wilya, not found", 400);
+                return response("invalid wilaya, not found", 400);
             }
 
             $doesTownExists = Town::where("name", $request->name)->orWhere("ar_name", $request->arName)->where("wilaya_id", $request->wilayaId)->first();
@@ -115,7 +115,7 @@ class TownController extends Controller
 
             return response()->json(new TownResource($town), 201);
         } catch (Exception $e) {
-            response($e->getMessage(), 503);
+            return response($e->getMessage(), 503);
         }
     }
 
@@ -127,6 +127,7 @@ class TownController extends Controller
      */
     public function show($id)
     {
+        return response(null, 404);
         //
     }
 
@@ -165,7 +166,7 @@ class TownController extends Controller
             $name = strtolower($request->name);
             $ar_name = strtolower($request->arName);
 
-            if ($townServices->checkTownExistance($name, $ar_name, $id)) {
+            if ($townServices->checkTownExistence($name, $ar_name, $id)) {
                 return response("@update: town with this name already exists", 422);
             }
 
