@@ -1,11 +1,7 @@
 <template>
   <signup-content
     label="Bienvenu dans la création du compte administrateur"
-    description="Cette page va être accessible pour vous accompagner dans la creation du premier compte administrateur qui va 
-vous permettre de gérer l'ensemble de l'application. Après avoir créé ce dernier, cette page sera définitivement 
-inaccesssible. Néanmoins, vous pouvez toujours ajouter davantage de comptes directement 
-depuis la séction utilisateurs de l'application via votre compte administrateur. Ceci vous donnera un control total sur l'ensemble 
-des comptes opérants."
+    description="Cette page va être accessible pour vous accompagner dans la création du premier compte administrateur qui va vous permettre de gérer l'ensemble de l'application. Après avoir créé ce dernier, cette page sera définitivement inaccessible. Néanmoins, vous pouvez toujours ajouter davantage de comptes directement depuis la section utilisateurs de l'application via votre compte administrateur. Ceci vous donnera un contrôle total sur l'ensemble des comptes opérants."
     importantDescription
     className="space-y-2"
   >
