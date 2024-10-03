@@ -29,43 +29,52 @@ class UserService
      */
     public function resetUserPassword(array $data): Response
     {
+
+        $leakedPasswordErrorMessage = "leaked password";
+
         $validator = Validator::make(
             $data,
             [
                 "current_password" => "bail|required|current_password",
                 "new_password" => ["bail", "required", "confirmed", "different:current_password", "string", Password::min(8)->letters()->numbers()->uncompromised()]
             ],
-
+            [
+                "new_password.password.uncompromised" => $leakedPasswordErrorMessage
+            ]
         );
 
 
         if ($validator->fails()) {
             $failedRules = $validator->failed();
-            var_dump("failed rules =>", $failedRules);
+            // var_dump("failed rules =>", $validator->errors()->toArray());
+
+            $isWrongCurrentPassword = isset($failedRules["current_password"]);
 
             // check if the leaked message exists in the validation error message for the new password
-            $isPasswordLeaked = in_array("The given new password has appeared in a data leak. Please choose a different new password.", $validator->errors()->get("new_password"));
+            $isPasswordLeaked = in_array($leakedPasswordErrorMessage, $validator->errors()->get("new_password"));
+
+
             // if the current password is incorrect send a 403 (forbidden)
+            $errorStatusCode = $isWrongCurrentPassword
+                ? 403 : 400;
 
-            if (isset($failedRules["current_password"])) {
-                return response("invalid password", 403);
-            } else {
-
-                // intial message
-                $errorMessage = "invalid data";
-                if ($isPasswordLeaked) {
-                    // if the error was about a compromised password
-                    $errorMessage = "leaked password";
-                }
+            // response handling
+            // initial default response error message
+            $responseErrorMessage = "invalid data";
 
 
-
-                // if the new password is incorrect send a 400 (bad request )status
-                return response($errorMessage, 400);
+            if ($isWrongCurrentPassword) {
+                $responseErrorMessage = "invalid password";
             }
-        }
-        try {
 
+            if ($isPasswordLeaked) {
+                $responseErrorMessage = "leaked password";
+            }
+            // return the error response
+            return response($responseErrorMessage, status: $errorStatusCode);
+        }
+
+        try {
             // if everything is ok, update the user password
             $user = User::find(Auth::id());
 
