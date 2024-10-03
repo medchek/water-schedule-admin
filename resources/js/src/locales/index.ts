@@ -33,7 +33,8 @@ export async function loadLocaleMessages(locale: AvailableLocales) {
 
     const localeFileName: AvailableLocalesFiles = locale === "ar" ? "ar-DZ" : "fr-FR";
     // load locale messages with dynamic import
-    const messages = await import(`./${localeFileName}.json`);
+    const messages = await import(/* @vite-ignore */ `./${localeFileName}.json`);
+
     if (env(import.meta.env.VITE_APP_DEBUG, "false") == "true") {
         console.log("locales successfully imported", messages);
     }
